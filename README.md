@@ -4,7 +4,7 @@ Provincees
 Libreria javascript para rellenar selects / dropdowns html con las provincias y municipios Españoles de forma automática.
 
 ## Uso
-- Añade la carpeta provincias a tu servidor para que sea accesible desde la web.
+- Añade la carpeta provincias a tu servidor para que sea accesible desde la web (o utiliza la version packed del script).
 
 - Añade Jquery y provincees.js a la web.
 ```html
