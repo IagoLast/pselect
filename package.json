@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IagoLast/provincees"
+    "url": "https://github.com/IagoLast/pselect"
   },
   "keywords": [
     "select",
@@ -29,7 +29,7 @@
   "author": "IagoLast",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IagoLast/provincees/issues"
+    "url": "https://github.com/IagoLast/pselect/issues"
   },
-  "homepage": "https://github.com/IagoLast/provincees"
+  "homepage": "https://github.com/IagoLast/pselect"
 }
