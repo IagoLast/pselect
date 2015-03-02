@@ -1,38 +1,38 @@
-Provincees
+PSelect.js
 ==========
 
 Libreria javascript para rellenar selects / dropdowns html con las provincias y municipios Españoles de forma automática.
 
 ## Uso
-- Añade la carpeta provincias a tu servidor para que sea accesible desde la web (o utiliza la version packed del script).
 
-- Añade Jquery y provincees.js a la web.
+- Añadir Jquery y PSelect.js a la web.
 ```html
-<script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="lib/provincees.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="lib/pselect.min.js"></script>
 ```
-- Añade los selects a la web con sus id correspondientes.
+- Añadir los selects a la web donde se mostraran las provincias y los municipios. (Por defecto se buscan aquellos con id="prov-select","mun-select")
 ```html
 <select id="prov-select"></select>
 <select id="mun-select"></select>
 ```
-- Ejecuta PVES.init() para inicializar los selects. 
+- Ejecutar PS.init() para inicializar los selects. 
 ```html
 <script type="text/javascript">
-	PVES.init();
+	PS.init();
 </script>
 ```
 
 ##Personalización.
-Antes de ejecutar init() puedes personalizar algunos parametros de PVES:
+Antes de ejecutar init() se pueden personalizar algunos parametros de PVES:
 
 ```html
   <script type="text/javascript">
-  	PVES.provSelect = '#prov-select'; //Selector por defecto para provincia.
-  	PVES.munSelect = '#mun-select'; //Selector por defecto para municipio.
-  	PVES.defaultProvText = "Provincia"; //Texto por defecto en el selector de provincia.
-  	PVES.defaultMunText = "Municipio"; //Texto por defecto en el selector de municipio.
+  	PS.provSelect = '#prov-select'; //Selector por defecto para provincia.
+  	PS.munSelect = '#mun-select'; //Selector por defecto para municipio.
+  	PS.defaultProvText = "Provincia"; //Texto por defecto en el selector de provincia.
+  	PS.defaultMunText = "Municipio"; //Texto por defecto en el selector de municipio.
   </script>
 ```
+
 
 
