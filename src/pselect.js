@@ -40783,14 +40783,13 @@ var PS = (function Provinces() {
         $.each(provinces, function(number, item) {
             $(self.provSelect).append($('<option>').text(item.name).attr('value', item.code));
         });
-
-        $(self.provSelect).on('change', function() {
-            var prov = self.value;
+        $(self.provSelect).change(function() {
+            var prov = this.value;
             $(self.munSelect).empty();
             $(self.munSelect).append($('<option>').text(self.defaultMunText).attr('value', -1));
-
             $.each(municipes, function(number, item) {
                 if (item.cod_prov == prov) {
+                    console.log(item.name);
                     $(self.munSelect).append($('<option>').text(item.name).attr('value', number.toString()));
                 }
             });
