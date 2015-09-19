@@ -1,0 +1,40777 @@
+'use strict';
+var PS = (function(){
+var municipes = [{
+	"cod_prov": "01",
+	"cod_mun": "001",
+	"id": 0,
+	"name": "Alegría-Dulantzi"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "002",
+	"id": 1,
+	"name": "Amurrio"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "049",
+	"id": 2,
+	"name": "Añana"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "003",
+	"id": 3,
+	"name": "Aramaio"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "006",
+	"id": 4,
+	"name": "Armiñón"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "037",
+	"id": 5,
+	"name": "Arraia-Maeztu"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "008",
+	"id": 6,
+	"name": "Arratzua-Ubarrundia"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "004",
+	"id": 7,
+	"name": "Artziniega"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "009",
+	"id": 8,
+	"name": "Asparrena"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "010",
+	"id": 9,
+	"name": "Ayala/Aiara"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "011",
+	"id": 10,
+	"name": "Baños de Ebro/Mañueta"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "013",
+	"id": 11,
+	"name": "Barrundia"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "014",
+	"id": 12,
+	"name": "Berantevilla"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "016",
+	"id": 13,
+	"name": "Bernedo"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "017",
+	"id": 14,
+	"name": "Campezo/Kanpezu"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "021",
+	"id": 15,
+	"name": "Elburgo/Burgelu"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "022",
+	"id": 16,
+	"name": "Elciego"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "023",
+	"id": 17,
+	"name": "Elvillar/Bilar"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "046",
+	"id": 18,
+	"name": "Erriberagoitia/Ribera Alta"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "056",
+	"id": 19,
+	"name": "Harana/Valle de Arana"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "901",
+	"id": 20,
+	"name": "Iruña Oka/Iruña de Oca"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "027",
+	"id": 21,
+	"name": "Iruraiz-Gauna"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "019",
+	"id": 22,
+	"name": "Kripan"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "020",
+	"id": 23,
+	"name": "Kuartango"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "028",
+	"id": 24,
+	"name": "Labastida/Bastida"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "030",
+	"id": 25,
+	"name": "Lagrán"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "031",
+	"id": 26,
+	"name": "Laguardia"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "032",
+	"id": 27,
+	"name": "Lanciego/Lantziego"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "902",
+	"id": 28,
+	"name": "Lantarón"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "033",
+	"id": 29,
+	"name": "Lapuebla de Labarca"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "036",
+	"id": 30,
+	"name": "Laudio/Llodio"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "058",
+	"id": 31,
+	"name": "Legutio"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "034",
+	"id": 32,
+	"name": "Leza"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "039",
+	"id": 33,
+	"name": "Moreda de Álava/Moreda Araba"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "041",
+	"id": 34,
+	"name": "Navaridas"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "042",
+	"id": 35,
+	"name": "Okondo"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "043",
+	"id": 36,
+	"name": "Oyón-Oion"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "044",
+	"id": 37,
+	"name": "Peñacerrada-Urizaharra"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "047",
+	"id": 38,
+	"name": "Ribera Baja/Erribera Beitia"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "051",
+	"id": 39,
+	"name": "Salvatierra/Agurain"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "052",
+	"id": 40,
+	"name": "Samaniego"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "053",
+	"id": 41,
+	"name": "San Millán/Donemiliaga"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "054",
+	"id": 42,
+	"name": "Urkabustaiz"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "055",
+	"id": 43,
+	"name": "Valdegovía/Gaubea"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "057",
+	"id": 44,
+	"name": "Villabuena de Álava/Eskuernaga"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "059",
+	"id": 45,
+	"name": "Vitoria-Gasteiz"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "060",
+	"id": 46,
+	"name": "Yécora/Iekora"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "061",
+	"id": 47,
+	"name": "Zalduondo"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "062",
+	"id": 48,
+	"name": "Zambrana"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "018",
+	"id": 49,
+	"name": "Zigoitia"
+}, {
+	"cod_prov": "01",
+	"cod_mun": "063",
+	"id": 50,
+	"name": "Zuia"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "001",
+	"id": 51,
+	"name": "Abengibre"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "002",
+	"id": 52,
+	"name": "Alatoz"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "003",
+	"id": 53,
+	"name": "Albacete"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "004",
+	"id": 54,
+	"name": "Albatana"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "005",
+	"id": 55,
+	"name": "Alborea"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "006",
+	"id": 56,
+	"name": "Alcadozo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "007",
+	"id": 57,
+	"name": "Alcalá del Júcar"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "008",
+	"id": 58,
+	"name": "Alcaraz"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "009",
+	"id": 59,
+	"name": "Almansa"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "010",
+	"id": 60,
+	"name": "Alpera"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "011",
+	"id": 61,
+	"name": "Ayna"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "012",
+	"id": 62,
+	"name": "Balazote"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "014",
+	"id": 63,
+	"name": "Ballestero, El"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "013",
+	"id": 64,
+	"name": "Balsa de Ves"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "015",
+	"id": 65,
+	"name": "Barrax"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "016",
+	"id": 66,
+	"name": "Bienservida"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "017",
+	"id": 67,
+	"name": "Bogarra"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "018",
+	"id": 68,
+	"name": "Bonete"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "019",
+	"id": 69,
+	"name": "Bonillo, El"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "020",
+	"id": 70,
+	"name": "Carcelén"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "021",
+	"id": 71,
+	"name": "Casas de Juan Núñez"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "022",
+	"id": 72,
+	"name": "Casas de Lázaro"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "023",
+	"id": 73,
+	"name": "Casas de Ves"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "024",
+	"id": 74,
+	"name": "Casas-Ibáñez"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "025",
+	"id": 75,
+	"name": "Caudete"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "026",
+	"id": 76,
+	"name": "Cenizate"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "029",
+	"id": 77,
+	"name": "Chinchilla de Monte-Aragón"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "027",
+	"id": 78,
+	"name": "Corral-Rubio"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "028",
+	"id": 79,
+	"name": "Cotillas"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "030",
+	"id": 80,
+	"name": "Elche de la Sierra"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "031",
+	"id": 81,
+	"name": "Férez"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "032",
+	"id": 82,
+	"name": "Fuensanta"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "033",
+	"id": 83,
+	"name": "Fuente-Álamo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "034",
+	"id": 84,
+	"name": "Fuentealbilla"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "035",
+	"id": 85,
+	"name": "Gineta, La"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "036",
+	"id": 86,
+	"name": "Golosalvo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "037",
+	"id": 87,
+	"name": "Hellín"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "038",
+	"id": 88,
+	"name": "Herrera, La"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "039",
+	"id": 89,
+	"name": "Higueruela"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "040",
+	"id": 90,
+	"name": "Hoya-Gonzalo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "041",
+	"id": 91,
+	"name": "Jorquera"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "042",
+	"id": 92,
+	"name": "Letur"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "043",
+	"id": 93,
+	"name": "Lezuza"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "044",
+	"id": 94,
+	"name": "Liétor"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "045",
+	"id": 95,
+	"name": "Madrigueras"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "046",
+	"id": 96,
+	"name": "Mahora"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "047",
+	"id": 97,
+	"name": "Masegoso"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "048",
+	"id": 98,
+	"name": "Minaya"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "049",
+	"id": 99,
+	"name": "Molinicos"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "050",
+	"id": 100,
+	"name": "Montalvos"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "051",
+	"id": 101,
+	"name": "Montealegre del Castillo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "052",
+	"id": 102,
+	"name": "Motilleja"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "053",
+	"id": 103,
+	"name": "Munera"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "054",
+	"id": 104,
+	"name": "Navas de Jorquera"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "055",
+	"id": 105,
+	"name": "Nerpio"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "056",
+	"id": 106,
+	"name": "Ontur"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "057",
+	"id": 107,
+	"name": "Ossa de Montiel"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "058",
+	"id": 108,
+	"name": "Paterna del Madera"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "060",
+	"id": 109,
+	"name": "Peñas de San Pedro"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "059",
+	"id": 110,
+	"name": "Peñascosa"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "061",
+	"id": 111,
+	"name": "Pétrola"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "062",
+	"id": 112,
+	"name": "Povedilla"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "901",
+	"id": 113,
+	"name": "Pozo Cañada"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "063",
+	"id": 114,
+	"name": "Pozohondo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "064",
+	"id": 115,
+	"name": "Pozo-Lorente"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "065",
+	"id": 116,
+	"name": "Pozuelo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "066",
+	"id": 117,
+	"name": "Recueja, La"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "067",
+	"id": 118,
+	"name": "Riópar"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "068",
+	"id": 119,
+	"name": "Robledo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "069",
+	"id": 120,
+	"name": "Roda, La"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "070",
+	"id": 121,
+	"name": "Salobre"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "071",
+	"id": 122,
+	"name": "San Pedro"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "072",
+	"id": 123,
+	"name": "Socovos"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "073",
+	"id": 124,
+	"name": "Tarazona de la Mancha"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "074",
+	"id": 125,
+	"name": "Tobarra"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "075",
+	"id": 126,
+	"name": "Valdeganga"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "076",
+	"id": 127,
+	"name": "Vianos"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "077",
+	"id": 128,
+	"name": "Villa de Ves"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "078",
+	"id": 129,
+	"name": "Villalgordo del Júcar"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "079",
+	"id": 130,
+	"name": "Villamalea"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "080",
+	"id": 131,
+	"name": "Villapalacios"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "081",
+	"id": 132,
+	"name": "Villarrobledo"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "082",
+	"id": 133,
+	"name": "Villatoya"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "083",
+	"id": 134,
+	"name": "Villavaliente"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "084",
+	"id": 135,
+	"name": "Villaverde de Guadalimar"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "085",
+	"id": 136,
+	"name": "Viveros"
+}, {
+	"cod_prov": "02",
+	"cod_mun": "086",
+	"id": 137,
+	"name": "Yeste"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "001",
+	"id": 138,
+	"name": "Adsubia"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "002",
+	"id": 139,
+	"name": "Agost"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "003",
+	"id": 140,
+	"name": "Agres"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "004",
+	"id": 141,
+	"name": "Aigües"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "005",
+	"id": 142,
+	"name": "Albatera"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "006",
+	"id": 143,
+	"name": "Alcalalí"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "007",
+	"id": 144,
+	"name": "Alcocer de Planes"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "008",
+	"id": 145,
+	"name": "Alcoleja"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "009",
+	"id": 146,
+	"name": "Alcoy/Alcoi"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "010",
+	"id": 147,
+	"name": "Alfafara"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "011",
+	"id": 148,
+	"name": "Alfàs del Pi, l'"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "012",
+	"id": 149,
+	"name": "Algorfa"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "013",
+	"id": 150,
+	"name": "Algueña"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "014",
+	"id": 151,
+	"name": "Alicante/Alacant"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "015",
+	"id": 152,
+	"name": "Almoradí"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "016",
+	"id": 153,
+	"name": "Almudaina"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "017",
+	"id": 154,
+	"name": "Alqueria d'Asnar, l'"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "018",
+	"id": 155,
+	"name": "Altea"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "019",
+	"id": 156,
+	"name": "Aspe"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "020",
+	"id": 157,
+	"name": "Balones"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "021",
+	"id": 158,
+	"name": "Banyeres de Mariola"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "022",
+	"id": 159,
+	"name": "Benasau"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "023",
+	"id": 160,
+	"name": "Beneixama"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "024",
+	"id": 161,
+	"name": "Benejúzar"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "025",
+	"id": 162,
+	"name": "Benferri"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "026",
+	"id": 163,
+	"name": "Beniarbeig"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "027",
+	"id": 164,
+	"name": "Beniardá"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "028",
+	"id": 165,
+	"name": "Beniarrés"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "030",
+	"id": 166,
+	"name": "Benidoleig"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "031",
+	"id": 167,
+	"name": "Benidorm"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "032",
+	"id": 168,
+	"name": "Benifallim"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "033",
+	"id": 169,
+	"name": "Benifato"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "029",
+	"id": 170,
+	"name": "Benigembla"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "034",
+	"id": 171,
+	"name": "Benijófar"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "035",
+	"id": 172,
+	"name": "Benilloba"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "036",
+	"id": 173,
+	"name": "Benillup"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "037",
+	"id": 174,
+	"name": "Benimantell"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "038",
+	"id": 175,
+	"name": "Benimarfull"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "039",
+	"id": 176,
+	"name": "Benimassot"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "040",
+	"id": 177,
+	"name": "Benimeli"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "041",
+	"id": 178,
+	"name": "Benissa"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "042",
+	"id": 179,
+	"name": "Benitachell/Poble Nou de Benitatxell, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "043",
+	"id": 180,
+	"name": "Biar"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "044",
+	"id": 181,
+	"name": "Bigastro"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "045",
+	"id": 182,
+	"name": "Bolulla"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "046",
+	"id": 183,
+	"name": "Busot"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "049",
+	"id": 184,
+	"name": "Callosa de Segura"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "048",
+	"id": 185,
+	"name": "Callosa d'en Sarrià"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "047",
+	"id": 186,
+	"name": "Calp"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "050",
+	"id": 187,
+	"name": "Campello, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "051",
+	"id": 188,
+	"name": "Campo de Mirra/Camp de Mirra, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "052",
+	"id": 189,
+	"name": "Cañada"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "053",
+	"id": 190,
+	"name": "Castalla"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "054",
+	"id": 191,
+	"name": "Castell de Castells"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "075",
+	"id": 192,
+	"name": "Castell de Guadalest, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "055",
+	"id": 193,
+	"name": "Catral"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "056",
+	"id": 194,
+	"name": "Cocentaina"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "057",
+	"id": 195,
+	"name": "Confrides"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "058",
+	"id": 196,
+	"name": "Cox"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "059",
+	"id": 197,
+	"name": "Crevillent"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "061",
+	"id": 198,
+	"name": "Daya Nueva"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "062",
+	"id": 199,
+	"name": "Daya Vieja"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "063",
+	"id": 200,
+	"name": "Dénia"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "064",
+	"id": 201,
+	"name": "Dolores"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "065",
+	"id": 202,
+	"name": "Elche/Elx"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "066",
+	"id": 203,
+	"name": "Elda"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "067",
+	"id": 204,
+	"name": "Facheca"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "068",
+	"id": 205,
+	"name": "Famorca"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "069",
+	"id": 206,
+	"name": "Finestrat"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "077",
+	"id": 207,
+	"name": "Fondó de les Neus, el/Hondón de las Nieves"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "070",
+	"id": 208,
+	"name": "Formentera del Segura"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "072",
+	"id": 209,
+	"name": "Gaianes"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "071",
+	"id": 210,
+	"name": "Gata de Gorgos"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "073",
+	"id": 211,
+	"name": "Gorga"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "074",
+	"id": 212,
+	"name": "Granja de Rocamora"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "076",
+	"id": 213,
+	"name": "Guardamar del Segura"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "078",
+	"id": 214,
+	"name": "Hondón de los Frailes"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "079",
+	"id": 215,
+	"name": "Ibi"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "080",
+	"id": 216,
+	"name": "Jacarilla"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "082",
+	"id": 217,
+	"name": "Jávea/Xàbia"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "083",
+	"id": 218,
+	"name": "Jijona/Xixona"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "085",
+	"id": 219,
+	"name": "Llíber"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "084",
+	"id": 220,
+	"name": "Lorcha/Orxa, l'"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "086",
+	"id": 221,
+	"name": "Millena"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "088",
+	"id": 222,
+	"name": "Monforte del Cid"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "089",
+	"id": 223,
+	"name": "Monóvar/Monòver"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "903",
+	"id": 224,
+	"name": "Montesinos, Los"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "091",
+	"id": 225,
+	"name": "Murla"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "092",
+	"id": 226,
+	"name": "Muro de Alcoy"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "090",
+	"id": 227,
+	"name": "Mutxamel"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "093",
+	"id": 228,
+	"name": "Novelda"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "094",
+	"id": 229,
+	"name": "Nucia, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "095",
+	"id": 230,
+	"name": "Ondara"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "096",
+	"id": 231,
+	"name": "Onil"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "097",
+	"id": 232,
+	"name": "Orba"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "099",
+	"id": 233,
+	"name": "Orihuela"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "098",
+	"id": 234,
+	"name": "Orxeta"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "100",
+	"id": 235,
+	"name": "Parcent"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "101",
+	"id": 236,
+	"name": "Pedreguer"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "102",
+	"id": 237,
+	"name": "Pego"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "103",
+	"id": 238,
+	"name": "Penàguila"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "104",
+	"id": 239,
+	"name": "Petrer"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "902",
+	"id": 240,
+	"name": "Pilar de la Horadada"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "105",
+	"id": 241,
+	"name": "Pinós, el/Pinoso"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "106",
+	"id": 242,
+	"name": "Planes"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "901",
+	"id": 243,
+	"name": "Poblets, els"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "107",
+	"id": 244,
+	"name": "Polop"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "060",
+	"id": 245,
+	"name": "Quatretondeta"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "109",
+	"id": 246,
+	"name": "Rafal"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "110",
+	"id": 247,
+	"name": "Ràfol d'Almúnia, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "111",
+	"id": 248,
+	"name": "Redován"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "112",
+	"id": 249,
+	"name": "Relleu"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "113",
+	"id": 250,
+	"name": "Rojales"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "114",
+	"id": 251,
+	"name": "Romana, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "115",
+	"id": 252,
+	"name": "Sagra"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "116",
+	"id": 253,
+	"name": "Salinas"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "118",
+	"id": 254,
+	"name": "San Fulgencio"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "904",
+	"id": 255,
+	"name": "San Isidro"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "120",
+	"id": 256,
+	"name": "San Miguel de Salinas"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "122",
+	"id": 257,
+	"name": "San Vicente del Raspeig/Sant Vicent del Raspeig"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "117",
+	"id": 258,
+	"name": "Sanet y Negrals"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "119",
+	"id": 259,
+	"name": "Sant Joan d'Alacant"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "121",
+	"id": 260,
+	"name": "Santa Pola"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "123",
+	"id": 261,
+	"name": "Sax"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "124",
+	"id": 262,
+	"name": "Sella"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "125",
+	"id": 263,
+	"name": "Senija"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "127",
+	"id": 264,
+	"name": "Tàrbena"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "128",
+	"id": 265,
+	"name": "Teulada"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "129",
+	"id": 266,
+	"name": "Tibi"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "130",
+	"id": 267,
+	"name": "Tollos"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "131",
+	"id": 268,
+	"name": "Tormos"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "132",
+	"id": 269,
+	"name": "Torremanzanas/Torre de les Maçanes, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "133",
+	"id": 270,
+	"name": "Torrevieja"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "134",
+	"id": 271,
+	"name": "Vall d'Alcalà, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "136",
+	"id": 272,
+	"name": "Vall de Gallinera"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "137",
+	"id": 273,
+	"name": "Vall de Laguar, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "135",
+	"id": 274,
+	"name": "Vall d'Ebo, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "138",
+	"id": 275,
+	"name": "Verger, el"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "139",
+	"id": 276,
+	"name": "Villajoyosa/Vila Joiosa, la"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "140",
+	"id": 277,
+	"name": "Villena"
+}, {
+	"cod_prov": "03",
+	"cod_mun": "081",
+	"id": 278,
+	"name": "Xaló"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "001",
+	"id": 279,
+	"name": "Abla"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "002",
+	"id": 280,
+	"name": "Abrucena"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "003",
+	"id": 281,
+	"name": "Adra"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "004",
+	"id": 282,
+	"name": "Albánchez"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "005",
+	"id": 283,
+	"name": "Alboloduy"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "006",
+	"id": 284,
+	"name": "Albox"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "007",
+	"id": 285,
+	"name": "Alcolea"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "008",
+	"id": 286,
+	"name": "Alcóntar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "009",
+	"id": 287,
+	"name": "Alcudia de Monteagud"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "010",
+	"id": 288,
+	"name": "Alhabia"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "011",
+	"id": 289,
+	"name": "Alhama de Almería"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "012",
+	"id": 290,
+	"name": "Alicún"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "013",
+	"id": 291,
+	"name": "Almería"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "014",
+	"id": 292,
+	"name": "Almócita"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "015",
+	"id": 293,
+	"name": "Alsodux"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "016",
+	"id": 294,
+	"name": "Antas"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "017",
+	"id": 295,
+	"name": "Arboleas"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "018",
+	"id": 296,
+	"name": "Armuña de Almanzora"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "019",
+	"id": 297,
+	"name": "Bacares"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "020",
+	"id": 298,
+	"name": "Bayárcal"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "021",
+	"id": 299,
+	"name": "Bayarque"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "022",
+	"id": 300,
+	"name": "Bédar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "023",
+	"id": 301,
+	"name": "Beires"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "024",
+	"id": 302,
+	"name": "Benahadux"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "026",
+	"id": 303,
+	"name": "Benitagla"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "027",
+	"id": 304,
+	"name": "Benizalón"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "028",
+	"id": 305,
+	"name": "Bentarique"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "029",
+	"id": 306,
+	"name": "Berja"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "030",
+	"id": 307,
+	"name": "Canjáyar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "031",
+	"id": 308,
+	"name": "Cantoria"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "032",
+	"id": 309,
+	"name": "Carboneras"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "033",
+	"id": 310,
+	"name": "Castro de Filabres"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "036",
+	"id": 311,
+	"name": "Chercos"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "037",
+	"id": 312,
+	"name": "Chirivel"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "034",
+	"id": 313,
+	"name": "Cóbdar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "035",
+	"id": 314,
+	"name": "Cuevas del Almanzora"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "038",
+	"id": 315,
+	"name": "Dalías"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "902",
+	"id": 316,
+	"name": "Ejido, El"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "041",
+	"id": 317,
+	"name": "Enix"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "043",
+	"id": 318,
+	"name": "Felix"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "044",
+	"id": 319,
+	"name": "Fines"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "045",
+	"id": 320,
+	"name": "Fiñana"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "046",
+	"id": 321,
+	"name": "Fondón"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "047",
+	"id": 322,
+	"name": "Gádor"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "048",
+	"id": 323,
+	"name": "Gallardos, Los"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "049",
+	"id": 324,
+	"name": "Garrucha"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "050",
+	"id": 325,
+	"name": "Gérgal"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "051",
+	"id": 326,
+	"name": "Huécija"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "052",
+	"id": 327,
+	"name": "Huércal de Almería"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "053",
+	"id": 328,
+	"name": "Huércal-Overa"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "054",
+	"id": 329,
+	"name": "Illar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "055",
+	"id": 330,
+	"name": "Instinción"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "056",
+	"id": 331,
+	"name": "Laroya"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "057",
+	"id": 332,
+	"name": "Láujar de Andarax"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "058",
+	"id": 333,
+	"name": "Líjar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "059",
+	"id": 334,
+	"name": "Lubrín"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "060",
+	"id": 335,
+	"name": "Lucainena de las Torres"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "061",
+	"id": 336,
+	"name": "Lúcar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "062",
+	"id": 337,
+	"name": "Macael"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "063",
+	"id": 338,
+	"name": "María"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "064",
+	"id": 339,
+	"name": "Mojácar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "903",
+	"id": 340,
+	"name": "Mojonera, La"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "065",
+	"id": 341,
+	"name": "Nacimiento"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "066",
+	"id": 342,
+	"name": "Níjar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "067",
+	"id": 343,
+	"name": "Ohanes"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "068",
+	"id": 344,
+	"name": "Olula de Castro"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "069",
+	"id": 345,
+	"name": "Olula del Río"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "070",
+	"id": 346,
+	"name": "Oria"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "071",
+	"id": 347,
+	"name": "Padules"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "072",
+	"id": 348,
+	"name": "Partaloa"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "073",
+	"id": 349,
+	"name": "Paterna del Río"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "074",
+	"id": 350,
+	"name": "Pechina"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "075",
+	"id": 351,
+	"name": "Pulpí"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "076",
+	"id": 352,
+	"name": "Purchena"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "077",
+	"id": 353,
+	"name": "Rágol"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "078",
+	"id": 354,
+	"name": "Rioja"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "079",
+	"id": 355,
+	"name": "Roquetas de Mar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "080",
+	"id": 356,
+	"name": "Santa Cruz de Marchena"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "081",
+	"id": 357,
+	"name": "Santa Fe de Mondújar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "082",
+	"id": 358,
+	"name": "Senés"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "083",
+	"id": 359,
+	"name": "Serón"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "084",
+	"id": 360,
+	"name": "Sierro"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "085",
+	"id": 361,
+	"name": "Somontín"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "086",
+	"id": 362,
+	"name": "Sorbas"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "087",
+	"id": 363,
+	"name": "Suflí"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "088",
+	"id": 364,
+	"name": "Tabernas"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "089",
+	"id": 365,
+	"name": "Taberno"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "090",
+	"id": 366,
+	"name": "Tahal"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "091",
+	"id": 367,
+	"name": "Terque"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "092",
+	"id": 368,
+	"name": "Tíjola"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "901",
+	"id": 369,
+	"name": "Tres Villas, Las"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "093",
+	"id": 370,
+	"name": "Turre"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "094",
+	"id": 371,
+	"name": "Turrillas"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "095",
+	"id": 372,
+	"name": "Uleila del Campo"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "096",
+	"id": 373,
+	"name": "Urrácal"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "097",
+	"id": 374,
+	"name": "Velefique"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "098",
+	"id": 375,
+	"name": "Vélez-Blanco"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "099",
+	"id": 376,
+	"name": "Vélez-Rubio"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "100",
+	"id": 377,
+	"name": "Vera"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "101",
+	"id": 378,
+	"name": "Viator"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "102",
+	"id": 379,
+	"name": "Vícar"
+}, {
+	"cod_prov": "04",
+	"cod_mun": "103",
+	"id": 380,
+	"name": "Zurgena"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "001",
+	"id": 381,
+	"name": "Adanero"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "002",
+	"id": 382,
+	"name": "Adrada, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "005",
+	"id": 383,
+	"name": "Albornos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "007",
+	"id": 384,
+	"name": "Aldeanueva de Santa Cruz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "008",
+	"id": 385,
+	"name": "Aldeaseca"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "010",
+	"id": 386,
+	"name": "Aldehuela, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "012",
+	"id": 387,
+	"name": "Amavida"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "013",
+	"id": 388,
+	"name": "Arenal, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "014",
+	"id": 389,
+	"name": "Arenas de San Pedro"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "015",
+	"id": 390,
+	"name": "Arevalillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "016",
+	"id": 391,
+	"name": "Arévalo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "017",
+	"id": 392,
+	"name": "Aveinte"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "018",
+	"id": 393,
+	"name": "Avellaneda"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "019",
+	"id": 394,
+	"name": "Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "021",
+	"id": 395,
+	"name": "Barco de Ávila, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "022",
+	"id": 396,
+	"name": "Barraco, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "023",
+	"id": 397,
+	"name": "Barromán"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "024",
+	"id": 398,
+	"name": "Becedas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "025",
+	"id": 399,
+	"name": "Becedillas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "026",
+	"id": 400,
+	"name": "Bercial de Zapardiel"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "027",
+	"id": 401,
+	"name": "Berlanas, Las"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "029",
+	"id": 402,
+	"name": "Bernuy-Zapardiel"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "030",
+	"id": 403,
+	"name": "Berrocalejo de Aragona"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "033",
+	"id": 404,
+	"name": "Blascomillán"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "034",
+	"id": 405,
+	"name": "Blasconuño de Matacabras"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "035",
+	"id": 406,
+	"name": "Blascosancho"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "036",
+	"id": 407,
+	"name": "Bohodón, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "037",
+	"id": 408,
+	"name": "Bohoyo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "038",
+	"id": 409,
+	"name": "Bonilla de la Sierra"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "039",
+	"id": 410,
+	"name": "Brabos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "040",
+	"id": 411,
+	"name": "Bularros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "041",
+	"id": 412,
+	"name": "Burgohondo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "042",
+	"id": 413,
+	"name": "Cabezas de Alambre"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "043",
+	"id": 414,
+	"name": "Cabezas del Pozo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "044",
+	"id": 415,
+	"name": "Cabezas del Villar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "045",
+	"id": 416,
+	"name": "Cabizuela"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "046",
+	"id": 417,
+	"name": "Canales"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "047",
+	"id": 418,
+	"name": "Candeleda"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "048",
+	"id": 419,
+	"name": "Cantiveros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "049",
+	"id": 420,
+	"name": "Cardeñosa"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "051",
+	"id": 421,
+	"name": "Carrera, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "052",
+	"id": 422,
+	"name": "Casas del Puerto"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "053",
+	"id": 423,
+	"name": "Casasola"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "054",
+	"id": 424,
+	"name": "Casavieja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "055",
+	"id": 425,
+	"name": "Casillas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "056",
+	"id": 426,
+	"name": "Castellanos de Zapardiel"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "057",
+	"id": 427,
+	"name": "Cebreros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "058",
+	"id": 428,
+	"name": "Cepeda la Mora"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "067",
+	"id": 429,
+	"name": "Chamartín"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "059",
+	"id": 430,
+	"name": "Cillán"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "060",
+	"id": 431,
+	"name": "Cisla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "061",
+	"id": 432,
+	"name": "Colilla, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "062",
+	"id": 433,
+	"name": "Collado de Contreras"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "063",
+	"id": 434,
+	"name": "Collado del Mirón"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "064",
+	"id": 435,
+	"name": "Constanzana"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "065",
+	"id": 436,
+	"name": "Crespos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "066",
+	"id": 437,
+	"name": "Cuevas del Valle"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "903",
+	"id": 438,
+	"name": "Diego del Carpio"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "069",
+	"id": 439,
+	"name": "Donjimeno"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "070",
+	"id": 440,
+	"name": "Donvidas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "072",
+	"id": 441,
+	"name": "Espinosa de los Caballeros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "073",
+	"id": 442,
+	"name": "Flores de Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "074",
+	"id": 443,
+	"name": "Fontiveros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "075",
+	"id": 444,
+	"name": "Fresnedilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "076",
+	"id": 445,
+	"name": "Fresno, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "077",
+	"id": 446,
+	"name": "Fuente el Saúz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "078",
+	"id": 447,
+	"name": "Fuentes de Año"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "079",
+	"id": 448,
+	"name": "Gallegos de Altamiros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "080",
+	"id": 449,
+	"name": "Gallegos de Sobrinos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "081",
+	"id": 450,
+	"name": "Garganta del Villar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "082",
+	"id": 451,
+	"name": "Gavilanes"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "083",
+	"id": 452,
+	"name": "Gemuño"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "085",
+	"id": 453,
+	"name": "Gil García"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "084",
+	"id": 454,
+	"name": "Gilbuena"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "086",
+	"id": 455,
+	"name": "Gimialcón"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "087",
+	"id": 456,
+	"name": "Gotarrendura"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "088",
+	"id": 457,
+	"name": "Grandes y San Martín"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "089",
+	"id": 458,
+	"name": "Guisando"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "090",
+	"id": 459,
+	"name": "Gutierre-Muñoz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "092",
+	"id": 460,
+	"name": "Hernansancho"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "093",
+	"id": 461,
+	"name": "Herradón de Pinares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "094",
+	"id": 462,
+	"name": "Herreros de Suso"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "095",
+	"id": 463,
+	"name": "Higuera de las Dueñas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "096",
+	"id": 464,
+	"name": "Hija de Dios, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "097",
+	"id": 465,
+	"name": "Horcajada, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "099",
+	"id": 466,
+	"name": "Horcajo de las Torres"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "100",
+	"id": 467,
+	"name": "Hornillo, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "102",
+	"id": 468,
+	"name": "Hoyo de Pinares, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "101",
+	"id": 469,
+	"name": "Hoyocasero"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "103",
+	"id": 470,
+	"name": "Hoyorredondo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "106",
+	"id": 471,
+	"name": "Hoyos de Miguel Muñoz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "104",
+	"id": 472,
+	"name": "Hoyos del Collado"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "105",
+	"id": 473,
+	"name": "Hoyos del Espino"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "107",
+	"id": 474,
+	"name": "Hurtumpascual"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "108",
+	"id": 475,
+	"name": "Junciana"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "109",
+	"id": 476,
+	"name": "Langa"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "110",
+	"id": 477,
+	"name": "Lanzahíta"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "113",
+	"id": 478,
+	"name": "Llanos de Tormes, Los"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "112",
+	"id": 479,
+	"name": "Losar del Barco, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "114",
+	"id": 480,
+	"name": "Madrigal de las Altas Torres"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "115",
+	"id": 481,
+	"name": "Maello"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "116",
+	"id": 482,
+	"name": "Malpartida de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "117",
+	"id": 483,
+	"name": "Mamblas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "118",
+	"id": 484,
+	"name": "Mancera de Arriba"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "119",
+	"id": 485,
+	"name": "Manjabálago y Ortigosa de Rioalmar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "120",
+	"id": 486,
+	"name": "Marlín"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "121",
+	"id": 487,
+	"name": "Martiherrero"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "122",
+	"id": 488,
+	"name": "Martínez"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "123",
+	"id": 489,
+	"name": "Mediana de Voltoya"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "124",
+	"id": 490,
+	"name": "Medinilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "125",
+	"id": 491,
+	"name": "Mengamuñoz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "126",
+	"id": 492,
+	"name": "Mesegar de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "127",
+	"id": 493,
+	"name": "Mijares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "128",
+	"id": 494,
+	"name": "Mingorría"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "129",
+	"id": 495,
+	"name": "Mirón, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "130",
+	"id": 496,
+	"name": "Mironcillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "131",
+	"id": 497,
+	"name": "Mirueña de los Infanzones"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "132",
+	"id": 498,
+	"name": "Mombeltrán"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "133",
+	"id": 499,
+	"name": "Monsalupe"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "134",
+	"id": 500,
+	"name": "Moraleja de Matacabras"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "135",
+	"id": 501,
+	"name": "Muñana"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "136",
+	"id": 502,
+	"name": "Muñico"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "138",
+	"id": 503,
+	"name": "Muñogalindo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "139",
+	"id": 504,
+	"name": "Muñogrande"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "140",
+	"id": 505,
+	"name": "Muñomer del Peco"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "141",
+	"id": 506,
+	"name": "Muñopepe"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "142",
+	"id": 507,
+	"name": "Muñosancho"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "143",
+	"id": 508,
+	"name": "Muñotello"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "144",
+	"id": 509,
+	"name": "Narrillos del Álamo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "145",
+	"id": 510,
+	"name": "Narrillos del Rebollar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "149",
+	"id": 511,
+	"name": "Narros de Saldueña"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "147",
+	"id": 512,
+	"name": "Narros del Castillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "148",
+	"id": 513,
+	"name": "Narros del Puerto"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "152",
+	"id": 514,
+	"name": "Nava de Arévalo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "153",
+	"id": 515,
+	"name": "Nava del Barco"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "151",
+	"id": 516,
+	"name": "Navacepedilla de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "154",
+	"id": 517,
+	"name": "Navadijos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "155",
+	"id": 518,
+	"name": "Navaescurial"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "156",
+	"id": 519,
+	"name": "Navahondilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "157",
+	"id": 520,
+	"name": "Navalacruz"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "158",
+	"id": 521,
+	"name": "Navalmoral"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "159",
+	"id": 522,
+	"name": "Navalonguilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "160",
+	"id": 523,
+	"name": "Navalosa"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "161",
+	"id": 524,
+	"name": "Navalperal de Pinares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "162",
+	"id": 525,
+	"name": "Navalperal de Tormes"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "163",
+	"id": 526,
+	"name": "Navaluenga"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "164",
+	"id": 527,
+	"name": "Navaquesera"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "165",
+	"id": 528,
+	"name": "Navarredonda de Gredos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "166",
+	"id": 529,
+	"name": "Navarredondilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "167",
+	"id": 530,
+	"name": "Navarrevisca"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "168",
+	"id": 531,
+	"name": "Navas del Marqués, Las"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "169",
+	"id": 532,
+	"name": "Navatalgordo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "170",
+	"id": 533,
+	"name": "Navatejares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "171",
+	"id": 534,
+	"name": "Neila de San Miguel"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "172",
+	"id": 535,
+	"name": "Niharra"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "173",
+	"id": 536,
+	"name": "Ojos-Albos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "174",
+	"id": 537,
+	"name": "Orbita"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "175",
+	"id": 538,
+	"name": "Oso, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "176",
+	"id": 539,
+	"name": "Padiernos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "177",
+	"id": 540,
+	"name": "Pajares de Adaja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "178",
+	"id": 541,
+	"name": "Palacios de Goda"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "179",
+	"id": 542,
+	"name": "Papatrigo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "180",
+	"id": 543,
+	"name": "Parral, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "181",
+	"id": 544,
+	"name": "Pascualcobo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "182",
+	"id": 545,
+	"name": "Pedro Bernardo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "183",
+	"id": 546,
+	"name": "Pedro-Rodríguez"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "184",
+	"id": 547,
+	"name": "Peguerinos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "185",
+	"id": 548,
+	"name": "Peñalba de Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "186",
+	"id": 549,
+	"name": "Piedrahíta"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "187",
+	"id": 550,
+	"name": "Piedralaves"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "188",
+	"id": 551,
+	"name": "Poveda"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "189",
+	"id": 552,
+	"name": "Poyales del Hoyo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "190",
+	"id": 553,
+	"name": "Pozanco"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "191",
+	"id": 554,
+	"name": "Pradosegar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "192",
+	"id": 555,
+	"name": "Puerto Castilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "193",
+	"id": 556,
+	"name": "Rasueros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "194",
+	"id": 557,
+	"name": "Riocabado"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "195",
+	"id": 558,
+	"name": "Riofrío"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "196",
+	"id": 559,
+	"name": "Rivilla de Barajas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "197",
+	"id": 560,
+	"name": "Salobral"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "198",
+	"id": 561,
+	"name": "Salvadiós"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "199",
+	"id": 562,
+	"name": "San Bartolomé de Béjar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "200",
+	"id": 563,
+	"name": "San Bartolomé de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "201",
+	"id": 564,
+	"name": "San Bartolomé de Pinares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "206",
+	"id": 565,
+	"name": "San Esteban de los Patos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "208",
+	"id": 566,
+	"name": "San Esteban de Zapardiel"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "207",
+	"id": 567,
+	"name": "San Esteban del Valle"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "209",
+	"id": 568,
+	"name": "San García de Ingelmos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "901",
+	"id": 569,
+	"name": "San Juan de Gredos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "210",
+	"id": 570,
+	"name": "San Juan de la Encinilla"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "211",
+	"id": 571,
+	"name": "San Juan de la Nava"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "212",
+	"id": 572,
+	"name": "San Juan del Molinillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "213",
+	"id": 573,
+	"name": "San Juan del Olmo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "214",
+	"id": 574,
+	"name": "San Lorenzo de Tormes"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "215",
+	"id": 575,
+	"name": "San Martín de la Vega del Alberche"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "216",
+	"id": 576,
+	"name": "San Martín del Pimpollar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "217",
+	"id": 577,
+	"name": "San Miguel de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "218",
+	"id": 578,
+	"name": "San Miguel de Serrezuela"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "219",
+	"id": 579,
+	"name": "San Pascual"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "220",
+	"id": 580,
+	"name": "San Pedro del Arroyo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "231",
+	"id": 581,
+	"name": "San Vicente de Arévalo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "204",
+	"id": 582,
+	"name": "Sanchidrián"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "205",
+	"id": 583,
+	"name": "Sanchorreja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "222",
+	"id": 584,
+	"name": "Santa Cruz de Pinares"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "221",
+	"id": 585,
+	"name": "Santa Cruz del Valle"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "226",
+	"id": 586,
+	"name": "Santa María de los Caballeros"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "224",
+	"id": 587,
+	"name": "Santa María del Arroyo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "225",
+	"id": 588,
+	"name": "Santa María del Berrocal"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "902",
+	"id": 589,
+	"name": "Santa María del Cubillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "227",
+	"id": 590,
+	"name": "Santa María del Tiétar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "228",
+	"id": 591,
+	"name": "Santiago del Collado"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "904",
+	"id": 592,
+	"name": "Santiago del Tormes"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "229",
+	"id": 593,
+	"name": "Santo Domingo de las Posadas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "230",
+	"id": 594,
+	"name": "Santo Tomé de Zabarcos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "232",
+	"id": 595,
+	"name": "Serrada, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "233",
+	"id": 596,
+	"name": "Serranillos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "234",
+	"id": 597,
+	"name": "Sigeres"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "235",
+	"id": 598,
+	"name": "Sinlabajos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "236",
+	"id": 599,
+	"name": "Solana de Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "237",
+	"id": 600,
+	"name": "Solana de Rioalmar"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "238",
+	"id": 601,
+	"name": "Solosancho"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "239",
+	"id": 602,
+	"name": "Sotalbo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "240",
+	"id": 603,
+	"name": "Sotillo de la Adrada"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "241",
+	"id": 604,
+	"name": "Tiemblo, El"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "242",
+	"id": 605,
+	"name": "Tiñosillos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "243",
+	"id": 606,
+	"name": "Tolbaños"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "244",
+	"id": 607,
+	"name": "Tormellas"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "245",
+	"id": 608,
+	"name": "Tornadizos de Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "247",
+	"id": 609,
+	"name": "Torre, La"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "246",
+	"id": 610,
+	"name": "Tórtoles"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "249",
+	"id": 611,
+	"name": "Umbrías"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "251",
+	"id": 612,
+	"name": "Vadillo de la Sierra"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "252",
+	"id": 613,
+	"name": "Valdecasa"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "253",
+	"id": 614,
+	"name": "Vega de Santa María"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "254",
+	"id": 615,
+	"name": "Velayos"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "256",
+	"id": 616,
+	"name": "Villaflor"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "257",
+	"id": 617,
+	"name": "Villafranca de la Sierra"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "905",
+	"id": 618,
+	"name": "Villanueva de Ávila"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "258",
+	"id": 619,
+	"name": "Villanueva de Gómez"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "259",
+	"id": 620,
+	"name": "Villanueva del Aceral"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "260",
+	"id": 621,
+	"name": "Villanueva del Campillo"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "261",
+	"id": 622,
+	"name": "Villar de Corneja"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "262",
+	"id": 623,
+	"name": "Villarejo del Valle"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "263",
+	"id": 624,
+	"name": "Villatoro"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "264",
+	"id": 625,
+	"name": "Viñegra de Moraña"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "265",
+	"id": 626,
+	"name": "Vita"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "266",
+	"id": 627,
+	"name": "Zapardiel de la Cañada"
+}, {
+	"cod_prov": "05",
+	"cod_mun": "267",
+	"id": 628,
+	"name": "Zapardiel de la Ribera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "001",
+	"id": 629,
+	"name": "Acedera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "002",
+	"id": 630,
+	"name": "Aceuchal"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "003",
+	"id": 631,
+	"name": "Ahillones"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "004",
+	"id": 632,
+	"name": "Alange"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "005",
+	"id": 633,
+	"name": "Albuera, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "006",
+	"id": 634,
+	"name": "Alburquerque"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "007",
+	"id": 635,
+	"name": "Alconchel"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "008",
+	"id": 636,
+	"name": "Alconera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "009",
+	"id": 637,
+	"name": "Aljucén"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "010",
+	"id": 638,
+	"name": "Almendral"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "011",
+	"id": 639,
+	"name": "Almendralejo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "012",
+	"id": 640,
+	"name": "Arroyo de San Serván"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "013",
+	"id": 641,
+	"name": "Atalaya"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "014",
+	"id": 642,
+	"name": "Azuaga"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "015",
+	"id": 643,
+	"name": "Badajoz"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "016",
+	"id": 644,
+	"name": "Barcarrota"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "017",
+	"id": 645,
+	"name": "Baterno"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "018",
+	"id": 646,
+	"name": "Benquerencia de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "019",
+	"id": 647,
+	"name": "Berlanga"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "020",
+	"id": 648,
+	"name": "Bienvenida"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "021",
+	"id": 649,
+	"name": "Bodonal de la Sierra"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "022",
+	"id": 650,
+	"name": "Burguillos del Cerro"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "023",
+	"id": 651,
+	"name": "Cabeza del Buey"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "024",
+	"id": 652,
+	"name": "Cabeza la Vaca"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "025",
+	"id": 653,
+	"name": "Calamonte"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "026",
+	"id": 654,
+	"name": "Calera de León"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "027",
+	"id": 655,
+	"name": "Calzadilla de los Barros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "028",
+	"id": 656,
+	"name": "Campanario"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "029",
+	"id": 657,
+	"name": "Campillo de Llerena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "030",
+	"id": 658,
+	"name": "Capilla"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "031",
+	"id": 659,
+	"name": "Carmonita"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "032",
+	"id": 660,
+	"name": "Carrascalejo, El"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "033",
+	"id": 661,
+	"name": "Casas de Don Pedro"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "034",
+	"id": 662,
+	"name": "Casas de Reina"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "035",
+	"id": 663,
+	"name": "Castilblanco"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "036",
+	"id": 664,
+	"name": "Castuera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "042",
+	"id": 665,
+	"name": "Cheles"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "037",
+	"id": 666,
+	"name": "Codosera, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "038",
+	"id": 667,
+	"name": "Cordobilla de Lácara"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "039",
+	"id": 668,
+	"name": "Coronada, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "040",
+	"id": 669,
+	"name": "Corte de Peleas"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "041",
+	"id": 670,
+	"name": "Cristina"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "043",
+	"id": 671,
+	"name": "Don Álvaro"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "044",
+	"id": 672,
+	"name": "Don Benito"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "045",
+	"id": 673,
+	"name": "Entrín Bajo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "046",
+	"id": 674,
+	"name": "Esparragalejo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "047",
+	"id": 675,
+	"name": "Esparragosa de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "048",
+	"id": 676,
+	"name": "Esparragosa de Lares"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "049",
+	"id": 677,
+	"name": "Feria"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "050",
+	"id": 678,
+	"name": "Fregenal de la Sierra"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "051",
+	"id": 679,
+	"name": "Fuenlabrada de los Montes"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "052",
+	"id": 680,
+	"name": "Fuente de Cantos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "053",
+	"id": 681,
+	"name": "Fuente del Arco"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "054",
+	"id": 682,
+	"name": "Fuente del Maestre"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "055",
+	"id": 683,
+	"name": "Fuentes de León"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "056",
+	"id": 684,
+	"name": "Garbayuela"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "057",
+	"id": 685,
+	"name": "Garlitos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "058",
+	"id": 686,
+	"name": "Garrovilla, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "059",
+	"id": 687,
+	"name": "Granja de Torrehermosa"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "903",
+	"id": 688,
+	"name": "Guadiana del Caudillo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "060",
+	"id": 689,
+	"name": "Guareña"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "061",
+	"id": 690,
+	"name": "Haba, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "062",
+	"id": 691,
+	"name": "Helechosa de los Montes"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "063",
+	"id": 692,
+	"name": "Herrera del Duque"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "064",
+	"id": 693,
+	"name": "Higuera de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "065",
+	"id": 694,
+	"name": "Higuera de Llerena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "066",
+	"id": 695,
+	"name": "Higuera de Vargas"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "067",
+	"id": 696,
+	"name": "Higuera la Real"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "068",
+	"id": 697,
+	"name": "Hinojosa del Valle"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "069",
+	"id": 698,
+	"name": "Hornachos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "070",
+	"id": 699,
+	"name": "Jerez de los Caballeros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "071",
+	"id": 700,
+	"name": "Lapa, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "073",
+	"id": 701,
+	"name": "Llera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "074",
+	"id": 702,
+	"name": "Llerena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "072",
+	"id": 703,
+	"name": "Lobón"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "075",
+	"id": 704,
+	"name": "Magacela"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "076",
+	"id": 705,
+	"name": "Maguilla"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "077",
+	"id": 706,
+	"name": "Malcocinado"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "078",
+	"id": 707,
+	"name": "Malpartida de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "079",
+	"id": 708,
+	"name": "Manchita"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "080",
+	"id": 709,
+	"name": "Medellín"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "081",
+	"id": 710,
+	"name": "Medina de las Torres"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "082",
+	"id": 711,
+	"name": "Mengabril"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "083",
+	"id": 712,
+	"name": "Mérida"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "084",
+	"id": 713,
+	"name": "Mirandilla"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "085",
+	"id": 714,
+	"name": "Monesterio"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "086",
+	"id": 715,
+	"name": "Montemolín"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "087",
+	"id": 716,
+	"name": "Monterrubio de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "088",
+	"id": 717,
+	"name": "Montijo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "089",
+	"id": 718,
+	"name": "Morera, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "090",
+	"id": 719,
+	"name": "Nava de Santiago, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "091",
+	"id": 720,
+	"name": "Navalvillar de Pela"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "092",
+	"id": 721,
+	"name": "Nogales"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "093",
+	"id": 722,
+	"name": "Oliva de la Frontera"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "094",
+	"id": 723,
+	"name": "Oliva de Mérida"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "095",
+	"id": 724,
+	"name": "Olivenza"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "096",
+	"id": 725,
+	"name": "Orellana de la Sierra"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "097",
+	"id": 726,
+	"name": "Orellana la Vieja"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "098",
+	"id": 727,
+	"name": "Palomas"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "099",
+	"id": 728,
+	"name": "Parra, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "100",
+	"id": 729,
+	"name": "Peñalsordo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "101",
+	"id": 730,
+	"name": "Peraleda del Zaucejo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "102",
+	"id": 731,
+	"name": "Puebla de Alcocer"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "103",
+	"id": 732,
+	"name": "Puebla de la Calzada"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "104",
+	"id": 733,
+	"name": "Puebla de la Reina"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "107",
+	"id": 734,
+	"name": "Puebla de Obando"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "108",
+	"id": 735,
+	"name": "Puebla de Sancho Pérez"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "105",
+	"id": 736,
+	"name": "Puebla del Maestre"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "106",
+	"id": 737,
+	"name": "Puebla del Prior"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "902",
+	"id": 738,
+	"name": "Pueblonuevo del Guadiana"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "109",
+	"id": 739,
+	"name": "Quintana de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "110",
+	"id": 740,
+	"name": "Reina"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "111",
+	"id": 741,
+	"name": "Rena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "112",
+	"id": 742,
+	"name": "Retamal de Llerena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "113",
+	"id": 743,
+	"name": "Ribera del Fresno"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "114",
+	"id": 744,
+	"name": "Risco"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "115",
+	"id": 745,
+	"name": "Roca de la Sierra, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "116",
+	"id": 746,
+	"name": "Salvaleón"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "117",
+	"id": 747,
+	"name": "Salvatierra de los Barros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "119",
+	"id": 748,
+	"name": "San Pedro de Mérida"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "123",
+	"id": 749,
+	"name": "San Vicente de Alcántara"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "118",
+	"id": 750,
+	"name": "Sancti-Spíritus"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "120",
+	"id": 751,
+	"name": "Santa Amalia"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "121",
+	"id": 752,
+	"name": "Santa Marta"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "122",
+	"id": 753,
+	"name": "Santos de Maimona, Los"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "124",
+	"id": 754,
+	"name": "Segura de León"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "125",
+	"id": 755,
+	"name": "Siruela"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "126",
+	"id": 756,
+	"name": "Solana de los Barros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "127",
+	"id": 757,
+	"name": "Talarrubias"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "128",
+	"id": 758,
+	"name": "Talavera la Real"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "129",
+	"id": 759,
+	"name": "Táliga"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "130",
+	"id": 760,
+	"name": "Tamurejo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "131",
+	"id": 761,
+	"name": "Torre de Miguel Sesmero"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "132",
+	"id": 762,
+	"name": "Torremayor"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "133",
+	"id": 763,
+	"name": "Torremejía"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "134",
+	"id": 764,
+	"name": "Trasierra"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "135",
+	"id": 765,
+	"name": "Trujillanos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "136",
+	"id": 766,
+	"name": "Usagre"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "137",
+	"id": 767,
+	"name": "Valdecaballeros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "901",
+	"id": 768,
+	"name": "Valdelacalzada"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "138",
+	"id": 769,
+	"name": "Valdetorres"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "139",
+	"id": 770,
+	"name": "Valencia de las Torres"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "140",
+	"id": 771,
+	"name": "Valencia del Mombuey"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "141",
+	"id": 772,
+	"name": "Valencia del Ventoso"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "146",
+	"id": 773,
+	"name": "Valle de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "147",
+	"id": 774,
+	"name": "Valle de Matamoros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "148",
+	"id": 775,
+	"name": "Valle de Santa Ana"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "142",
+	"id": 776,
+	"name": "Valverde de Burguillos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "143",
+	"id": 777,
+	"name": "Valverde de Leganés"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "144",
+	"id": 778,
+	"name": "Valverde de Llerena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "145",
+	"id": 779,
+	"name": "Valverde de Mérida"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "149",
+	"id": 780,
+	"name": "Villafranca de los Barros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "150",
+	"id": 781,
+	"name": "Villagarcía de la Torre"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "151",
+	"id": 782,
+	"name": "Villagonzalo"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "152",
+	"id": 783,
+	"name": "Villalba de los Barros"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "153",
+	"id": 784,
+	"name": "Villanueva de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "154",
+	"id": 785,
+	"name": "Villanueva del Fresno"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "156",
+	"id": 786,
+	"name": "Villar de Rena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "155",
+	"id": 787,
+	"name": "Villar del Rey"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "157",
+	"id": 788,
+	"name": "Villarta de los Montes"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "158",
+	"id": 789,
+	"name": "Zafra"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "159",
+	"id": 790,
+	"name": "Zahínos"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "160",
+	"id": 791,
+	"name": "Zalamea de la Serena"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "162",
+	"id": 792,
+	"name": "Zarza, La"
+}, {
+	"cod_prov": "06",
+	"cod_mun": "161",
+	"id": 793,
+	"name": "Zarza-Capilla"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "002",
+	"id": 794,
+	"name": "Alaior"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "001",
+	"id": 795,
+	"name": "Alaró"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "003",
+	"id": 796,
+	"name": "Alcúdia"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "004",
+	"id": 797,
+	"name": "Algaida"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "005",
+	"id": 798,
+	"name": "Andratx"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "901",
+	"id": 799,
+	"name": "Ariany"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "006",
+	"id": 800,
+	"name": "Artà"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "007",
+	"id": 801,
+	"name": "Banyalbufar"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "008",
+	"id": 802,
+	"name": "Binissalem"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "009",
+	"id": 803,
+	"name": "Búger"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "010",
+	"id": 804,
+	"name": "Bunyola"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "011",
+	"id": 805,
+	"name": "Calvià"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "012",
+	"id": 806,
+	"name": "Campanet"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "013",
+	"id": 807,
+	"name": "Campos"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "014",
+	"id": 808,
+	"name": "Capdepera"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "064",
+	"id": 809,
+	"name": "Castell, Es"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "015",
+	"id": 810,
+	"name": "Ciutadella de Menorca"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "016",
+	"id": 811,
+	"name": "Consell"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "017",
+	"id": 812,
+	"name": "Costitx"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "018",
+	"id": 813,
+	"name": "Deià"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "026",
+	"id": 814,
+	"name": "Eivissa"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "019",
+	"id": 815,
+	"name": "Escorca"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "020",
+	"id": 816,
+	"name": "Esporles"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "021",
+	"id": 817,
+	"name": "Estellencs"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "022",
+	"id": 818,
+	"name": "Felanitx"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "023",
+	"id": 819,
+	"name": "Ferreries"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "024",
+	"id": 820,
+	"name": "Formentera"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "025",
+	"id": 821,
+	"name": "Fornalutx"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "027",
+	"id": 822,
+	"name": "Inca"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "028",
+	"id": 823,
+	"name": "Lloret de Vistalegre"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "029",
+	"id": 824,
+	"name": "Lloseta"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "030",
+	"id": 825,
+	"name": "Llubí"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "031",
+	"id": 826,
+	"name": "Llucmajor"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "033",
+	"id": 827,
+	"name": "Manacor"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "034",
+	"id": 828,
+	"name": "Mancor de la Vall"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "032",
+	"id": 829,
+	"name": "Maó-Mahón"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "035",
+	"id": 830,
+	"name": "Maria de la Salut"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "036",
+	"id": 831,
+	"name": "Marratxí"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "037",
+	"id": 832,
+	"name": "Mercadal, Es"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "902",
+	"id": 833,
+	"name": "Migjorn Gran, Es"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "038",
+	"id": 834,
+	"name": "Montuïri"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "039",
+	"id": 835,
+	"name": "Muro"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "040",
+	"id": 836,
+	"name": "Palma de Mallorca"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "041",
+	"id": 837,
+	"name": "Petra"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "044",
+	"id": 838,
+	"name": "Pobla, Sa"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "042",
+	"id": 839,
+	"name": "Pollença"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "043",
+	"id": 840,
+	"name": "Porreres"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "045",
+	"id": 841,
+	"name": "Puigpunyent"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "059",
+	"id": 842,
+	"name": "Salines, Ses"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "046",
+	"id": 843,
+	"name": "Sant Antoni de Portmany"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "049",
+	"id": 844,
+	"name": "Sant Joan"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "050",
+	"id": 845,
+	"name": "Sant Joan de Labritja"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "048",
+	"id": 846,
+	"name": "Sant Josep de sa Talaia"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "051",
+	"id": 847,
+	"name": "Sant Llorenç des Cardassar"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "052",
+	"id": 848,
+	"name": "Sant Lluís"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "053",
+	"id": 849,
+	"name": "Santa Eugènia"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "054",
+	"id": 850,
+	"name": "Santa Eulalia del Río"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "055",
+	"id": 851,
+	"name": "Santa Margalida"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "056",
+	"id": 852,
+	"name": "Santa María del Camí"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "057",
+	"id": 853,
+	"name": "Santanyí"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "058",
+	"id": 854,
+	"name": "Selva"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "047",
+	"id": 855,
+	"name": "Sencelles"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "060",
+	"id": 856,
+	"name": "Sineu"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "061",
+	"id": 857,
+	"name": "Sóller"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "062",
+	"id": 858,
+	"name": "Son Servera"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "063",
+	"id": 859,
+	"name": "Valldemossa"
+}, {
+	"cod_prov": "07",
+	"cod_mun": "065",
+	"id": 860,
+	"name": "Vilafranca de Bonany"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "001",
+	"id": 861,
+	"name": "Abrera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "002",
+	"id": 862,
+	"name": "Aguilar de Segarra"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "014",
+	"id": 863,
+	"name": "Aiguafreda"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "003",
+	"id": 864,
+	"name": "Alella"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "004",
+	"id": 865,
+	"name": "Alpens"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "005",
+	"id": 866,
+	"name": "Ametlla del Vallès, L'"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "006",
+	"id": 867,
+	"name": "Arenys de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "007",
+	"id": 868,
+	"name": "Arenys de Munt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "008",
+	"id": 869,
+	"name": "Argençola"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "009",
+	"id": 870,
+	"name": "Argentona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "010",
+	"id": 871,
+	"name": "Artés"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "011",
+	"id": 872,
+	"name": "Avià"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "012",
+	"id": 873,
+	"name": "Avinyó"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "013",
+	"id": 874,
+	"name": "Avinyonet del Penedès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "015",
+	"id": 875,
+	"name": "Badalona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "904",
+	"id": 876,
+	"name": "Badia del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "016",
+	"id": 877,
+	"name": "Bagà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "017",
+	"id": 878,
+	"name": "Balenyà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "018",
+	"id": 879,
+	"name": "Balsareny"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "252",
+	"id": 880,
+	"name": "Barberà del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "019",
+	"id": 881,
+	"name": "Barcelona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "020",
+	"id": 882,
+	"name": "Begues"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "021",
+	"id": 883,
+	"name": "Bellprat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "022",
+	"id": 884,
+	"name": "Berga"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "023",
+	"id": 885,
+	"name": "Bigues i Riells"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "024",
+	"id": 886,
+	"name": "Borredà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "025",
+	"id": 887,
+	"name": "Bruc, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "026",
+	"id": 888,
+	"name": "Brull, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "027",
+	"id": 889,
+	"name": "Cabanyes, Les"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "028",
+	"id": 890,
+	"name": "Cabrera d'Anoia"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "029",
+	"id": 891,
+	"name": "Cabrera de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "030",
+	"id": 892,
+	"name": "Cabrils"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "031",
+	"id": 893,
+	"name": "Calaf"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "034",
+	"id": 894,
+	"name": "Calders"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "033",
+	"id": 895,
+	"name": "Caldes de Montbui"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "032",
+	"id": 896,
+	"name": "Caldes d'Estrac"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "035",
+	"id": 897,
+	"name": "Calella"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "037",
+	"id": 898,
+	"name": "Calldetenes"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "038",
+	"id": 899,
+	"name": "Callús"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "036",
+	"id": 900,
+	"name": "Calonge de Segarra"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "039",
+	"id": 901,
+	"name": "Campins"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "040",
+	"id": 902,
+	"name": "Canet de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "041",
+	"id": 903,
+	"name": "Canovelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "042",
+	"id": 904,
+	"name": "Cànoves i Samalús"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "043",
+	"id": 905,
+	"name": "Canyelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "044",
+	"id": 906,
+	"name": "Capellades"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "045",
+	"id": 907,
+	"name": "Capolat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "046",
+	"id": 908,
+	"name": "Cardedeu"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "047",
+	"id": 909,
+	"name": "Cardona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "048",
+	"id": 910,
+	"name": "Carme"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "049",
+	"id": 911,
+	"name": "Casserres"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "057",
+	"id": 912,
+	"name": "Castell de l'Areny"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "052",
+	"id": 913,
+	"name": "Castellar de n'Hug"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "050",
+	"id": 914,
+	"name": "Castellar del Riu"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "051",
+	"id": 915,
+	"name": "Castellar del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "053",
+	"id": 916,
+	"name": "Castellbell i el Vilar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "054",
+	"id": 917,
+	"name": "Castellbisbal"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "055",
+	"id": 918,
+	"name": "Castellcir"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "056",
+	"id": 919,
+	"name": "Castelldefels"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "058",
+	"id": 920,
+	"name": "Castellet i la Gornal"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "060",
+	"id": 921,
+	"name": "Castellfollit de Riubregós"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "059",
+	"id": 922,
+	"name": "Castellfollit del Boix"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "061",
+	"id": 923,
+	"name": "Castellgalí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "062",
+	"id": 924,
+	"name": "Castellnou de Bages"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "063",
+	"id": 925,
+	"name": "Castellolí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "064",
+	"id": 926,
+	"name": "Castellterçol"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "065",
+	"id": 927,
+	"name": "Castellví de la Marca"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "066",
+	"id": 928,
+	"name": "Castellví de Rosanes"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "067",
+	"id": 929,
+	"name": "Centelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "268",
+	"id": 930,
+	"name": "Cercs"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "266",
+	"id": 931,
+	"name": "Cerdanyola del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "068",
+	"id": 932,
+	"name": "Cervelló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "069",
+	"id": 933,
+	"name": "Collbató"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "070",
+	"id": 934,
+	"name": "Collsuspina"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "071",
+	"id": 935,
+	"name": "Copons"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "072",
+	"id": 936,
+	"name": "Corbera de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "073",
+	"id": 937,
+	"name": "Cornellà de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "074",
+	"id": 938,
+	"name": "Cubelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "075",
+	"id": 939,
+	"name": "Dosrius"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "076",
+	"id": 940,
+	"name": "Esparreguera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "077",
+	"id": 941,
+	"name": "Esplugues de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "078",
+	"id": 942,
+	"name": "Espunyola, L'"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "079",
+	"id": 943,
+	"name": "Estany, L'"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "134",
+	"id": 944,
+	"name": "Figaró-Montmany"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "080",
+	"id": 945,
+	"name": "Fígols"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "082",
+	"id": 946,
+	"name": "Fogars de la Selva"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "081",
+	"id": 947,
+	"name": "Fogars de Montclús"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "083",
+	"id": 948,
+	"name": "Folgueroles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "084",
+	"id": 949,
+	"name": "Fonollosa"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "085",
+	"id": 950,
+	"name": "Font-rubí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "086",
+	"id": 951,
+	"name": "Franqueses del Vallès, Les"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "090",
+	"id": 952,
+	"name": "Gaià"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "087",
+	"id": 953,
+	"name": "Gallifa"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "088",
+	"id": 954,
+	"name": "Garriga, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "089",
+	"id": 955,
+	"name": "Gavà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "091",
+	"id": 956,
+	"name": "Gelida"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "092",
+	"id": 957,
+	"name": "Gironella"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "093",
+	"id": 958,
+	"name": "Gisclareny"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "094",
+	"id": 959,
+	"name": "Granada, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "095",
+	"id": 960,
+	"name": "Granera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "096",
+	"id": 961,
+	"name": "Granollers"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "097",
+	"id": 962,
+	"name": "Gualba"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "099",
+	"id": 963,
+	"name": "Guardiola de Berguedà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "100",
+	"id": 964,
+	"name": "Gurb"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "101",
+	"id": 965,
+	"name": "Hospitalet de Llobregat, L'"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "162",
+	"id": 966,
+	"name": "Hostalets de Pierola, Els"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "102",
+	"id": 967,
+	"name": "Igualada"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "103",
+	"id": 968,
+	"name": "Jorba"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "104",
+	"id": 969,
+	"name": "Llacuna, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "105",
+	"id": 970,
+	"name": "Llagosta, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "107",
+	"id": 971,
+	"name": "Lliçà d'Amunt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "108",
+	"id": 972,
+	"name": "Lliçà de Vall"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "106",
+	"id": 973,
+	"name": "Llinars del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "109",
+	"id": 974,
+	"name": "Lluçà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "110",
+	"id": 975,
+	"name": "Malgrat de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "111",
+	"id": 976,
+	"name": "Malla"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "112",
+	"id": 977,
+	"name": "Manlleu"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "113",
+	"id": 978,
+	"name": "Manresa"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "242",
+	"id": 979,
+	"name": "Marganell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "114",
+	"id": 980,
+	"name": "Martorell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "115",
+	"id": 981,
+	"name": "Martorelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "116",
+	"id": 982,
+	"name": "Masies de Roda, Les"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "117",
+	"id": 983,
+	"name": "Masies de Voltregà, Les"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "118",
+	"id": 984,
+	"name": "Masnou, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "119",
+	"id": 985,
+	"name": "Masquefa"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "120",
+	"id": 986,
+	"name": "Matadepera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "121",
+	"id": 987,
+	"name": "Mataró"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "122",
+	"id": 988,
+	"name": "Mediona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "138",
+	"id": 989,
+	"name": "Moià"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "123",
+	"id": 990,
+	"name": "Molins de Rei"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "124",
+	"id": 991,
+	"name": "Mollet del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "128",
+	"id": 992,
+	"name": "Monistrol de Calders"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "127",
+	"id": 993,
+	"name": "Monistrol de Montserrat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "125",
+	"id": 994,
+	"name": "Montcada i Reixac"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "130",
+	"id": 995,
+	"name": "Montclar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "131",
+	"id": 996,
+	"name": "Montesquiu"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "126",
+	"id": 997,
+	"name": "Montgat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "132",
+	"id": 998,
+	"name": "Montmajor"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "133",
+	"id": 999,
+	"name": "Montmaneu"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "135",
+	"id": 1000,
+	"name": "Montmeló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "136",
+	"id": 1001,
+	"name": "Montornès del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "137",
+	"id": 1002,
+	"name": "Montseny"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "129",
+	"id": 1003,
+	"name": "Muntanyola"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "139",
+	"id": 1004,
+	"name": "Mura"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "140",
+	"id": 1005,
+	"name": "Navarcles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "141",
+	"id": 1006,
+	"name": "Navàs"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "142",
+	"id": 1007,
+	"name": "Nou de Berguedà, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "143",
+	"id": 1008,
+	"name": "Òdena"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "145",
+	"id": 1009,
+	"name": "Olèrdola"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "146",
+	"id": 1010,
+	"name": "Olesa de Bonesvalls"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "147",
+	"id": 1011,
+	"name": "Olesa de Montserrat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "148",
+	"id": 1012,
+	"name": "Olivella"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "149",
+	"id": 1013,
+	"name": "Olost"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "144",
+	"id": 1014,
+	"name": "Olvan"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "150",
+	"id": 1015,
+	"name": "Orís"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "151",
+	"id": 1016,
+	"name": "Oristà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "152",
+	"id": 1017,
+	"name": "Orpí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "153",
+	"id": 1018,
+	"name": "Òrrius"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "154",
+	"id": 1019,
+	"name": "Pacs del Penedès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "155",
+	"id": 1020,
+	"name": "Palafolls"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "156",
+	"id": 1021,
+	"name": "Palau-solità i Plegamans"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "157",
+	"id": 1022,
+	"name": "Pallejà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "905",
+	"id": 1023,
+	"name": "Palma de Cervelló, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "158",
+	"id": 1024,
+	"name": "Papiol, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "159",
+	"id": 1025,
+	"name": "Parets del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "160",
+	"id": 1026,
+	"name": "Perafita"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "161",
+	"id": 1027,
+	"name": "Piera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "163",
+	"id": 1028,
+	"name": "Pineda de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "164",
+	"id": 1029,
+	"name": "Pla del Penedès, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "165",
+	"id": 1030,
+	"name": "Pobla de Claramunt, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "166",
+	"id": 1031,
+	"name": "Pobla de Lillet, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "167",
+	"id": 1032,
+	"name": "Polinyà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "182",
+	"id": 1033,
+	"name": "Pont de Vilomara i Rocafort, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "168",
+	"id": 1034,
+	"name": "Pontons"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "169",
+	"id": 1035,
+	"name": "Prat de Llobregat, El"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "171",
+	"id": 1036,
+	"name": "Prats de Lluçanès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "170",
+	"id": 1037,
+	"name": "Prats de Rei, Els"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "230",
+	"id": 1038,
+	"name": "Premià de Dalt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "172",
+	"id": 1039,
+	"name": "Premià de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "174",
+	"id": 1040,
+	"name": "Puigdàlber"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "175",
+	"id": 1041,
+	"name": "Puig-reig"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "176",
+	"id": 1042,
+	"name": "Pujalt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "177",
+	"id": 1043,
+	"name": "Quar, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "178",
+	"id": 1044,
+	"name": "Rajadell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "179",
+	"id": 1045,
+	"name": "Rellinars"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "180",
+	"id": 1046,
+	"name": "Ripollet"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "181",
+	"id": 1047,
+	"name": "Roca del Vallès, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "183",
+	"id": 1048,
+	"name": "Roda de Ter"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "184",
+	"id": 1049,
+	"name": "Rubí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "185",
+	"id": 1050,
+	"name": "Rubió"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "901",
+	"id": 1051,
+	"name": "Rupit i Pruit"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "187",
+	"id": 1052,
+	"name": "Sabadell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "188",
+	"id": 1053,
+	"name": "Sagàs"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "190",
+	"id": 1054,
+	"name": "Saldes"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "191",
+	"id": 1055,
+	"name": "Sallent"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "194",
+	"id": 1056,
+	"name": "Sant Adrià de Besòs"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "195",
+	"id": 1057,
+	"name": "Sant Agustí de Lluçanès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "196",
+	"id": 1058,
+	"name": "Sant Andreu de la Barca"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "197",
+	"id": 1059,
+	"name": "Sant Andreu de Llavaneres"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "198",
+	"id": 1060,
+	"name": "Sant Antoni de Vilamajor"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "199",
+	"id": 1061,
+	"name": "Sant Bartomeu del Grau"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "200",
+	"id": 1062,
+	"name": "Sant Boi de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "201",
+	"id": 1063,
+	"name": "Sant Boi de Lluçanès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "203",
+	"id": 1064,
+	"name": "Sant Cebrià de Vallalta"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "202",
+	"id": 1065,
+	"name": "Sant Celoni"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "204",
+	"id": 1066,
+	"name": "Sant Climent de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "205",
+	"id": 1067,
+	"name": "Sant Cugat del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "206",
+	"id": 1068,
+	"name": "Sant Cugat Sesgarrigues"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "207",
+	"id": 1069,
+	"name": "Sant Esteve de Palautordera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "208",
+	"id": 1070,
+	"name": "Sant Esteve Sesrovires"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "210",
+	"id": 1071,
+	"name": "Sant Feliu de Codines"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "211",
+	"id": 1072,
+	"name": "Sant Feliu de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "212",
+	"id": 1073,
+	"name": "Sant Feliu Sasserra"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "209",
+	"id": 1074,
+	"name": "Sant Fost de Campsentelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "213",
+	"id": 1075,
+	"name": "Sant Fruitós de Bages"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "215",
+	"id": 1076,
+	"name": "Sant Hipòlit de Voltregà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "193",
+	"id": 1077,
+	"name": "Sant Iscle de Vallalta"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "216",
+	"id": 1078,
+	"name": "Sant Jaume de Frontanyà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "218",
+	"id": 1079,
+	"name": "Sant Joan de Vilatorrada"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "217",
+	"id": 1080,
+	"name": "Sant Joan Despí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "903",
+	"id": 1081,
+	"name": "Sant Julià de Cerdanyola"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "220",
+	"id": 1082,
+	"name": "Sant Julià de Vilatorta"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "221",
+	"id": 1083,
+	"name": "Sant Just Desvern"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "222",
+	"id": 1084,
+	"name": "Sant Llorenç d'Hortons"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "223",
+	"id": 1085,
+	"name": "Sant Llorenç Savall"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "225",
+	"id": 1086,
+	"name": "Sant Martí d'Albars"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "224",
+	"id": 1087,
+	"name": "Sant Martí de Centelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "226",
+	"id": 1088,
+	"name": "Sant Martí de Tous"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "227",
+	"id": 1089,
+	"name": "Sant Martí Sarroca"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "228",
+	"id": 1090,
+	"name": "Sant Martí Sesgueioles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "229",
+	"id": 1091,
+	"name": "Sant Mateu de Bages"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "231",
+	"id": 1092,
+	"name": "Sant Pere de Ribes"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "232",
+	"id": 1093,
+	"name": "Sant Pere de Riudebitlles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "233",
+	"id": 1094,
+	"name": "Sant Pere de Torelló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "234",
+	"id": 1095,
+	"name": "Sant Pere de Vilamajor"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "189",
+	"id": 1096,
+	"name": "Sant Pere Sallavinera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "235",
+	"id": 1097,
+	"name": "Sant Pol de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "236",
+	"id": 1098,
+	"name": "Sant Quintí de Mediona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "237",
+	"id": 1099,
+	"name": "Sant Quirze de Besora"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "238",
+	"id": 1100,
+	"name": "Sant Quirze del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "239",
+	"id": 1101,
+	"name": "Sant Quirze Safaja"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "240",
+	"id": 1102,
+	"name": "Sant Sadurní d'Anoia"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "241",
+	"id": 1103,
+	"name": "Sant Sadurní d'Osormort"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "098",
+	"id": 1104,
+	"name": "Sant Salvador de Guardiola"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "262",
+	"id": 1105,
+	"name": "Sant Vicenç de Castellet"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "264",
+	"id": 1106,
+	"name": "Sant Vicenç de Montalt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "265",
+	"id": 1107,
+	"name": "Sant Vicenç de Torelló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "263",
+	"id": 1108,
+	"name": "Sant Vicenç dels Horts"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "243",
+	"id": 1109,
+	"name": "Santa Cecília de Voltregà"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "244",
+	"id": 1110,
+	"name": "Santa Coloma de Cervelló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "245",
+	"id": 1111,
+	"name": "Santa Coloma de Gramenet"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "246",
+	"id": 1112,
+	"name": "Santa Eugènia de Berga"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "247",
+	"id": 1113,
+	"name": "Santa Eulàlia de Riuprimer"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "248",
+	"id": 1114,
+	"name": "Santa Eulàlia de Ronçana"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "249",
+	"id": 1115,
+	"name": "Santa Fe del Penedès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "250",
+	"id": 1116,
+	"name": "Santa Margarida de Montbui"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "251",
+	"id": 1117,
+	"name": "Santa Margarida i els Monjos"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "253",
+	"id": 1118,
+	"name": "Santa Maria de Besora"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "254",
+	"id": 1119,
+	"name": "Santa Maria de Corcó"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "256",
+	"id": 1120,
+	"name": "Santa Maria de Martorelles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "255",
+	"id": 1121,
+	"name": "Santa Maria de Merlès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "257",
+	"id": 1122,
+	"name": "Santa Maria de Miralles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "259",
+	"id": 1123,
+	"name": "Santa Maria de Palautordera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "258",
+	"id": 1124,
+	"name": "Santa Maria d'Oló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "260",
+	"id": 1125,
+	"name": "Santa Perpètua de Mogoda"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "261",
+	"id": 1126,
+	"name": "Santa Susanna"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "192",
+	"id": 1127,
+	"name": "Santpedor"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "267",
+	"id": 1128,
+	"name": "Sentmenat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "269",
+	"id": 1129,
+	"name": "Seva"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "270",
+	"id": 1130,
+	"name": "Sitges"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "271",
+	"id": 1131,
+	"name": "Sobremunt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "272",
+	"id": 1132,
+	"name": "Sora"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "273",
+	"id": 1133,
+	"name": "Subirats"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "274",
+	"id": 1134,
+	"name": "Súria"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "276",
+	"id": 1135,
+	"name": "Tagamanent"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "277",
+	"id": 1136,
+	"name": "Talamanca"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "278",
+	"id": 1137,
+	"name": "Taradell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "275",
+	"id": 1138,
+	"name": "Tavèrnoles"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "280",
+	"id": 1139,
+	"name": "Tavertet"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "281",
+	"id": 1140,
+	"name": "Teià"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "279",
+	"id": 1141,
+	"name": "Terrassa"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "282",
+	"id": 1142,
+	"name": "Tiana"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "283",
+	"id": 1143,
+	"name": "Tona"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "284",
+	"id": 1144,
+	"name": "Tordera"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "285",
+	"id": 1145,
+	"name": "Torelló"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "286",
+	"id": 1146,
+	"name": "Torre de Claramunt, La"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "287",
+	"id": 1147,
+	"name": "Torrelavit"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "288",
+	"id": 1148,
+	"name": "Torrelles de Foix"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "289",
+	"id": 1149,
+	"name": "Torrelles de Llobregat"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "290",
+	"id": 1150,
+	"name": "Ullastrell"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "291",
+	"id": 1151,
+	"name": "Vacarisses"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "292",
+	"id": 1152,
+	"name": "Vallbona d'Anoia"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "293",
+	"id": 1153,
+	"name": "Vallcebre"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "294",
+	"id": 1154,
+	"name": "Vallgorguina"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "295",
+	"id": 1155,
+	"name": "Vallirana"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "296",
+	"id": 1156,
+	"name": "Vallromanes"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "297",
+	"id": 1157,
+	"name": "Veciana"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "298",
+	"id": 1158,
+	"name": "Vic"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "299",
+	"id": 1159,
+	"name": "Vilada"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "301",
+	"id": 1160,
+	"name": "Viladecans"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "300",
+	"id": 1161,
+	"name": "Viladecavalls"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "305",
+	"id": 1162,
+	"name": "Vilafranca del Penedès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "306",
+	"id": 1163,
+	"name": "Vilalba Sasserra"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "303",
+	"id": 1164,
+	"name": "Vilanova de Sau"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "302",
+	"id": 1165,
+	"name": "Vilanova del Camí"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "902",
+	"id": 1166,
+	"name": "Vilanova del Vallès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "307",
+	"id": 1167,
+	"name": "Vilanova i la Geltrú"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "214",
+	"id": 1168,
+	"name": "Vilassar de Dalt"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "219",
+	"id": 1169,
+	"name": "Vilassar de Mar"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "304",
+	"id": 1170,
+	"name": "Vilobí del Penedès"
+}, {
+	"cod_prov": "08",
+	"cod_mun": "308",
+	"id": 1171,
+	"name": "Viver i Serrateix"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "001",
+	"id": 1172,
+	"name": "Abajas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "003",
+	"id": 1173,
+	"name": "Adrada de Haza"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "006",
+	"id": 1174,
+	"name": "Aguas Cándidas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "007",
+	"id": 1175,
+	"name": "Aguilar de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "009",
+	"id": 1176,
+	"name": "Albillos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "010",
+	"id": 1177,
+	"name": "Alcocero de Mola"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "011",
+	"id": 1178,
+	"name": "Alfoz de Bricia"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "907",
+	"id": 1179,
+	"name": "Alfoz de Quintanadueñas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "012",
+	"id": 1180,
+	"name": "Alfoz de Santa Gadea"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "013",
+	"id": 1181,
+	"name": "Altable"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "014",
+	"id": 1182,
+	"name": "Altos, Los"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "016",
+	"id": 1183,
+	"name": "Ameyugo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "017",
+	"id": 1184,
+	"name": "Anguix"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "018",
+	"id": 1185,
+	"name": "Aranda de Duero"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "019",
+	"id": 1186,
+	"name": "Arandilla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "020",
+	"id": 1187,
+	"name": "Arauzo de Miel"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "021",
+	"id": 1188,
+	"name": "Arauzo de Salce"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "022",
+	"id": 1189,
+	"name": "Arauzo de Torre"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "023",
+	"id": 1190,
+	"name": "Arcos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "024",
+	"id": 1191,
+	"name": "Arenillas de Riopisuerga"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "025",
+	"id": 1192,
+	"name": "Arija"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "026",
+	"id": 1193,
+	"name": "Arlanzón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "027",
+	"id": 1194,
+	"name": "Arraya de Oca"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "029",
+	"id": 1195,
+	"name": "Atapuerca"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "030",
+	"id": 1196,
+	"name": "Ausines, Los"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "032",
+	"id": 1197,
+	"name": "Avellanosa de Muñó"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "033",
+	"id": 1198,
+	"name": "Bahabón de Esgueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "034",
+	"id": 1199,
+	"name": "Balbases, Los"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "035",
+	"id": 1200,
+	"name": "Baños de Valdearados"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "036",
+	"id": 1201,
+	"name": "Bañuelos de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "037",
+	"id": 1202,
+	"name": "Barbadillo de Herreros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "038",
+	"id": 1203,
+	"name": "Barbadillo del Mercado"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "039",
+	"id": 1204,
+	"name": "Barbadillo del Pez"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "041",
+	"id": 1205,
+	"name": "Barrio de Muñó"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "043",
+	"id": 1206,
+	"name": "Barrios de Bureba, Los"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "044",
+	"id": 1207,
+	"name": "Barrios de Colina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "045",
+	"id": 1208,
+	"name": "Basconcillos del Tozo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "046",
+	"id": 1209,
+	"name": "Bascuñana"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "047",
+	"id": 1210,
+	"name": "Belbimbre"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "048",
+	"id": 1211,
+	"name": "Belorado"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "050",
+	"id": 1212,
+	"name": "Berberana"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "051",
+	"id": 1213,
+	"name": "Berlangas de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "052",
+	"id": 1214,
+	"name": "Berzosa de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "054",
+	"id": 1215,
+	"name": "Bozoó"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "055",
+	"id": 1216,
+	"name": "Brazacorta"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "056",
+	"id": 1217,
+	"name": "Briviesca"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "057",
+	"id": 1218,
+	"name": "Bugedo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "058",
+	"id": 1219,
+	"name": "Buniel"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "059",
+	"id": 1220,
+	"name": "Burgos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "060",
+	"id": 1221,
+	"name": "Busto de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "061",
+	"id": 1222,
+	"name": "Cabañes de Esgueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "062",
+	"id": 1223,
+	"name": "Cabezón de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "064",
+	"id": 1224,
+	"name": "Caleruega"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "065",
+	"id": 1225,
+	"name": "Campillo de Aranda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "066",
+	"id": 1226,
+	"name": "Campolara"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "067",
+	"id": 1227,
+	"name": "Canicosa de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "068",
+	"id": 1228,
+	"name": "Cantabrana"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "070",
+	"id": 1229,
+	"name": "Carazo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "071",
+	"id": 1230,
+	"name": "Carcedo de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "072",
+	"id": 1231,
+	"name": "Carcedo de Burgos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "073",
+	"id": 1232,
+	"name": "Cardeñadijo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "074",
+	"id": 1233,
+	"name": "Cardeñajimeno"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "075",
+	"id": 1234,
+	"name": "Cardeñuela Riopico"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "076",
+	"id": 1235,
+	"name": "Carrias"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "077",
+	"id": 1236,
+	"name": "Cascajares de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "078",
+	"id": 1237,
+	"name": "Cascajares de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "079",
+	"id": 1238,
+	"name": "Castellanos de Castro"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "083",
+	"id": 1239,
+	"name": "Castil de Peones"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "082",
+	"id": 1240,
+	"name": "Castildelgado"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "084",
+	"id": 1241,
+	"name": "Castrillo de la Reina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "085",
+	"id": 1242,
+	"name": "Castrillo de la Vega"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "088",
+	"id": 1243,
+	"name": "Castrillo de Riopisuerga"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "086",
+	"id": 1244,
+	"name": "Castrillo del Val"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "090",
+	"id": 1245,
+	"name": "Castrillo Matajudíos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "091",
+	"id": 1246,
+	"name": "Castrojeriz"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "063",
+	"id": 1247,
+	"name": "Cavia"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "093",
+	"id": 1248,
+	"name": "Cayuela"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "094",
+	"id": 1249,
+	"name": "Cebrecos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "095",
+	"id": 1250,
+	"name": "Celada del Camino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "098",
+	"id": 1251,
+	"name": "Cerezo de Río Tirón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "100",
+	"id": 1252,
+	"name": "Cerratón de Juarros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "101",
+	"id": 1253,
+	"name": "Ciadoncha"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "102",
+	"id": 1254,
+	"name": "Cillaperlata"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "103",
+	"id": 1255,
+	"name": "Cilleruelo de Abajo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "104",
+	"id": 1256,
+	"name": "Cilleruelo de Arriba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "105",
+	"id": 1257,
+	"name": "Ciruelos de Cervera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "108",
+	"id": 1258,
+	"name": "Cogollos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "109",
+	"id": 1259,
+	"name": "Condado de Treviño"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "110",
+	"id": 1260,
+	"name": "Contreras"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "112",
+	"id": 1261,
+	"name": "Coruña del Conde"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "113",
+	"id": 1262,
+	"name": "Covarrubias"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "114",
+	"id": 1263,
+	"name": "Cubillo del Campo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "115",
+	"id": 1264,
+	"name": "Cubo de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "117",
+	"id": 1265,
+	"name": "Cueva de Roa, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "119",
+	"id": 1266,
+	"name": "Cuevas de San Clemente"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "120",
+	"id": 1267,
+	"name": "Encío"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "122",
+	"id": 1268,
+	"name": "Espinosa de Cervera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "124",
+	"id": 1269,
+	"name": "Espinosa de los Monteros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "123",
+	"id": 1270,
+	"name": "Espinosa del Camino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "125",
+	"id": 1271,
+	"name": "Estépar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "127",
+	"id": 1272,
+	"name": "Fontioso"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "128",
+	"id": 1273,
+	"name": "Frandovínez"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "129",
+	"id": 1274,
+	"name": "Fresneda de la Sierra Tirón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "130",
+	"id": 1275,
+	"name": "Fresneña"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "131",
+	"id": 1276,
+	"name": "Fresnillo de las Dueñas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "132",
+	"id": 1277,
+	"name": "Fresno de Río Tirón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "133",
+	"id": 1278,
+	"name": "Fresno de Rodilla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "134",
+	"id": 1279,
+	"name": "Frías"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "135",
+	"id": 1280,
+	"name": "Fuentebureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "136",
+	"id": 1281,
+	"name": "Fuentecén"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "137",
+	"id": 1282,
+	"name": "Fuentelcésped"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "138",
+	"id": 1283,
+	"name": "Fuentelisendo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "139",
+	"id": 1284,
+	"name": "Fuentemolinos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "140",
+	"id": 1285,
+	"name": "Fuentenebro"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "141",
+	"id": 1286,
+	"name": "Fuentespina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "143",
+	"id": 1287,
+	"name": "Galbarros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "144",
+	"id": 1288,
+	"name": "Gallega, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "148",
+	"id": 1289,
+	"name": "Grijalba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "149",
+	"id": 1290,
+	"name": "Grisaleña"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "151",
+	"id": 1291,
+	"name": "Gumiel de Izán"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "152",
+	"id": 1292,
+	"name": "Gumiel de Mercado"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "154",
+	"id": 1293,
+	"name": "Hacinas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "155",
+	"id": 1294,
+	"name": "Haza"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "159",
+	"id": 1295,
+	"name": "Hontanas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "160",
+	"id": 1296,
+	"name": "Hontangas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "162",
+	"id": 1297,
+	"name": "Hontoria de la Cantera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "164",
+	"id": 1298,
+	"name": "Hontoria de Valdearados"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "163",
+	"id": 1299,
+	"name": "Hontoria del Pinar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "166",
+	"id": 1300,
+	"name": "Hormazas, Las"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "167",
+	"id": 1301,
+	"name": "Hornillos del Camino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "168",
+	"id": 1302,
+	"name": "Horra, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "169",
+	"id": 1303,
+	"name": "Hortigüela"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "170",
+	"id": 1304,
+	"name": "Hoyales de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "172",
+	"id": 1305,
+	"name": "Huérmeces"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "173",
+	"id": 1306,
+	"name": "Huerta de Arriba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "174",
+	"id": 1307,
+	"name": "Huerta de Rey"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "175",
+	"id": 1308,
+	"name": "Humada"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "176",
+	"id": 1309,
+	"name": "Hurones"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "177",
+	"id": 1310,
+	"name": "Ibeas de Juarros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "178",
+	"id": 1311,
+	"name": "Ibrillos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "179",
+	"id": 1312,
+	"name": "Iglesiarrubia"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "180",
+	"id": 1313,
+	"name": "Iglesias"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "181",
+	"id": 1314,
+	"name": "Isar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "182",
+	"id": 1315,
+	"name": "Itero del Castillo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "183",
+	"id": 1316,
+	"name": "Jaramillo de la Fuente"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "184",
+	"id": 1317,
+	"name": "Jaramillo Quemado"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "189",
+	"id": 1318,
+	"name": "Junta de Traslaloma"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "190",
+	"id": 1319,
+	"name": "Junta de Villalba de Losa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "191",
+	"id": 1320,
+	"name": "Jurisdicción de Lara"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "192",
+	"id": 1321,
+	"name": "Jurisdicción de San Zadornil"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "194",
+	"id": 1322,
+	"name": "Lerma"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "195",
+	"id": 1323,
+	"name": "Llano de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "196",
+	"id": 1324,
+	"name": "Madrigal del Monte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "197",
+	"id": 1325,
+	"name": "Madrigalejo del Monte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "198",
+	"id": 1326,
+	"name": "Mahamud"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "199",
+	"id": 1327,
+	"name": "Mambrilla de Castrejón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "200",
+	"id": 1328,
+	"name": "Mambrillas de Lara"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "201",
+	"id": 1329,
+	"name": "Mamolar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "202",
+	"id": 1330,
+	"name": "Manciles"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "206",
+	"id": 1331,
+	"name": "Mazuela"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "208",
+	"id": 1332,
+	"name": "Mecerreyes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "209",
+	"id": 1333,
+	"name": "Medina de Pomar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "211",
+	"id": 1334,
+	"name": "Melgar de Fernamental"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "213",
+	"id": 1335,
+	"name": "Merindad de Cuesta-Urria"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "214",
+	"id": 1336,
+	"name": "Merindad de Montija"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "906",
+	"id": 1337,
+	"name": "Merindad de Río Ubierna"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "215",
+	"id": 1338,
+	"name": "Merindad de Sotoscueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "216",
+	"id": 1339,
+	"name": "Merindad de Valdeporres"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "217",
+	"id": 1340,
+	"name": "Merindad de Valdivielso"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "218",
+	"id": 1341,
+	"name": "Milagros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "219",
+	"id": 1342,
+	"name": "Miranda de Ebro"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "220",
+	"id": 1343,
+	"name": "Miraveche"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "221",
+	"id": 1344,
+	"name": "Modúbar de la Emparedada"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "223",
+	"id": 1345,
+	"name": "Monasterio de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "224",
+	"id": 1346,
+	"name": "Monasterio de Rodilla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "225",
+	"id": 1347,
+	"name": "Moncalvillo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "226",
+	"id": 1348,
+	"name": "Monterrubio de la Demanda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "227",
+	"id": 1349,
+	"name": "Montorio"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "228",
+	"id": 1350,
+	"name": "Moradillo de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "229",
+	"id": 1351,
+	"name": "Nava de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "230",
+	"id": 1352,
+	"name": "Navas de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "231",
+	"id": 1353,
+	"name": "Nebreda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "232",
+	"id": 1354,
+	"name": "Neila"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "235",
+	"id": 1355,
+	"name": "Olmedillo de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "236",
+	"id": 1356,
+	"name": "Olmillos de Muñó"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "238",
+	"id": 1357,
+	"name": "Oña"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "239",
+	"id": 1358,
+	"name": "Oquillas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "241",
+	"id": 1359,
+	"name": "Orbaneja Riopico"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "242",
+	"id": 1360,
+	"name": "Padilla de Abajo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "243",
+	"id": 1361,
+	"name": "Padilla de Arriba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "244",
+	"id": 1362,
+	"name": "Padrones de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "246",
+	"id": 1363,
+	"name": "Palacios de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "247",
+	"id": 1364,
+	"name": "Palacios de Riopisuerga"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "248",
+	"id": 1365,
+	"name": "Palazuelos de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "249",
+	"id": 1366,
+	"name": "Palazuelos de Muñó"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "250",
+	"id": 1367,
+	"name": "Pampliega"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "251",
+	"id": 1368,
+	"name": "Pancorbo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "253",
+	"id": 1369,
+	"name": "Pardilla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "255",
+	"id": 1370,
+	"name": "Partido de la Sierra en Tobalina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "256",
+	"id": 1371,
+	"name": "Pedrosa de Duero"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "259",
+	"id": 1372,
+	"name": "Pedrosa de Río Úrbel"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "257",
+	"id": 1373,
+	"name": "Pedrosa del Páramo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "258",
+	"id": 1374,
+	"name": "Pedrosa del Príncipe"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "261",
+	"id": 1375,
+	"name": "Peñaranda de Duero"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "262",
+	"id": 1376,
+	"name": "Peral de Arlanza"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "265",
+	"id": 1377,
+	"name": "Piérnigas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "266",
+	"id": 1378,
+	"name": "Pineda de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "267",
+	"id": 1379,
+	"name": "Pineda Trasmonte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "268",
+	"id": 1380,
+	"name": "Pinilla de los Barruecos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "269",
+	"id": 1381,
+	"name": "Pinilla de los Moros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "270",
+	"id": 1382,
+	"name": "Pinilla Trasmonte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "272",
+	"id": 1383,
+	"name": "Poza de la Sal"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "273",
+	"id": 1384,
+	"name": "Prádanos de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "274",
+	"id": 1385,
+	"name": "Pradoluengo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "275",
+	"id": 1386,
+	"name": "Presencio"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "276",
+	"id": 1387,
+	"name": "Puebla de Arganzón, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "277",
+	"id": 1388,
+	"name": "Puentedura"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "279",
+	"id": 1389,
+	"name": "Quemada"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "281",
+	"id": 1390,
+	"name": "Quintana del Pidio"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "280",
+	"id": 1391,
+	"name": "Quintanabureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "283",
+	"id": 1392,
+	"name": "Quintanaélez"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "287",
+	"id": 1393,
+	"name": "Quintanaortuño"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "288",
+	"id": 1394,
+	"name": "Quintanapalla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "289",
+	"id": 1395,
+	"name": "Quintanar de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "292",
+	"id": 1396,
+	"name": "Quintanavides"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "294",
+	"id": 1397,
+	"name": "Quintanilla de la Mata"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "901",
+	"id": 1398,
+	"name": "Quintanilla del Agua y Tordueles"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "295",
+	"id": 1399,
+	"name": "Quintanilla del Coco"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "298",
+	"id": 1400,
+	"name": "Quintanilla San García"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "301",
+	"id": 1401,
+	"name": "Quintanilla Vivar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "297",
+	"id": 1402,
+	"name": "Quintanillas, Las"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "302",
+	"id": 1403,
+	"name": "Rabanera del Pinar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "303",
+	"id": 1404,
+	"name": "Rábanos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "304",
+	"id": 1405,
+	"name": "Rabé de las Calzadas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "306",
+	"id": 1406,
+	"name": "Rebolledo de la Torre"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "307",
+	"id": 1407,
+	"name": "Redecilla del Camino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "308",
+	"id": 1408,
+	"name": "Redecilla del Campo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "309",
+	"id": 1409,
+	"name": "Regumiel de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "310",
+	"id": 1410,
+	"name": "Reinoso"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "311",
+	"id": 1411,
+	"name": "Retuerta"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "314",
+	"id": 1412,
+	"name": "Revilla del Campo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "316",
+	"id": 1413,
+	"name": "Revilla Vallejera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "312",
+	"id": 1414,
+	"name": "Revilla y Ahedo, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "315",
+	"id": 1415,
+	"name": "Revillarruz"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "317",
+	"id": 1416,
+	"name": "Rezmondo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "318",
+	"id": 1417,
+	"name": "Riocavado de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "321",
+	"id": 1418,
+	"name": "Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "323",
+	"id": 1419,
+	"name": "Rojas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "325",
+	"id": 1420,
+	"name": "Royuela de Río Franco"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "326",
+	"id": 1421,
+	"name": "Rubena"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "327",
+	"id": 1422,
+	"name": "Rublacedo de Abajo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "328",
+	"id": 1423,
+	"name": "Rucandio"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "329",
+	"id": 1424,
+	"name": "Salas de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "330",
+	"id": 1425,
+	"name": "Salas de los Infantes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "332",
+	"id": 1426,
+	"name": "Saldaña de Burgos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "334",
+	"id": 1427,
+	"name": "Salinillas de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "335",
+	"id": 1428,
+	"name": "San Adrián de Juarros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "337",
+	"id": 1429,
+	"name": "San Juan del Monte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "338",
+	"id": 1430,
+	"name": "San Mamés de Burgos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "339",
+	"id": 1431,
+	"name": "San Martín de Rubiales"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "340",
+	"id": 1432,
+	"name": "San Millán de Lara"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "360",
+	"id": 1433,
+	"name": "San Vicente del Valle"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "343",
+	"id": 1434,
+	"name": "Santa Cecilia"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "345",
+	"id": 1435,
+	"name": "Santa Cruz de la Salceda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "346",
+	"id": 1436,
+	"name": "Santa Cruz del Valle Urbión"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "347",
+	"id": 1437,
+	"name": "Santa Gadea del Cid"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "348",
+	"id": 1438,
+	"name": "Santa Inés"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "350",
+	"id": 1439,
+	"name": "Santa María del Campo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "351",
+	"id": 1440,
+	"name": "Santa María del Invierno"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "352",
+	"id": 1441,
+	"name": "Santa María del Mercadillo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "353",
+	"id": 1442,
+	"name": "Santa María Rivarredonda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "354",
+	"id": 1443,
+	"name": "Santa Olalla de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "355",
+	"id": 1444,
+	"name": "Santibáñez de Esgueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "356",
+	"id": 1445,
+	"name": "Santibáñez del Val"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "358",
+	"id": 1446,
+	"name": "Santo Domingo de Silos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "361",
+	"id": 1447,
+	"name": "Sargentes de la Lora"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "362",
+	"id": 1448,
+	"name": "Sarracín"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "363",
+	"id": 1449,
+	"name": "Sasamón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "365",
+	"id": 1450,
+	"name": "Sequera de Haza, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "366",
+	"id": 1451,
+	"name": "Solarana"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "368",
+	"id": 1452,
+	"name": "Sordillos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "369",
+	"id": 1453,
+	"name": "Sotillo de la Ribera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "372",
+	"id": 1454,
+	"name": "Sotragero"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "373",
+	"id": 1455,
+	"name": "Sotresgudo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "374",
+	"id": 1456,
+	"name": "Susinos del Páramo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "375",
+	"id": 1457,
+	"name": "Tamarón"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "377",
+	"id": 1458,
+	"name": "Tardajos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "378",
+	"id": 1459,
+	"name": "Tejada"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "380",
+	"id": 1460,
+	"name": "Terradillos de Esgueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "381",
+	"id": 1461,
+	"name": "Tinieblas de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "382",
+	"id": 1462,
+	"name": "Tobar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "384",
+	"id": 1463,
+	"name": "Tordómar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "386",
+	"id": 1464,
+	"name": "Torrecilla del Monte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "387",
+	"id": 1465,
+	"name": "Torregalindo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "388",
+	"id": 1466,
+	"name": "Torrelara"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "389",
+	"id": 1467,
+	"name": "Torrepadre"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "390",
+	"id": 1468,
+	"name": "Torresandino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "391",
+	"id": 1469,
+	"name": "Tórtoles de Esgueva"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "392",
+	"id": 1470,
+	"name": "Tosantos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "394",
+	"id": 1471,
+	"name": "Trespaderne"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "395",
+	"id": 1472,
+	"name": "Tubilla del Agua"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "396",
+	"id": 1473,
+	"name": "Tubilla del Lago"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "398",
+	"id": 1474,
+	"name": "Úrbel del Castillo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "400",
+	"id": 1475,
+	"name": "Vadocondes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "403",
+	"id": 1476,
+	"name": "Valdeande"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "405",
+	"id": 1477,
+	"name": "Valdezate"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "406",
+	"id": 1478,
+	"name": "Valdorros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "408",
+	"id": 1479,
+	"name": "Vallarta de Bureba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "904",
+	"id": 1480,
+	"name": "Valle de las Navas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "908",
+	"id": 1481,
+	"name": "Valle de Losa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "409",
+	"id": 1482,
+	"name": "Valle de Manzanedo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "410",
+	"id": 1483,
+	"name": "Valle de Mena"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "411",
+	"id": 1484,
+	"name": "Valle de Oca"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "902",
+	"id": 1485,
+	"name": "Valle de Santibáñez"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "905",
+	"id": 1486,
+	"name": "Valle de Sedano"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "412",
+	"id": 1487,
+	"name": "Valle de Tobalina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "413",
+	"id": 1488,
+	"name": "Valle de Valdebezana"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "414",
+	"id": 1489,
+	"name": "Valle de Valdelaguna"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "415",
+	"id": 1490,
+	"name": "Valle de Valdelucio"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "416",
+	"id": 1491,
+	"name": "Valle de Zamanzas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "417",
+	"id": 1492,
+	"name": "Vallejera"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "418",
+	"id": 1493,
+	"name": "Valles de Palenzuela"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "419",
+	"id": 1494,
+	"name": "Valluércanes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "407",
+	"id": 1495,
+	"name": "Valmala"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "422",
+	"id": 1496,
+	"name": "Vid de Bureba, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "421",
+	"id": 1497,
+	"name": "Vid y Barrios, La"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "423",
+	"id": 1498,
+	"name": "Vileña"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "427",
+	"id": 1499,
+	"name": "Villadiego"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "428",
+	"id": 1500,
+	"name": "Villaescusa de Roa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "429",
+	"id": 1501,
+	"name": "Villaescusa la Sombría"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "430",
+	"id": 1502,
+	"name": "Villaespasa"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "431",
+	"id": 1503,
+	"name": "Villafranca Montes de Oca"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "432",
+	"id": 1504,
+	"name": "Villafruela"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "433",
+	"id": 1505,
+	"name": "Villagalijo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "434",
+	"id": 1506,
+	"name": "Villagonzalo Pedernales"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "437",
+	"id": 1507,
+	"name": "Villahoz"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "438",
+	"id": 1508,
+	"name": "Villalba de Duero"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "439",
+	"id": 1509,
+	"name": "Villalbilla de Burgos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "440",
+	"id": 1510,
+	"name": "Villalbilla de Gumiel"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "441",
+	"id": 1511,
+	"name": "Villaldemiro"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "442",
+	"id": 1512,
+	"name": "Villalmanzo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "443",
+	"id": 1513,
+	"name": "Villamayor de los Montes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "444",
+	"id": 1514,
+	"name": "Villamayor de Treviño"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "445",
+	"id": 1515,
+	"name": "Villambistia"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "446",
+	"id": 1516,
+	"name": "Villamedianilla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "447",
+	"id": 1517,
+	"name": "Villamiel de la Sierra"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "448",
+	"id": 1518,
+	"name": "Villangómez"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "449",
+	"id": 1519,
+	"name": "Villanueva de Argaño"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "450",
+	"id": 1520,
+	"name": "Villanueva de Carazo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "451",
+	"id": 1521,
+	"name": "Villanueva de Gumiel"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "454",
+	"id": 1522,
+	"name": "Villanueva de Teba"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "455",
+	"id": 1523,
+	"name": "Villaquirán de la Puebla"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "456",
+	"id": 1524,
+	"name": "Villaquirán de los Infantes"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "903",
+	"id": 1525,
+	"name": "Villarcayo de Merindad de Castilla la Vieja"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "458",
+	"id": 1526,
+	"name": "Villariezo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "460",
+	"id": 1527,
+	"name": "Villasandino"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "463",
+	"id": 1528,
+	"name": "Villasur de Herreros"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "464",
+	"id": 1529,
+	"name": "Villatuelda"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "466",
+	"id": 1530,
+	"name": "Villaverde del Monte"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "467",
+	"id": 1531,
+	"name": "Villaverde-Mogina"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "471",
+	"id": 1532,
+	"name": "Villayerno Morquillas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "472",
+	"id": 1533,
+	"name": "Villazopeque"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "473",
+	"id": 1534,
+	"name": "Villegas"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "476",
+	"id": 1535,
+	"name": "Villoruebo"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "424",
+	"id": 1536,
+	"name": "Viloria de Rioja"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "425",
+	"id": 1537,
+	"name": "Vilviestre del Pinar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "478",
+	"id": 1538,
+	"name": "Vizcaínos"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "480",
+	"id": 1539,
+	"name": "Zael"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "482",
+	"id": 1540,
+	"name": "Zarzosa de Río Pisuerga"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "483",
+	"id": 1541,
+	"name": "Zazuar"
+}, {
+	"cod_prov": "09",
+	"cod_mun": "485",
+	"id": 1542,
+	"name": "Zuñeda"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "001",
+	"id": 1543,
+	"name": "Abadía"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "002",
+	"id": 1544,
+	"name": "Abertura"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "003",
+	"id": 1545,
+	"name": "Acebo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "004",
+	"id": 1546,
+	"name": "Acehúche"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "005",
+	"id": 1547,
+	"name": "Aceituna"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "006",
+	"id": 1548,
+	"name": "Ahigal"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "903",
+	"id": 1549,
+	"name": "Alagón del Río"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "007",
+	"id": 1550,
+	"name": "Albalá"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "008",
+	"id": 1551,
+	"name": "Alcántara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "009",
+	"id": 1552,
+	"name": "Alcollarín"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "010",
+	"id": 1553,
+	"name": "Alcuéscar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "012",
+	"id": 1554,
+	"name": "Aldea del Cano"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "013",
+	"id": 1555,
+	"name": "Aldea del Obispo, La"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "011",
+	"id": 1556,
+	"name": "Aldeacentenera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "014",
+	"id": 1557,
+	"name": "Aldeanueva de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "015",
+	"id": 1558,
+	"name": "Aldeanueva del Camino"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "016",
+	"id": 1559,
+	"name": "Aldehuela de Jerte"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "017",
+	"id": 1560,
+	"name": "Alía"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "018",
+	"id": 1561,
+	"name": "Aliseda"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "019",
+	"id": 1562,
+	"name": "Almaraz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "020",
+	"id": 1563,
+	"name": "Almoharín"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "021",
+	"id": 1564,
+	"name": "Arroyo de la Luz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "023",
+	"id": 1565,
+	"name": "Arroyomolinos"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "022",
+	"id": 1566,
+	"name": "Arroyomolinos de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "024",
+	"id": 1567,
+	"name": "Baños de Montemayor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "025",
+	"id": 1568,
+	"name": "Barrado"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "026",
+	"id": 1569,
+	"name": "Belvís de Monroy"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "027",
+	"id": 1570,
+	"name": "Benquerencia"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "028",
+	"id": 1571,
+	"name": "Berrocalejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "029",
+	"id": 1572,
+	"name": "Berzocana"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "030",
+	"id": 1573,
+	"name": "Bohonal de Ibor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "031",
+	"id": 1574,
+	"name": "Botija"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "032",
+	"id": 1575,
+	"name": "Brozas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "033",
+	"id": 1576,
+	"name": "Cabañas del Castillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "034",
+	"id": 1577,
+	"name": "Cabezabellosa"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "035",
+	"id": 1578,
+	"name": "Cabezuela del Valle"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "036",
+	"id": 1579,
+	"name": "Cabrero"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "037",
+	"id": 1580,
+	"name": "Cáceres"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "038",
+	"id": 1581,
+	"name": "Cachorrilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "039",
+	"id": 1582,
+	"name": "Cadalso"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "040",
+	"id": 1583,
+	"name": "Calzadilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "041",
+	"id": 1584,
+	"name": "Caminomorisco"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "042",
+	"id": 1585,
+	"name": "Campillo de Deleitosa"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "043",
+	"id": 1586,
+	"name": "Campo Lugar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "044",
+	"id": 1587,
+	"name": "Cañamero"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "045",
+	"id": 1588,
+	"name": "Cañaveral"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "046",
+	"id": 1589,
+	"name": "Carbajo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "047",
+	"id": 1590,
+	"name": "Carcaboso"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "048",
+	"id": 1591,
+	"name": "Carrascalejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "049",
+	"id": 1592,
+	"name": "Casar de Cáceres"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "050",
+	"id": 1593,
+	"name": "Casar de Palomero"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "051",
+	"id": 1594,
+	"name": "Casares de las Hurdes"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "052",
+	"id": 1595,
+	"name": "Casas de Don Antonio"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "053",
+	"id": 1596,
+	"name": "Casas de Don Gómez"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "056",
+	"id": 1597,
+	"name": "Casas de Millán"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "057",
+	"id": 1598,
+	"name": "Casas de Miravete"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "054",
+	"id": 1599,
+	"name": "Casas del Castañar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "055",
+	"id": 1600,
+	"name": "Casas del Monte"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "058",
+	"id": 1601,
+	"name": "Casatejada"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "059",
+	"id": 1602,
+	"name": "Casillas de Coria"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "060",
+	"id": 1603,
+	"name": "Castañar de Ibor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "061",
+	"id": 1604,
+	"name": "Ceclavín"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "062",
+	"id": 1605,
+	"name": "Cedillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "063",
+	"id": 1606,
+	"name": "Cerezo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "064",
+	"id": 1607,
+	"name": "Cilleros"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "065",
+	"id": 1608,
+	"name": "Collado de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "066",
+	"id": 1609,
+	"name": "Conquista de la Sierra"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "067",
+	"id": 1610,
+	"name": "Coria"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "068",
+	"id": 1611,
+	"name": "Cuacos de Yuste"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "069",
+	"id": 1612,
+	"name": "Cumbre, La"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "070",
+	"id": 1613,
+	"name": "Deleitosa"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "071",
+	"id": 1614,
+	"name": "Descargamaría"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "072",
+	"id": 1615,
+	"name": "Eljas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "073",
+	"id": 1616,
+	"name": "Escurial"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "075",
+	"id": 1617,
+	"name": "Fresnedoso de Ibor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "076",
+	"id": 1618,
+	"name": "Galisteo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "077",
+	"id": 1619,
+	"name": "Garciaz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "079",
+	"id": 1620,
+	"name": "Garganta la Olla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "078",
+	"id": 1621,
+	"name": "Garganta, La"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "080",
+	"id": 1622,
+	"name": "Gargantilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "081",
+	"id": 1623,
+	"name": "Gargüera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "082",
+	"id": 1624,
+	"name": "Garrovillas de Alconétar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "083",
+	"id": 1625,
+	"name": "Garvín"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "084",
+	"id": 1626,
+	"name": "Gata"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "085",
+	"id": 1627,
+	"name": "Gordo, El"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "086",
+	"id": 1628,
+	"name": "Granja, La"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "087",
+	"id": 1629,
+	"name": "Guadalupe"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "088",
+	"id": 1630,
+	"name": "Guijo de Coria"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "089",
+	"id": 1631,
+	"name": "Guijo de Galisteo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "090",
+	"id": 1632,
+	"name": "Guijo de Granadilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "091",
+	"id": 1633,
+	"name": "Guijo de Santa Bárbara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "092",
+	"id": 1634,
+	"name": "Herguijuela"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "093",
+	"id": 1635,
+	"name": "Hernán-Pérez"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "094",
+	"id": 1636,
+	"name": "Herrera de Alcántara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "095",
+	"id": 1637,
+	"name": "Herreruela"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "096",
+	"id": 1638,
+	"name": "Hervás"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "097",
+	"id": 1639,
+	"name": "Higuera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "098",
+	"id": 1640,
+	"name": "Hinojal"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "099",
+	"id": 1641,
+	"name": "Holguera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "100",
+	"id": 1642,
+	"name": "Hoyos"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "101",
+	"id": 1643,
+	"name": "Huélaga"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "102",
+	"id": 1644,
+	"name": "Ibahernando"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "103",
+	"id": 1645,
+	"name": "Jaraicejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "104",
+	"id": 1646,
+	"name": "Jaraíz de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "105",
+	"id": 1647,
+	"name": "Jarandilla de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "106",
+	"id": 1648,
+	"name": "Jarilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "107",
+	"id": 1649,
+	"name": "Jerte"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "108",
+	"id": 1650,
+	"name": "Ladrillar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "109",
+	"id": 1651,
+	"name": "Logrosán"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "110",
+	"id": 1652,
+	"name": "Losar de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "111",
+	"id": 1653,
+	"name": "Madrigal de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "112",
+	"id": 1654,
+	"name": "Madrigalejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "113",
+	"id": 1655,
+	"name": "Madroñera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "114",
+	"id": 1656,
+	"name": "Majadas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "115",
+	"id": 1657,
+	"name": "Malpartida de Cáceres"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "116",
+	"id": 1658,
+	"name": "Malpartida de Plasencia"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "117",
+	"id": 1659,
+	"name": "Marchagaz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "118",
+	"id": 1660,
+	"name": "Mata de Alcántara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "119",
+	"id": 1661,
+	"name": "Membrío"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "120",
+	"id": 1662,
+	"name": "Mesas de Ibor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "121",
+	"id": 1663,
+	"name": "Miajadas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "122",
+	"id": 1664,
+	"name": "Millanes"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "123",
+	"id": 1665,
+	"name": "Mirabel"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "124",
+	"id": 1666,
+	"name": "Mohedas de Granadilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "125",
+	"id": 1667,
+	"name": "Monroy"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "126",
+	"id": 1668,
+	"name": "Montánchez"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "127",
+	"id": 1669,
+	"name": "Montehermoso"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "128",
+	"id": 1670,
+	"name": "Moraleja"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "129",
+	"id": 1671,
+	"name": "Morcillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "130",
+	"id": 1672,
+	"name": "Navaconcejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "131",
+	"id": 1673,
+	"name": "Navalmoral de la Mata"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "132",
+	"id": 1674,
+	"name": "Navalvillar de Ibor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "133",
+	"id": 1675,
+	"name": "Navas del Madroño"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "134",
+	"id": 1676,
+	"name": "Navezuelas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "135",
+	"id": 1677,
+	"name": "Nuñomoral"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "136",
+	"id": 1678,
+	"name": "Oliva de Plasencia"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "137",
+	"id": 1679,
+	"name": "Palomero"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "138",
+	"id": 1680,
+	"name": "Pasarón de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "139",
+	"id": 1681,
+	"name": "Pedroso de Acim"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "140",
+	"id": 1682,
+	"name": "Peraleda de la Mata"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "141",
+	"id": 1683,
+	"name": "Peraleda de San Román"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "142",
+	"id": 1684,
+	"name": "Perales del Puerto"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "143",
+	"id": 1685,
+	"name": "Pescueza"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "144",
+	"id": 1686,
+	"name": "Pesga, La"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "145",
+	"id": 1687,
+	"name": "Piedras Albas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "146",
+	"id": 1688,
+	"name": "Pinofranqueado"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "147",
+	"id": 1689,
+	"name": "Piornal"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "148",
+	"id": 1690,
+	"name": "Plasencia"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "149",
+	"id": 1691,
+	"name": "Plasenzuela"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "150",
+	"id": 1692,
+	"name": "Portaje"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "151",
+	"id": 1693,
+	"name": "Portezuelo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "152",
+	"id": 1694,
+	"name": "Pozuelo de Zarzón"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "153",
+	"id": 1695,
+	"name": "Puerto de Santa Cruz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "154",
+	"id": 1696,
+	"name": "Rebollar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "155",
+	"id": 1697,
+	"name": "Riolobos"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "156",
+	"id": 1698,
+	"name": "Robledillo de Gata"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "157",
+	"id": 1699,
+	"name": "Robledillo de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "158",
+	"id": 1700,
+	"name": "Robledillo de Trujillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "159",
+	"id": 1701,
+	"name": "Robledollano"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "160",
+	"id": 1702,
+	"name": "Romangordo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "901",
+	"id": 1703,
+	"name": "Rosalejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "161",
+	"id": 1704,
+	"name": "Ruanes"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "162",
+	"id": 1705,
+	"name": "Salorino"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "163",
+	"id": 1706,
+	"name": "Salvatierra de Santiago"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "164",
+	"id": 1707,
+	"name": "San Martín de Trevejo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "165",
+	"id": 1708,
+	"name": "Santa Ana"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "166",
+	"id": 1709,
+	"name": "Santa Cruz de la Sierra"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "167",
+	"id": 1710,
+	"name": "Santa Cruz de Paniagua"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "168",
+	"id": 1711,
+	"name": "Santa Marta de Magasca"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "169",
+	"id": 1712,
+	"name": "Santiago de Alcántara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "170",
+	"id": 1713,
+	"name": "Santiago del Campo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "171",
+	"id": 1714,
+	"name": "Santibáñez el Alto"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "172",
+	"id": 1715,
+	"name": "Santibáñez el Bajo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "173",
+	"id": 1716,
+	"name": "Saucedilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "174",
+	"id": 1717,
+	"name": "Segura de Toro"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "175",
+	"id": 1718,
+	"name": "Serradilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "176",
+	"id": 1719,
+	"name": "Serrejón"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "177",
+	"id": 1720,
+	"name": "Sierra de Fuentes"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "178",
+	"id": 1721,
+	"name": "Talaván"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "179",
+	"id": 1722,
+	"name": "Talaveruela de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "180",
+	"id": 1723,
+	"name": "Talayuela"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "181",
+	"id": 1724,
+	"name": "Tejeda de Tiétar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "904",
+	"id": 1725,
+	"name": "Tiétar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "182",
+	"id": 1726,
+	"name": "Toril"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "183",
+	"id": 1727,
+	"name": "Tornavacas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "184",
+	"id": 1728,
+	"name": "Torno, El"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "187",
+	"id": 1729,
+	"name": "Torre de Don Miguel"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "188",
+	"id": 1730,
+	"name": "Torre de Santa María"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "185",
+	"id": 1731,
+	"name": "Torrecilla de los Ángeles"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "186",
+	"id": 1732,
+	"name": "Torrecillas de la Tiesa"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "190",
+	"id": 1733,
+	"name": "Torrejón el Rubio"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "189",
+	"id": 1734,
+	"name": "Torrejoncillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "191",
+	"id": 1735,
+	"name": "Torremenga"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "192",
+	"id": 1736,
+	"name": "Torremocha"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "193",
+	"id": 1737,
+	"name": "Torreorgaz"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "194",
+	"id": 1738,
+	"name": "Torrequemada"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "195",
+	"id": 1739,
+	"name": "Trujillo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "196",
+	"id": 1740,
+	"name": "Valdastillas"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "197",
+	"id": 1741,
+	"name": "Valdecañas de Tajo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "198",
+	"id": 1742,
+	"name": "Valdefuentes"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "199",
+	"id": 1743,
+	"name": "Valdehúncar"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "200",
+	"id": 1744,
+	"name": "Valdelacasa de Tajo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "201",
+	"id": 1745,
+	"name": "Valdemorales"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "202",
+	"id": 1746,
+	"name": "Valdeobispo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "203",
+	"id": 1747,
+	"name": "Valencia de Alcántara"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "204",
+	"id": 1748,
+	"name": "Valverde de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "205",
+	"id": 1749,
+	"name": "Valverde del Fresno"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "902",
+	"id": 1750,
+	"name": "Vegaviana"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "206",
+	"id": 1751,
+	"name": "Viandar de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "207",
+	"id": 1752,
+	"name": "Villa del Campo"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "208",
+	"id": 1753,
+	"name": "Villa del Rey"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "209",
+	"id": 1754,
+	"name": "Villamesías"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "210",
+	"id": 1755,
+	"name": "Villamiel"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "211",
+	"id": 1756,
+	"name": "Villanueva de la Sierra"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "212",
+	"id": 1757,
+	"name": "Villanueva de la Vera"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "214",
+	"id": 1758,
+	"name": "Villar de Plasencia"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "213",
+	"id": 1759,
+	"name": "Villar del Pedroso"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "215",
+	"id": 1760,
+	"name": "Villasbuenas de Gata"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "216",
+	"id": 1761,
+	"name": "Zarza de Granadilla"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "217",
+	"id": 1762,
+	"name": "Zarza de Montánchez"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "218",
+	"id": 1763,
+	"name": "Zarza la Mayor"
+}, {
+	"cod_prov": "10",
+	"cod_mun": "219",
+	"id": 1764,
+	"name": "Zorita"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "001",
+	"id": 1765,
+	"name": "Alcalá de los Gazules"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "002",
+	"id": 1766,
+	"name": "Alcalá del Valle"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "003",
+	"id": 1767,
+	"name": "Algar"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "004",
+	"id": 1768,
+	"name": "Algeciras"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "005",
+	"id": 1769,
+	"name": "Algodonales"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "006",
+	"id": 1770,
+	"name": "Arcos de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "007",
+	"id": 1771,
+	"name": "Barbate"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "008",
+	"id": 1772,
+	"name": "Barrios, Los"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "901",
+	"id": 1773,
+	"name": "Benalup-Casas Viejas"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "009",
+	"id": 1774,
+	"name": "Benaocaz"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "010",
+	"id": 1775,
+	"name": "Bornos"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "011",
+	"id": 1776,
+	"name": "Bosque, El"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "012",
+	"id": 1777,
+	"name": "Cádiz"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "013",
+	"id": 1778,
+	"name": "Castellar de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "015",
+	"id": 1779,
+	"name": "Chiclana de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "016",
+	"id": 1780,
+	"name": "Chipiona"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "014",
+	"id": 1781,
+	"name": "Conil de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "017",
+	"id": 1782,
+	"name": "Espera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "018",
+	"id": 1783,
+	"name": "Gastor, El"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "019",
+	"id": 1784,
+	"name": "Grazalema"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "020",
+	"id": 1785,
+	"name": "Jerez de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "021",
+	"id": 1786,
+	"name": "Jimena de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "022",
+	"id": 1787,
+	"name": "Línea de la Concepción, La"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "023",
+	"id": 1788,
+	"name": "Medina-Sidonia"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "024",
+	"id": 1789,
+	"name": "Olvera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "025",
+	"id": 1790,
+	"name": "Paterna de Rivera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "026",
+	"id": 1791,
+	"name": "Prado del Rey"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "027",
+	"id": 1792,
+	"name": "Puerto de Santa María, El"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "028",
+	"id": 1793,
+	"name": "Puerto Real"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "029",
+	"id": 1794,
+	"name": "Puerto Serrano"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "030",
+	"id": 1795,
+	"name": "Rota"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "031",
+	"id": 1796,
+	"name": "San Fernando"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "902",
+	"id": 1797,
+	"name": "San José del Valle"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "033",
+	"id": 1798,
+	"name": "San Roque"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "032",
+	"id": 1799,
+	"name": "Sanlúcar de Barrameda"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "034",
+	"id": 1800,
+	"name": "Setenil de las Bodegas"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "035",
+	"id": 1801,
+	"name": "Tarifa"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "036",
+	"id": 1802,
+	"name": "Torre Alháquime"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "037",
+	"id": 1803,
+	"name": "Trebujena"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "038",
+	"id": 1804,
+	"name": "Ubrique"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "039",
+	"id": 1805,
+	"name": "Vejer de la Frontera"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "040",
+	"id": 1806,
+	"name": "Villaluenga del Rosario"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "041",
+	"id": 1807,
+	"name": "Villamartín"
+}, {
+	"cod_prov": "11",
+	"cod_mun": "042",
+	"id": 1808,
+	"name": "Zahara"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "002",
+	"id": 1809,
+	"name": "Aín"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "003",
+	"id": 1810,
+	"name": "Albocàsser"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "004",
+	"id": 1811,
+	"name": "Alcalà de Xivert"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "005",
+	"id": 1812,
+	"name": "Alcora, l'"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "006",
+	"id": 1813,
+	"name": "Alcudia de Veo"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "007",
+	"id": 1814,
+	"name": "Alfondeguilla"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "008",
+	"id": 1815,
+	"name": "Algimia de Almonacid"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "009",
+	"id": 1816,
+	"name": "Almazora/Almassora"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "010",
+	"id": 1817,
+	"name": "Almedíjar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "011",
+	"id": 1818,
+	"name": "Almenara"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "901",
+	"id": 1819,
+	"name": "Alquerías del Niño Perdido"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "012",
+	"id": 1820,
+	"name": "Altura"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "013",
+	"id": 1821,
+	"name": "Arañuel"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "014",
+	"id": 1822,
+	"name": "Ares del Maestrat"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "015",
+	"id": 1823,
+	"name": "Argelita"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "016",
+	"id": 1824,
+	"name": "Artana"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "001",
+	"id": 1825,
+	"name": "Atzeneta del Maestrat"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "017",
+	"id": 1826,
+	"name": "Ayódar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "018",
+	"id": 1827,
+	"name": "Azuébar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "020",
+	"id": 1828,
+	"name": "Barracas"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "022",
+	"id": 1829,
+	"name": "Bejís"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "024",
+	"id": 1830,
+	"name": "Benafer"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "025",
+	"id": 1831,
+	"name": "Benafigos"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "026",
+	"id": 1832,
+	"name": "Benasal"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "027",
+	"id": 1833,
+	"name": "Benicarló"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "028",
+	"id": 1834,
+	"name": "Benicasim/Benicàssim"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "029",
+	"id": 1835,
+	"name": "Benlloch"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "021",
+	"id": 1836,
+	"name": "Betxí"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "032",
+	"id": 1837,
+	"name": "Borriana/Burriana"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "031",
+	"id": 1838,
+	"name": "Borriol"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "033",
+	"id": 1839,
+	"name": "Cabanes"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "034",
+	"id": 1840,
+	"name": "Càlig"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "036",
+	"id": 1841,
+	"name": "Canet lo Roig"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "037",
+	"id": 1842,
+	"name": "Castell de Cabres"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "038",
+	"id": 1843,
+	"name": "Castellfort"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "039",
+	"id": 1844,
+	"name": "Castellnovo"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "040",
+	"id": 1845,
+	"name": "Castellón de la Plana/Castelló de la Plana"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "041",
+	"id": 1846,
+	"name": "Castillo de Villamalefa"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "042",
+	"id": 1847,
+	"name": "Catí"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "043",
+	"id": 1848,
+	"name": "Caudiel"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "044",
+	"id": 1849,
+	"name": "Cervera del Maestre"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "052",
+	"id": 1850,
+	"name": "Chert/Xert"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "053",
+	"id": 1851,
+	"name": "Chilches/Xilxes"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "055",
+	"id": 1852,
+	"name": "Chodos/Xodos"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "056",
+	"id": 1853,
+	"name": "Chóvar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "045",
+	"id": 1854,
+	"name": "Cinctorres"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "046",
+	"id": 1855,
+	"name": "Cirat"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "048",
+	"id": 1856,
+	"name": "Cortes de Arenoso"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "049",
+	"id": 1857,
+	"name": "Costur"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "050",
+	"id": 1858,
+	"name": "Coves de Vinromà, les"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "051",
+	"id": 1859,
+	"name": "Culla"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "057",
+	"id": 1860,
+	"name": "Eslida"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "058",
+	"id": 1861,
+	"name": "Espadilla"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "059",
+	"id": 1862,
+	"name": "Fanzara"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "060",
+	"id": 1863,
+	"name": "Figueroles"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "061",
+	"id": 1864,
+	"name": "Forcall"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "063",
+	"id": 1865,
+	"name": "Fuente la Reina"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "064",
+	"id": 1866,
+	"name": "Fuentes de Ayódar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "065",
+	"id": 1867,
+	"name": "Gaibiel"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "067",
+	"id": 1868,
+	"name": "Geldo"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "068",
+	"id": 1869,
+	"name": "Herbés"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "069",
+	"id": 1870,
+	"name": "Higueras"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "070",
+	"id": 1871,
+	"name": "Jana, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "071",
+	"id": 1872,
+	"name": "Jérica"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "074",
+	"id": 1873,
+	"name": "Llosa, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "072",
+	"id": 1874,
+	"name": "Lucena del Cid"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "073",
+	"id": 1875,
+	"name": "Ludiente"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "075",
+	"id": 1876,
+	"name": "Mata de Morella, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "076",
+	"id": 1877,
+	"name": "Matet"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "077",
+	"id": 1878,
+	"name": "Moncofa"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "078",
+	"id": 1879,
+	"name": "Montán"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "079",
+	"id": 1880,
+	"name": "Montanejos"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "080",
+	"id": 1881,
+	"name": "Morella"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "081",
+	"id": 1882,
+	"name": "Navajas"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "082",
+	"id": 1883,
+	"name": "Nules"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "083",
+	"id": 1884,
+	"name": "Olocau del Rey"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "084",
+	"id": 1885,
+	"name": "Onda"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "085",
+	"id": 1886,
+	"name": "Oropesa del Mar/Orpesa"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "087",
+	"id": 1887,
+	"name": "Palanques"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "088",
+	"id": 1888,
+	"name": "Pavías"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "089",
+	"id": 1889,
+	"name": "Peníscola/Peñíscola"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "090",
+	"id": 1890,
+	"name": "Pina de Montalgrao"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "093",
+	"id": 1891,
+	"name": "Pobla de Benifassà, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "094",
+	"id": 1892,
+	"name": "Pobla Tornesa, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "091",
+	"id": 1893,
+	"name": "Portell de Morella"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "092",
+	"id": 1894,
+	"name": "Puebla de Arenoso"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "095",
+	"id": 1895,
+	"name": "Ribesalbes"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "096",
+	"id": 1896,
+	"name": "Rossell"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "097",
+	"id": 1897,
+	"name": "Sacañet"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "098",
+	"id": 1898,
+	"name": "Salzadella, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "101",
+	"id": 1899,
+	"name": "San Rafael del Río"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "902",
+	"id": 1900,
+	"name": "Sant Joan de Moró"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "099",
+	"id": 1901,
+	"name": "Sant Jordi/San Jorge"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "100",
+	"id": 1902,
+	"name": "Sant Mateu"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "102",
+	"id": 1903,
+	"name": "Santa Magdalena de Pulpis"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "104",
+	"id": 1904,
+	"name": "Segorbe"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "103",
+	"id": 1905,
+	"name": "Serratella, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "105",
+	"id": 1906,
+	"name": "Sierra Engarcerán"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "106",
+	"id": 1907,
+	"name": "Soneja"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "107",
+	"id": 1908,
+	"name": "Sot de Ferrer"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "108",
+	"id": 1909,
+	"name": "Sueras/Suera"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "109",
+	"id": 1910,
+	"name": "Tales"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "110",
+	"id": 1911,
+	"name": "Teresa"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "111",
+	"id": 1912,
+	"name": "Tírig"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "112",
+	"id": 1913,
+	"name": "Todolella"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "113",
+	"id": 1914,
+	"name": "Toga"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "114",
+	"id": 1915,
+	"name": "Torás"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "115",
+	"id": 1916,
+	"name": "Toro, El"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "116",
+	"id": 1917,
+	"name": "Torralba del Pinar"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "119",
+	"id": 1918,
+	"name": "Torre d'En Besora, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "120",
+	"id": 1919,
+	"name": "Torre d'en Doménec, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "117",
+	"id": 1920,
+	"name": "Torreblanca"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "118",
+	"id": 1921,
+	"name": "Torrechiva"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "121",
+	"id": 1922,
+	"name": "Traiguera"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "122",
+	"id": 1923,
+	"name": "Useras/Useres, les"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "124",
+	"id": 1924,
+	"name": "Vall d'Alba"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "125",
+	"id": 1925,
+	"name": "Vall de Almonacid"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "126",
+	"id": 1926,
+	"name": "Vall d'Uixó, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "123",
+	"id": 1927,
+	"name": "Vallat"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "127",
+	"id": 1928,
+	"name": "Vallibona"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "128",
+	"id": 1929,
+	"name": "Vilafamés"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "132",
+	"id": 1930,
+	"name": "Vilanova d'Alcolea"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "134",
+	"id": 1931,
+	"name": "Vilar de Canes"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "135",
+	"id": 1932,
+	"name": "Vila-real"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "136",
+	"id": 1933,
+	"name": "Vilavella, la"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "129",
+	"id": 1934,
+	"name": "Villafranca del Cid/Vilafranca"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "130",
+	"id": 1935,
+	"name": "Villahermosa del Río"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "131",
+	"id": 1936,
+	"name": "Villamalur"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "133",
+	"id": 1937,
+	"name": "Villanueva de Viver"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "137",
+	"id": 1938,
+	"name": "Villores"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "138",
+	"id": 1939,
+	"name": "Vinaròs"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "139",
+	"id": 1940,
+	"name": "Vistabella del Maestrazgo"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "140",
+	"id": 1941,
+	"name": "Viver"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "141",
+	"id": 1942,
+	"name": "Zorita del Maestrazgo"
+}, {
+	"cod_prov": "12",
+	"cod_mun": "142",
+	"id": 1943,
+	"name": "Zucaina"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "001",
+	"id": 1944,
+	"name": "Abenójar"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "002",
+	"id": 1945,
+	"name": "Agudo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "003",
+	"id": 1946,
+	"name": "Alamillo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "004",
+	"id": 1947,
+	"name": "Albaladejo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "005",
+	"id": 1948,
+	"name": "Alcázar de San Juan"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "006",
+	"id": 1949,
+	"name": "Alcoba"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "007",
+	"id": 1950,
+	"name": "Alcolea de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "008",
+	"id": 1951,
+	"name": "Alcubillas"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "009",
+	"id": 1952,
+	"name": "Aldea del Rey"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "010",
+	"id": 1953,
+	"name": "Alhambra"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "011",
+	"id": 1954,
+	"name": "Almadén"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "012",
+	"id": 1955,
+	"name": "Almadenejos"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "013",
+	"id": 1956,
+	"name": "Almagro"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "014",
+	"id": 1957,
+	"name": "Almedina"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "015",
+	"id": 1958,
+	"name": "Almodóvar del Campo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "016",
+	"id": 1959,
+	"name": "Almuradiel"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "017",
+	"id": 1960,
+	"name": "Anchuras"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "903",
+	"id": 1961,
+	"name": "Arenales de San Gregorio"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "018",
+	"id": 1962,
+	"name": "Arenas de San Juan"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "019",
+	"id": 1963,
+	"name": "Argamasilla de Alba"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "020",
+	"id": 1964,
+	"name": "Argamasilla de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "021",
+	"id": 1965,
+	"name": "Arroba de los Montes"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "022",
+	"id": 1966,
+	"name": "Ballesteros de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "023",
+	"id": 1967,
+	"name": "Bolaños de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "024",
+	"id": 1968,
+	"name": "Brazatortas"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "025",
+	"id": 1969,
+	"name": "Cabezarados"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "026",
+	"id": 1970,
+	"name": "Cabezarrubias del Puerto"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "027",
+	"id": 1971,
+	"name": "Calzada de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "028",
+	"id": 1972,
+	"name": "Campo de Criptana"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "029",
+	"id": 1973,
+	"name": "Cañada de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "030",
+	"id": 1974,
+	"name": "Caracuel de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "031",
+	"id": 1975,
+	"name": "Carrión de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "032",
+	"id": 1976,
+	"name": "Carrizosa"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "033",
+	"id": 1977,
+	"name": "Castellar de Santiago"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "038",
+	"id": 1978,
+	"name": "Chillón"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "034",
+	"id": 1979,
+	"name": "Ciudad Real"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "035",
+	"id": 1980,
+	"name": "Corral de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "036",
+	"id": 1981,
+	"name": "Cortijos, Los"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "037",
+	"id": 1982,
+	"name": "Cózar"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "039",
+	"id": 1983,
+	"name": "Daimiel"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "040",
+	"id": 1984,
+	"name": "Fernán Caballero"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "041",
+	"id": 1985,
+	"name": "Fontanarejo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "042",
+	"id": 1986,
+	"name": "Fuencaliente"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "043",
+	"id": 1987,
+	"name": "Fuenllana"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "044",
+	"id": 1988,
+	"name": "Fuente el Fresno"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "045",
+	"id": 1989,
+	"name": "Granátula de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "046",
+	"id": 1990,
+	"name": "Guadalmez"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "047",
+	"id": 1991,
+	"name": "Herencia"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "048",
+	"id": 1992,
+	"name": "Hinojosas de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "049",
+	"id": 1993,
+	"name": "Horcajo de los Montes"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "050",
+	"id": 1994,
+	"name": "Labores, Las"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "904",
+	"id": 1995,
+	"name": "Llanos del Caudillo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "051",
+	"id": 1996,
+	"name": "Luciana"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "052",
+	"id": 1997,
+	"name": "Malagón"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "053",
+	"id": 1998,
+	"name": "Manzanares"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "054",
+	"id": 1999,
+	"name": "Membrilla"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "055",
+	"id": 2000,
+	"name": "Mestanza"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "056",
+	"id": 2001,
+	"name": "Miguelturra"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "057",
+	"id": 2002,
+	"name": "Montiel"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "058",
+	"id": 2003,
+	"name": "Moral de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "059",
+	"id": 2004,
+	"name": "Navalpino"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "060",
+	"id": 2005,
+	"name": "Navas de Estena"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "061",
+	"id": 2006,
+	"name": "Pedro Muñoz"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "062",
+	"id": 2007,
+	"name": "Picón"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "063",
+	"id": 2008,
+	"name": "Piedrabuena"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "064",
+	"id": 2009,
+	"name": "Poblete"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "065",
+	"id": 2010,
+	"name": "Porzuna"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "066",
+	"id": 2011,
+	"name": "Pozuelo de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "067",
+	"id": 2012,
+	"name": "Pozuelos de Calatrava, Los"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "068",
+	"id": 2013,
+	"name": "Puebla de Don Rodrigo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "069",
+	"id": 2014,
+	"name": "Puebla del Príncipe"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "070",
+	"id": 2015,
+	"name": "Puerto Lápice"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "071",
+	"id": 2016,
+	"name": "Puertollano"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "072",
+	"id": 2017,
+	"name": "Retuerta del Bullaque"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "901",
+	"id": 2018,
+	"name": "Robledo, El"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "902",
+	"id": 2019,
+	"name": "Ruidera"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "073",
+	"id": 2020,
+	"name": "Saceruela"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "074",
+	"id": 2021,
+	"name": "San Carlos del Valle"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "075",
+	"id": 2022,
+	"name": "San Lorenzo de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "076",
+	"id": 2023,
+	"name": "Santa Cruz de los Cáñamos"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "077",
+	"id": 2024,
+	"name": "Santa Cruz de Mudela"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "078",
+	"id": 2025,
+	"name": "Socuéllamos"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "080",
+	"id": 2026,
+	"name": "Solana del Pino"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "079",
+	"id": 2027,
+	"name": "Solana, La"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "081",
+	"id": 2028,
+	"name": "Terrinches"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "082",
+	"id": 2029,
+	"name": "Tomelloso"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "083",
+	"id": 2030,
+	"name": "Torralba de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "084",
+	"id": 2031,
+	"name": "Torre de Juan Abad"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "085",
+	"id": 2032,
+	"name": "Torrenueva"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "086",
+	"id": 2033,
+	"name": "Valdemanco del Esteras"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "087",
+	"id": 2034,
+	"name": "Valdepeñas"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "088",
+	"id": 2035,
+	"name": "Valenzuela de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "089",
+	"id": 2036,
+	"name": "Villahermosa"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "090",
+	"id": 2037,
+	"name": "Villamanrique"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "091",
+	"id": 2038,
+	"name": "Villamayor de Calatrava"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "092",
+	"id": 2039,
+	"name": "Villanueva de la Fuente"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "093",
+	"id": 2040,
+	"name": "Villanueva de los Infantes"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "094",
+	"id": 2041,
+	"name": "Villanueva de San Carlos"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "095",
+	"id": 2042,
+	"name": "Villar del Pozo"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "096",
+	"id": 2043,
+	"name": "Villarrubia de los Ojos"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "097",
+	"id": 2044,
+	"name": "Villarta de San Juan"
+}, {
+	"cod_prov": "13",
+	"cod_mun": "098",
+	"id": 2045,
+	"name": "Viso del Marqués"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "001",
+	"id": 2046,
+	"name": "Adamuz"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "002",
+	"id": 2047,
+	"name": "Aguilar de la Frontera"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "003",
+	"id": 2048,
+	"name": "Alcaracejos"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "004",
+	"id": 2049,
+	"name": "Almedinilla"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "005",
+	"id": 2050,
+	"name": "Almodóvar del Río"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "006",
+	"id": 2051,
+	"name": "Añora"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "007",
+	"id": 2052,
+	"name": "Baena"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "008",
+	"id": 2053,
+	"name": "Belalcázar"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "009",
+	"id": 2054,
+	"name": "Belmez"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "010",
+	"id": 2055,
+	"name": "Benamejí"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "011",
+	"id": 2056,
+	"name": "Blázquez, Los"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "012",
+	"id": 2057,
+	"name": "Bujalance"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "013",
+	"id": 2058,
+	"name": "Cabra"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "014",
+	"id": 2059,
+	"name": "Cañete de las Torres"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "015",
+	"id": 2060,
+	"name": "Carcabuey"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "016",
+	"id": 2061,
+	"name": "Cardeña"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "017",
+	"id": 2062,
+	"name": "Carlota, La"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "018",
+	"id": 2063,
+	"name": "Carpio, El"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "019",
+	"id": 2064,
+	"name": "Castro del Río"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "020",
+	"id": 2065,
+	"name": "Conquista"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "021",
+	"id": 2066,
+	"name": "Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "022",
+	"id": 2067,
+	"name": "Doña Mencía"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "023",
+	"id": 2068,
+	"name": "Dos Torres"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "024",
+	"id": 2069,
+	"name": "Encinas Reales"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "025",
+	"id": 2070,
+	"name": "Espejo"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "026",
+	"id": 2071,
+	"name": "Espiel"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "027",
+	"id": 2072,
+	"name": "Fernán-Núñez"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "028",
+	"id": 2073,
+	"name": "Fuente la Lancha"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "029",
+	"id": 2074,
+	"name": "Fuente Obejuna"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "030",
+	"id": 2075,
+	"name": "Fuente Palmera"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "031",
+	"id": 2076,
+	"name": "Fuente-Tójar"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "032",
+	"id": 2077,
+	"name": "Granjuela, La"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "033",
+	"id": 2078,
+	"name": "Guadalcázar"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "034",
+	"id": 2079,
+	"name": "Guijo, El"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "035",
+	"id": 2080,
+	"name": "Hinojosa del Duque"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "036",
+	"id": 2081,
+	"name": "Hornachuelos"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "037",
+	"id": 2082,
+	"name": "Iznájar"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "038",
+	"id": 2083,
+	"name": "Lucena"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "039",
+	"id": 2084,
+	"name": "Luque"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "040",
+	"id": 2085,
+	"name": "Montalbán de Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "041",
+	"id": 2086,
+	"name": "Montemayor"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "042",
+	"id": 2087,
+	"name": "Montilla"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "043",
+	"id": 2088,
+	"name": "Montoro"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "044",
+	"id": 2089,
+	"name": "Monturque"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "045",
+	"id": 2090,
+	"name": "Moriles"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "046",
+	"id": 2091,
+	"name": "Nueva Carteya"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "047",
+	"id": 2092,
+	"name": "Obejo"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "048",
+	"id": 2093,
+	"name": "Palenciana"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "049",
+	"id": 2094,
+	"name": "Palma del Río"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "050",
+	"id": 2095,
+	"name": "Pedro Abad"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "051",
+	"id": 2096,
+	"name": "Pedroche"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "052",
+	"id": 2097,
+	"name": "Peñarroya-Pueblonuevo"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "053",
+	"id": 2098,
+	"name": "Posadas"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "054",
+	"id": 2099,
+	"name": "Pozoblanco"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "055",
+	"id": 2100,
+	"name": "Priego de Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "056",
+	"id": 2101,
+	"name": "Puente Genil"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "057",
+	"id": 2102,
+	"name": "Rambla, La"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "058",
+	"id": 2103,
+	"name": "Rute"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "059",
+	"id": 2104,
+	"name": "San Sebastián de los Ballesteros"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "061",
+	"id": 2105,
+	"name": "Santa Eufemia"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "060",
+	"id": 2106,
+	"name": "Santaella"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "062",
+	"id": 2107,
+	"name": "Torrecampo"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "063",
+	"id": 2108,
+	"name": "Valenzuela"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "064",
+	"id": 2109,
+	"name": "Valsequillo"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "065",
+	"id": 2110,
+	"name": "Victoria, La"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "066",
+	"id": 2111,
+	"name": "Villa del Río"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "067",
+	"id": 2112,
+	"name": "Villafranca de Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "068",
+	"id": 2113,
+	"name": "Villaharta"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "069",
+	"id": 2114,
+	"name": "Villanueva de Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "070",
+	"id": 2115,
+	"name": "Villanueva del Duque"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "071",
+	"id": 2116,
+	"name": "Villanueva del Rey"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "072",
+	"id": 2117,
+	"name": "Villaralto"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "073",
+	"id": 2118,
+	"name": "Villaviciosa de Córdoba"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "074",
+	"id": 2119,
+	"name": "Viso, El"
+}, {
+	"cod_prov": "14",
+	"cod_mun": "075",
+	"id": 2120,
+	"name": "Zuheros"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "001",
+	"id": 2121,
+	"name": "Abegondo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "002",
+	"id": 2122,
+	"name": "Ames"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "003",
+	"id": 2123,
+	"name": "Aranga"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "004",
+	"id": 2124,
+	"name": "Ares"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "005",
+	"id": 2125,
+	"name": "Arteixo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "006",
+	"id": 2126,
+	"name": "Arzúa"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "007",
+	"id": 2127,
+	"name": "Baña, A"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "008",
+	"id": 2128,
+	"name": "Bergondo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "009",
+	"id": 2129,
+	"name": "Betanzos"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "010",
+	"id": 2130,
+	"name": "Boimorto"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "011",
+	"id": 2131,
+	"name": "Boiro"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "012",
+	"id": 2132,
+	"name": "Boqueixón"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "013",
+	"id": 2133,
+	"name": "Brión"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "014",
+	"id": 2134,
+	"name": "Cabana de Bergantiños"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "015",
+	"id": 2135,
+	"name": "Cabanas"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "016",
+	"id": 2136,
+	"name": "Camariñas"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "017",
+	"id": 2137,
+	"name": "Cambre"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "018",
+	"id": 2138,
+	"name": "Capela, A"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "019",
+	"id": 2139,
+	"name": "Carballo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "901",
+	"id": 2140,
+	"name": "Cariño"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "020",
+	"id": 2141,
+	"name": "Carnota"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "021",
+	"id": 2142,
+	"name": "Carral"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "022",
+	"id": 2143,
+	"name": "Cedeira"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "023",
+	"id": 2144,
+	"name": "Cee"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "024",
+	"id": 2145,
+	"name": "Cerceda"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "025",
+	"id": 2146,
+	"name": "Cerdido"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "027",
+	"id": 2147,
+	"name": "Coirós"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "028",
+	"id": 2148,
+	"name": "Corcubión"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "029",
+	"id": 2149,
+	"name": "Coristanco"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "030",
+	"id": 2150,
+	"name": "Coruña, A"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "031",
+	"id": 2151,
+	"name": "Culleredo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "032",
+	"id": 2152,
+	"name": "Curtis"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "033",
+	"id": 2153,
+	"name": "Dodro"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "034",
+	"id": 2154,
+	"name": "Dumbría"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "035",
+	"id": 2155,
+	"name": "Fene"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "036",
+	"id": 2156,
+	"name": "Ferrol"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "037",
+	"id": 2157,
+	"name": "Fisterra"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "038",
+	"id": 2158,
+	"name": "Frades"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "039",
+	"id": 2159,
+	"name": "Irixoa"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "041",
+	"id": 2160,
+	"name": "Laracha, A"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "040",
+	"id": 2161,
+	"name": "Laxe"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "042",
+	"id": 2162,
+	"name": "Lousame"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "043",
+	"id": 2163,
+	"name": "Malpica de Bergantiños"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "044",
+	"id": 2164,
+	"name": "Mañón"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "045",
+	"id": 2165,
+	"name": "Mazaricos"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "046",
+	"id": 2166,
+	"name": "Melide"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "047",
+	"id": 2167,
+	"name": "Mesía"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "048",
+	"id": 2168,
+	"name": "Miño"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "049",
+	"id": 2169,
+	"name": "Moeche"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "050",
+	"id": 2170,
+	"name": "Monfero"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "051",
+	"id": 2171,
+	"name": "Mugardos"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "053",
+	"id": 2172,
+	"name": "Muros"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "052",
+	"id": 2173,
+	"name": "Muxía"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "054",
+	"id": 2174,
+	"name": "Narón"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "055",
+	"id": 2175,
+	"name": "Neda"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "056",
+	"id": 2176,
+	"name": "Negreira"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "057",
+	"id": 2177,
+	"name": "Noia"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "058",
+	"id": 2178,
+	"name": "Oleiros"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "059",
+	"id": 2179,
+	"name": "Ordes"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "060",
+	"id": 2180,
+	"name": "Oroso"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "061",
+	"id": 2181,
+	"name": "Ortigueira"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "062",
+	"id": 2182,
+	"name": "Outes"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "902",
+	"id": 2183,
+	"name": "Oza-Cesuras"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "064",
+	"id": 2184,
+	"name": "Paderne"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "065",
+	"id": 2185,
+	"name": "Padrón"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "066",
+	"id": 2186,
+	"name": "Pino, O"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "067",
+	"id": 2187,
+	"name": "Pobra do Caramiñal, A"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "068",
+	"id": 2188,
+	"name": "Ponteceso"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "069",
+	"id": 2189,
+	"name": "Pontedeume"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "070",
+	"id": 2190,
+	"name": "Pontes de García Rodríguez, As"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "071",
+	"id": 2191,
+	"name": "Porto do Son"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "072",
+	"id": 2192,
+	"name": "Rianxo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "073",
+	"id": 2193,
+	"name": "Ribeira"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "074",
+	"id": 2194,
+	"name": "Rois"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "075",
+	"id": 2195,
+	"name": "Sada"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "076",
+	"id": 2196,
+	"name": "San Sadurniño"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "077",
+	"id": 2197,
+	"name": "Santa Comba"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "078",
+	"id": 2198,
+	"name": "Santiago de Compostela"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "079",
+	"id": 2199,
+	"name": "Santiso"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "080",
+	"id": 2200,
+	"name": "Sobrado"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "081",
+	"id": 2201,
+	"name": "Somozas, As"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "082",
+	"id": 2202,
+	"name": "Teo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "083",
+	"id": 2203,
+	"name": "Toques"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "084",
+	"id": 2204,
+	"name": "Tordoia"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "085",
+	"id": 2205,
+	"name": "Touro"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "086",
+	"id": 2206,
+	"name": "Trazo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "088",
+	"id": 2207,
+	"name": "Val do Dubra"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "087",
+	"id": 2208,
+	"name": "Valdoviño"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "089",
+	"id": 2209,
+	"name": "Vedra"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "091",
+	"id": 2210,
+	"name": "Vilarmaior"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "090",
+	"id": 2211,
+	"name": "Vilasantar"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "092",
+	"id": 2212,
+	"name": "Vimianzo"
+}, {
+	"cod_prov": "15",
+	"cod_mun": "093",
+	"id": 2213,
+	"name": "Zas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "001",
+	"id": 2214,
+	"name": "Abia de la Obispalía"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "002",
+	"id": 2215,
+	"name": "Acebrón, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "003",
+	"id": 2216,
+	"name": "Alarcón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "004",
+	"id": 2217,
+	"name": "Albaladejo del Cuende"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "005",
+	"id": 2218,
+	"name": "Albalate de las Nogueras"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "006",
+	"id": 2219,
+	"name": "Albendea"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "007",
+	"id": 2220,
+	"name": "Alberca de Záncara, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "008",
+	"id": 2221,
+	"name": "Alcalá de la Vega"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "009",
+	"id": 2222,
+	"name": "Alcantud"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "010",
+	"id": 2223,
+	"name": "Alcázar del Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "011",
+	"id": 2224,
+	"name": "Alcohujate"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "012",
+	"id": 2225,
+	"name": "Alconchel de la Estrella"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "013",
+	"id": 2226,
+	"name": "Algarra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "014",
+	"id": 2227,
+	"name": "Aliaguilla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "015",
+	"id": 2228,
+	"name": "Almarcha, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "016",
+	"id": 2229,
+	"name": "Almendros"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "017",
+	"id": 2230,
+	"name": "Almodóvar del Pinar"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "018",
+	"id": 2231,
+	"name": "Almonacid del Marquesado"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "019",
+	"id": 2232,
+	"name": "Altarejos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "020",
+	"id": 2233,
+	"name": "Arandilla del Arroyo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "905",
+	"id": 2234,
+	"name": "Arcas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "022",
+	"id": 2235,
+	"name": "Arcos de la Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "024",
+	"id": 2236,
+	"name": "Arguisuelas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "025",
+	"id": 2237,
+	"name": "Arrancacepas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "026",
+	"id": 2238,
+	"name": "Atalaya del Cañavate"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "027",
+	"id": 2239,
+	"name": "Barajas de Melo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "029",
+	"id": 2240,
+	"name": "Barchín del Hoyo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "030",
+	"id": 2241,
+	"name": "Bascuñana de San Pedro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "031",
+	"id": 2242,
+	"name": "Beamud"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "032",
+	"id": 2243,
+	"name": "Belinchón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "033",
+	"id": 2244,
+	"name": "Belmonte"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "034",
+	"id": 2245,
+	"name": "Belmontejo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "035",
+	"id": 2246,
+	"name": "Beteta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "036",
+	"id": 2247,
+	"name": "Boniches"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "038",
+	"id": 2248,
+	"name": "Buciegas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "039",
+	"id": 2249,
+	"name": "Buenache de Alarcón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "040",
+	"id": 2250,
+	"name": "Buenache de la Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "041",
+	"id": 2251,
+	"name": "Buendía"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "042",
+	"id": 2252,
+	"name": "Campillo de Altobuey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "043",
+	"id": 2253,
+	"name": "Campillos-Paravientos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "044",
+	"id": 2254,
+	"name": "Campillos-Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "901",
+	"id": 2255,
+	"name": "Campos del Paraíso"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "045",
+	"id": 2256,
+	"name": "Canalejas del Arroyo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "046",
+	"id": 2257,
+	"name": "Cañada del Hoyo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "047",
+	"id": 2258,
+	"name": "Cañada Juncosa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "048",
+	"id": 2259,
+	"name": "Cañamares"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "049",
+	"id": 2260,
+	"name": "Cañavate, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "050",
+	"id": 2261,
+	"name": "Cañaveras"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "051",
+	"id": 2262,
+	"name": "Cañaveruelas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "052",
+	"id": 2263,
+	"name": "Cañete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "053",
+	"id": 2264,
+	"name": "Cañizares"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "055",
+	"id": 2265,
+	"name": "Carboneras de Guadazaón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "056",
+	"id": 2266,
+	"name": "Cardenete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "057",
+	"id": 2267,
+	"name": "Carrascosa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "058",
+	"id": 2268,
+	"name": "Carrascosa de Haro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "060",
+	"id": 2269,
+	"name": "Casas de Benítez"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "061",
+	"id": 2270,
+	"name": "Casas de Fernando Alonso"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "062",
+	"id": 2271,
+	"name": "Casas de Garcimolina"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "063",
+	"id": 2272,
+	"name": "Casas de Guijarro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "064",
+	"id": 2273,
+	"name": "Casas de Haro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "065",
+	"id": 2274,
+	"name": "Casas de los Pinos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "066",
+	"id": 2275,
+	"name": "Casasimarro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "067",
+	"id": 2276,
+	"name": "Castejón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "068",
+	"id": 2277,
+	"name": "Castillejo de Iniesta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "070",
+	"id": 2278,
+	"name": "Castillejo-Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "072",
+	"id": 2279,
+	"name": "Castillo de Garcimuñoz"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "071",
+	"id": 2280,
+	"name": "Castillo-Albaráñez"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "073",
+	"id": 2281,
+	"name": "Cervera del Llano"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "023",
+	"id": 2282,
+	"name": "Chillarón de Cuenca"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "081",
+	"id": 2283,
+	"name": "Chumillas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "074",
+	"id": 2284,
+	"name": "Cierva, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "078",
+	"id": 2285,
+	"name": "Cuenca"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "079",
+	"id": 2286,
+	"name": "Cueva del Hierro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "082",
+	"id": 2287,
+	"name": "Enguídanos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "083",
+	"id": 2288,
+	"name": "Fresneda de Altarejos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "084",
+	"id": 2289,
+	"name": "Fresneda de la Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "085",
+	"id": 2290,
+	"name": "Frontera, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "086",
+	"id": 2291,
+	"name": "Fuente de Pedro Naharro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "087",
+	"id": 2292,
+	"name": "Fuentelespino de Haro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "088",
+	"id": 2293,
+	"name": "Fuentelespino de Moya"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "904",
+	"id": 2294,
+	"name": "Fuentenava de Jábaga"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "089",
+	"id": 2295,
+	"name": "Fuentes"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "091",
+	"id": 2296,
+	"name": "Fuertescusa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "092",
+	"id": 2297,
+	"name": "Gabaldón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "093",
+	"id": 2298,
+	"name": "Garaballa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "094",
+	"id": 2299,
+	"name": "Gascueña"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "095",
+	"id": 2300,
+	"name": "Graja de Campalbo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "096",
+	"id": 2301,
+	"name": "Graja de Iniesta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "097",
+	"id": 2302,
+	"name": "Henarejos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "098",
+	"id": 2303,
+	"name": "Herrumblar, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "099",
+	"id": 2304,
+	"name": "Hinojosa, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "100",
+	"id": 2305,
+	"name": "Hinojosos, Los"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "101",
+	"id": 2306,
+	"name": "Hito, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "102",
+	"id": 2307,
+	"name": "Honrubia"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "103",
+	"id": 2308,
+	"name": "Hontanaya"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "104",
+	"id": 2309,
+	"name": "Hontecillas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "106",
+	"id": 2310,
+	"name": "Horcajo de Santiago"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "107",
+	"id": 2311,
+	"name": "Huélamo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "108",
+	"id": 2312,
+	"name": "Huelves"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "109",
+	"id": 2313,
+	"name": "Huérguina"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "110",
+	"id": 2314,
+	"name": "Huerta de la Obispalía"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "111",
+	"id": 2315,
+	"name": "Huerta del Marquesado"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "112",
+	"id": 2316,
+	"name": "Huete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "113",
+	"id": 2317,
+	"name": "Iniesta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "115",
+	"id": 2318,
+	"name": "Laguna del Marquesado"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "116",
+	"id": 2319,
+	"name": "Lagunaseca"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "117",
+	"id": 2320,
+	"name": "Landete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "118",
+	"id": 2321,
+	"name": "Ledaña"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "119",
+	"id": 2322,
+	"name": "Leganiel"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "121",
+	"id": 2323,
+	"name": "Majadas, Las"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "122",
+	"id": 2324,
+	"name": "Mariana"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "123",
+	"id": 2325,
+	"name": "Masegosa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "124",
+	"id": 2326,
+	"name": "Mesas, Las"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "125",
+	"id": 2327,
+	"name": "Minglanilla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "126",
+	"id": 2328,
+	"name": "Mira"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "128",
+	"id": 2329,
+	"name": "Monreal del Llano"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "129",
+	"id": 2330,
+	"name": "Montalbanejo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "130",
+	"id": 2331,
+	"name": "Montalbo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "131",
+	"id": 2332,
+	"name": "Monteagudo de las Salinas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "132",
+	"id": 2333,
+	"name": "Mota de Altarejos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "133",
+	"id": 2334,
+	"name": "Mota del Cuervo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "134",
+	"id": 2335,
+	"name": "Motilla del Palancar"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "135",
+	"id": 2336,
+	"name": "Moya"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "137",
+	"id": 2337,
+	"name": "Narboneta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "139",
+	"id": 2338,
+	"name": "Olivares de Júcar"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "140",
+	"id": 2339,
+	"name": "Olmeda de la Cuesta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "141",
+	"id": 2340,
+	"name": "Olmeda del Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "142",
+	"id": 2341,
+	"name": "Olmedilla de Alarcón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "143",
+	"id": 2342,
+	"name": "Olmedilla de Eliz"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "145",
+	"id": 2343,
+	"name": "Osa de la Vega"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "146",
+	"id": 2344,
+	"name": "Pajarón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "147",
+	"id": 2345,
+	"name": "Pajaroncillo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "148",
+	"id": 2346,
+	"name": "Palomares del Campo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "149",
+	"id": 2347,
+	"name": "Palomera"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "150",
+	"id": 2348,
+	"name": "Paracuellos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "151",
+	"id": 2349,
+	"name": "Paredes"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "152",
+	"id": 2350,
+	"name": "Parra de las Vegas, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "153",
+	"id": 2351,
+	"name": "Pedernoso, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "154",
+	"id": 2352,
+	"name": "Pedroñeras, Las"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "155",
+	"id": 2353,
+	"name": "Peral, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "156",
+	"id": 2354,
+	"name": "Peraleja, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "157",
+	"id": 2355,
+	"name": "Pesquera, La"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "158",
+	"id": 2356,
+	"name": "Picazo, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "159",
+	"id": 2357,
+	"name": "Pinarejo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "160",
+	"id": 2358,
+	"name": "Pineda de Gigüela"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "161",
+	"id": 2359,
+	"name": "Piqueras del Castillo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "162",
+	"id": 2360,
+	"name": "Portalrubio de Guadamejud"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "163",
+	"id": 2361,
+	"name": "Portilla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "165",
+	"id": 2362,
+	"name": "Poyatos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "166",
+	"id": 2363,
+	"name": "Pozoamargo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "908",
+	"id": 2364,
+	"name": "Pozorrubielos de la Mancha"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "167",
+	"id": 2365,
+	"name": "Pozorrubio de Santiago"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "169",
+	"id": 2366,
+	"name": "Pozuelo, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "170",
+	"id": 2367,
+	"name": "Priego"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "171",
+	"id": 2368,
+	"name": "Provencio, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "172",
+	"id": 2369,
+	"name": "Puebla de Almenara"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "174",
+	"id": 2370,
+	"name": "Puebla del Salvador"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "175",
+	"id": 2371,
+	"name": "Quintanar del Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "176",
+	"id": 2372,
+	"name": "Rada de Haro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "177",
+	"id": 2373,
+	"name": "Reíllo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "181",
+	"id": 2374,
+	"name": "Rozalén del Monte"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "185",
+	"id": 2375,
+	"name": "Saceda-Trasierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "186",
+	"id": 2376,
+	"name": "Saelices"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "187",
+	"id": 2377,
+	"name": "Salinas del Manzano"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "188",
+	"id": 2378,
+	"name": "Salmeroncillos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "189",
+	"id": 2379,
+	"name": "Salvacañete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "190",
+	"id": 2380,
+	"name": "San Clemente"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "191",
+	"id": 2381,
+	"name": "San Lorenzo de la Parrilla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "192",
+	"id": 2382,
+	"name": "San Martín de Boniches"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "193",
+	"id": 2383,
+	"name": "San Pedro Palmiches"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "194",
+	"id": 2384,
+	"name": "Santa Cruz de Moya"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "196",
+	"id": 2385,
+	"name": "Santa María de los Llanos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "195",
+	"id": 2386,
+	"name": "Santa María del Campo Rus"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "197",
+	"id": 2387,
+	"name": "Santa María del Val"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "198",
+	"id": 2388,
+	"name": "Sisante"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "199",
+	"id": 2389,
+	"name": "Solera de Gabaldón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "909",
+	"id": 2390,
+	"name": "Sotorribas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "202",
+	"id": 2391,
+	"name": "Talayuelas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "203",
+	"id": 2392,
+	"name": "Tarancón"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "204",
+	"id": 2393,
+	"name": "Tébar"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "205",
+	"id": 2394,
+	"name": "Tejadillos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "206",
+	"id": 2395,
+	"name": "Tinajas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "209",
+	"id": 2396,
+	"name": "Torralba"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "211",
+	"id": 2397,
+	"name": "Torrejoncillo del Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "212",
+	"id": 2398,
+	"name": "Torrubia del Campo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "213",
+	"id": 2399,
+	"name": "Torrubia del Castillo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "215",
+	"id": 2400,
+	"name": "Tragacete"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "216",
+	"id": 2401,
+	"name": "Tresjuncos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "217",
+	"id": 2402,
+	"name": "Tribaldos"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "218",
+	"id": 2403,
+	"name": "Uclés"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "219",
+	"id": 2404,
+	"name": "Uña"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "906",
+	"id": 2405,
+	"name": "Valdecolmenas, Los"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "224",
+	"id": 2406,
+	"name": "Valdemeca"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "225",
+	"id": 2407,
+	"name": "Valdemorillo de la Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "227",
+	"id": 2408,
+	"name": "Valdemoro-Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "228",
+	"id": 2409,
+	"name": "Valdeolivas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "902",
+	"id": 2410,
+	"name": "Valdetórtola"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "903",
+	"id": 2411,
+	"name": "Valeras, Las"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "231",
+	"id": 2412,
+	"name": "Valhermoso de la Fuente"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "173",
+	"id": 2413,
+	"name": "Valle de Altomira, El"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "234",
+	"id": 2414,
+	"name": "Valsalobre"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "236",
+	"id": 2415,
+	"name": "Valverde de Júcar"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "237",
+	"id": 2416,
+	"name": "Valverdejo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "238",
+	"id": 2417,
+	"name": "Vara de Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "239",
+	"id": 2418,
+	"name": "Vega del Codorno"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "240",
+	"id": 2419,
+	"name": "Vellisca"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "242",
+	"id": 2420,
+	"name": "Villaconejos de Trabaque"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "243",
+	"id": 2421,
+	"name": "Villaescusa de Haro"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "244",
+	"id": 2422,
+	"name": "Villagarcía del Llano"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "245",
+	"id": 2423,
+	"name": "Villalba de la Sierra"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "246",
+	"id": 2424,
+	"name": "Villalba del Rey"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "247",
+	"id": 2425,
+	"name": "Villalgordo del Marquesado"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "248",
+	"id": 2426,
+	"name": "Villalpardo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "249",
+	"id": 2427,
+	"name": "Villamayor de Santiago"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "250",
+	"id": 2428,
+	"name": "Villanueva de Guadamejud"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "251",
+	"id": 2429,
+	"name": "Villanueva de la Jara"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "253",
+	"id": 2430,
+	"name": "Villar de Cañas"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "254",
+	"id": 2431,
+	"name": "Villar de Domingo García"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "255",
+	"id": 2432,
+	"name": "Villar de la Encina"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "263",
+	"id": 2433,
+	"name": "Villar de Olalla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "258",
+	"id": 2434,
+	"name": "Villar del Humo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "259",
+	"id": 2435,
+	"name": "Villar del Infantado"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "910",
+	"id": 2436,
+	"name": "Villar y Velasco"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "264",
+	"id": 2437,
+	"name": "Villarejo de Fuentes"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "265",
+	"id": 2438,
+	"name": "Villarejo de la Peñuela"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "266",
+	"id": 2439,
+	"name": "Villarejo-Periesteban"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "269",
+	"id": 2440,
+	"name": "Villares del Saz"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "270",
+	"id": 2441,
+	"name": "Villarrubio"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "271",
+	"id": 2442,
+	"name": "Villarta"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "272",
+	"id": 2443,
+	"name": "Villas de la Ventosa"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "273",
+	"id": 2444,
+	"name": "Villaverde y Pasaconsol"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "274",
+	"id": 2445,
+	"name": "Víllora"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "275",
+	"id": 2446,
+	"name": "Vindel"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "276",
+	"id": 2447,
+	"name": "Yémeda"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "277",
+	"id": 2448,
+	"name": "Zafra de Záncara"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "278",
+	"id": 2449,
+	"name": "Zafrilla"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "279",
+	"id": 2450,
+	"name": "Zarza de Tajo"
+}, {
+	"cod_prov": "16",
+	"cod_mun": "280",
+	"id": 2451,
+	"name": "Zarzuela"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "001",
+	"id": 2452,
+	"name": "Agullana"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "002",
+	"id": 2453,
+	"name": "Aiguaviva"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "003",
+	"id": 2454,
+	"name": "Albanyà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "004",
+	"id": 2455,
+	"name": "Albons"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "006",
+	"id": 2456,
+	"name": "Alp"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "007",
+	"id": 2457,
+	"name": "Amer"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "008",
+	"id": 2458,
+	"name": "Anglès"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "009",
+	"id": 2459,
+	"name": "Arbúcies"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "010",
+	"id": 2460,
+	"name": "Argelaguer"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "011",
+	"id": 2461,
+	"name": "Armentera, L'"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "012",
+	"id": 2462,
+	"name": "Avinyonet de Puigventós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "015",
+	"id": 2463,
+	"name": "Banyoles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "016",
+	"id": 2464,
+	"name": "Bàscara"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "013",
+	"id": 2465,
+	"name": "Begur"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "018",
+	"id": 2466,
+	"name": "Bellcaire d'Empordà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "019",
+	"id": 2467,
+	"name": "Besalú"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "020",
+	"id": 2468,
+	"name": "Bescanó"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "021",
+	"id": 2469,
+	"name": "Beuda"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "022",
+	"id": 2470,
+	"name": "Bisbal d'Empordà, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "234",
+	"id": 2471,
+	"name": "Biure"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "023",
+	"id": 2472,
+	"name": "Blanes"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "029",
+	"id": 2473,
+	"name": "Boadella i les Escaules"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "024",
+	"id": 2474,
+	"name": "Bolvir"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "025",
+	"id": 2475,
+	"name": "Bordils"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "026",
+	"id": 2476,
+	"name": "Borrassà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "027",
+	"id": 2477,
+	"name": "Breda"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "028",
+	"id": 2478,
+	"name": "Brunyola"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "031",
+	"id": 2479,
+	"name": "Cabanelles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "030",
+	"id": 2480,
+	"name": "Cabanes"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "032",
+	"id": 2481,
+	"name": "Cadaqués"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "033",
+	"id": 2482,
+	"name": "Caldes de Malavella"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "034",
+	"id": 2483,
+	"name": "Calonge"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "035",
+	"id": 2484,
+	"name": "Camós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "036",
+	"id": 2485,
+	"name": "Campdevànol"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "037",
+	"id": 2486,
+	"name": "Campelles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "038",
+	"id": 2487,
+	"name": "Campllong"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "039",
+	"id": 2488,
+	"name": "Camprodon"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "040",
+	"id": 2489,
+	"name": "Canet d'Adri"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "041",
+	"id": 2490,
+	"name": "Cantallops"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "042",
+	"id": 2491,
+	"name": "Capmany"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "044",
+	"id": 2492,
+	"name": "Cassà de la Selva"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "046",
+	"id": 2493,
+	"name": "Castellfollit de la Roca"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "047",
+	"id": 2494,
+	"name": "Castelló d'Empúries"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "048",
+	"id": 2495,
+	"name": "Castell-Platja d'Aro"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "189",
+	"id": 2496,
+	"name": "Cellera de Ter, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "049",
+	"id": 2497,
+	"name": "Celrà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "050",
+	"id": 2498,
+	"name": "Cervià de Ter"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "051",
+	"id": 2499,
+	"name": "Cistella"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "054",
+	"id": 2500,
+	"name": "Colera"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "055",
+	"id": 2501,
+	"name": "Colomers"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "057",
+	"id": 2502,
+	"name": "Corçà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "056",
+	"id": 2503,
+	"name": "Cornellà del Terri"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "058",
+	"id": 2504,
+	"name": "Crespià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "901",
+	"id": 2505,
+	"name": "Cruïlles, Monells i Sant Sadurní de l'Heura"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "060",
+	"id": 2506,
+	"name": "Darnius"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "061",
+	"id": 2507,
+	"name": "Das"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "062",
+	"id": 2508,
+	"name": "Escala, L'"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "063",
+	"id": 2509,
+	"name": "Espinelves"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "064",
+	"id": 2510,
+	"name": "Espolla"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "065",
+	"id": 2511,
+	"name": "Esponellà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "005",
+	"id": 2512,
+	"name": "Far d'Empordà, El"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "066",
+	"id": 2513,
+	"name": "Figueres"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "067",
+	"id": 2514,
+	"name": "Flaçà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "068",
+	"id": 2515,
+	"name": "Foixà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "069",
+	"id": 2516,
+	"name": "Fontanals de Cerdanya"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "070",
+	"id": 2517,
+	"name": "Fontanilles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "071",
+	"id": 2518,
+	"name": "Fontcoberta"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "902",
+	"id": 2519,
+	"name": "Forallac"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "073",
+	"id": 2520,
+	"name": "Fornells de la Selva"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "074",
+	"id": 2521,
+	"name": "Fortià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "075",
+	"id": 2522,
+	"name": "Garrigàs"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "076",
+	"id": 2523,
+	"name": "Garrigoles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "077",
+	"id": 2524,
+	"name": "Garriguella"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "078",
+	"id": 2525,
+	"name": "Ger"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "079",
+	"id": 2526,
+	"name": "Girona"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "080",
+	"id": 2527,
+	"name": "Gombrèn"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "081",
+	"id": 2528,
+	"name": "Gualta"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "082",
+	"id": 2529,
+	"name": "Guils de Cerdanya"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "083",
+	"id": 2530,
+	"name": "Hostalric"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "084",
+	"id": 2531,
+	"name": "Isòvol"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "085",
+	"id": 2532,
+	"name": "Jafre"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "086",
+	"id": 2533,
+	"name": "Jonquera, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "087",
+	"id": 2534,
+	"name": "Juià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "088",
+	"id": 2535,
+	"name": "Lladó"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "089",
+	"id": 2536,
+	"name": "Llagostera"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "090",
+	"id": 2537,
+	"name": "Llambilles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "091",
+	"id": 2538,
+	"name": "Llanars"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "092",
+	"id": 2539,
+	"name": "Llançà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "093",
+	"id": 2540,
+	"name": "Llers"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "094",
+	"id": 2541,
+	"name": "Llívia"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "095",
+	"id": 2542,
+	"name": "Lloret de Mar"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "096",
+	"id": 2543,
+	"name": "Llosses, Les"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "102",
+	"id": 2544,
+	"name": "Maçanet de Cabrenys"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "103",
+	"id": 2545,
+	"name": "Maçanet de la Selva"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "097",
+	"id": 2546,
+	"name": "Madremanya"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "098",
+	"id": 2547,
+	"name": "Maià de Montcal"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "100",
+	"id": 2548,
+	"name": "Masarac"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "101",
+	"id": 2549,
+	"name": "Massanes"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "099",
+	"id": 2550,
+	"name": "Meranges"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "105",
+	"id": 2551,
+	"name": "Mieres"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "106",
+	"id": 2552,
+	"name": "Mollet de Peralada"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "107",
+	"id": 2553,
+	"name": "Molló"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "109",
+	"id": 2554,
+	"name": "Montagut i Oix"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "110",
+	"id": 2555,
+	"name": "Mont-ras"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "111",
+	"id": 2556,
+	"name": "Navata"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "112",
+	"id": 2557,
+	"name": "Ogassa"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "114",
+	"id": 2558,
+	"name": "Olot"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "115",
+	"id": 2559,
+	"name": "Ordis"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "116",
+	"id": 2560,
+	"name": "Osor"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "117",
+	"id": 2561,
+	"name": "Palafrugell"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "118",
+	"id": 2562,
+	"name": "Palamós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "119",
+	"id": 2563,
+	"name": "Palau de Santa Eulàlia"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "121",
+	"id": 2564,
+	"name": "Palau-sator"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "120",
+	"id": 2565,
+	"name": "Palau-saverdera"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "123",
+	"id": 2566,
+	"name": "Palol de Revardit"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "124",
+	"id": 2567,
+	"name": "Pals"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "125",
+	"id": 2568,
+	"name": "Pardines"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "126",
+	"id": 2569,
+	"name": "Parlavà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "128",
+	"id": 2570,
+	"name": "Pau"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "129",
+	"id": 2571,
+	"name": "Pedret i Marzà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "130",
+	"id": 2572,
+	"name": "Pera, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "132",
+	"id": 2573,
+	"name": "Peralada"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "133",
+	"id": 2574,
+	"name": "Planes d'Hostoles, Les"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "134",
+	"id": 2575,
+	"name": "Planoles"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "135",
+	"id": 2576,
+	"name": "Pont de Molins"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "136",
+	"id": 2577,
+	"name": "Pontós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "137",
+	"id": 2578,
+	"name": "Porqueres"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "140",
+	"id": 2579,
+	"name": "Port de la Selva, El"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "138",
+	"id": 2580,
+	"name": "Portbou"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "139",
+	"id": 2581,
+	"name": "Preses, Les"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "141",
+	"id": 2582,
+	"name": "Puigcerdà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "142",
+	"id": 2583,
+	"name": "Quart"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "043",
+	"id": 2584,
+	"name": "Queralbs"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "143",
+	"id": 2585,
+	"name": "Rabós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "144",
+	"id": 2586,
+	"name": "Regencós"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "145",
+	"id": 2587,
+	"name": "Ribes de Freser"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "146",
+	"id": 2588,
+	"name": "Riells i Viabrea"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "147",
+	"id": 2589,
+	"name": "Ripoll"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "148",
+	"id": 2590,
+	"name": "Riudarenes"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "149",
+	"id": 2591,
+	"name": "Riudaura"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "150",
+	"id": 2592,
+	"name": "Riudellots de la Selva"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "151",
+	"id": 2593,
+	"name": "Riumors"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "152",
+	"id": 2594,
+	"name": "Roses"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "153",
+	"id": 2595,
+	"name": "Rupià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "154",
+	"id": 2596,
+	"name": "Sales de Llierca"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "155",
+	"id": 2597,
+	"name": "Salt"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "157",
+	"id": 2598,
+	"name": "Sant Andreu Salou"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "183",
+	"id": 2599,
+	"name": "Sant Aniol de Finestres"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "158",
+	"id": 2600,
+	"name": "Sant Climent Sescebes"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "159",
+	"id": 2601,
+	"name": "Sant Feliu de Buixalleu"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "160",
+	"id": 2602,
+	"name": "Sant Feliu de Guíxols"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "161",
+	"id": 2603,
+	"name": "Sant Feliu de Pallerols"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "162",
+	"id": 2604,
+	"name": "Sant Ferriol"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "163",
+	"id": 2605,
+	"name": "Sant Gregori"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "164",
+	"id": 2606,
+	"name": "Sant Hilari Sacalm"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "165",
+	"id": 2607,
+	"name": "Sant Jaume de Llierca"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "167",
+	"id": 2608,
+	"name": "Sant Joan de les Abadesses"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "168",
+	"id": 2609,
+	"name": "Sant Joan de Mollet"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "185",
+	"id": 2610,
+	"name": "Sant Joan les Fonts"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "166",
+	"id": 2611,
+	"name": "Sant Jordi Desvalls"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "169",
+	"id": 2612,
+	"name": "Sant Julià de Ramis"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "903",
+	"id": 2613,
+	"name": "Sant Julià del Llor i Bonmatí"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "171",
+	"id": 2614,
+	"name": "Sant Llorenç de la Muga"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "172",
+	"id": 2615,
+	"name": "Sant Martí de Llémena"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "173",
+	"id": 2616,
+	"name": "Sant Martí Vell"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "174",
+	"id": 2617,
+	"name": "Sant Miquel de Campmajor"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "175",
+	"id": 2618,
+	"name": "Sant Miquel de Fluvià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "176",
+	"id": 2619,
+	"name": "Sant Mori"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "177",
+	"id": 2620,
+	"name": "Sant Pau de Segúries"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "178",
+	"id": 2621,
+	"name": "Sant Pere Pescador"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "180",
+	"id": 2622,
+	"name": "Santa Coloma de Farners"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "181",
+	"id": 2623,
+	"name": "Santa Cristina d'Aro"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "182",
+	"id": 2624,
+	"name": "Santa Llogaia d'Àlguema"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "184",
+	"id": 2625,
+	"name": "Santa Pau"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "186",
+	"id": 2626,
+	"name": "Sarrià de Ter"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "187",
+	"id": 2627,
+	"name": "Saus, Camallera i Llampaies"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "188",
+	"id": 2628,
+	"name": "Selva de Mar, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "190",
+	"id": 2629,
+	"name": "Serinyà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "191",
+	"id": 2630,
+	"name": "Serra de Daró"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "192",
+	"id": 2631,
+	"name": "Setcases"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "193",
+	"id": 2632,
+	"name": "Sils"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "052",
+	"id": 2633,
+	"name": "Siurana"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "194",
+	"id": 2634,
+	"name": "Susqueda"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "195",
+	"id": 2635,
+	"name": "Tallada d'Empordà, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "196",
+	"id": 2636,
+	"name": "Terrades"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "197",
+	"id": 2637,
+	"name": "Torrent"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "198",
+	"id": 2638,
+	"name": "Torroella de Fluvià"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "199",
+	"id": 2639,
+	"name": "Torroella de Montgrí"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "200",
+	"id": 2640,
+	"name": "Tortellà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "201",
+	"id": 2641,
+	"name": "Toses"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "202",
+	"id": 2642,
+	"name": "Tossa de Mar"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "204",
+	"id": 2643,
+	"name": "Ullà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "205",
+	"id": 2644,
+	"name": "Ullastret"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "203",
+	"id": 2645,
+	"name": "Ultramort"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "206",
+	"id": 2646,
+	"name": "Urús"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "014",
+	"id": 2647,
+	"name": "Vajol, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "208",
+	"id": 2648,
+	"name": "Vall de Bianya, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "207",
+	"id": 2649,
+	"name": "Vall d'en Bas, La"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "170",
+	"id": 2650,
+	"name": "Vallfogona de Ripollès"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "209",
+	"id": 2651,
+	"name": "Vall-llobrega"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "210",
+	"id": 2652,
+	"name": "Ventalló"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "211",
+	"id": 2653,
+	"name": "Verges"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "212",
+	"id": 2654,
+	"name": "Vidrà"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "213",
+	"id": 2655,
+	"name": "Vidreres"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "214",
+	"id": 2656,
+	"name": "Vilabertran"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "215",
+	"id": 2657,
+	"name": "Vilablareix"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "217",
+	"id": 2658,
+	"name": "Viladamat"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "216",
+	"id": 2659,
+	"name": "Viladasens"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "218",
+	"id": 2660,
+	"name": "Vilademuls"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "220",
+	"id": 2661,
+	"name": "Viladrau"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "221",
+	"id": 2662,
+	"name": "Vilafant"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "223",
+	"id": 2663,
+	"name": "Vilajuïga"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "224",
+	"id": 2664,
+	"name": "Vilallonga de Ter"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "225",
+	"id": 2665,
+	"name": "Vilamacolum"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "226",
+	"id": 2666,
+	"name": "Vilamalla"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "227",
+	"id": 2667,
+	"name": "Vilamaniscle"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "228",
+	"id": 2668,
+	"name": "Vilanant"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "230",
+	"id": 2669,
+	"name": "Vila-sacra"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "222",
+	"id": 2670,
+	"name": "Vilaür"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "233",
+	"id": 2671,
+	"name": "Vilobí d'Onyar"
+}, {
+	"cod_prov": "17",
+	"cod_mun": "232",
+	"id": 2672,
+	"name": "Vilopriu"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "001",
+	"id": 2673,
+	"name": "Agrón"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "002",
+	"id": 2674,
+	"name": "Alamedilla"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "003",
+	"id": 2675,
+	"name": "Albolote"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "004",
+	"id": 2676,
+	"name": "Albondón"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "005",
+	"id": 2677,
+	"name": "Albuñán"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "006",
+	"id": 2678,
+	"name": "Albuñol"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "007",
+	"id": 2679,
+	"name": "Albuñuelas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "010",
+	"id": 2680,
+	"name": "Aldeire"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "011",
+	"id": 2681,
+	"name": "Alfacar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "012",
+	"id": 2682,
+	"name": "Algarinejo"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "013",
+	"id": 2683,
+	"name": "Alhama de Granada"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "014",
+	"id": 2684,
+	"name": "Alhendín"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "015",
+	"id": 2685,
+	"name": "Alicún de Ortega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "016",
+	"id": 2686,
+	"name": "Almegíjar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "017",
+	"id": 2687,
+	"name": "Almuñécar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "904",
+	"id": 2688,
+	"name": "Alpujarra de la Sierra"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "018",
+	"id": 2689,
+	"name": "Alquife"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "020",
+	"id": 2690,
+	"name": "Arenas del Rey"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "021",
+	"id": 2691,
+	"name": "Armilla"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "022",
+	"id": 2692,
+	"name": "Atarfe"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "023",
+	"id": 2693,
+	"name": "Baza"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "024",
+	"id": 2694,
+	"name": "Beas de Granada"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "025",
+	"id": 2695,
+	"name": "Beas de Guadix"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "027",
+	"id": 2696,
+	"name": "Benalúa"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "028",
+	"id": 2697,
+	"name": "Benalúa de las Villas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "029",
+	"id": 2698,
+	"name": "Benamaurel"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "030",
+	"id": 2699,
+	"name": "Bérchules"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "032",
+	"id": 2700,
+	"name": "Bubión"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "033",
+	"id": 2701,
+	"name": "Busquístar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "034",
+	"id": 2702,
+	"name": "Cacín"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "035",
+	"id": 2703,
+	"name": "Cádiar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "036",
+	"id": 2704,
+	"name": "Cájar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "114",
+	"id": 2705,
+	"name": "Calahorra, La"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "037",
+	"id": 2706,
+	"name": "Calicasas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "038",
+	"id": 2707,
+	"name": "Campotéjar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "039",
+	"id": 2708,
+	"name": "Caniles"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "040",
+	"id": 2709,
+	"name": "Cáñar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "042",
+	"id": 2710,
+	"name": "Capileira"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "043",
+	"id": 2711,
+	"name": "Carataunas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "044",
+	"id": 2712,
+	"name": "Cástaras"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "045",
+	"id": 2713,
+	"name": "Castilléjar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "046",
+	"id": 2714,
+	"name": "Castril"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "047",
+	"id": 2715,
+	"name": "Cenes de la Vega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "059",
+	"id": 2716,
+	"name": "Chauchina"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "061",
+	"id": 2717,
+	"name": "Chimeneas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "062",
+	"id": 2718,
+	"name": "Churriana de la Vega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "048",
+	"id": 2719,
+	"name": "Cijuela"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "049",
+	"id": 2720,
+	"name": "Cogollos de Guadix"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "050",
+	"id": 2721,
+	"name": "Cogollos de la Vega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "051",
+	"id": 2722,
+	"name": "Colomera"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "053",
+	"id": 2723,
+	"name": "Cortes de Baza"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "054",
+	"id": 2724,
+	"name": "Cortes y Graena"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "912",
+	"id": 2725,
+	"name": "Cuevas del Campo"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "056",
+	"id": 2726,
+	"name": "Cúllar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "057",
+	"id": 2727,
+	"name": "Cúllar Vega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "063",
+	"id": 2728,
+	"name": "Darro"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "064",
+	"id": 2729,
+	"name": "Dehesas de Guadix"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "066",
+	"id": 2730,
+	"name": "Deifontes"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "067",
+	"id": 2731,
+	"name": "Diezma"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "068",
+	"id": 2732,
+	"name": "Dílar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "069",
+	"id": 2733,
+	"name": "Dólar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "070",
+	"id": 2734,
+	"name": "Dúdar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "071",
+	"id": 2735,
+	"name": "Dúrcal"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "072",
+	"id": 2736,
+	"name": "Escúzar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "074",
+	"id": 2737,
+	"name": "Ferreira"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "076",
+	"id": 2738,
+	"name": "Fonelas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "078",
+	"id": 2739,
+	"name": "Freila"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "079",
+	"id": 2740,
+	"name": "Fuente Vaqueros"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "905",
+	"id": 2741,
+	"name": "Gabias, Las"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "082",
+	"id": 2742,
+	"name": "Galera"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "083",
+	"id": 2743,
+	"name": "Gobernador"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "084",
+	"id": 2744,
+	"name": "Gójar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "085",
+	"id": 2745,
+	"name": "Gor"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "086",
+	"id": 2746,
+	"name": "Gorafe"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "087",
+	"id": 2747,
+	"name": "Granada"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "088",
+	"id": 2748,
+	"name": "Guadahortuna"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "089",
+	"id": 2749,
+	"name": "Guadix"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "906",
+	"id": 2750,
+	"name": "Guajares, Los"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "093",
+	"id": 2751,
+	"name": "Gualchos"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "094",
+	"id": 2752,
+	"name": "Güejar Sierra"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "095",
+	"id": 2753,
+	"name": "Güevéjar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "096",
+	"id": 2754,
+	"name": "Huélago"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "097",
+	"id": 2755,
+	"name": "Huéneja"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "098",
+	"id": 2756,
+	"name": "Huéscar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "099",
+	"id": 2757,
+	"name": "Huétor de Santillán"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "100",
+	"id": 2758,
+	"name": "Huétor Tájar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "101",
+	"id": 2759,
+	"name": "Huétor Vega"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "102",
+	"id": 2760,
+	"name": "Illora"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "103",
+	"id": 2761,
+	"name": "Itrabo"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "105",
+	"id": 2762,
+	"name": "Iznalloz"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "107",
+	"id": 2763,
+	"name": "Jayena"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "108",
+	"id": 2764,
+	"name": "Jerez del Marquesado"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "109",
+	"id": 2765,
+	"name": "Jete"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "111",
+	"id": 2766,
+	"name": "Jun"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "112",
+	"id": 2767,
+	"name": "Juviles"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "115",
+	"id": 2768,
+	"name": "Láchar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "116",
+	"id": 2769,
+	"name": "Lanjarón"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "117",
+	"id": 2770,
+	"name": "Lanteira"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "119",
+	"id": 2771,
+	"name": "Lecrín"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "120",
+	"id": 2772,
+	"name": "Lentegí"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "121",
+	"id": 2773,
+	"name": "Lobras"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "122",
+	"id": 2774,
+	"name": "Loja"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "123",
+	"id": 2775,
+	"name": "Lugros"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "124",
+	"id": 2776,
+	"name": "Lújar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "126",
+	"id": 2777,
+	"name": "Malahá, La"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "127",
+	"id": 2778,
+	"name": "Maracena"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "128",
+	"id": 2779,
+	"name": "Marchal"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "132",
+	"id": 2780,
+	"name": "Moclín"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "133",
+	"id": 2781,
+	"name": "Molvízar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "134",
+	"id": 2782,
+	"name": "Monachil"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "135",
+	"id": 2783,
+	"name": "Montefrío"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "136",
+	"id": 2784,
+	"name": "Montejícar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "137",
+	"id": 2785,
+	"name": "Montillana"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "138",
+	"id": 2786,
+	"name": "Moraleda de Zafayona"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "909",
+	"id": 2787,
+	"name": "Morelábor"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "140",
+	"id": 2788,
+	"name": "Motril"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "141",
+	"id": 2789,
+	"name": "Murtas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "903",
+	"id": 2790,
+	"name": "Nevada"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "143",
+	"id": 2791,
+	"name": "Nigüelas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "144",
+	"id": 2792,
+	"name": "Nívar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "145",
+	"id": 2793,
+	"name": "Ogíjares"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "146",
+	"id": 2794,
+	"name": "Orce"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "147",
+	"id": 2795,
+	"name": "Órgiva"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "148",
+	"id": 2796,
+	"name": "Otívar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "150",
+	"id": 2797,
+	"name": "Padul"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "151",
+	"id": 2798,
+	"name": "Pampaneira"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "152",
+	"id": 2799,
+	"name": "Pedro Martínez"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "153",
+	"id": 2800,
+	"name": "Peligros"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "154",
+	"id": 2801,
+	"name": "Peza, La"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "910",
+	"id": 2802,
+	"name": "Pinar, El"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "157",
+	"id": 2803,
+	"name": "Pinos Genil"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "158",
+	"id": 2804,
+	"name": "Pinos Puente"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "159",
+	"id": 2805,
+	"name": "Píñar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "161",
+	"id": 2806,
+	"name": "Polícar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "162",
+	"id": 2807,
+	"name": "Polopos"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "163",
+	"id": 2808,
+	"name": "Pórtugos"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "164",
+	"id": 2809,
+	"name": "Puebla de Don Fadrique"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "165",
+	"id": 2810,
+	"name": "Pulianas"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "167",
+	"id": 2811,
+	"name": "Purullena"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "168",
+	"id": 2812,
+	"name": "Quéntar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "170",
+	"id": 2813,
+	"name": "Rubite"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "171",
+	"id": 2814,
+	"name": "Salar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "173",
+	"id": 2815,
+	"name": "Salobreña"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "174",
+	"id": 2816,
+	"name": "Santa Cruz del Comercio"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "175",
+	"id": 2817,
+	"name": "Santa Fe"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "176",
+	"id": 2818,
+	"name": "Soportújar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "177",
+	"id": 2819,
+	"name": "Sorvilán"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "901",
+	"id": 2820,
+	"name": "Taha, La"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "178",
+	"id": 2821,
+	"name": "Torre-Cardela"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "179",
+	"id": 2822,
+	"name": "Torvizcón"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "180",
+	"id": 2823,
+	"name": "Trevélez"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "181",
+	"id": 2824,
+	"name": "Turón"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "182",
+	"id": 2825,
+	"name": "Ugíjar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "907",
+	"id": 2826,
+	"name": "Valle del Zalabí"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "902",
+	"id": 2827,
+	"name": "Valle, El"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "183",
+	"id": 2828,
+	"name": "Válor"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "911",
+	"id": 2829,
+	"name": "Vegas del Genil"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "184",
+	"id": 2830,
+	"name": "Vélez de Benaudalla"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "185",
+	"id": 2831,
+	"name": "Ventas de Huelma"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "149",
+	"id": 2832,
+	"name": "Villa de Otura"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "908",
+	"id": 2833,
+	"name": "Villamena"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "187",
+	"id": 2834,
+	"name": "Villanueva de las Torres"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "188",
+	"id": 2835,
+	"name": "Villanueva Mesía"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "189",
+	"id": 2836,
+	"name": "Víznar"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "192",
+	"id": 2837,
+	"name": "Zafarraya"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "913",
+	"id": 2838,
+	"name": "Zagra"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "193",
+	"id": 2839,
+	"name": "Zubia, La"
+}, {
+	"cod_prov": "18",
+	"cod_mun": "194",
+	"id": 2840,
+	"name": "Zújar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "001",
+	"id": 2841,
+	"name": "Abánades"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "002",
+	"id": 2842,
+	"name": "Ablanque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "003",
+	"id": 2843,
+	"name": "Adobes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "004",
+	"id": 2844,
+	"name": "Alaminos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "005",
+	"id": 2845,
+	"name": "Alarilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "006",
+	"id": 2846,
+	"name": "Albalate de Zorita"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "007",
+	"id": 2847,
+	"name": "Albares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "008",
+	"id": 2848,
+	"name": "Albendiego"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "009",
+	"id": 2849,
+	"name": "Alcocer"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "010",
+	"id": 2850,
+	"name": "Alcolea de las Peñas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "011",
+	"id": 2851,
+	"name": "Alcolea del Pinar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "013",
+	"id": 2852,
+	"name": "Alcoroches"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "015",
+	"id": 2853,
+	"name": "Aldeanueva de Guadalajara"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "016",
+	"id": 2854,
+	"name": "Algar de Mesa"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "017",
+	"id": 2855,
+	"name": "Algora"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "018",
+	"id": 2856,
+	"name": "Alhóndiga"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "019",
+	"id": 2857,
+	"name": "Alique"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "020",
+	"id": 2858,
+	"name": "Almadrones"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "021",
+	"id": 2859,
+	"name": "Almoguera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "022",
+	"id": 2860,
+	"name": "Almonacid de Zorita"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "023",
+	"id": 2861,
+	"name": "Alocén"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "024",
+	"id": 2862,
+	"name": "Alovera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "027",
+	"id": 2863,
+	"name": "Alustante"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "031",
+	"id": 2864,
+	"name": "Angón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "032",
+	"id": 2865,
+	"name": "Anguita"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "033",
+	"id": 2866,
+	"name": "Anquela del Ducado"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "034",
+	"id": 2867,
+	"name": "Anquela del Pedregal"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "036",
+	"id": 2868,
+	"name": "Aranzueque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "037",
+	"id": 2869,
+	"name": "Arbancón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "038",
+	"id": 2870,
+	"name": "Arbeteta"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "039",
+	"id": 2871,
+	"name": "Argecilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "040",
+	"id": 2872,
+	"name": "Armallones"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "041",
+	"id": 2873,
+	"name": "Armuña de Tajuña"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "042",
+	"id": 2874,
+	"name": "Arroyo de las Fraguas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "043",
+	"id": 2875,
+	"name": "Atanzón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "044",
+	"id": 2876,
+	"name": "Atienza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "045",
+	"id": 2877,
+	"name": "Auñón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "046",
+	"id": 2878,
+	"name": "Azuqueca de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "047",
+	"id": 2879,
+	"name": "Baides"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "048",
+	"id": 2880,
+	"name": "Baños de Tajo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "049",
+	"id": 2881,
+	"name": "Bañuelos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "050",
+	"id": 2882,
+	"name": "Barriopedro"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "051",
+	"id": 2883,
+	"name": "Berninches"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "052",
+	"id": 2884,
+	"name": "Bodera, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "053",
+	"id": 2885,
+	"name": "Brihuega"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "054",
+	"id": 2886,
+	"name": "Budia"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "055",
+	"id": 2887,
+	"name": "Bujalaro"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "057",
+	"id": 2888,
+	"name": "Bustares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "058",
+	"id": 2889,
+	"name": "Cabanillas del Campo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "059",
+	"id": 2890,
+	"name": "Campillo de Dueñas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "060",
+	"id": 2891,
+	"name": "Campillo de Ranas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "061",
+	"id": 2892,
+	"name": "Campisábalos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "064",
+	"id": 2893,
+	"name": "Canredondo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "065",
+	"id": 2894,
+	"name": "Cantalojas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "066",
+	"id": 2895,
+	"name": "Cañizar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "067",
+	"id": 2896,
+	"name": "Cardoso de la Sierra, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "070",
+	"id": 2897,
+	"name": "Casa de Uceda"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "071",
+	"id": 2898,
+	"name": "Casar, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "073",
+	"id": 2899,
+	"name": "Casas de San Galindo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "074",
+	"id": 2900,
+	"name": "Caspueñas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "075",
+	"id": 2901,
+	"name": "Castejón de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "076",
+	"id": 2902,
+	"name": "Castellar de la Muela"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "078",
+	"id": 2903,
+	"name": "Castilforte"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "079",
+	"id": 2904,
+	"name": "Castilnuevo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "080",
+	"id": 2905,
+	"name": "Cendejas de Enmedio"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "081",
+	"id": 2906,
+	"name": "Cendejas de la Torre"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "082",
+	"id": 2907,
+	"name": "Centenera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "103",
+	"id": 2908,
+	"name": "Checa"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "104",
+	"id": 2909,
+	"name": "Chequilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "106",
+	"id": 2910,
+	"name": "Chillarón del Rey"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "105",
+	"id": 2911,
+	"name": "Chiloeches"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "086",
+	"id": 2912,
+	"name": "Cifuentes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "087",
+	"id": 2913,
+	"name": "Cincovillas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "088",
+	"id": 2914,
+	"name": "Ciruelas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "089",
+	"id": 2915,
+	"name": "Ciruelos del Pinar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "090",
+	"id": 2916,
+	"name": "Cobeta"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "091",
+	"id": 2917,
+	"name": "Cogollor"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "092",
+	"id": 2918,
+	"name": "Cogolludo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "095",
+	"id": 2919,
+	"name": "Condemios de Abajo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "096",
+	"id": 2920,
+	"name": "Condemios de Arriba"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "097",
+	"id": 2921,
+	"name": "Congostrina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "098",
+	"id": 2922,
+	"name": "Copernal"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "099",
+	"id": 2923,
+	"name": "Corduente"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "102",
+	"id": 2924,
+	"name": "Cubillo de Uceda, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "107",
+	"id": 2925,
+	"name": "Driebes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "108",
+	"id": 2926,
+	"name": "Durón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "109",
+	"id": 2927,
+	"name": "Embid"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "110",
+	"id": 2928,
+	"name": "Escamilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "111",
+	"id": 2929,
+	"name": "Escariche"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "112",
+	"id": 2930,
+	"name": "Escopete"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "113",
+	"id": 2931,
+	"name": "Espinosa de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "114",
+	"id": 2932,
+	"name": "Esplegares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "115",
+	"id": 2933,
+	"name": "Establés"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "116",
+	"id": 2934,
+	"name": "Estriégana"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "117",
+	"id": 2935,
+	"name": "Fontanar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "118",
+	"id": 2936,
+	"name": "Fuembellida"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "119",
+	"id": 2937,
+	"name": "Fuencemillán"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "120",
+	"id": 2938,
+	"name": "Fuentelahiguera de Albatages"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "121",
+	"id": 2939,
+	"name": "Fuentelencina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "122",
+	"id": 2940,
+	"name": "Fuentelsaz"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "123",
+	"id": 2941,
+	"name": "Fuentelviejo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "124",
+	"id": 2942,
+	"name": "Fuentenovilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "125",
+	"id": 2943,
+	"name": "Gajanejos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "126",
+	"id": 2944,
+	"name": "Galápagos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "127",
+	"id": 2945,
+	"name": "Galve de Sorbe"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "129",
+	"id": 2946,
+	"name": "Gascueña de Bornova"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "130",
+	"id": 2947,
+	"name": "Guadalajara"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "132",
+	"id": 2948,
+	"name": "Henche"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "133",
+	"id": 2949,
+	"name": "Heras de Ayuso"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "134",
+	"id": 2950,
+	"name": "Herrería"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "135",
+	"id": 2951,
+	"name": "Hiendelaencina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "136",
+	"id": 2952,
+	"name": "Hijes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "138",
+	"id": 2953,
+	"name": "Hita"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "139",
+	"id": 2954,
+	"name": "Hombrados"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "142",
+	"id": 2955,
+	"name": "Hontoba"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "143",
+	"id": 2956,
+	"name": "Horche"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "145",
+	"id": 2957,
+	"name": "Hortezuela de Océn"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "146",
+	"id": 2958,
+	"name": "Huerce, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "147",
+	"id": 2959,
+	"name": "Huérmeces del Cerro"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "148",
+	"id": 2960,
+	"name": "Huertahernando"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "150",
+	"id": 2961,
+	"name": "Hueva"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "151",
+	"id": 2962,
+	"name": "Humanes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "152",
+	"id": 2963,
+	"name": "Illana"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "153",
+	"id": 2964,
+	"name": "Iniéstola"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "154",
+	"id": 2965,
+	"name": "Inviernas, Las"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "155",
+	"id": 2966,
+	"name": "Irueste"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "156",
+	"id": 2967,
+	"name": "Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "157",
+	"id": 2968,
+	"name": "Jirueque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "159",
+	"id": 2969,
+	"name": "Ledanca"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "160",
+	"id": 2970,
+	"name": "Loranca de Tajuña"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "161",
+	"id": 2971,
+	"name": "Lupiana"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "162",
+	"id": 2972,
+	"name": "Luzaga"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "163",
+	"id": 2973,
+	"name": "Luzón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "165",
+	"id": 2974,
+	"name": "Majaelrayo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "166",
+	"id": 2975,
+	"name": "Málaga del Fresno"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "167",
+	"id": 2976,
+	"name": "Malaguilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "168",
+	"id": 2977,
+	"name": "Mandayona"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "169",
+	"id": 2978,
+	"name": "Mantiel"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "170",
+	"id": 2979,
+	"name": "Maranchón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "171",
+	"id": 2980,
+	"name": "Marchamalo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "172",
+	"id": 2981,
+	"name": "Masegoso de Tajuña"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "173",
+	"id": 2982,
+	"name": "Matarrubia"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "174",
+	"id": 2983,
+	"name": "Matillas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "175",
+	"id": 2984,
+	"name": "Mazarete"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "176",
+	"id": 2985,
+	"name": "Mazuecos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "177",
+	"id": 2986,
+	"name": "Medranda"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "178",
+	"id": 2987,
+	"name": "Megina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "179",
+	"id": 2988,
+	"name": "Membrillera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "181",
+	"id": 2989,
+	"name": "Miedes de Atienza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "182",
+	"id": 2990,
+	"name": "Mierla, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "184",
+	"id": 2991,
+	"name": "Millana"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "183",
+	"id": 2992,
+	"name": "Milmarcos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "185",
+	"id": 2993,
+	"name": "Miñosa, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "186",
+	"id": 2994,
+	"name": "Mirabueno"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "187",
+	"id": 2995,
+	"name": "Miralrío"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "188",
+	"id": 2996,
+	"name": "Mochales"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "189",
+	"id": 2997,
+	"name": "Mohernando"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "190",
+	"id": 2998,
+	"name": "Molina de Aragón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "191",
+	"id": 2999,
+	"name": "Monasterio"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "192",
+	"id": 3000,
+	"name": "Mondéjar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "193",
+	"id": 3001,
+	"name": "Montarrón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "194",
+	"id": 3002,
+	"name": "Moratilla de los Meleros"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "195",
+	"id": 3003,
+	"name": "Morenilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "196",
+	"id": 3004,
+	"name": "Muduex"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "197",
+	"id": 3005,
+	"name": "Navas de Jadraque, Las"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "198",
+	"id": 3006,
+	"name": "Negredo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "199",
+	"id": 3007,
+	"name": "Ocentejo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "200",
+	"id": 3008,
+	"name": "Olivar, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "201",
+	"id": 3009,
+	"name": "Olmeda de Cobeta"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "202",
+	"id": 3010,
+	"name": "Olmeda de Jadraque, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "203",
+	"id": 3011,
+	"name": "Ordial, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "204",
+	"id": 3012,
+	"name": "Orea"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "208",
+	"id": 3013,
+	"name": "Pálmaces de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "209",
+	"id": 3014,
+	"name": "Pardos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "210",
+	"id": 3015,
+	"name": "Paredes de Sigüenza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "211",
+	"id": 3016,
+	"name": "Pareja"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "212",
+	"id": 3017,
+	"name": "Pastrana"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "213",
+	"id": 3018,
+	"name": "Pedregal, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "214",
+	"id": 3019,
+	"name": "Peñalén"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "215",
+	"id": 3020,
+	"name": "Peñalver"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "216",
+	"id": 3021,
+	"name": "Peralejos de las Truchas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "217",
+	"id": 3022,
+	"name": "Peralveche"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "218",
+	"id": 3023,
+	"name": "Pinilla de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "219",
+	"id": 3024,
+	"name": "Pinilla de Molina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "220",
+	"id": 3025,
+	"name": "Pioz"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "221",
+	"id": 3026,
+	"name": "Piqueras"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "222",
+	"id": 3027,
+	"name": "Pobo de Dueñas, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "223",
+	"id": 3028,
+	"name": "Poveda de la Sierra"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "224",
+	"id": 3029,
+	"name": "Pozo de Almoguera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "225",
+	"id": 3030,
+	"name": "Pozo de Guadalajara"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "226",
+	"id": 3031,
+	"name": "Prádena de Atienza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "227",
+	"id": 3032,
+	"name": "Prados Redondos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "228",
+	"id": 3033,
+	"name": "Puebla de Beleña"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "229",
+	"id": 3034,
+	"name": "Puebla de Valles"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "230",
+	"id": 3035,
+	"name": "Quer"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "231",
+	"id": 3036,
+	"name": "Rebollosa de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "232",
+	"id": 3037,
+	"name": "Recuenco, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "233",
+	"id": 3038,
+	"name": "Renera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "234",
+	"id": 3039,
+	"name": "Retiendas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "235",
+	"id": 3040,
+	"name": "Riba de Saelices"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "237",
+	"id": 3041,
+	"name": "Rillo de Gallo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "238",
+	"id": 3042,
+	"name": "Riofrío del Llano"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "239",
+	"id": 3043,
+	"name": "Robledillo de Mohernando"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "240",
+	"id": 3044,
+	"name": "Robledo de Corpes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "241",
+	"id": 3045,
+	"name": "Romanillos de Atienza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "242",
+	"id": 3046,
+	"name": "Romanones"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "243",
+	"id": 3047,
+	"name": "Rueda de la Sierra"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "244",
+	"id": 3048,
+	"name": "Sacecorbo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "245",
+	"id": 3049,
+	"name": "Sacedón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "246",
+	"id": 3050,
+	"name": "Saelices de la Sal"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "247",
+	"id": 3051,
+	"name": "Salmerón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "248",
+	"id": 3052,
+	"name": "San Andrés del Congosto"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "249",
+	"id": 3053,
+	"name": "San Andrés del Rey"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "250",
+	"id": 3054,
+	"name": "Santiuste"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "251",
+	"id": 3055,
+	"name": "Saúca"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "252",
+	"id": 3056,
+	"name": "Sayatón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "254",
+	"id": 3057,
+	"name": "Selas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "901",
+	"id": 3058,
+	"name": "Semillas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "255",
+	"id": 3059,
+	"name": "Setiles"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "256",
+	"id": 3060,
+	"name": "Sienes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "257",
+	"id": 3061,
+	"name": "Sigüenza"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "258",
+	"id": 3062,
+	"name": "Solanillos del Extremo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "259",
+	"id": 3063,
+	"name": "Somolinos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "260",
+	"id": 3064,
+	"name": "Sotillo, El"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "261",
+	"id": 3065,
+	"name": "Sotodosos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "262",
+	"id": 3066,
+	"name": "Tamajón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "263",
+	"id": 3067,
+	"name": "Taragudo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "264",
+	"id": 3068,
+	"name": "Taravilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "265",
+	"id": 3069,
+	"name": "Tartanedo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "266",
+	"id": 3070,
+	"name": "Tendilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "267",
+	"id": 3071,
+	"name": "Terzaga"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "268",
+	"id": 3072,
+	"name": "Tierzo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "269",
+	"id": 3073,
+	"name": "Toba, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "271",
+	"id": 3074,
+	"name": "Tordellego"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "270",
+	"id": 3075,
+	"name": "Tordelrábano"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "272",
+	"id": 3076,
+	"name": "Tordesilos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "274",
+	"id": 3077,
+	"name": "Torija"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "279",
+	"id": 3078,
+	"name": "Torre del Burgo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "277",
+	"id": 3079,
+	"name": "Torrecuadrada de Molina"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "278",
+	"id": 3080,
+	"name": "Torrecuadradilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "280",
+	"id": 3081,
+	"name": "Torrejón del Rey"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "281",
+	"id": 3082,
+	"name": "Torremocha de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "282",
+	"id": 3083,
+	"name": "Torremocha del Campo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "283",
+	"id": 3084,
+	"name": "Torremocha del Pinar"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "284",
+	"id": 3085,
+	"name": "Torremochuela"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "285",
+	"id": 3086,
+	"name": "Torrubia"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "286",
+	"id": 3087,
+	"name": "Tórtola de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "287",
+	"id": 3088,
+	"name": "Tortuera"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "288",
+	"id": 3089,
+	"name": "Tortuero"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "289",
+	"id": 3090,
+	"name": "Traíd"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "290",
+	"id": 3091,
+	"name": "Trijueque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "291",
+	"id": 3092,
+	"name": "Trillo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "293",
+	"id": 3093,
+	"name": "Uceda"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "294",
+	"id": 3094,
+	"name": "Ujados"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "296",
+	"id": 3095,
+	"name": "Utande"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "297",
+	"id": 3096,
+	"name": "Valdarachas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "298",
+	"id": 3097,
+	"name": "Valdearenas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "299",
+	"id": 3098,
+	"name": "Valdeavellano"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "300",
+	"id": 3099,
+	"name": "Valdeaveruelo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "301",
+	"id": 3100,
+	"name": "Valdeconcha"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "302",
+	"id": 3101,
+	"name": "Valdegrudas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "303",
+	"id": 3102,
+	"name": "Valdelcubo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "304",
+	"id": 3103,
+	"name": "Valdenuño Fernández"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "305",
+	"id": 3104,
+	"name": "Valdepeñas de la Sierra"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "306",
+	"id": 3105,
+	"name": "Valderrebollo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "307",
+	"id": 3106,
+	"name": "Valdesotos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "308",
+	"id": 3107,
+	"name": "Valfermoso de Tajuña"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "309",
+	"id": 3108,
+	"name": "Valhermoso"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "310",
+	"id": 3109,
+	"name": "Valtablado del Río"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "311",
+	"id": 3110,
+	"name": "Valverde de los Arroyos"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "314",
+	"id": 3111,
+	"name": "Viana de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "317",
+	"id": 3112,
+	"name": "Villanueva de Alcorón"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "318",
+	"id": 3113,
+	"name": "Villanueva de Argecilla"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "319",
+	"id": 3114,
+	"name": "Villanueva de la Torre"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "321",
+	"id": 3115,
+	"name": "Villares de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "322",
+	"id": 3116,
+	"name": "Villaseca de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "323",
+	"id": 3117,
+	"name": "Villaseca de Uceda"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "324",
+	"id": 3118,
+	"name": "Villel de Mesa"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "325",
+	"id": 3119,
+	"name": "Viñuelas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "326",
+	"id": 3120,
+	"name": "Yebes"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "327",
+	"id": 3121,
+	"name": "Yebra"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "329",
+	"id": 3122,
+	"name": "Yélamos de Abajo"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "330",
+	"id": 3123,
+	"name": "Yélamos de Arriba"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "331",
+	"id": 3124,
+	"name": "Yunquera de Henares"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "332",
+	"id": 3125,
+	"name": "Yunta, La"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "333",
+	"id": 3126,
+	"name": "Zaorejas"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "334",
+	"id": 3127,
+	"name": "Zarzuela de Jadraque"
+}, {
+	"cod_prov": "19",
+	"cod_mun": "335",
+	"id": 3128,
+	"name": "Zorita de los Canes"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "001",
+	"id": 3129,
+	"name": "Abaltzisketa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "002",
+	"id": 3130,
+	"name": "Aduna"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "016",
+	"id": 3131,
+	"name": "Aia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "003",
+	"id": 3132,
+	"name": "Aizarnazabal"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "004",
+	"id": 3133,
+	"name": "Albiztur"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "005",
+	"id": 3134,
+	"name": "Alegia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "006",
+	"id": 3135,
+	"name": "Alkiza"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "906",
+	"id": 3136,
+	"name": "Altzaga"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "007",
+	"id": 3137,
+	"name": "Altzo"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "008",
+	"id": 3138,
+	"name": "Amezketa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "009",
+	"id": 3139,
+	"name": "Andoain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "010",
+	"id": 3140,
+	"name": "Anoeta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "011",
+	"id": 3141,
+	"name": "Antzuola"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "012",
+	"id": 3142,
+	"name": "Arama"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "013",
+	"id": 3143,
+	"name": "Aretxabaleta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "055",
+	"id": 3144,
+	"name": "Arrasate/Mondragón"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "014",
+	"id": 3145,
+	"name": "Asteasu"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "903",
+	"id": 3146,
+	"name": "Astigarraga"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "015",
+	"id": 3147,
+	"name": "Ataun"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "017",
+	"id": 3148,
+	"name": "Azkoitia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "018",
+	"id": 3149,
+	"name": "Azpeitia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "904",
+	"id": 3150,
+	"name": "Baliarrain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "019",
+	"id": 3151,
+	"name": "Beasain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "020",
+	"id": 3152,
+	"name": "Beizama"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "021",
+	"id": 3153,
+	"name": "Belauntza"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "022",
+	"id": 3154,
+	"name": "Berastegi"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "074",
+	"id": 3155,
+	"name": "Bergara"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "023",
+	"id": 3156,
+	"name": "Berrobi"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "024",
+	"id": 3157,
+	"name": "Bidegoian"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "029",
+	"id": 3158,
+	"name": "Deba"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "069",
+	"id": 3159,
+	"name": "Donostia/San Sebastián"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "030",
+	"id": 3160,
+	"name": "Eibar"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "031",
+	"id": 3161,
+	"name": "Elduain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "033",
+	"id": 3162,
+	"name": "Elgeta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "032",
+	"id": 3163,
+	"name": "Elgoibar"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "067",
+	"id": 3164,
+	"name": "Errenteria"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "066",
+	"id": 3165,
+	"name": "Errezil"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "034",
+	"id": 3166,
+	"name": "Eskoriatza"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "035",
+	"id": 3167,
+	"name": "Ezkio-Itsaso"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "038",
+	"id": 3168,
+	"name": "Gabiria"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "037",
+	"id": 3169,
+	"name": "Gaintza"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "907",
+	"id": 3170,
+	"name": "Gaztelu"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "039",
+	"id": 3171,
+	"name": "Getaria"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "040",
+	"id": 3172,
+	"name": "Hernani"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "041",
+	"id": 3173,
+	"name": "Hernialde"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "036",
+	"id": 3174,
+	"name": "Hondarribia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "042",
+	"id": 3175,
+	"name": "Ibarra"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "043",
+	"id": 3176,
+	"name": "Idiazabal"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "044",
+	"id": 3177,
+	"name": "Ikaztegieta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "045",
+	"id": 3178,
+	"name": "Irun"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "046",
+	"id": 3179,
+	"name": "Irura"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "047",
+	"id": 3180,
+	"name": "Itsasondo"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "048",
+	"id": 3181,
+	"name": "Larraul"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "902",
+	"id": 3182,
+	"name": "Lasarte-Oria"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "049",
+	"id": 3183,
+	"name": "Lazkao"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "050",
+	"id": 3184,
+	"name": "Leaburu"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "051",
+	"id": 3185,
+	"name": "Legazpi"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "052",
+	"id": 3186,
+	"name": "Legorreta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "068",
+	"id": 3187,
+	"name": "Leintz-Gatzaga"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "053",
+	"id": 3188,
+	"name": "Lezo"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "054",
+	"id": 3189,
+	"name": "Lizartza"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "901",
+	"id": 3190,
+	"name": "Mendaro"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "057",
+	"id": 3191,
+	"name": "Mutiloa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "056",
+	"id": 3192,
+	"name": "Mutriku"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "063",
+	"id": 3193,
+	"name": "Oiartzun"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "058",
+	"id": 3194,
+	"name": "Olaberria"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "059",
+	"id": 3195,
+	"name": "Oñati"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "076",
+	"id": 3196,
+	"name": "Ordizia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "905",
+	"id": 3197,
+	"name": "Orendain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "060",
+	"id": 3198,
+	"name": "Orexa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "061",
+	"id": 3199,
+	"name": "Orio"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "062",
+	"id": 3200,
+	"name": "Ormaiztegi"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "064",
+	"id": 3201,
+	"name": "Pasaia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "070",
+	"id": 3202,
+	"name": "Segura"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "065",
+	"id": 3203,
+	"name": "Soraluze/Placencia de las Armas"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "071",
+	"id": 3204,
+	"name": "Tolosa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "072",
+	"id": 3205,
+	"name": "Urnieta"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "077",
+	"id": 3206,
+	"name": "Urretxu"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "073",
+	"id": 3207,
+	"name": "Usurbil"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "075",
+	"id": 3208,
+	"name": "Villabona"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "078",
+	"id": 3209,
+	"name": "Zaldibia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "079",
+	"id": 3210,
+	"name": "Zarautz"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "025",
+	"id": 3211,
+	"name": "Zegama"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "026",
+	"id": 3212,
+	"name": "Zerain"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "027",
+	"id": 3213,
+	"name": "Zestoa"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "028",
+	"id": 3214,
+	"name": "Zizurkil"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "081",
+	"id": 3215,
+	"name": "Zumaia"
+}, {
+	"cod_prov": "20",
+	"cod_mun": "080",
+	"id": 3216,
+	"name": "Zumarraga"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "001",
+	"id": 3217,
+	"name": "Alájar"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "002",
+	"id": 3218,
+	"name": "Aljaraque"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "003",
+	"id": 3219,
+	"name": "Almendro, El"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "004",
+	"id": 3220,
+	"name": "Almonaster la Real"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "005",
+	"id": 3221,
+	"name": "Almonte"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "006",
+	"id": 3222,
+	"name": "Alosno"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "007",
+	"id": 3223,
+	"name": "Aracena"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "008",
+	"id": 3224,
+	"name": "Aroche"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "009",
+	"id": 3225,
+	"name": "Arroyomolinos de León"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "010",
+	"id": 3226,
+	"name": "Ayamonte"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "011",
+	"id": 3227,
+	"name": "Beas"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "012",
+	"id": 3228,
+	"name": "Berrocal"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "013",
+	"id": 3229,
+	"name": "Bollullos Par del Condado"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "014",
+	"id": 3230,
+	"name": "Bonares"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "015",
+	"id": 3231,
+	"name": "Cabezas Rubias"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "016",
+	"id": 3232,
+	"name": "Cala"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "017",
+	"id": 3233,
+	"name": "Calañas"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "018",
+	"id": 3234,
+	"name": "Campillo, El"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "019",
+	"id": 3235,
+	"name": "Campofrío"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "020",
+	"id": 3236,
+	"name": "Cañaveral de León"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "021",
+	"id": 3237,
+	"name": "Cartaya"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "022",
+	"id": 3238,
+	"name": "Castaño del Robledo"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "023",
+	"id": 3239,
+	"name": "Cerro de Andévalo, El"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "030",
+	"id": 3240,
+	"name": "Chucena"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "024",
+	"id": 3241,
+	"name": "Corteconcepción"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "025",
+	"id": 3242,
+	"name": "Cortegana"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "026",
+	"id": 3243,
+	"name": "Cortelazor"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "027",
+	"id": 3244,
+	"name": "Cumbres de Enmedio"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "028",
+	"id": 3245,
+	"name": "Cumbres de San Bartolomé"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "029",
+	"id": 3246,
+	"name": "Cumbres Mayores"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "031",
+	"id": 3247,
+	"name": "Encinasola"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "032",
+	"id": 3248,
+	"name": "Escacena del Campo"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "033",
+	"id": 3249,
+	"name": "Fuenteheridos"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "034",
+	"id": 3250,
+	"name": "Galaroza"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "035",
+	"id": 3251,
+	"name": "Gibraleón"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "036",
+	"id": 3252,
+	"name": "Granada de Río-Tinto, La"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "037",
+	"id": 3253,
+	"name": "Granado, El"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "038",
+	"id": 3254,
+	"name": "Higuera de la Sierra"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "039",
+	"id": 3255,
+	"name": "Hinojales"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "040",
+	"id": 3256,
+	"name": "Hinojos"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "041",
+	"id": 3257,
+	"name": "Huelva"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "042",
+	"id": 3258,
+	"name": "Isla Cristina"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "043",
+	"id": 3259,
+	"name": "Jabugo"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "044",
+	"id": 3260,
+	"name": "Lepe"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "045",
+	"id": 3261,
+	"name": "Linares de la Sierra"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "046",
+	"id": 3262,
+	"name": "Lucena del Puerto"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "047",
+	"id": 3263,
+	"name": "Manzanilla"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "048",
+	"id": 3264,
+	"name": "Marines, Los"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "049",
+	"id": 3265,
+	"name": "Minas de Riotinto"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "050",
+	"id": 3266,
+	"name": "Moguer"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "051",
+	"id": 3267,
+	"name": "Nava, La"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "052",
+	"id": 3268,
+	"name": "Nerva"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "053",
+	"id": 3269,
+	"name": "Niebla"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "054",
+	"id": 3270,
+	"name": "Palma del Condado, La"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "055",
+	"id": 3271,
+	"name": "Palos de la Frontera"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "056",
+	"id": 3272,
+	"name": "Paterna del Campo"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "057",
+	"id": 3273,
+	"name": "Paymogo"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "058",
+	"id": 3274,
+	"name": "Puebla de Guzmán"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "059",
+	"id": 3275,
+	"name": "Puerto Moral"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "060",
+	"id": 3276,
+	"name": "Punta Umbría"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "061",
+	"id": 3277,
+	"name": "Rociana del Condado"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "062",
+	"id": 3278,
+	"name": "Rosal de la Frontera"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "063",
+	"id": 3279,
+	"name": "San Bartolomé de la Torre"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "064",
+	"id": 3280,
+	"name": "San Juan del Puerto"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "066",
+	"id": 3281,
+	"name": "San Silvestre de Guzmán"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "065",
+	"id": 3282,
+	"name": "Sanlúcar de Guadiana"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "067",
+	"id": 3283,
+	"name": "Santa Ana la Real"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "068",
+	"id": 3284,
+	"name": "Santa Bárbara de Casa"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "069",
+	"id": 3285,
+	"name": "Santa Olalla del Cala"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "070",
+	"id": 3286,
+	"name": "Trigueros"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "071",
+	"id": 3287,
+	"name": "Valdelarco"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "072",
+	"id": 3288,
+	"name": "Valverde del Camino"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "073",
+	"id": 3289,
+	"name": "Villablanca"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "074",
+	"id": 3290,
+	"name": "Villalba del Alcor"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "075",
+	"id": 3291,
+	"name": "Villanueva de las Cruces"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "076",
+	"id": 3292,
+	"name": "Villanueva de los Castillejos"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "077",
+	"id": 3293,
+	"name": "Villarrasa"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "078",
+	"id": 3294,
+	"name": "Zalamea la Real"
+}, {
+	"cod_prov": "21",
+	"cod_mun": "079",
+	"id": 3295,
+	"name": "Zufre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "001",
+	"id": 3296,
+	"name": "Abiego"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "002",
+	"id": 3297,
+	"name": "Abizanda"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "003",
+	"id": 3298,
+	"name": "Adahuesca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "004",
+	"id": 3299,
+	"name": "Agüero"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "907",
+	"id": 3300,
+	"name": "Aínsa-Sobrarbe"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "006",
+	"id": 3301,
+	"name": "Aisa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "007",
+	"id": 3302,
+	"name": "Albalate de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "008",
+	"id": 3303,
+	"name": "Albalatillo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "009",
+	"id": 3304,
+	"name": "Albelda"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "011",
+	"id": 3305,
+	"name": "Albero Alto"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "012",
+	"id": 3306,
+	"name": "Albero Bajo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "013",
+	"id": 3307,
+	"name": "Alberuela de Tubo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "014",
+	"id": 3308,
+	"name": "Alcalá de Gurrea"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "015",
+	"id": 3309,
+	"name": "Alcalá del Obispo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "016",
+	"id": 3310,
+	"name": "Alcampell"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "017",
+	"id": 3311,
+	"name": "Alcolea de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "018",
+	"id": 3312,
+	"name": "Alcubierre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "019",
+	"id": 3313,
+	"name": "Alerre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "020",
+	"id": 3314,
+	"name": "Alfántega"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "021",
+	"id": 3315,
+	"name": "Almudévar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "022",
+	"id": 3316,
+	"name": "Almunia de San Juan"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "023",
+	"id": 3317,
+	"name": "Almuniente"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "024",
+	"id": 3318,
+	"name": "Alquézar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "025",
+	"id": 3319,
+	"name": "Altorricón"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "027",
+	"id": 3320,
+	"name": "Angüés"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "028",
+	"id": 3321,
+	"name": "Ansó"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "029",
+	"id": 3322,
+	"name": "Antillón"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "032",
+	"id": 3323,
+	"name": "Aragüés del Puerto"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "035",
+	"id": 3324,
+	"name": "Arén"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "036",
+	"id": 3325,
+	"name": "Argavieso"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "037",
+	"id": 3326,
+	"name": "Arguis"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "039",
+	"id": 3327,
+	"name": "Ayerbe"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "040",
+	"id": 3328,
+	"name": "Azanuy-Alins"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "041",
+	"id": 3329,
+	"name": "Azara"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "042",
+	"id": 3330,
+	"name": "Azlor"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "043",
+	"id": 3331,
+	"name": "Baélls"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "044",
+	"id": 3332,
+	"name": "Bailo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "045",
+	"id": 3333,
+	"name": "Baldellou"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "046",
+	"id": 3334,
+	"name": "Ballobar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "047",
+	"id": 3335,
+	"name": "Banastás"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "048",
+	"id": 3336,
+	"name": "Barbastro"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "049",
+	"id": 3337,
+	"name": "Barbués"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "050",
+	"id": 3338,
+	"name": "Barbuñales"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "051",
+	"id": 3339,
+	"name": "Bárcabo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "052",
+	"id": 3340,
+	"name": "Belver de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "053",
+	"id": 3341,
+	"name": "Benabarre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "054",
+	"id": 3342,
+	"name": "Benasque"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "246",
+	"id": 3343,
+	"name": "Beranuy"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "055",
+	"id": 3344,
+	"name": "Berbegal"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "057",
+	"id": 3345,
+	"name": "Bielsa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "058",
+	"id": 3346,
+	"name": "Bierge"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "059",
+	"id": 3347,
+	"name": "Biescas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "060",
+	"id": 3348,
+	"name": "Binaced"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "061",
+	"id": 3349,
+	"name": "Binéfar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "062",
+	"id": 3350,
+	"name": "Bisaurri"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "063",
+	"id": 3351,
+	"name": "Biscarrués"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "064",
+	"id": 3352,
+	"name": "Blecua y Torres"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "066",
+	"id": 3353,
+	"name": "Boltaña"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "067",
+	"id": 3354,
+	"name": "Bonansa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "068",
+	"id": 3355,
+	"name": "Borau"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "069",
+	"id": 3356,
+	"name": "Broto"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "072",
+	"id": 3357,
+	"name": "Caldearenas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "074",
+	"id": 3358,
+	"name": "Campo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "075",
+	"id": 3359,
+	"name": "Camporrélls"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "076",
+	"id": 3360,
+	"name": "Canal de Berdún"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "077",
+	"id": 3361,
+	"name": "Candasnos"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "078",
+	"id": 3362,
+	"name": "Canfranc"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "079",
+	"id": 3363,
+	"name": "Capdesaso"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "080",
+	"id": 3364,
+	"name": "Capella"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "081",
+	"id": 3365,
+	"name": "Casbas de Huesca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "083",
+	"id": 3366,
+	"name": "Castejón de Monegros"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "084",
+	"id": 3367,
+	"name": "Castejón de Sos"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "082",
+	"id": 3368,
+	"name": "Castejón del Puente"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "085",
+	"id": 3369,
+	"name": "Castelflorite"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "086",
+	"id": 3370,
+	"name": "Castiello de Jaca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "087",
+	"id": 3371,
+	"name": "Castigaleu"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "088",
+	"id": 3372,
+	"name": "Castillazuelo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "089",
+	"id": 3373,
+	"name": "Castillonroy"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "094",
+	"id": 3374,
+	"name": "Chalamera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "095",
+	"id": 3375,
+	"name": "Chía"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "096",
+	"id": 3376,
+	"name": "Chimillas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "090",
+	"id": 3377,
+	"name": "Colungo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "099",
+	"id": 3378,
+	"name": "Esplús"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "102",
+	"id": 3379,
+	"name": "Estada"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "103",
+	"id": 3380,
+	"name": "Estadilla"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "105",
+	"id": 3381,
+	"name": "Estopiñán del Castillo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "106",
+	"id": 3382,
+	"name": "Fago"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "107",
+	"id": 3383,
+	"name": "Fanlo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "109",
+	"id": 3384,
+	"name": "Fiscal"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "110",
+	"id": 3385,
+	"name": "Fonz"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "111",
+	"id": 3386,
+	"name": "Foradada del Toscar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "112",
+	"id": 3387,
+	"name": "Fraga"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "113",
+	"id": 3388,
+	"name": "Fueva, La"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "114",
+	"id": 3389,
+	"name": "Gistaín"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "115",
+	"id": 3390,
+	"name": "Grado, El"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "116",
+	"id": 3391,
+	"name": "Grañén"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "117",
+	"id": 3392,
+	"name": "Graus"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "119",
+	"id": 3393,
+	"name": "Gurrea de Gállego"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "122",
+	"id": 3394,
+	"name": "Hoz de Jaca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "908",
+	"id": 3395,
+	"name": "Hoz y Costean"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "124",
+	"id": 3396,
+	"name": "Huerto"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "125",
+	"id": 3397,
+	"name": "Huesca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "126",
+	"id": 3398,
+	"name": "Ibieca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "127",
+	"id": 3399,
+	"name": "Igriés"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "128",
+	"id": 3400,
+	"name": "Ilche"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "129",
+	"id": 3401,
+	"name": "Isábena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "130",
+	"id": 3402,
+	"name": "Jaca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "131",
+	"id": 3403,
+	"name": "Jasa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "133",
+	"id": 3404,
+	"name": "Labuerda"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "135",
+	"id": 3405,
+	"name": "Laluenga"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "136",
+	"id": 3406,
+	"name": "Lalueza"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "137",
+	"id": 3407,
+	"name": "Lanaja"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "139",
+	"id": 3408,
+	"name": "Laperdiguera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "141",
+	"id": 3409,
+	"name": "Lascellas-Ponzano"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "142",
+	"id": 3410,
+	"name": "Lascuarre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "143",
+	"id": 3411,
+	"name": "Laspaúles"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "144",
+	"id": 3412,
+	"name": "Laspuña"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "149",
+	"id": 3413,
+	"name": "Loarre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "150",
+	"id": 3414,
+	"name": "Loporzano"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "151",
+	"id": 3415,
+	"name": "Loscorrales"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "905",
+	"id": 3416,
+	"name": "Lupiñén-Ortilla"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "155",
+	"id": 3417,
+	"name": "Monesma y Cajigar"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "156",
+	"id": 3418,
+	"name": "Monflorite-Lascasas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "157",
+	"id": 3419,
+	"name": "Montanuy"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "158",
+	"id": 3420,
+	"name": "Monzón"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "160",
+	"id": 3421,
+	"name": "Naval"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "162",
+	"id": 3422,
+	"name": "Novales"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "163",
+	"id": 3423,
+	"name": "Nueno"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "164",
+	"id": 3424,
+	"name": "Olvena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "165",
+	"id": 3425,
+	"name": "Ontiñena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "167",
+	"id": 3426,
+	"name": "Osso de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "168",
+	"id": 3427,
+	"name": "Palo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "170",
+	"id": 3428,
+	"name": "Panticosa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "172",
+	"id": 3429,
+	"name": "Peñalba"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "173",
+	"id": 3430,
+	"name": "Peñas de Riglos, Las"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "174",
+	"id": 3431,
+	"name": "Peralta de Alcofea"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "175",
+	"id": 3432,
+	"name": "Peralta de Calasanz"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "176",
+	"id": 3433,
+	"name": "Peraltilla"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "177",
+	"id": 3434,
+	"name": "Perarrúa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "178",
+	"id": 3435,
+	"name": "Pertusa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "181",
+	"id": 3436,
+	"name": "Piracés"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "182",
+	"id": 3437,
+	"name": "Plan"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "184",
+	"id": 3438,
+	"name": "Poleñino"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "186",
+	"id": 3439,
+	"name": "Pozán de Vero"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "187",
+	"id": 3440,
+	"name": "Puebla de Castro, La"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "188",
+	"id": 3441,
+	"name": "Puente de Montañana"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "902",
+	"id": 3442,
+	"name": "Puente la Reina de Jaca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "189",
+	"id": 3443,
+	"name": "Puértolas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "190",
+	"id": 3444,
+	"name": "Pueyo de Araguás, El"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "193",
+	"id": 3445,
+	"name": "Pueyo de Santa Cruz"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "195",
+	"id": 3446,
+	"name": "Quicena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "197",
+	"id": 3447,
+	"name": "Robres"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "199",
+	"id": 3448,
+	"name": "Sabiñánigo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "200",
+	"id": 3449,
+	"name": "Sahún"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "201",
+	"id": 3450,
+	"name": "Salas Altas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "202",
+	"id": 3451,
+	"name": "Salas Bajas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "203",
+	"id": 3452,
+	"name": "Salillas"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "204",
+	"id": 3453,
+	"name": "Sallent de Gállego"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "205",
+	"id": 3454,
+	"name": "San Esteban de Litera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "207",
+	"id": 3455,
+	"name": "San Juan de Plan"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "903",
+	"id": 3456,
+	"name": "San Miguel del Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "206",
+	"id": 3457,
+	"name": "Sangarrén"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "208",
+	"id": 3458,
+	"name": "Santa Cilia"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "209",
+	"id": 3459,
+	"name": "Santa Cruz de la Serós"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "906",
+	"id": 3460,
+	"name": "Santa María de Dulcis"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "212",
+	"id": 3461,
+	"name": "Santaliestra y San Quílez"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "213",
+	"id": 3462,
+	"name": "Sariñena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "214",
+	"id": 3463,
+	"name": "Secastilla"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "215",
+	"id": 3464,
+	"name": "Seira"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "217",
+	"id": 3465,
+	"name": "Sena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "218",
+	"id": 3466,
+	"name": "Senés de Alcubierre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "220",
+	"id": 3467,
+	"name": "Sesa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "221",
+	"id": 3468,
+	"name": "Sesué"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "222",
+	"id": 3469,
+	"name": "Siétamo"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "223",
+	"id": 3470,
+	"name": "Sopeira"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "904",
+	"id": 3471,
+	"name": "Sotonera, La"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "225",
+	"id": 3472,
+	"name": "Tamarite de Litera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "226",
+	"id": 3473,
+	"name": "Tardienta"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "227",
+	"id": 3474,
+	"name": "Tella-Sin"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "228",
+	"id": 3475,
+	"name": "Tierz"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "229",
+	"id": 3476,
+	"name": "Tolva"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "230",
+	"id": 3477,
+	"name": "Torla"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "232",
+	"id": 3478,
+	"name": "Torralba de Aragón"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "233",
+	"id": 3479,
+	"name": "Torre la Ribera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "234",
+	"id": 3480,
+	"name": "Torrente de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "235",
+	"id": 3481,
+	"name": "Torres de Alcanadre"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "236",
+	"id": 3482,
+	"name": "Torres de Barbués"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "239",
+	"id": 3483,
+	"name": "Tramaced"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "242",
+	"id": 3484,
+	"name": "Valfarta"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "243",
+	"id": 3485,
+	"name": "Valle de Bardají"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "901",
+	"id": 3486,
+	"name": "Valle de Hecho"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "244",
+	"id": 3487,
+	"name": "Valle de Lierp"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "245",
+	"id": 3488,
+	"name": "Velilla de Cinca"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "909",
+	"id": 3489,
+	"name": "Vencillón"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "247",
+	"id": 3490,
+	"name": "Viacamp y Litera"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "248",
+	"id": 3491,
+	"name": "Vicién"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "249",
+	"id": 3492,
+	"name": "Villanova"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "250",
+	"id": 3493,
+	"name": "Villanúa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "251",
+	"id": 3494,
+	"name": "Villanueva de Sigena"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "252",
+	"id": 3495,
+	"name": "Yebra de Basa"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "253",
+	"id": 3496,
+	"name": "Yésero"
+}, {
+	"cod_prov": "22",
+	"cod_mun": "254",
+	"id": 3497,
+	"name": "Zaidín"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "001",
+	"id": 3498,
+	"name": "Albanchez de Mágina"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "002",
+	"id": 3499,
+	"name": "Alcalá la Real"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "003",
+	"id": 3500,
+	"name": "Alcaudete"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "004",
+	"id": 3501,
+	"name": "Aldeaquemada"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "005",
+	"id": 3502,
+	"name": "Andújar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "006",
+	"id": 3503,
+	"name": "Arjona"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "007",
+	"id": 3504,
+	"name": "Arjonilla"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "008",
+	"id": 3505,
+	"name": "Arquillos"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "905",
+	"id": 3506,
+	"name": "Arroyo del Ojanco"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "009",
+	"id": 3507,
+	"name": "Baeza"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "010",
+	"id": 3508,
+	"name": "Bailén"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "011",
+	"id": 3509,
+	"name": "Baños de la Encina"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "012",
+	"id": 3510,
+	"name": "Beas de Segura"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "902",
+	"id": 3511,
+	"name": "Bedmar y Garcíez"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "014",
+	"id": 3512,
+	"name": "Begíjar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "015",
+	"id": 3513,
+	"name": "Bélmez de la Moraleda"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "016",
+	"id": 3514,
+	"name": "Benatae"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "017",
+	"id": 3515,
+	"name": "Cabra del Santo Cristo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "018",
+	"id": 3516,
+	"name": "Cambil"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "019",
+	"id": 3517,
+	"name": "Campillo de Arenas"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "020",
+	"id": 3518,
+	"name": "Canena"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "021",
+	"id": 3519,
+	"name": "Carboneros"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "901",
+	"id": 3520,
+	"name": "Cárcheles"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "024",
+	"id": 3521,
+	"name": "Carolina, La"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "025",
+	"id": 3522,
+	"name": "Castellar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "026",
+	"id": 3523,
+	"name": "Castillo de Locubín"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "027",
+	"id": 3524,
+	"name": "Cazalilla"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "028",
+	"id": 3525,
+	"name": "Cazorla"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "029",
+	"id": 3526,
+	"name": "Chiclana de Segura"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "030",
+	"id": 3527,
+	"name": "Chilluévar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "031",
+	"id": 3528,
+	"name": "Escañuela"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "032",
+	"id": 3529,
+	"name": "Espelúy"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "033",
+	"id": 3530,
+	"name": "Frailes"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "034",
+	"id": 3531,
+	"name": "Fuensanta de Martos"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "035",
+	"id": 3532,
+	"name": "Fuerte del Rey"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "037",
+	"id": 3533,
+	"name": "Génave"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "038",
+	"id": 3534,
+	"name": "Guardia de Jaén, La"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "039",
+	"id": 3535,
+	"name": "Guarromán"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "041",
+	"id": 3536,
+	"name": "Higuera de Calatrava"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "042",
+	"id": 3537,
+	"name": "Hinojares"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "043",
+	"id": 3538,
+	"name": "Hornos"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "044",
+	"id": 3539,
+	"name": "Huelma"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "045",
+	"id": 3540,
+	"name": "Huesa"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "046",
+	"id": 3541,
+	"name": "Ibros"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "047",
+	"id": 3542,
+	"name": "Iruela, La"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "048",
+	"id": 3543,
+	"name": "Iznatoraf"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "049",
+	"id": 3544,
+	"name": "Jabalquinto"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "050",
+	"id": 3545,
+	"name": "Jaén"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "051",
+	"id": 3546,
+	"name": "Jamilena"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "052",
+	"id": 3547,
+	"name": "Jimena"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "053",
+	"id": 3548,
+	"name": "Jódar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "040",
+	"id": 3549,
+	"name": "Lahiguera"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "054",
+	"id": 3550,
+	"name": "Larva"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "055",
+	"id": 3551,
+	"name": "Linares"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "056",
+	"id": 3552,
+	"name": "Lopera"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "057",
+	"id": 3553,
+	"name": "Lupión"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "058",
+	"id": 3554,
+	"name": "Mancha Real"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "059",
+	"id": 3555,
+	"name": "Marmolejo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "060",
+	"id": 3556,
+	"name": "Martos"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "061",
+	"id": 3557,
+	"name": "Mengíbar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "062",
+	"id": 3558,
+	"name": "Montizón"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "063",
+	"id": 3559,
+	"name": "Navas de San Juan"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "064",
+	"id": 3560,
+	"name": "Noalejo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "065",
+	"id": 3561,
+	"name": "Orcera"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "066",
+	"id": 3562,
+	"name": "Peal de Becerro"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "067",
+	"id": 3563,
+	"name": "Pegalajar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "069",
+	"id": 3564,
+	"name": "Porcuna"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "070",
+	"id": 3565,
+	"name": "Pozo Alcón"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "071",
+	"id": 3566,
+	"name": "Puente de Génave"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "072",
+	"id": 3567,
+	"name": "Puerta de Segura, La"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "073",
+	"id": 3568,
+	"name": "Quesada"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "074",
+	"id": 3569,
+	"name": "Rus"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "075",
+	"id": 3570,
+	"name": "Sabiote"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "076",
+	"id": 3571,
+	"name": "Santa Elena"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "077",
+	"id": 3572,
+	"name": "Santiago de Calatrava"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "904",
+	"id": 3573,
+	"name": "Santiago-Pontones"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "079",
+	"id": 3574,
+	"name": "Santisteban del Puerto"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "080",
+	"id": 3575,
+	"name": "Santo Tomé"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "081",
+	"id": 3576,
+	"name": "Segura de la Sierra"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "082",
+	"id": 3577,
+	"name": "Siles"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "084",
+	"id": 3578,
+	"name": "Sorihuela del Guadalimar"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "086",
+	"id": 3579,
+	"name": "Torre del Campo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "085",
+	"id": 3580,
+	"name": "Torreblascopedro"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "087",
+	"id": 3581,
+	"name": "Torredonjimeno"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "088",
+	"id": 3582,
+	"name": "Torreperogil"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "090",
+	"id": 3583,
+	"name": "Torres"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "091",
+	"id": 3584,
+	"name": "Torres de Albánchez"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "092",
+	"id": 3585,
+	"name": "Úbeda"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "093",
+	"id": 3586,
+	"name": "Valdepeñas de Jaén"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "094",
+	"id": 3587,
+	"name": "Vilches"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "095",
+	"id": 3588,
+	"name": "Villacarrillo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "096",
+	"id": 3589,
+	"name": "Villanueva de la Reina"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "097",
+	"id": 3590,
+	"name": "Villanueva del Arzobispo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "098",
+	"id": 3591,
+	"name": "Villardompardo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "099",
+	"id": 3592,
+	"name": "Villares, Los"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "101",
+	"id": 3593,
+	"name": "Villarrodrigo"
+}, {
+	"cod_prov": "23",
+	"cod_mun": "903",
+	"id": 3594,
+	"name": "Villatorres"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "001",
+	"id": 3595,
+	"name": "Acebedo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "002",
+	"id": 3596,
+	"name": "Algadefe"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "003",
+	"id": 3597,
+	"name": "Alija del Infantado"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "004",
+	"id": 3598,
+	"name": "Almanza"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "005",
+	"id": 3599,
+	"name": "Antigua, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "006",
+	"id": 3600,
+	"name": "Ardón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "007",
+	"id": 3601,
+	"name": "Arganza"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "008",
+	"id": 3602,
+	"name": "Astorga"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "009",
+	"id": 3603,
+	"name": "Balboa"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "010",
+	"id": 3604,
+	"name": "Bañeza, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "011",
+	"id": 3605,
+	"name": "Barjas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "012",
+	"id": 3606,
+	"name": "Barrios de Luna, Los"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "014",
+	"id": 3607,
+	"name": "Bembibre"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "015",
+	"id": 3608,
+	"name": "Benavides"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "016",
+	"id": 3609,
+	"name": "Benuza"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "017",
+	"id": 3610,
+	"name": "Bercianos del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "018",
+	"id": 3611,
+	"name": "Bercianos del Real Camino"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "019",
+	"id": 3612,
+	"name": "Berlanga del Bierzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "020",
+	"id": 3613,
+	"name": "Boca de Huérgano"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "021",
+	"id": 3614,
+	"name": "Boñar"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "022",
+	"id": 3615,
+	"name": "Borrenes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "023",
+	"id": 3616,
+	"name": "Brazuelo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "024",
+	"id": 3617,
+	"name": "Burgo Ranero, El"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "025",
+	"id": 3618,
+	"name": "Burón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "026",
+	"id": 3619,
+	"name": "Bustillo del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "027",
+	"id": 3620,
+	"name": "Cabañas Raras"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "028",
+	"id": 3621,
+	"name": "Cabreros del Río"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "029",
+	"id": 3622,
+	"name": "Cabrillanes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "030",
+	"id": 3623,
+	"name": "Cacabelos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "031",
+	"id": 3624,
+	"name": "Calzada del Coto"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "032",
+	"id": 3625,
+	"name": "Campazas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "033",
+	"id": 3626,
+	"name": "Campo de Villavidel"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "034",
+	"id": 3627,
+	"name": "Camponaraya"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "036",
+	"id": 3628,
+	"name": "Candín"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "037",
+	"id": 3629,
+	"name": "Cármenes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "038",
+	"id": 3630,
+	"name": "Carracedelo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "039",
+	"id": 3631,
+	"name": "Carrizo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "040",
+	"id": 3632,
+	"name": "Carrocera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "041",
+	"id": 3633,
+	"name": "Carucedo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "042",
+	"id": 3634,
+	"name": "Castilfalé"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "043",
+	"id": 3635,
+	"name": "Castrillo de Cabrera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "044",
+	"id": 3636,
+	"name": "Castrillo de la Valduerna"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "046",
+	"id": 3637,
+	"name": "Castrocalbón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "047",
+	"id": 3638,
+	"name": "Castrocontrigo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "049",
+	"id": 3639,
+	"name": "Castropodame"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "050",
+	"id": 3640,
+	"name": "Castrotierra de Valmadrigal"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "051",
+	"id": 3641,
+	"name": "Cea"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "052",
+	"id": 3642,
+	"name": "Cebanico"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "053",
+	"id": 3643,
+	"name": "Cebrones del Río"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "065",
+	"id": 3644,
+	"name": "Chozas de Abajo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "054",
+	"id": 3645,
+	"name": "Cimanes de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "055",
+	"id": 3646,
+	"name": "Cimanes del Tejar"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "056",
+	"id": 3647,
+	"name": "Cistierna"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "057",
+	"id": 3648,
+	"name": "Congosto"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "058",
+	"id": 3649,
+	"name": "Corbillos de los Oteros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "059",
+	"id": 3650,
+	"name": "Corullón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "060",
+	"id": 3651,
+	"name": "Crémenes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "061",
+	"id": 3652,
+	"name": "Cuadros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "062",
+	"id": 3653,
+	"name": "Cubillas de los Oteros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "063",
+	"id": 3654,
+	"name": "Cubillas de Rueda"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "064",
+	"id": 3655,
+	"name": "Cubillos del Sil"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "066",
+	"id": 3656,
+	"name": "Destriana"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "067",
+	"id": 3657,
+	"name": "Encinedo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "068",
+	"id": 3658,
+	"name": "Ercina, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "069",
+	"id": 3659,
+	"name": "Escobar de Campos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "070",
+	"id": 3660,
+	"name": "Fabero"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "071",
+	"id": 3661,
+	"name": "Folgoso de la Ribera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "073",
+	"id": 3662,
+	"name": "Fresno de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "074",
+	"id": 3663,
+	"name": "Fuentes de Carbajal"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "076",
+	"id": 3664,
+	"name": "Garrafe de Torío"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "077",
+	"id": 3665,
+	"name": "Gordaliza del Pino"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "078",
+	"id": 3666,
+	"name": "Gordoncillo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "079",
+	"id": 3667,
+	"name": "Gradefes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "080",
+	"id": 3668,
+	"name": "Grajal de Campos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "081",
+	"id": 3669,
+	"name": "Gusendos de los Oteros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "082",
+	"id": 3670,
+	"name": "Hospital de Órbigo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "083",
+	"id": 3671,
+	"name": "Igüeña"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "084",
+	"id": 3672,
+	"name": "Izagre"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "086",
+	"id": 3673,
+	"name": "Joarilla de las Matas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "087",
+	"id": 3674,
+	"name": "Laguna Dalga"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "088",
+	"id": 3675,
+	"name": "Laguna de Negrillos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "089",
+	"id": 3676,
+	"name": "León"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "092",
+	"id": 3677,
+	"name": "Llamas de la Ribera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "090",
+	"id": 3678,
+	"name": "Lucillo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "091",
+	"id": 3679,
+	"name": "Luyego"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "093",
+	"id": 3680,
+	"name": "Magaz de Cepeda"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "094",
+	"id": 3681,
+	"name": "Mansilla de las Mulas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "095",
+	"id": 3682,
+	"name": "Mansilla Mayor"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "096",
+	"id": 3683,
+	"name": "Maraña"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "097",
+	"id": 3684,
+	"name": "Matadeón de los Oteros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "098",
+	"id": 3685,
+	"name": "Matallana de Torío"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "099",
+	"id": 3686,
+	"name": "Matanza"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "100",
+	"id": 3687,
+	"name": "Molinaseca"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "101",
+	"id": 3688,
+	"name": "Murias de Paredes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "102",
+	"id": 3689,
+	"name": "Noceda del Bierzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "103",
+	"id": 3690,
+	"name": "Oencia"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "104",
+	"id": 3691,
+	"name": "Omañas, Las"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "105",
+	"id": 3692,
+	"name": "Onzonilla"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "106",
+	"id": 3693,
+	"name": "Oseja de Sajambre"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "107",
+	"id": 3694,
+	"name": "Pajares de los Oteros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "108",
+	"id": 3695,
+	"name": "Palacios de la Valduerna"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "109",
+	"id": 3696,
+	"name": "Palacios del Sil"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "110",
+	"id": 3697,
+	"name": "Páramo del Sil"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "112",
+	"id": 3698,
+	"name": "Peranzanes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "113",
+	"id": 3699,
+	"name": "Pobladura de Pelayo García"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "114",
+	"id": 3700,
+	"name": "Pola de Gordón, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "115",
+	"id": 3701,
+	"name": "Ponferrada"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "116",
+	"id": 3702,
+	"name": "Posada de Valdeón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "117",
+	"id": 3703,
+	"name": "Pozuelo del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "118",
+	"id": 3704,
+	"name": "Prado de la Guzpeña"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "119",
+	"id": 3705,
+	"name": "Priaranza del Bierzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "120",
+	"id": 3706,
+	"name": "Prioro"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "121",
+	"id": 3707,
+	"name": "Puebla de Lillo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "122",
+	"id": 3708,
+	"name": "Puente de Domingo Flórez"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "123",
+	"id": 3709,
+	"name": "Quintana del Castillo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "124",
+	"id": 3710,
+	"name": "Quintana del Marco"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "125",
+	"id": 3711,
+	"name": "Quintana y Congosto"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "127",
+	"id": 3712,
+	"name": "Regueras de Arriba"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "129",
+	"id": 3713,
+	"name": "Reyero"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "130",
+	"id": 3714,
+	"name": "Riaño"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "131",
+	"id": 3715,
+	"name": "Riego de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "132",
+	"id": 3716,
+	"name": "Riello"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "133",
+	"id": 3717,
+	"name": "Rioseco de Tapia"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "134",
+	"id": 3718,
+	"name": "Robla, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "136",
+	"id": 3719,
+	"name": "Roperuelos del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "137",
+	"id": 3720,
+	"name": "Sabero"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "139",
+	"id": 3721,
+	"name": "Sahagún"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "141",
+	"id": 3722,
+	"name": "San Adrián del Valle"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "142",
+	"id": 3723,
+	"name": "San Andrés del Rabanedo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "144",
+	"id": 3724,
+	"name": "San Cristóbal de la Polantera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "145",
+	"id": 3725,
+	"name": "San Emiliano"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "146",
+	"id": 3726,
+	"name": "San Esteban de Nogales"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "148",
+	"id": 3727,
+	"name": "San Justo de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "149",
+	"id": 3728,
+	"name": "San Millán de los Caballeros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "150",
+	"id": 3729,
+	"name": "San Pedro Bercianos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "143",
+	"id": 3730,
+	"name": "Sancedo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "151",
+	"id": 3731,
+	"name": "Santa Colomba de Curueño"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "152",
+	"id": 3732,
+	"name": "Santa Colomba de Somoza"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "153",
+	"id": 3733,
+	"name": "Santa Cristina de Valmadrigal"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "154",
+	"id": 3734,
+	"name": "Santa Elena de Jamuz"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "155",
+	"id": 3735,
+	"name": "Santa María de la Isla"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "158",
+	"id": 3736,
+	"name": "Santa María de Ordás"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "156",
+	"id": 3737,
+	"name": "Santa María del Monte de Cea"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "157",
+	"id": 3738,
+	"name": "Santa María del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "159",
+	"id": 3739,
+	"name": "Santa Marina del Rey"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "160",
+	"id": 3740,
+	"name": "Santas Martas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "161",
+	"id": 3741,
+	"name": "Santiago Millas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "162",
+	"id": 3742,
+	"name": "Santovenia de la Valdoncina"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "163",
+	"id": 3743,
+	"name": "Sariegos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "164",
+	"id": 3744,
+	"name": "Sena de Luna"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "165",
+	"id": 3745,
+	"name": "Sobrado"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "166",
+	"id": 3746,
+	"name": "Soto de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "167",
+	"id": 3747,
+	"name": "Soto y Amío"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "168",
+	"id": 3748,
+	"name": "Toral de los Guzmanes"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "206",
+	"id": 3749,
+	"name": "Toral de los Vados"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "169",
+	"id": 3750,
+	"name": "Toreno"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "170",
+	"id": 3751,
+	"name": "Torre del Bierzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "171",
+	"id": 3752,
+	"name": "Trabadelo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "172",
+	"id": 3753,
+	"name": "Truchas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "173",
+	"id": 3754,
+	"name": "Turcia"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "174",
+	"id": 3755,
+	"name": "Urdiales del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "185",
+	"id": 3756,
+	"name": "Val de San Lorenzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "175",
+	"id": 3757,
+	"name": "Valdefresno"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "176",
+	"id": 3758,
+	"name": "Valdefuentes del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "177",
+	"id": 3759,
+	"name": "Valdelugueros"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "178",
+	"id": 3760,
+	"name": "Valdemora"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "179",
+	"id": 3761,
+	"name": "Valdepiélago"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "180",
+	"id": 3762,
+	"name": "Valdepolo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "181",
+	"id": 3763,
+	"name": "Valderas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "182",
+	"id": 3764,
+	"name": "Valderrey"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "183",
+	"id": 3765,
+	"name": "Valderrueda"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "184",
+	"id": 3766,
+	"name": "Valdesamario"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "187",
+	"id": 3767,
+	"name": "Valdevimbre"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "188",
+	"id": 3768,
+	"name": "Valencia de Don Juan"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "191",
+	"id": 3769,
+	"name": "Vallecillo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "189",
+	"id": 3770,
+	"name": "Valverde de la Virgen"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "190",
+	"id": 3771,
+	"name": "Valverde-Enrique"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "193",
+	"id": 3772,
+	"name": "Vecilla, La"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "196",
+	"id": 3773,
+	"name": "Vega de Espinareda"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "197",
+	"id": 3774,
+	"name": "Vega de Infanzones"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "198",
+	"id": 3775,
+	"name": "Vega de Valcarce"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "194",
+	"id": 3776,
+	"name": "Vegacervera"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "199",
+	"id": 3777,
+	"name": "Vegaquemada"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "201",
+	"id": 3778,
+	"name": "Vegas del Condado"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "202",
+	"id": 3779,
+	"name": "Villablino"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "203",
+	"id": 3780,
+	"name": "Villabraz"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "205",
+	"id": 3781,
+	"name": "Villadangos del Páramo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "207",
+	"id": 3782,
+	"name": "Villademor de la Vega"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "209",
+	"id": 3783,
+	"name": "Villafranca del Bierzo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "210",
+	"id": 3784,
+	"name": "Villagatón"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "211",
+	"id": 3785,
+	"name": "Villamandos"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "901",
+	"id": 3786,
+	"name": "Villamanín"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "212",
+	"id": 3787,
+	"name": "Villamañán"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "213",
+	"id": 3788,
+	"name": "Villamartín de Don Sancho"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "214",
+	"id": 3789,
+	"name": "Villamejil"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "215",
+	"id": 3790,
+	"name": "Villamol"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "216",
+	"id": 3791,
+	"name": "Villamontán de la Valduerna"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "217",
+	"id": 3792,
+	"name": "Villamoratiel de las Matas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "218",
+	"id": 3793,
+	"name": "Villanueva de las Manzanas"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "219",
+	"id": 3794,
+	"name": "Villaobispo de Otero"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "902",
+	"id": 3795,
+	"name": "Villaornate y Castro"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "221",
+	"id": 3796,
+	"name": "Villaquejida"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "222",
+	"id": 3797,
+	"name": "Villaquilambre"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "223",
+	"id": 3798,
+	"name": "Villarejo de Órbigo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "224",
+	"id": 3799,
+	"name": "Villares de Órbigo"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "225",
+	"id": 3800,
+	"name": "Villasabariego"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "226",
+	"id": 3801,
+	"name": "Villaselán"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "227",
+	"id": 3802,
+	"name": "Villaturiel"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "228",
+	"id": 3803,
+	"name": "Villazala"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "229",
+	"id": 3804,
+	"name": "Villazanzo de Valderaduey"
+}, {
+	"cod_prov": "24",
+	"cod_mun": "230",
+	"id": 3805,
+	"name": "Zotes del Páramo"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "001",
+	"id": 3806,
+	"name": "Abella de la Conca"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "002",
+	"id": 3807,
+	"name": "Àger"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "003",
+	"id": 3808,
+	"name": "Agramunt"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "038",
+	"id": 3809,
+	"name": "Aitona"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "004",
+	"id": 3810,
+	"name": "Alamús, Els"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "005",
+	"id": 3811,
+	"name": "Alàs i Cerc"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "006",
+	"id": 3812,
+	"name": "Albagés, L'"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "007",
+	"id": 3813,
+	"name": "Albatàrrec"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "008",
+	"id": 3814,
+	"name": "Albesa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "009",
+	"id": 3815,
+	"name": "Albi, L'"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "010",
+	"id": 3816,
+	"name": "Alcanó"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "011",
+	"id": 3817,
+	"name": "Alcarràs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "012",
+	"id": 3818,
+	"name": "Alcoletge"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "013",
+	"id": 3819,
+	"name": "Alfarràs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "014",
+	"id": 3820,
+	"name": "Alfés"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "015",
+	"id": 3821,
+	"name": "Algerri"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "016",
+	"id": 3822,
+	"name": "Alguaire"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "017",
+	"id": 3823,
+	"name": "Alins"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "019",
+	"id": 3824,
+	"name": "Almacelles"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "020",
+	"id": 3825,
+	"name": "Almatret"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "021",
+	"id": 3826,
+	"name": "Almenar"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "022",
+	"id": 3827,
+	"name": "Alòs de Balaguer"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "023",
+	"id": 3828,
+	"name": "Alpicat"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "024",
+	"id": 3829,
+	"name": "Alt Àneu"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "027",
+	"id": 3830,
+	"name": "Anglesola"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "029",
+	"id": 3831,
+	"name": "Arbeca"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "031",
+	"id": 3832,
+	"name": "Arres"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "032",
+	"id": 3833,
+	"name": "Arsèguel"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "033",
+	"id": 3834,
+	"name": "Artesa de Lleida"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "034",
+	"id": 3835,
+	"name": "Artesa de Segre"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "036",
+	"id": 3836,
+	"name": "Aspa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "037",
+	"id": 3837,
+	"name": "Avellanes i Santa Linya, Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "039",
+	"id": 3838,
+	"name": "Baix Pallars"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "040",
+	"id": 3839,
+	"name": "Balaguer"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "041",
+	"id": 3840,
+	"name": "Barbens"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "042",
+	"id": 3841,
+	"name": "Baronia de Rialb, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "044",
+	"id": 3842,
+	"name": "Bassella"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "045",
+	"id": 3843,
+	"name": "Bausen"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "046",
+	"id": 3844,
+	"name": "Belianes"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "170",
+	"id": 3845,
+	"name": "Bellaguarda"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "047",
+	"id": 3846,
+	"name": "Bellcaire d'Urgell"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "048",
+	"id": 3847,
+	"name": "Bell-lloc d'Urgell"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "049",
+	"id": 3848,
+	"name": "Bellmunt d'Urgell"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "050",
+	"id": 3849,
+	"name": "Bellpuig"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "051",
+	"id": 3850,
+	"name": "Bellver de Cerdanya"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "052",
+	"id": 3851,
+	"name": "Bellvís"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "053",
+	"id": 3852,
+	"name": "Benavent de Segrià"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "055",
+	"id": 3853,
+	"name": "Biosca"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "057",
+	"id": 3854,
+	"name": "Bòrdes, Es"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "058",
+	"id": 3855,
+	"name": "Borges Blanques, Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "059",
+	"id": 3856,
+	"name": "Bossòst"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "056",
+	"id": 3857,
+	"name": "Bovera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "060",
+	"id": 3858,
+	"name": "Cabanabona"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "061",
+	"id": 3859,
+	"name": "Cabó"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "062",
+	"id": 3860,
+	"name": "Camarasa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "063",
+	"id": 3861,
+	"name": "Canejan"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "904",
+	"id": 3862,
+	"name": "Castell de Mur"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "064",
+	"id": 3863,
+	"name": "Castellar de la Ribera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "067",
+	"id": 3864,
+	"name": "Castelldans"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "068",
+	"id": 3865,
+	"name": "Castellnou de Seana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "069",
+	"id": 3866,
+	"name": "Castelló de Farfanya"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "070",
+	"id": 3867,
+	"name": "Castellserà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "071",
+	"id": 3868,
+	"name": "Cava"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "072",
+	"id": 3869,
+	"name": "Cervera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "073",
+	"id": 3870,
+	"name": "Cervià de les Garrigues"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "074",
+	"id": 3871,
+	"name": "Ciutadilla"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "075",
+	"id": 3872,
+	"name": "Clariana de Cardener"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "076",
+	"id": 3873,
+	"name": "Cogul, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "077",
+	"id": 3874,
+	"name": "Coll de Nargó"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "163",
+	"id": 3875,
+	"name": "Coma i la Pedra, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "161",
+	"id": 3876,
+	"name": "Conca de Dalt"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "078",
+	"id": 3877,
+	"name": "Corbins"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "079",
+	"id": 3878,
+	"name": "Cubells"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "081",
+	"id": 3879,
+	"name": "Espluga Calba, L'"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "082",
+	"id": 3880,
+	"name": "Espot"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "088",
+	"id": 3881,
+	"name": "Estamariu"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "085",
+	"id": 3882,
+	"name": "Estaràs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "086",
+	"id": 3883,
+	"name": "Esterri d'Àneu"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "087",
+	"id": 3884,
+	"name": "Esterri de Cardós"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "089",
+	"id": 3885,
+	"name": "Farrera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "908",
+	"id": 3886,
+	"name": "Fígols i Alinyà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "092",
+	"id": 3887,
+	"name": "Floresta, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "093",
+	"id": 3888,
+	"name": "Fondarella"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "094",
+	"id": 3889,
+	"name": "Foradada"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "096",
+	"id": 3890,
+	"name": "Fuliola, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "097",
+	"id": 3891,
+	"name": "Fulleda"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "098",
+	"id": 3892,
+	"name": "Gavet de la Conca"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "912",
+	"id": 3893,
+	"name": "Gimenells i el Pla de la Font"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "099",
+	"id": 3894,
+	"name": "Golmés"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "100",
+	"id": 3895,
+	"name": "Gósol"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "101",
+	"id": 3896,
+	"name": "Granadella, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "102",
+	"id": 3897,
+	"name": "Granja d'Escarp, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "103",
+	"id": 3898,
+	"name": "Granyanella"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "105",
+	"id": 3899,
+	"name": "Granyena de les Garrigues"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "104",
+	"id": 3900,
+	"name": "Granyena de Segarra"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "109",
+	"id": 3901,
+	"name": "Guimerà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "903",
+	"id": 3902,
+	"name": "Guingueta d'Àneu, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "110",
+	"id": 3903,
+	"name": "Guissona"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "111",
+	"id": 3904,
+	"name": "Guixers"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "115",
+	"id": 3905,
+	"name": "Isona i Conca Dellà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "112",
+	"id": 3906,
+	"name": "Ivars de Noguera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "113",
+	"id": 3907,
+	"name": "Ivars d'Urgell"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "114",
+	"id": 3908,
+	"name": "Ivorra"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "910",
+	"id": 3909,
+	"name": "Josa i Tuixén"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "118",
+	"id": 3910,
+	"name": "Juncosa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "119",
+	"id": 3911,
+	"name": "Juneda"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "121",
+	"id": 3912,
+	"name": "Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "122",
+	"id": 3913,
+	"name": "Linyola"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "123",
+	"id": 3914,
+	"name": "Lladorre"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "124",
+	"id": 3915,
+	"name": "Lladurs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "125",
+	"id": 3916,
+	"name": "Llardecans"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "126",
+	"id": 3917,
+	"name": "Llavorsí"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "120",
+	"id": 3918,
+	"name": "Lleida"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "127",
+	"id": 3919,
+	"name": "Lles de Cerdanya"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "128",
+	"id": 3920,
+	"name": "Llimiana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "129",
+	"id": 3921,
+	"name": "Llobera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "133",
+	"id": 3922,
+	"name": "Maials"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "130",
+	"id": 3923,
+	"name": "Maldà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "131",
+	"id": 3924,
+	"name": "Massalcoreig"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "132",
+	"id": 3925,
+	"name": "Massoteres"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "134",
+	"id": 3926,
+	"name": "Menàrguens"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "135",
+	"id": 3927,
+	"name": "Miralcamp"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "137",
+	"id": 3928,
+	"name": "Mollerussa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "136",
+	"id": 3929,
+	"name": "Molsosa, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "139",
+	"id": 3930,
+	"name": "Montellà i Martinet"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "140",
+	"id": 3931,
+	"name": "Montferrer i Castellbò"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "138",
+	"id": 3932,
+	"name": "Montgai"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "142",
+	"id": 3933,
+	"name": "Montoliu de Lleida"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "141",
+	"id": 3934,
+	"name": "Montoliu de Segarra"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "143",
+	"id": 3935,
+	"name": "Montornès de Segarra"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "145",
+	"id": 3936,
+	"name": "Nalec"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "025",
+	"id": 3937,
+	"name": "Naut Aran"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "146",
+	"id": 3938,
+	"name": "Navès"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "148",
+	"id": 3939,
+	"name": "Odèn"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "149",
+	"id": 3940,
+	"name": "Oliana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "150",
+	"id": 3941,
+	"name": "Oliola"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "151",
+	"id": 3942,
+	"name": "Olius"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "152",
+	"id": 3943,
+	"name": "Oluges, Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "153",
+	"id": 3944,
+	"name": "Omellons, Els"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "154",
+	"id": 3945,
+	"name": "Omells de na Gaia, Els"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "155",
+	"id": 3946,
+	"name": "Organyà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "156",
+	"id": 3947,
+	"name": "Os de Balaguer"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "157",
+	"id": 3948,
+	"name": "Ossó de Sió"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "158",
+	"id": 3949,
+	"name": "Palau d'Anglesola, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "164",
+	"id": 3950,
+	"name": "Penelles"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "165",
+	"id": 3951,
+	"name": "Peramola"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "166",
+	"id": 3952,
+	"name": "Pinell de Solsonès"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "167",
+	"id": 3953,
+	"name": "Pinós"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "911",
+	"id": 3954,
+	"name": "Plans de Sió, Els"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "168",
+	"id": 3955,
+	"name": "Poal, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "169",
+	"id": 3956,
+	"name": "Pobla de Cérvoles, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "171",
+	"id": 3957,
+	"name": "Pobla de Segur, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "030",
+	"id": 3958,
+	"name": "Pont de Bar, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "173",
+	"id": 3959,
+	"name": "Pont de Suert, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "172",
+	"id": 3960,
+	"name": "Ponts"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "174",
+	"id": 3961,
+	"name": "Portella, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "175",
+	"id": 3962,
+	"name": "Prats i Sansor"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "176",
+	"id": 3963,
+	"name": "Preixana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "177",
+	"id": 3964,
+	"name": "Preixens"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "179",
+	"id": 3965,
+	"name": "Prullans"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "180",
+	"id": 3966,
+	"name": "Puiggròs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "181",
+	"id": 3967,
+	"name": "Puigverd d'Agramunt"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "182",
+	"id": 3968,
+	"name": "Puigverd de Lleida"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "183",
+	"id": 3969,
+	"name": "Rialp"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "905",
+	"id": 3970,
+	"name": "Ribera d'Ondara"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "185",
+	"id": 3971,
+	"name": "Ribera d'Urgellet"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "186",
+	"id": 3972,
+	"name": "Riner"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "913",
+	"id": 3973,
+	"name": "Riu de Cerdanya"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "189",
+	"id": 3974,
+	"name": "Rosselló"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "190",
+	"id": 3975,
+	"name": "Salàs de Pallars"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "191",
+	"id": 3976,
+	"name": "Sanaüja"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "196",
+	"id": 3977,
+	"name": "Sant Esteve de la Sarga"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "192",
+	"id": 3978,
+	"name": "Sant Guim de Freixenet"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "197",
+	"id": 3979,
+	"name": "Sant Guim de la Plana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "193",
+	"id": 3980,
+	"name": "Sant Llorenç de Morunys"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "902",
+	"id": 3981,
+	"name": "Sant Martí de Riucorb"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "194",
+	"id": 3982,
+	"name": "Sant Ramon"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "201",
+	"id": 3983,
+	"name": "Sarroca de Bellera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "200",
+	"id": 3984,
+	"name": "Sarroca de Lleida"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "202",
+	"id": 3985,
+	"name": "Senterada"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "035",
+	"id": 3986,
+	"name": "Sentiu de Sió, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "204",
+	"id": 3987,
+	"name": "Seròs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "203",
+	"id": 3988,
+	"name": "Seu d'Urgell, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "205",
+	"id": 3989,
+	"name": "Sidamon"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "206",
+	"id": 3990,
+	"name": "Soleràs, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "207",
+	"id": 3991,
+	"name": "Solsona"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "208",
+	"id": 3992,
+	"name": "Soriguera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "209",
+	"id": 3993,
+	"name": "Sort"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "210",
+	"id": 3994,
+	"name": "Soses"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "211",
+	"id": 3995,
+	"name": "Sudanell"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "212",
+	"id": 3996,
+	"name": "Sunyer"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "215",
+	"id": 3997,
+	"name": "Talarn"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "216",
+	"id": 3998,
+	"name": "Talavera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "217",
+	"id": 3999,
+	"name": "Tàrrega"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "218",
+	"id": 4000,
+	"name": "Tarrés"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "219",
+	"id": 4001,
+	"name": "Tarroja de Segarra"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "220",
+	"id": 4002,
+	"name": "Térmens"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "221",
+	"id": 4003,
+	"name": "Tírvia"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "222",
+	"id": 4004,
+	"name": "Tiurana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "223",
+	"id": 4005,
+	"name": "Torà"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "224",
+	"id": 4006,
+	"name": "Torms, Els"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "225",
+	"id": 4007,
+	"name": "Tornabous"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "227",
+	"id": 4008,
+	"name": "Torre de Cabdella, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "226",
+	"id": 4009,
+	"name": "Torrebesses"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "228",
+	"id": 4010,
+	"name": "Torrefarrera"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "907",
+	"id": 4011,
+	"name": "Torrefeta i Florejacs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "230",
+	"id": 4012,
+	"name": "Torregrossa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "231",
+	"id": 4013,
+	"name": "Torrelameu"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "232",
+	"id": 4014,
+	"name": "Torres de Segre"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "233",
+	"id": 4015,
+	"name": "Torre-serona"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "234",
+	"id": 4016,
+	"name": "Tremp"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "043",
+	"id": 4017,
+	"name": "Vall de Boí, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "901",
+	"id": 4018,
+	"name": "Vall de Cardós"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "238",
+	"id": 4019,
+	"name": "Vallbona de les Monges"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "240",
+	"id": 4020,
+	"name": "Vallfogona de Balaguer"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "906",
+	"id": 4021,
+	"name": "Valls d'Aguilar, Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "239",
+	"id": 4022,
+	"name": "Valls de Valira, Les"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "909",
+	"id": 4023,
+	"name": "Vansa i Fórnols, La"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "242",
+	"id": 4024,
+	"name": "Verdú"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "243",
+	"id": 4025,
+	"name": "Vielha e Mijaran"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "244",
+	"id": 4026,
+	"name": "Vilagrassa"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "245",
+	"id": 4027,
+	"name": "Vilaller"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "247",
+	"id": 4028,
+	"name": "Vilamòs"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "248",
+	"id": 4029,
+	"name": "Vilanova de Bellpuig"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "254",
+	"id": 4030,
+	"name": "Vilanova de la Barca"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "249",
+	"id": 4031,
+	"name": "Vilanova de l'Aguda"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "250",
+	"id": 4032,
+	"name": "Vilanova de Meià"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "251",
+	"id": 4033,
+	"name": "Vilanova de Segrià"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "252",
+	"id": 4034,
+	"name": "Vila-sana"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "253",
+	"id": 4035,
+	"name": "Vilosell, El"
+}, {
+	"cod_prov": "25",
+	"cod_mun": "255",
+	"id": 4036,
+	"name": "Vinaixa"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "001",
+	"id": 4037,
+	"name": "Ábalos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "002",
+	"id": 4038,
+	"name": "Agoncillo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "003",
+	"id": 4039,
+	"name": "Aguilar del Río Alhama"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "004",
+	"id": 4040,
+	"name": "Ajamil de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "005",
+	"id": 4041,
+	"name": "Albelda de Iregua"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "006",
+	"id": 4042,
+	"name": "Alberite"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "007",
+	"id": 4043,
+	"name": "Alcanadre"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "008",
+	"id": 4044,
+	"name": "Aldeanueva de Ebro"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "009",
+	"id": 4045,
+	"name": "Alesanco"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "010",
+	"id": 4046,
+	"name": "Alesón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "011",
+	"id": 4047,
+	"name": "Alfaro"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "012",
+	"id": 4048,
+	"name": "Almarza de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "013",
+	"id": 4049,
+	"name": "Anguciana"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "014",
+	"id": 4050,
+	"name": "Anguiano"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "015",
+	"id": 4051,
+	"name": "Arenzana de Abajo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "016",
+	"id": 4052,
+	"name": "Arenzana de Arriba"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "017",
+	"id": 4053,
+	"name": "Arnedillo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "018",
+	"id": 4054,
+	"name": "Arnedo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "019",
+	"id": 4055,
+	"name": "Arrúbal"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "020",
+	"id": 4056,
+	"name": "Ausejo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "021",
+	"id": 4057,
+	"name": "Autol"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "022",
+	"id": 4058,
+	"name": "Azofra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "023",
+	"id": 4059,
+	"name": "Badarán"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "024",
+	"id": 4060,
+	"name": "Bañares"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "026",
+	"id": 4061,
+	"name": "Baños de Río Tobía"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "025",
+	"id": 4062,
+	"name": "Baños de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "027",
+	"id": 4063,
+	"name": "Berceo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "028",
+	"id": 4064,
+	"name": "Bergasa"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "029",
+	"id": 4065,
+	"name": "Bergasillas Bajera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "030",
+	"id": 4066,
+	"name": "Bezares"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "031",
+	"id": 4067,
+	"name": "Bobadilla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "032",
+	"id": 4068,
+	"name": "Brieva de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "033",
+	"id": 4069,
+	"name": "Briñas"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "034",
+	"id": 4070,
+	"name": "Briones"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "035",
+	"id": 4071,
+	"name": "Cabezón de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "036",
+	"id": 4072,
+	"name": "Calahorra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "037",
+	"id": 4073,
+	"name": "Camprovín"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "038",
+	"id": 4074,
+	"name": "Canales de la Sierra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "039",
+	"id": 4075,
+	"name": "Canillas de Río Tuerto"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "040",
+	"id": 4076,
+	"name": "Cañas"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "041",
+	"id": 4077,
+	"name": "Cárdenas"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "042",
+	"id": 4078,
+	"name": "Casalarreina"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "043",
+	"id": 4079,
+	"name": "Castañares de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "044",
+	"id": 4080,
+	"name": "Castroviejo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "045",
+	"id": 4081,
+	"name": "Cellorigo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "046",
+	"id": 4082,
+	"name": "Cenicero"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "047",
+	"id": 4083,
+	"name": "Cervera del Río Alhama"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "048",
+	"id": 4084,
+	"name": "Cidamón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "049",
+	"id": 4085,
+	"name": "Cihuri"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "050",
+	"id": 4086,
+	"name": "Cirueña"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "051",
+	"id": 4087,
+	"name": "Clavijo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "052",
+	"id": 4088,
+	"name": "Cordovín"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "053",
+	"id": 4089,
+	"name": "Corera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "054",
+	"id": 4090,
+	"name": "Cornago"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "055",
+	"id": 4091,
+	"name": "Corporales"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "056",
+	"id": 4092,
+	"name": "Cuzcurrita de Río Tirón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "057",
+	"id": 4093,
+	"name": "Daroca de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "058",
+	"id": 4094,
+	"name": "Enciso"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "059",
+	"id": 4095,
+	"name": "Entrena"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "060",
+	"id": 4096,
+	"name": "Estollo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "061",
+	"id": 4097,
+	"name": "Ezcaray"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "062",
+	"id": 4098,
+	"name": "Foncea"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "063",
+	"id": 4099,
+	"name": "Fonzaleche"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "064",
+	"id": 4100,
+	"name": "Fuenmayor"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "065",
+	"id": 4101,
+	"name": "Galbárruli"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "066",
+	"id": 4102,
+	"name": "Galilea"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "067",
+	"id": 4103,
+	"name": "Gallinero de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "068",
+	"id": 4104,
+	"name": "Gimileo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "069",
+	"id": 4105,
+	"name": "Grañón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "070",
+	"id": 4106,
+	"name": "Grávalos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "071",
+	"id": 4107,
+	"name": "Haro"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "072",
+	"id": 4108,
+	"name": "Herce"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "073",
+	"id": 4109,
+	"name": "Herramélluri"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "074",
+	"id": 4110,
+	"name": "Hervías"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "075",
+	"id": 4111,
+	"name": "Hormilla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "076",
+	"id": 4112,
+	"name": "Hormilleja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "077",
+	"id": 4113,
+	"name": "Hornillos de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "078",
+	"id": 4114,
+	"name": "Hornos de Moncalvillo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "079",
+	"id": 4115,
+	"name": "Huércanos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "080",
+	"id": 4116,
+	"name": "Igea"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "081",
+	"id": 4117,
+	"name": "Jalón de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "082",
+	"id": 4118,
+	"name": "Laguna de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "083",
+	"id": 4119,
+	"name": "Lagunilla del Jubera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "084",
+	"id": 4120,
+	"name": "Lardero"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "086",
+	"id": 4121,
+	"name": "Ledesma de la Cogolla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "087",
+	"id": 4122,
+	"name": "Leiva"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "088",
+	"id": 4123,
+	"name": "Leza de Río Leza"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "089",
+	"id": 4124,
+	"name": "Logroño"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "091",
+	"id": 4125,
+	"name": "Lumbreras"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "092",
+	"id": 4126,
+	"name": "Manjarrés"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "093",
+	"id": 4127,
+	"name": "Mansilla de la Sierra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "094",
+	"id": 4128,
+	"name": "Manzanares de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "095",
+	"id": 4129,
+	"name": "Matute"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "096",
+	"id": 4130,
+	"name": "Medrano"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "098",
+	"id": 4131,
+	"name": "Munilla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "099",
+	"id": 4132,
+	"name": "Murillo de Río Leza"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "100",
+	"id": 4133,
+	"name": "Muro de Aguas"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "101",
+	"id": 4134,
+	"name": "Muro en Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "102",
+	"id": 4135,
+	"name": "Nájera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "103",
+	"id": 4136,
+	"name": "Nalda"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "104",
+	"id": 4137,
+	"name": "Navajún"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "105",
+	"id": 4138,
+	"name": "Navarrete"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "106",
+	"id": 4139,
+	"name": "Nestares"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "107",
+	"id": 4140,
+	"name": "Nieva de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "109",
+	"id": 4141,
+	"name": "Ochánduri"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "108",
+	"id": 4142,
+	"name": "Ocón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "110",
+	"id": 4143,
+	"name": "Ojacastro"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "111",
+	"id": 4144,
+	"name": "Ollauri"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "112",
+	"id": 4145,
+	"name": "Ortigosa de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "113",
+	"id": 4146,
+	"name": "Pazuengos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "114",
+	"id": 4147,
+	"name": "Pedroso"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "115",
+	"id": 4148,
+	"name": "Pinillos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "117",
+	"id": 4149,
+	"name": "Pradejón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "118",
+	"id": 4150,
+	"name": "Pradillo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "119",
+	"id": 4151,
+	"name": "Préjano"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "120",
+	"id": 4152,
+	"name": "Quel"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "121",
+	"id": 4153,
+	"name": "Rabanera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "122",
+	"id": 4154,
+	"name": "Rasillo de Cameros, El"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "123",
+	"id": 4155,
+	"name": "Redal, El"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "124",
+	"id": 4156,
+	"name": "Ribafrecha"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "125",
+	"id": 4157,
+	"name": "Rincón de Soto"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "126",
+	"id": 4158,
+	"name": "Robres del Castillo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "127",
+	"id": 4159,
+	"name": "Rodezno"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "128",
+	"id": 4160,
+	"name": "Sajazarra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "129",
+	"id": 4161,
+	"name": "San Asensio"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "130",
+	"id": 4162,
+	"name": "San Millán de la Cogolla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "131",
+	"id": 4163,
+	"name": "San Millán de Yécora"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "132",
+	"id": 4164,
+	"name": "San Román de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "139",
+	"id": 4165,
+	"name": "San Torcuato"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "142",
+	"id": 4166,
+	"name": "San Vicente de la Sonsierra"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "134",
+	"id": 4167,
+	"name": "Santa Coloma"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "135",
+	"id": 4168,
+	"name": "Santa Engracia del Jubera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "136",
+	"id": 4169,
+	"name": "Santa Eulalia Bajera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "138",
+	"id": 4170,
+	"name": "Santo Domingo de la Calzada"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "140",
+	"id": 4171,
+	"name": "Santurde de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "141",
+	"id": 4172,
+	"name": "Santurdejo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "143",
+	"id": 4173,
+	"name": "Sojuela"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "144",
+	"id": 4174,
+	"name": "Sorzano"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "145",
+	"id": 4175,
+	"name": "Sotés"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "146",
+	"id": 4176,
+	"name": "Soto en Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "147",
+	"id": 4177,
+	"name": "Terroba"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "148",
+	"id": 4178,
+	"name": "Tirgo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "149",
+	"id": 4179,
+	"name": "Tobía"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "150",
+	"id": 4180,
+	"name": "Tormantos"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "153",
+	"id": 4181,
+	"name": "Torre en Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "151",
+	"id": 4182,
+	"name": "Torrecilla en Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "152",
+	"id": 4183,
+	"name": "Torrecilla sobre Alesanco"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "154",
+	"id": 4184,
+	"name": "Torremontalbo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "155",
+	"id": 4185,
+	"name": "Treviana"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "157",
+	"id": 4186,
+	"name": "Tricio"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "158",
+	"id": 4187,
+	"name": "Tudelilla"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "160",
+	"id": 4188,
+	"name": "Uruñuela"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "161",
+	"id": 4189,
+	"name": "Valdemadera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "162",
+	"id": 4190,
+	"name": "Valgañón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "163",
+	"id": 4191,
+	"name": "Ventosa"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "164",
+	"id": 4192,
+	"name": "Ventrosa"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "165",
+	"id": 4193,
+	"name": "Viguera"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "166",
+	"id": 4194,
+	"name": "Villalba de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "167",
+	"id": 4195,
+	"name": "Villalobar de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "168",
+	"id": 4196,
+	"name": "Villamediana de Iregua"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "169",
+	"id": 4197,
+	"name": "Villanueva de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "170",
+	"id": 4198,
+	"name": "Villar de Arnedo, El"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "171",
+	"id": 4199,
+	"name": "Villar de Torre"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "172",
+	"id": 4200,
+	"name": "Villarejo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "173",
+	"id": 4201,
+	"name": "Villarroya"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "174",
+	"id": 4202,
+	"name": "Villarta-Quintana"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "175",
+	"id": 4203,
+	"name": "Villavelayo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "176",
+	"id": 4204,
+	"name": "Villaverde de Rioja"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "177",
+	"id": 4205,
+	"name": "Villoslada de Cameros"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "178",
+	"id": 4206,
+	"name": "Viniegra de Abajo"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "179",
+	"id": 4207,
+	"name": "Viniegra de Arriba"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "180",
+	"id": 4208,
+	"name": "Zarratón"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "181",
+	"id": 4209,
+	"name": "Zarzosa"
+}, {
+	"cod_prov": "26",
+	"cod_mun": "183",
+	"id": 4210,
+	"name": "Zorraquín"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "001",
+	"id": 4211,
+	"name": "Abadín"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "002",
+	"id": 4212,
+	"name": "Alfoz"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "003",
+	"id": 4213,
+	"name": "Antas de Ulla"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "004",
+	"id": 4214,
+	"name": "Baleira"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "901",
+	"id": 4215,
+	"name": "Baralla"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "005",
+	"id": 4216,
+	"name": "Barreiros"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "006",
+	"id": 4217,
+	"name": "Becerreá"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "007",
+	"id": 4218,
+	"name": "Begonte"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "008",
+	"id": 4219,
+	"name": "Bóveda"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "902",
+	"id": 4220,
+	"name": "Burela"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "009",
+	"id": 4221,
+	"name": "Carballedo"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "010",
+	"id": 4222,
+	"name": "Castro de Rei"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "011",
+	"id": 4223,
+	"name": "Castroverde"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "012",
+	"id": 4224,
+	"name": "Cervantes"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "013",
+	"id": 4225,
+	"name": "Cervo"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "016",
+	"id": 4226,
+	"name": "Chantada"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "014",
+	"id": 4227,
+	"name": "Corgo, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "015",
+	"id": 4228,
+	"name": "Cospeito"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "017",
+	"id": 4229,
+	"name": "Folgoso do Courel"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "018",
+	"id": 4230,
+	"name": "Fonsagrada, A"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "019",
+	"id": 4231,
+	"name": "Foz"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "020",
+	"id": 4232,
+	"name": "Friol"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "022",
+	"id": 4233,
+	"name": "Guitiriz"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "023",
+	"id": 4234,
+	"name": "Guntín"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "024",
+	"id": 4235,
+	"name": "Incio, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "026",
+	"id": 4236,
+	"name": "Láncara"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "027",
+	"id": 4237,
+	"name": "Lourenzá"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "028",
+	"id": 4238,
+	"name": "Lugo"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "029",
+	"id": 4239,
+	"name": "Meira"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "030",
+	"id": 4240,
+	"name": "Mondoñedo"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "031",
+	"id": 4241,
+	"name": "Monforte de Lemos"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "032",
+	"id": 4242,
+	"name": "Monterroso"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "033",
+	"id": 4243,
+	"name": "Muras"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "034",
+	"id": 4244,
+	"name": "Navia de Suarna"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "035",
+	"id": 4245,
+	"name": "Negueira de Muñiz"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "037",
+	"id": 4246,
+	"name": "Nogais, As"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "038",
+	"id": 4247,
+	"name": "Ourol"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "039",
+	"id": 4248,
+	"name": "Outeiro de Rei"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "040",
+	"id": 4249,
+	"name": "Palas de Rei"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "041",
+	"id": 4250,
+	"name": "Pantón"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "042",
+	"id": 4251,
+	"name": "Paradela"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "043",
+	"id": 4252,
+	"name": "Páramo, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "044",
+	"id": 4253,
+	"name": "Pastoriza, A"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "045",
+	"id": 4254,
+	"name": "Pedrafita do Cebreiro"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "047",
+	"id": 4255,
+	"name": "Pobra do Brollón, A"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "046",
+	"id": 4256,
+	"name": "Pol"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "048",
+	"id": 4257,
+	"name": "Pontenova, A"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "049",
+	"id": 4258,
+	"name": "Portomarín"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "050",
+	"id": 4259,
+	"name": "Quiroga"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "056",
+	"id": 4260,
+	"name": "Rábade"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "051",
+	"id": 4261,
+	"name": "Ribadeo"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "052",
+	"id": 4262,
+	"name": "Ribas de Sil"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "053",
+	"id": 4263,
+	"name": "Ribeira de Piquín"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "054",
+	"id": 4264,
+	"name": "Riotorto"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "055",
+	"id": 4265,
+	"name": "Samos"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "057",
+	"id": 4266,
+	"name": "Sarria"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "058",
+	"id": 4267,
+	"name": "Saviñao, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "059",
+	"id": 4268,
+	"name": "Sober"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "060",
+	"id": 4269,
+	"name": "Taboada"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "061",
+	"id": 4270,
+	"name": "Trabada"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "062",
+	"id": 4271,
+	"name": "Triacastela"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "063",
+	"id": 4272,
+	"name": "Valadouro, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "064",
+	"id": 4273,
+	"name": "Vicedo, O"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "065",
+	"id": 4274,
+	"name": "Vilalba"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "066",
+	"id": 4275,
+	"name": "Viveiro"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "021",
+	"id": 4276,
+	"name": "Xermade"
+}, {
+	"cod_prov": "27",
+	"cod_mun": "025",
+	"id": 4277,
+	"name": "Xove"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "001",
+	"id": 4278,
+	"name": "Acebeda, La"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "002",
+	"id": 4279,
+	"name": "Ajalvir"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "003",
+	"id": 4280,
+	"name": "Alameda del Valle"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "004",
+	"id": 4281,
+	"name": "Álamo, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "005",
+	"id": 4282,
+	"name": "Alcalá de Henares"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "006",
+	"id": 4283,
+	"name": "Alcobendas"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "007",
+	"id": 4284,
+	"name": "Alcorcón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "008",
+	"id": 4285,
+	"name": "Aldea del Fresno"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "009",
+	"id": 4286,
+	"name": "Algete"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "010",
+	"id": 4287,
+	"name": "Alpedrete"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "011",
+	"id": 4288,
+	"name": "Ambite"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "012",
+	"id": 4289,
+	"name": "Anchuelo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "013",
+	"id": 4290,
+	"name": "Aranjuez"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "014",
+	"id": 4291,
+	"name": "Arganda del Rey"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "015",
+	"id": 4292,
+	"name": "Arroyomolinos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "016",
+	"id": 4293,
+	"name": "Atazar, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "017",
+	"id": 4294,
+	"name": "Batres"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "018",
+	"id": 4295,
+	"name": "Becerril de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "019",
+	"id": 4296,
+	"name": "Belmonte de Tajo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "021",
+	"id": 4297,
+	"name": "Berrueco, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "020",
+	"id": 4298,
+	"name": "Berzosa del Lozoya"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "022",
+	"id": 4299,
+	"name": "Boadilla del Monte"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "023",
+	"id": 4300,
+	"name": "Boalo, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "024",
+	"id": 4301,
+	"name": "Braojos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "025",
+	"id": 4302,
+	"name": "Brea de Tajo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "026",
+	"id": 4303,
+	"name": "Brunete"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "027",
+	"id": 4304,
+	"name": "Buitrago del Lozoya"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "028",
+	"id": 4305,
+	"name": "Bustarviejo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "029",
+	"id": 4306,
+	"name": "Cabanillas de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "030",
+	"id": 4307,
+	"name": "Cabrera, La"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "031",
+	"id": 4308,
+	"name": "Cadalso de los Vidrios"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "032",
+	"id": 4309,
+	"name": "Camarma de Esteruelas"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "033",
+	"id": 4310,
+	"name": "Campo Real"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "034",
+	"id": 4311,
+	"name": "Canencia"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "035",
+	"id": 4312,
+	"name": "Carabaña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "036",
+	"id": 4313,
+	"name": "Casarrubuelos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "037",
+	"id": 4314,
+	"name": "Cenicientos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "038",
+	"id": 4315,
+	"name": "Cercedilla"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "039",
+	"id": 4316,
+	"name": "Cervera de Buitrago"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "051",
+	"id": 4317,
+	"name": "Chapinería"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "052",
+	"id": 4318,
+	"name": "Chinchón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "040",
+	"id": 4319,
+	"name": "Ciempozuelos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "041",
+	"id": 4320,
+	"name": "Cobeña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "046",
+	"id": 4321,
+	"name": "Collado Mediano"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "047",
+	"id": 4322,
+	"name": "Collado Villalba"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "043",
+	"id": 4323,
+	"name": "Colmenar de Oreja"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "042",
+	"id": 4324,
+	"name": "Colmenar del Arroyo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "045",
+	"id": 4325,
+	"name": "Colmenar Viejo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "044",
+	"id": 4326,
+	"name": "Colmenarejo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "048",
+	"id": 4327,
+	"name": "Corpa"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "049",
+	"id": 4328,
+	"name": "Coslada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "050",
+	"id": 4329,
+	"name": "Cubas de la Sagra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "053",
+	"id": 4330,
+	"name": "Daganzo de Arriba"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "054",
+	"id": 4331,
+	"name": "Escorial, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "055",
+	"id": 4332,
+	"name": "Estremera"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "056",
+	"id": 4333,
+	"name": "Fresnedillas de la Oliva"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "057",
+	"id": 4334,
+	"name": "Fresno de Torote"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "058",
+	"id": 4335,
+	"name": "Fuenlabrada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "059",
+	"id": 4336,
+	"name": "Fuente el Saz de Jarama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "060",
+	"id": 4337,
+	"name": "Fuentidueña de Tajo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "061",
+	"id": 4338,
+	"name": "Galapagar"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "062",
+	"id": 4339,
+	"name": "Garganta de los Montes"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "063",
+	"id": 4340,
+	"name": "Gargantilla del Lozoya y Pinilla de Buitrago"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "064",
+	"id": 4341,
+	"name": "Gascones"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "065",
+	"id": 4342,
+	"name": "Getafe"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "066",
+	"id": 4343,
+	"name": "Griñón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "067",
+	"id": 4344,
+	"name": "Guadalix de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "068",
+	"id": 4345,
+	"name": "Guadarrama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "069",
+	"id": 4346,
+	"name": "Hiruela, La"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "070",
+	"id": 4347,
+	"name": "Horcajo de la Sierra-Aoslos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "071",
+	"id": 4348,
+	"name": "Horcajuelo de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "072",
+	"id": 4349,
+	"name": "Hoyo de Manzanares"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "073",
+	"id": 4350,
+	"name": "Humanes de Madrid"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "074",
+	"id": 4351,
+	"name": "Leganés"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "075",
+	"id": 4352,
+	"name": "Loeches"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "076",
+	"id": 4353,
+	"name": "Lozoya"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "901",
+	"id": 4354,
+	"name": "Lozoyuela-Navas-Sieteiglesias"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "078",
+	"id": 4355,
+	"name": "Madarcos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "079",
+	"id": 4356,
+	"name": "Madrid"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "080",
+	"id": 4357,
+	"name": "Majadahonda"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "082",
+	"id": 4358,
+	"name": "Manzanares el Real"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "083",
+	"id": 4359,
+	"name": "Meco"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "084",
+	"id": 4360,
+	"name": "Mejorada del Campo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "085",
+	"id": 4361,
+	"name": "Miraflores de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "086",
+	"id": 4362,
+	"name": "Molar, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "087",
+	"id": 4363,
+	"name": "Molinos, Los"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "088",
+	"id": 4364,
+	"name": "Montejo de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "089",
+	"id": 4365,
+	"name": "Moraleja de Enmedio"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "090",
+	"id": 4366,
+	"name": "Moralzarzal"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "091",
+	"id": 4367,
+	"name": "Morata de Tajuña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "092",
+	"id": 4368,
+	"name": "Móstoles"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "093",
+	"id": 4369,
+	"name": "Navacerrada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "094",
+	"id": 4370,
+	"name": "Navalafuente"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "095",
+	"id": 4371,
+	"name": "Navalagamella"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "096",
+	"id": 4372,
+	"name": "Navalcarnero"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "097",
+	"id": 4373,
+	"name": "Navarredonda y San Mamés"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "099",
+	"id": 4374,
+	"name": "Navas del Rey"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "100",
+	"id": 4375,
+	"name": "Nuevo Baztán"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "101",
+	"id": 4376,
+	"name": "Olmeda de las Fuentes"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "102",
+	"id": 4377,
+	"name": "Orusco de Tajuña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "104",
+	"id": 4378,
+	"name": "Paracuellos de Jarama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "106",
+	"id": 4379,
+	"name": "Parla"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "107",
+	"id": 4380,
+	"name": "Patones"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "108",
+	"id": 4381,
+	"name": "Pedrezuela"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "109",
+	"id": 4382,
+	"name": "Pelayos de la Presa"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "110",
+	"id": 4383,
+	"name": "Perales de Tajuña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "111",
+	"id": 4384,
+	"name": "Pezuela de las Torres"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "112",
+	"id": 4385,
+	"name": "Pinilla del Valle"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "113",
+	"id": 4386,
+	"name": "Pinto"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "114",
+	"id": 4387,
+	"name": "Piñuécar-Gandullas"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "115",
+	"id": 4388,
+	"name": "Pozuelo de Alarcón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "116",
+	"id": 4389,
+	"name": "Pozuelo del Rey"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "117",
+	"id": 4390,
+	"name": "Prádena del Rincón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "118",
+	"id": 4391,
+	"name": "Puebla de la Sierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "902",
+	"id": 4392,
+	"name": "Puentes Viejas"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "119",
+	"id": 4393,
+	"name": "Quijorna"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "120",
+	"id": 4394,
+	"name": "Rascafría"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "121",
+	"id": 4395,
+	"name": "Redueña"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "122",
+	"id": 4396,
+	"name": "Ribatejada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "123",
+	"id": 4397,
+	"name": "Rivas-Vaciamadrid"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "124",
+	"id": 4398,
+	"name": "Robledillo de la Jara"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "125",
+	"id": 4399,
+	"name": "Robledo de Chavela"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "126",
+	"id": 4400,
+	"name": "Robregordo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "127",
+	"id": 4401,
+	"name": "Rozas de Madrid, Las"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "128",
+	"id": 4402,
+	"name": "Rozas de Puerto Real"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "129",
+	"id": 4403,
+	"name": "San Agustín del Guadalix"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "130",
+	"id": 4404,
+	"name": "San Fernando de Henares"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "131",
+	"id": 4405,
+	"name": "San Lorenzo de El Escorial"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "132",
+	"id": 4406,
+	"name": "San Martín de la Vega"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "133",
+	"id": 4407,
+	"name": "San Martín de Valdeiglesias"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "134",
+	"id": 4408,
+	"name": "San Sebastián de los Reyes"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "135",
+	"id": 4409,
+	"name": "Santa María de la Alameda"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "136",
+	"id": 4410,
+	"name": "Santorcaz"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "137",
+	"id": 4411,
+	"name": "Santos de la Humosa, Los"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "138",
+	"id": 4412,
+	"name": "Serna del Monte, La"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "140",
+	"id": 4413,
+	"name": "Serranillos del Valle"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "141",
+	"id": 4414,
+	"name": "Sevilla la Nueva"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "143",
+	"id": 4415,
+	"name": "Somosierra"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "144",
+	"id": 4416,
+	"name": "Soto del Real"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "145",
+	"id": 4417,
+	"name": "Talamanca de Jarama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "146",
+	"id": 4418,
+	"name": "Tielmes"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "147",
+	"id": 4419,
+	"name": "Titulcia"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "148",
+	"id": 4420,
+	"name": "Torrejón de Ardoz"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "149",
+	"id": 4421,
+	"name": "Torrejón de la Calzada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "150",
+	"id": 4422,
+	"name": "Torrejón de Velasco"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "151",
+	"id": 4423,
+	"name": "Torrelaguna"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "152",
+	"id": 4424,
+	"name": "Torrelodones"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "153",
+	"id": 4425,
+	"name": "Torremocha de Jarama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "154",
+	"id": 4426,
+	"name": "Torres de la Alameda"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "903",
+	"id": 4427,
+	"name": "Tres Cantos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "155",
+	"id": 4428,
+	"name": "Valdaracete"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "156",
+	"id": 4429,
+	"name": "Valdeavero"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "157",
+	"id": 4430,
+	"name": "Valdelaguna"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "158",
+	"id": 4431,
+	"name": "Valdemanco"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "159",
+	"id": 4432,
+	"name": "Valdemaqueda"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "160",
+	"id": 4433,
+	"name": "Valdemorillo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "161",
+	"id": 4434,
+	"name": "Valdemoro"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "162",
+	"id": 4435,
+	"name": "Valdeolmos-Alalpardo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "163",
+	"id": 4436,
+	"name": "Valdepiélagos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "164",
+	"id": 4437,
+	"name": "Valdetorres de Jarama"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "165",
+	"id": 4438,
+	"name": "Valdilecha"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "166",
+	"id": 4439,
+	"name": "Valverde de Alcalá"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "167",
+	"id": 4440,
+	"name": "Velilla de San Antonio"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "168",
+	"id": 4441,
+	"name": "Vellón, El"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "169",
+	"id": 4442,
+	"name": "Venturada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "171",
+	"id": 4443,
+	"name": "Villa del Prado"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "170",
+	"id": 4444,
+	"name": "Villaconejos"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "172",
+	"id": 4445,
+	"name": "Villalbilla"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "173",
+	"id": 4446,
+	"name": "Villamanrique de Tajo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "174",
+	"id": 4447,
+	"name": "Villamanta"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "175",
+	"id": 4448,
+	"name": "Villamantilla"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "176",
+	"id": 4449,
+	"name": "Villanueva de la Cañada"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "178",
+	"id": 4450,
+	"name": "Villanueva de Perales"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "177",
+	"id": 4451,
+	"name": "Villanueva del Pardillo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "179",
+	"id": 4452,
+	"name": "Villar del Olmo"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "180",
+	"id": 4453,
+	"name": "Villarejo de Salvanés"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "181",
+	"id": 4454,
+	"name": "Villaviciosa de Odón"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "182",
+	"id": 4455,
+	"name": "Villavieja del Lozoya"
+}, {
+	"cod_prov": "28",
+	"cod_mun": "183",
+	"id": 4456,
+	"name": "Zarzalejo"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "001",
+	"id": 4457,
+	"name": "Alameda"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "002",
+	"id": 4458,
+	"name": "Alcaucín"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "003",
+	"id": 4459,
+	"name": "Alfarnate"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "004",
+	"id": 4460,
+	"name": "Alfarnatejo"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "005",
+	"id": 4461,
+	"name": "Algarrobo"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "006",
+	"id": 4462,
+	"name": "Algatocín"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "007",
+	"id": 4463,
+	"name": "Alhaurín de la Torre"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "008",
+	"id": 4464,
+	"name": "Alhaurín el Grande"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "009",
+	"id": 4465,
+	"name": "Almáchar"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "010",
+	"id": 4466,
+	"name": "Almargen"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "011",
+	"id": 4467,
+	"name": "Almogía"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "012",
+	"id": 4468,
+	"name": "Álora"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "013",
+	"id": 4469,
+	"name": "Alozaina"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "014",
+	"id": 4470,
+	"name": "Alpandeire"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "015",
+	"id": 4471,
+	"name": "Antequera"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "016",
+	"id": 4472,
+	"name": "Árchez"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "017",
+	"id": 4473,
+	"name": "Archidona"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "018",
+	"id": 4474,
+	"name": "Ardales"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "019",
+	"id": 4475,
+	"name": "Arenas"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "020",
+	"id": 4476,
+	"name": "Arriate"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "021",
+	"id": 4477,
+	"name": "Atajate"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "022",
+	"id": 4478,
+	"name": "Benadalid"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "023",
+	"id": 4479,
+	"name": "Benahavís"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "024",
+	"id": 4480,
+	"name": "Benalauría"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "025",
+	"id": 4481,
+	"name": "Benalmádena"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "026",
+	"id": 4482,
+	"name": "Benamargosa"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "027",
+	"id": 4483,
+	"name": "Benamocarra"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "028",
+	"id": 4484,
+	"name": "Benaoján"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "029",
+	"id": 4485,
+	"name": "Benarrabá"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "030",
+	"id": 4486,
+	"name": "Borge, El"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "031",
+	"id": 4487,
+	"name": "Burgo, El"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "032",
+	"id": 4488,
+	"name": "Campillos"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "033",
+	"id": 4489,
+	"name": "Canillas de Aceituno"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "034",
+	"id": 4490,
+	"name": "Canillas de Albaida"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "035",
+	"id": 4491,
+	"name": "Cañete la Real"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "036",
+	"id": 4492,
+	"name": "Carratraca"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "037",
+	"id": 4493,
+	"name": "Cartajima"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "038",
+	"id": 4494,
+	"name": "Cártama"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "039",
+	"id": 4495,
+	"name": "Casabermeja"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "040",
+	"id": 4496,
+	"name": "Casarabonela"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "041",
+	"id": 4497,
+	"name": "Casares"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "042",
+	"id": 4498,
+	"name": "Coín"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "043",
+	"id": 4499,
+	"name": "Colmenar"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "044",
+	"id": 4500,
+	"name": "Comares"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "045",
+	"id": 4501,
+	"name": "Cómpeta"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "046",
+	"id": 4502,
+	"name": "Cortes de la Frontera"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "047",
+	"id": 4503,
+	"name": "Cuevas Bajas"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "049",
+	"id": 4504,
+	"name": "Cuevas de San Marcos"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "048",
+	"id": 4505,
+	"name": "Cuevas del Becerro"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "050",
+	"id": 4506,
+	"name": "Cútar"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "051",
+	"id": 4507,
+	"name": "Estepona"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "052",
+	"id": 4508,
+	"name": "Faraján"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "053",
+	"id": 4509,
+	"name": "Frigiliana"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "054",
+	"id": 4510,
+	"name": "Fuengirola"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "055",
+	"id": 4511,
+	"name": "Fuente de Piedra"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "056",
+	"id": 4512,
+	"name": "Gaucín"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "057",
+	"id": 4513,
+	"name": "Genalguacil"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "058",
+	"id": 4514,
+	"name": "Guaro"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "059",
+	"id": 4515,
+	"name": "Humilladero"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "060",
+	"id": 4516,
+	"name": "Igualeja"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "061",
+	"id": 4517,
+	"name": "Istán"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "062",
+	"id": 4518,
+	"name": "Iznate"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "063",
+	"id": 4519,
+	"name": "Jimera de Líbar"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "064",
+	"id": 4520,
+	"name": "Jubrique"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "065",
+	"id": 4521,
+	"name": "Júzcar"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "066",
+	"id": 4522,
+	"name": "Macharaviaya"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "067",
+	"id": 4523,
+	"name": "Málaga"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "068",
+	"id": 4524,
+	"name": "Manilva"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "069",
+	"id": 4525,
+	"name": "Marbella"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "070",
+	"id": 4526,
+	"name": "Mijas"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "071",
+	"id": 4527,
+	"name": "Moclinejo"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "072",
+	"id": 4528,
+	"name": "Mollina"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "073",
+	"id": 4529,
+	"name": "Monda"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "074",
+	"id": 4530,
+	"name": "Montejaque"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "075",
+	"id": 4531,
+	"name": "Nerja"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "076",
+	"id": 4532,
+	"name": "Ojén"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "077",
+	"id": 4533,
+	"name": "Parauta"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "079",
+	"id": 4534,
+	"name": "Periana"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "080",
+	"id": 4535,
+	"name": "Pizarra"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "081",
+	"id": 4536,
+	"name": "Pujerra"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "082",
+	"id": 4537,
+	"name": "Rincón de la Victoria"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "083",
+	"id": 4538,
+	"name": "Riogordo"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "084",
+	"id": 4539,
+	"name": "Ronda"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "085",
+	"id": 4540,
+	"name": "Salares"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "086",
+	"id": 4541,
+	"name": "Sayalonga"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "087",
+	"id": 4542,
+	"name": "Sedella"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "088",
+	"id": 4543,
+	"name": "Sierra de Yeguas"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "089",
+	"id": 4544,
+	"name": "Teba"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "090",
+	"id": 4545,
+	"name": "Tolox"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "901",
+	"id": 4546,
+	"name": "Torremolinos"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "091",
+	"id": 4547,
+	"name": "Torrox"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "092",
+	"id": 4548,
+	"name": "Totalán"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "093",
+	"id": 4549,
+	"name": "Valle de Abdalajís"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "094",
+	"id": 4550,
+	"name": "Vélez-Málaga"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "095",
+	"id": 4551,
+	"name": "Villanueva de Algaidas"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "902",
+	"id": 4552,
+	"name": "Villanueva de la Concepción"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "098",
+	"id": 4553,
+	"name": "Villanueva de Tapia"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "096",
+	"id": 4554,
+	"name": "Villanueva del Rosario"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "097",
+	"id": 4555,
+	"name": "Villanueva del Trabuco"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "099",
+	"id": 4556,
+	"name": "Viñuela"
+}, {
+	"cod_prov": "29",
+	"cod_mun": "100",
+	"id": 4557,
+	"name": "Yunquera"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "001",
+	"id": 4558,
+	"name": "Abanilla"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "002",
+	"id": 4559,
+	"name": "Abarán"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "003",
+	"id": 4560,
+	"name": "Águilas"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "004",
+	"id": 4561,
+	"name": "Albudeite"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "005",
+	"id": 4562,
+	"name": "Alcantarilla"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "902",
+	"id": 4563,
+	"name": "Alcázares, Los"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "006",
+	"id": 4564,
+	"name": "Aledo"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "007",
+	"id": 4565,
+	"name": "Alguazas"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "008",
+	"id": 4566,
+	"name": "Alhama de Murcia"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "009",
+	"id": 4567,
+	"name": "Archena"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "010",
+	"id": 4568,
+	"name": "Beniel"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "011",
+	"id": 4569,
+	"name": "Blanca"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "012",
+	"id": 4570,
+	"name": "Bullas"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "013",
+	"id": 4571,
+	"name": "Calasparra"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "014",
+	"id": 4572,
+	"name": "Campos del Río"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "015",
+	"id": 4573,
+	"name": "Caravaca de la Cruz"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "016",
+	"id": 4574,
+	"name": "Cartagena"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "017",
+	"id": 4575,
+	"name": "Cehegín"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "018",
+	"id": 4576,
+	"name": "Ceutí"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "019",
+	"id": 4577,
+	"name": "Cieza"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "020",
+	"id": 4578,
+	"name": "Fortuna"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "021",
+	"id": 4579,
+	"name": "Fuente Álamo de Murcia"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "022",
+	"id": 4580,
+	"name": "Jumilla"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "023",
+	"id": 4581,
+	"name": "Librilla"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "024",
+	"id": 4582,
+	"name": "Lorca"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "025",
+	"id": 4583,
+	"name": "Lorquí"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "026",
+	"id": 4584,
+	"name": "Mazarrón"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "027",
+	"id": 4585,
+	"name": "Molina de Segura"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "028",
+	"id": 4586,
+	"name": "Moratalla"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "029",
+	"id": 4587,
+	"name": "Mula"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "030",
+	"id": 4588,
+	"name": "Murcia"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "031",
+	"id": 4589,
+	"name": "Ojós"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "032",
+	"id": 4590,
+	"name": "Pliego"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "033",
+	"id": 4591,
+	"name": "Puerto Lumbreras"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "034",
+	"id": 4592,
+	"name": "Ricote"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "035",
+	"id": 4593,
+	"name": "San Javier"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "036",
+	"id": 4594,
+	"name": "San Pedro del Pinatar"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "901",
+	"id": 4595,
+	"name": "Santomera"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "037",
+	"id": 4596,
+	"name": "Torre-Pacheco"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "038",
+	"id": 4597,
+	"name": "Torres de Cotillas, Las"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "039",
+	"id": 4598,
+	"name": "Totana"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "040",
+	"id": 4599,
+	"name": "Ulea"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "041",
+	"id": 4600,
+	"name": "Unión, La"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "042",
+	"id": 4601,
+	"name": "Villanueva del Río Segura"
+}, {
+	"cod_prov": "30",
+	"cod_mun": "043",
+	"id": 4602,
+	"name": "Yecla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "001",
+	"id": 4603,
+	"name": "Abáigar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "002",
+	"id": 4604,
+	"name": "Abárzuza/Abartzuza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "003",
+	"id": 4605,
+	"name": "Abaurregaina/Abaurrea Alta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "004",
+	"id": 4606,
+	"name": "Abaurrepea/Abaurrea Baja"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "005",
+	"id": 4607,
+	"name": "Aberin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "006",
+	"id": 4608,
+	"name": "Ablitas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "007",
+	"id": 4609,
+	"name": "Adiós"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "008",
+	"id": 4610,
+	"name": "Aguilar de Codés"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "009",
+	"id": 4611,
+	"name": "Aibar/Oibar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "011",
+	"id": 4612,
+	"name": "Allín/Allin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "012",
+	"id": 4613,
+	"name": "Allo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "010",
+	"id": 4614,
+	"name": "Altsasu/Alsasua"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "013",
+	"id": 4615,
+	"name": "Améscoa Baja"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "014",
+	"id": 4616,
+	"name": "Ancín/Antzin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "015",
+	"id": 4617,
+	"name": "Andosilla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "016",
+	"id": 4618,
+	"name": "Ansoáin/Antsoain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "017",
+	"id": 4619,
+	"name": "Anue"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "018",
+	"id": 4620,
+	"name": "Añorbe"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "019",
+	"id": 4621,
+	"name": "Aoiz/Agoitz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "020",
+	"id": 4622,
+	"name": "Araitz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "025",
+	"id": 4623,
+	"name": "Arakil"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "021",
+	"id": 4624,
+	"name": "Aranarache/Aranaratxe"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "023",
+	"id": 4625,
+	"name": "Aranguren"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "024",
+	"id": 4626,
+	"name": "Arano"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "022",
+	"id": 4627,
+	"name": "Arantza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "026",
+	"id": 4628,
+	"name": "Aras"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "027",
+	"id": 4629,
+	"name": "Arbizu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "028",
+	"id": 4630,
+	"name": "Arce/Artzi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "029",
+	"id": 4631,
+	"name": "Arcos, Los"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "030",
+	"id": 4632,
+	"name": "Arellano"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "031",
+	"id": 4633,
+	"name": "Areso"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "032",
+	"id": 4634,
+	"name": "Arguedas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "033",
+	"id": 4635,
+	"name": "Aria"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "034",
+	"id": 4636,
+	"name": "Aribe"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "035",
+	"id": 4637,
+	"name": "Armañanzas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "036",
+	"id": 4638,
+	"name": "Arróniz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "037",
+	"id": 4639,
+	"name": "Arruazu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "038",
+	"id": 4640,
+	"name": "Artajona"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "039",
+	"id": 4641,
+	"name": "Artazu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "040",
+	"id": 4642,
+	"name": "Atez/Atetz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "058",
+	"id": 4643,
+	"name": "Auritz/Burguete"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "041",
+	"id": 4644,
+	"name": "Ayegui/Aiegi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "042",
+	"id": 4645,
+	"name": "Azagra"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "043",
+	"id": 4646,
+	"name": "Azuelo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "044",
+	"id": 4647,
+	"name": "Bakaiku"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "901",
+	"id": 4648,
+	"name": "Barañain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "045",
+	"id": 4649,
+	"name": "Barásoain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "046",
+	"id": 4650,
+	"name": "Barbarin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "047",
+	"id": 4651,
+	"name": "Bargota"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "048",
+	"id": 4652,
+	"name": "Barillas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "049",
+	"id": 4653,
+	"name": "Basaburua"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "050",
+	"id": 4654,
+	"name": "Baztan"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "137",
+	"id": 4655,
+	"name": "Beintza-Labaien"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "051",
+	"id": 4656,
+	"name": "Beire"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "052",
+	"id": 4657,
+	"name": "Belascoáin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "250",
+	"id": 4658,
+	"name": "Bera"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "053",
+	"id": 4659,
+	"name": "Berbinzana"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "905",
+	"id": 4660,
+	"name": "Beriáin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "902",
+	"id": 4661,
+	"name": "Berrioplano/Berriobeiti"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "903",
+	"id": 4662,
+	"name": "Berriozar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "054",
+	"id": 4663,
+	"name": "Bertizarana"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "055",
+	"id": 4664,
+	"name": "Betelu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "253",
+	"id": 4665,
+	"name": "Bidaurreta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "056",
+	"id": 4666,
+	"name": "Biurrun-Olcoz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "057",
+	"id": 4667,
+	"name": "Buñuel"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "059",
+	"id": 4668,
+	"name": "Burgui/Burgi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "060",
+	"id": 4669,
+	"name": "Burlada/Burlata"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "061",
+	"id": 4670,
+	"name": "Busto, El"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "062",
+	"id": 4671,
+	"name": "Cabanillas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "063",
+	"id": 4672,
+	"name": "Cabredo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "064",
+	"id": 4673,
+	"name": "Cadreita"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "065",
+	"id": 4674,
+	"name": "Caparroso"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "066",
+	"id": 4675,
+	"name": "Cárcar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "067",
+	"id": 4676,
+	"name": "Carcastillo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "068",
+	"id": 4677,
+	"name": "Cascante"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "069",
+	"id": 4678,
+	"name": "Cáseda"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "070",
+	"id": 4679,
+	"name": "Castejón"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "071",
+	"id": 4680,
+	"name": "Castillonuevo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "193",
+	"id": 4681,
+	"name": "Cendea de Olza/Oltza Zendea"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "072",
+	"id": 4682,
+	"name": "Cintruénigo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "074",
+	"id": 4683,
+	"name": "Cirauqui/Zirauki"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "075",
+	"id": 4684,
+	"name": "Ciriza/Ziritza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "076",
+	"id": 4685,
+	"name": "Cizur"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "077",
+	"id": 4686,
+	"name": "Corella"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "078",
+	"id": 4687,
+	"name": "Cortes"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "079",
+	"id": 4688,
+	"name": "Desojo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "080",
+	"id": 4689,
+	"name": "Dicastillo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "081",
+	"id": 4690,
+	"name": "Donamaria"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "221",
+	"id": 4691,
+	"name": "Doneztebe/Santesteban"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "083",
+	"id": 4692,
+	"name": "Echarri"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "086",
+	"id": 4693,
+	"name": "Egüés"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "087",
+	"id": 4694,
+	"name": "Elgorriaga"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "089",
+	"id": 4695,
+	"name": "Enériz/Eneritz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "090",
+	"id": 4696,
+	"name": "Eratsun"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "091",
+	"id": 4697,
+	"name": "Ergoiena"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "092",
+	"id": 4698,
+	"name": "Erro"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "094",
+	"id": 4699,
+	"name": "Eslava"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "095",
+	"id": 4700,
+	"name": "Esparza de Salazar/Espartza Zaraitzu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "096",
+	"id": 4701,
+	"name": "Espronceda"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "097",
+	"id": 4702,
+	"name": "Estella-Lizarra"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "098",
+	"id": 4703,
+	"name": "Esteribar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "099",
+	"id": 4704,
+	"name": "Etayo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "082",
+	"id": 4705,
+	"name": "Etxalar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "084",
+	"id": 4706,
+	"name": "Etxarri-Aranatz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "085",
+	"id": 4707,
+	"name": "Etxauri"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "100",
+	"id": 4708,
+	"name": "Eulate"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "101",
+	"id": 4709,
+	"name": "Ezcabarte"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "093",
+	"id": 4710,
+	"name": "Ezcároz/Ezkaroze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "102",
+	"id": 4711,
+	"name": "Ezkurra"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "103",
+	"id": 4712,
+	"name": "Ezprogui"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "104",
+	"id": 4713,
+	"name": "Falces"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "105",
+	"id": 4714,
+	"name": "Fitero"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "106",
+	"id": 4715,
+	"name": "Fontellas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "107",
+	"id": 4716,
+	"name": "Funes"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "108",
+	"id": 4717,
+	"name": "Fustiñana"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "109",
+	"id": 4718,
+	"name": "Galar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "110",
+	"id": 4719,
+	"name": "Gallipienzo/Galipentzu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "111",
+	"id": 4720,
+	"name": "Gallués/Galoze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "112",
+	"id": 4721,
+	"name": "Garaioa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "113",
+	"id": 4722,
+	"name": "Garde"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "114",
+	"id": 4723,
+	"name": "Garínoain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "115",
+	"id": 4724,
+	"name": "Garralda"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "116",
+	"id": 4725,
+	"name": "Genevilla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "117",
+	"id": 4726,
+	"name": "Goizueta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "118",
+	"id": 4727,
+	"name": "Goñi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "119",
+	"id": 4728,
+	"name": "Güesa/Gorza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "120",
+	"id": 4729,
+	"name": "Guesálaz/Gesalatz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "121",
+	"id": 4730,
+	"name": "Guirguillano"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "256",
+	"id": 4731,
+	"name": "Hiriberri/Villanueva de Aezkoa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "122",
+	"id": 4732,
+	"name": "Huarte/Uharte"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "124",
+	"id": 4733,
+	"name": "Ibargoiti"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "259",
+	"id": 4734,
+	"name": "Igantzi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "125",
+	"id": 4735,
+	"name": "Igúzquiza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "126",
+	"id": 4736,
+	"name": "Imotz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "127",
+	"id": 4737,
+	"name": "Irañeta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "904",
+	"id": 4738,
+	"name": "Irurtzun"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "128",
+	"id": 4739,
+	"name": "Isaba/Izaba"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "129",
+	"id": 4740,
+	"name": "Ituren"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "130",
+	"id": 4741,
+	"name": "Iturmendi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "131",
+	"id": 4742,
+	"name": "Iza/Itza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "132",
+	"id": 4743,
+	"name": "Izagaondoa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "133",
+	"id": 4744,
+	"name": "Izalzu/Itzaltzu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "134",
+	"id": 4745,
+	"name": "Jaurrieta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "135",
+	"id": 4746,
+	"name": "Javier"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "136",
+	"id": 4747,
+	"name": "Juslapeña"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "138",
+	"id": 4748,
+	"name": "Lakuntza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "139",
+	"id": 4749,
+	"name": "Lana"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "140",
+	"id": 4750,
+	"name": "Lantz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "141",
+	"id": 4751,
+	"name": "Lapoblación"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "142",
+	"id": 4752,
+	"name": "Larraga"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "143",
+	"id": 4753,
+	"name": "Larraona"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "144",
+	"id": 4754,
+	"name": "Larraun"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "145",
+	"id": 4755,
+	"name": "Lazagurría"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "146",
+	"id": 4756,
+	"name": "Leache/Leatxe"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "147",
+	"id": 4757,
+	"name": "Legarda"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "148",
+	"id": 4758,
+	"name": "Legaria"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "149",
+	"id": 4759,
+	"name": "Leitza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "908",
+	"id": 4760,
+	"name": "Lekunberri"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "150",
+	"id": 4761,
+	"name": "Leoz/Leotz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "151",
+	"id": 4762,
+	"name": "Lerga"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "152",
+	"id": 4763,
+	"name": "Lerín"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "153",
+	"id": 4764,
+	"name": "Lesaka"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "154",
+	"id": 4765,
+	"name": "Lezáun"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "155",
+	"id": 4766,
+	"name": "Liédena"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "156",
+	"id": 4767,
+	"name": "Lizoáin-Arriasgoiti"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "157",
+	"id": 4768,
+	"name": "Lodosa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "158",
+	"id": 4769,
+	"name": "Lónguida/Longida"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "159",
+	"id": 4770,
+	"name": "Lumbier"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "160",
+	"id": 4771,
+	"name": "Luquin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "248",
+	"id": 4772,
+	"name": "Luzaide/Valcarlos"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "161",
+	"id": 4773,
+	"name": "Mañeru"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "162",
+	"id": 4774,
+	"name": "Marañón"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "163",
+	"id": 4775,
+	"name": "Marcilla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "164",
+	"id": 4776,
+	"name": "Mélida"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "165",
+	"id": 4777,
+	"name": "Mendavia"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "166",
+	"id": 4778,
+	"name": "Mendaza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "167",
+	"id": 4779,
+	"name": "Mendigorría"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "168",
+	"id": 4780,
+	"name": "Metauten"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "169",
+	"id": 4781,
+	"name": "Milagro"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "170",
+	"id": 4782,
+	"name": "Mirafuentes"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "171",
+	"id": 4783,
+	"name": "Miranda de Arga"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "172",
+	"id": 4784,
+	"name": "Monreal/Elo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "173",
+	"id": 4785,
+	"name": "Monteagudo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "174",
+	"id": 4786,
+	"name": "Morentin"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "175",
+	"id": 4787,
+	"name": "Mues"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "176",
+	"id": 4788,
+	"name": "Murchante"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "177",
+	"id": 4789,
+	"name": "Murieta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "178",
+	"id": 4790,
+	"name": "Murillo el Cuende"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "179",
+	"id": 4791,
+	"name": "Murillo el Fruto"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "180",
+	"id": 4792,
+	"name": "Muruzábal"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "181",
+	"id": 4793,
+	"name": "Navascués/Nabaskoze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "182",
+	"id": 4794,
+	"name": "Nazar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "088",
+	"id": 4795,
+	"name": "Noáin (Valle de Elorz)/Noain (Elortzibar)"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "183",
+	"id": 4796,
+	"name": "Obanos"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "185",
+	"id": 4797,
+	"name": "Ochagavía/Otsagabia"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "184",
+	"id": 4798,
+	"name": "Oco"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "186",
+	"id": 4799,
+	"name": "Odieta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "187",
+	"id": 4800,
+	"name": "Oitz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "188",
+	"id": 4801,
+	"name": "Olaibar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "189",
+	"id": 4802,
+	"name": "Olazti/Olazagutía"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "190",
+	"id": 4803,
+	"name": "Olejua"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "191",
+	"id": 4804,
+	"name": "Olite/Erriberri"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "194",
+	"id": 4805,
+	"name": "Ollo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "192",
+	"id": 4806,
+	"name": "Olóriz/Oloritz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "195",
+	"id": 4807,
+	"name": "Orbaizeta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "196",
+	"id": 4808,
+	"name": "Orbara"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "197",
+	"id": 4809,
+	"name": "Orísoain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "906",
+	"id": 4810,
+	"name": "Orkoien"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "198",
+	"id": 4811,
+	"name": "Oronz/Orontze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "199",
+	"id": 4812,
+	"name": "Oroz-Betelu/Orotz-Betelu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "211",
+	"id": 4813,
+	"name": "Orreaga/Roncesvalles"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "200",
+	"id": 4814,
+	"name": "Oteiza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "201",
+	"id": 4815,
+	"name": "Pamplona/Iruña"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "202",
+	"id": 4816,
+	"name": "Peralta/Azkoien"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "203",
+	"id": 4817,
+	"name": "Petilla de Aragón"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "204",
+	"id": 4818,
+	"name": "Piedramillera"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "205",
+	"id": 4819,
+	"name": "Pitillas"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "206",
+	"id": 4820,
+	"name": "Puente la Reina/Gares"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "207",
+	"id": 4821,
+	"name": "Pueyo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "208",
+	"id": 4822,
+	"name": "Ribaforada"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "209",
+	"id": 4823,
+	"name": "Romanzado"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "210",
+	"id": 4824,
+	"name": "Roncal/Erronkari"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "212",
+	"id": 4825,
+	"name": "Sada"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "213",
+	"id": 4826,
+	"name": "Saldías"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "214",
+	"id": 4827,
+	"name": "Salinas de Oro/Jaitz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "215",
+	"id": 4828,
+	"name": "San Adrián"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "217",
+	"id": 4829,
+	"name": "San Martín de Unx"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "216",
+	"id": 4830,
+	"name": "Sangüesa/Zangoza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "219",
+	"id": 4831,
+	"name": "Sansol"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "220",
+	"id": 4832,
+	"name": "Santacara"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "222",
+	"id": 4833,
+	"name": "Sarriés/Sartze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "223",
+	"id": 4834,
+	"name": "Sartaguda"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "224",
+	"id": 4835,
+	"name": "Sesma"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "225",
+	"id": 4836,
+	"name": "Sorlada"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "226",
+	"id": 4837,
+	"name": "Sunbilla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "227",
+	"id": 4838,
+	"name": "Tafalla"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "228",
+	"id": 4839,
+	"name": "Tiebas-Muruarte de Reta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "229",
+	"id": 4840,
+	"name": "Tirapu"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "230",
+	"id": 4841,
+	"name": "Torralba del Río"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "231",
+	"id": 4842,
+	"name": "Torres del Río"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "232",
+	"id": 4843,
+	"name": "Tudela"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "233",
+	"id": 4844,
+	"name": "Tulebras"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "234",
+	"id": 4845,
+	"name": "Ucar"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "123",
+	"id": 4846,
+	"name": "Uharte-Arakil"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "235",
+	"id": 4847,
+	"name": "Ujué"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "236",
+	"id": 4848,
+	"name": "Ultzama"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "237",
+	"id": 4849,
+	"name": "Unciti"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "238",
+	"id": 4850,
+	"name": "Unzué/Untzue"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "239",
+	"id": 4851,
+	"name": "Urdazubi/Urdax"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "240",
+	"id": 4852,
+	"name": "Urdiain"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "241",
+	"id": 4853,
+	"name": "Urraul Alto"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "242",
+	"id": 4854,
+	"name": "Urraul Bajo"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "244",
+	"id": 4855,
+	"name": "Urrotz"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "243",
+	"id": 4856,
+	"name": "Urroz-Villa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "245",
+	"id": 4857,
+	"name": "Urzainqui/Urzainki"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "246",
+	"id": 4858,
+	"name": "Uterga"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "247",
+	"id": 4859,
+	"name": "Uztárroz/Uztarroze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "260",
+	"id": 4860,
+	"name": "Valle de Yerri/Deierri"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "249",
+	"id": 4861,
+	"name": "Valtierra"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "251",
+	"id": 4862,
+	"name": "Viana"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "252",
+	"id": 4863,
+	"name": "Vidángoz/Bidankoze"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "254",
+	"id": 4864,
+	"name": "Villafranca"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "255",
+	"id": 4865,
+	"name": "Villamayor de Monjardín"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "257",
+	"id": 4866,
+	"name": "Villatuerta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "258",
+	"id": 4867,
+	"name": "Villava/Atarrabia"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "261",
+	"id": 4868,
+	"name": "Yesa"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "262",
+	"id": 4869,
+	"name": "Zabalza/Zabaltza"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "073",
+	"id": 4870,
+	"name": "Ziordia"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "907",
+	"id": 4871,
+	"name": "Zizur Mayor/Zizur Nagusia"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "263",
+	"id": 4872,
+	"name": "Zubieta"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "264",
+	"id": 4873,
+	"name": "Zugarramurdi"
+}, {
+	"cod_prov": "31",
+	"cod_mun": "265",
+	"id": 4874,
+	"name": "Zúñiga"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "001",
+	"id": 4875,
+	"name": "Allariz"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "002",
+	"id": 4876,
+	"name": "Amoeiro"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "003",
+	"id": 4877,
+	"name": "Arnoia, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "004",
+	"id": 4878,
+	"name": "Avión"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "005",
+	"id": 4879,
+	"name": "Baltar"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "006",
+	"id": 4880,
+	"name": "Bande"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "007",
+	"id": 4881,
+	"name": "Baños de Molgas"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "008",
+	"id": 4882,
+	"name": "Barbadás"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "009",
+	"id": 4883,
+	"name": "Barco de Valdeorras, O"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "010",
+	"id": 4884,
+	"name": "Beade"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "011",
+	"id": 4885,
+	"name": "Beariz"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "012",
+	"id": 4886,
+	"name": "Blancos, Os"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "013",
+	"id": 4887,
+	"name": "Boborás"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "014",
+	"id": 4888,
+	"name": "Bola, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "015",
+	"id": 4889,
+	"name": "Bolo, O"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "016",
+	"id": 4890,
+	"name": "Calvos de Randín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "018",
+	"id": 4891,
+	"name": "Carballeda de Avia"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "017",
+	"id": 4892,
+	"name": "Carballeda de Valdeorras"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "019",
+	"id": 4893,
+	"name": "Carballiño, O"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "020",
+	"id": 4894,
+	"name": "Cartelle"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "022",
+	"id": 4895,
+	"name": "Castrelo de Miño"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "021",
+	"id": 4896,
+	"name": "Castrelo do Val"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "023",
+	"id": 4897,
+	"name": "Castro Caldelas"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "024",
+	"id": 4898,
+	"name": "Celanova"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "025",
+	"id": 4899,
+	"name": "Cenlle"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "029",
+	"id": 4900,
+	"name": "Chandrexa de Queixa"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "026",
+	"id": 4901,
+	"name": "Coles"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "027",
+	"id": 4902,
+	"name": "Cortegada"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "028",
+	"id": 4903,
+	"name": "Cualedro"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "030",
+	"id": 4904,
+	"name": "Entrimo"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "031",
+	"id": 4905,
+	"name": "Esgos"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "033",
+	"id": 4906,
+	"name": "Gomesende"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "034",
+	"id": 4907,
+	"name": "Gudiña, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "035",
+	"id": 4908,
+	"name": "Irixo, O"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "038",
+	"id": 4909,
+	"name": "Larouco"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "039",
+	"id": 4910,
+	"name": "Laza"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "040",
+	"id": 4911,
+	"name": "Leiro"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "041",
+	"id": 4912,
+	"name": "Lobeira"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "042",
+	"id": 4913,
+	"name": "Lobios"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "043",
+	"id": 4914,
+	"name": "Maceda"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "044",
+	"id": 4915,
+	"name": "Manzaneda"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "045",
+	"id": 4916,
+	"name": "Maside"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "046",
+	"id": 4917,
+	"name": "Melón"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "047",
+	"id": 4918,
+	"name": "Merca, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "048",
+	"id": 4919,
+	"name": "Mezquita, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "049",
+	"id": 4920,
+	"name": "Montederramo"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "050",
+	"id": 4921,
+	"name": "Monterrei"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "051",
+	"id": 4922,
+	"name": "Muíños"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "052",
+	"id": 4923,
+	"name": "Nogueira de Ramuín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "053",
+	"id": 4924,
+	"name": "Oímbra"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "054",
+	"id": 4925,
+	"name": "Ourense"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "055",
+	"id": 4926,
+	"name": "Paderne de Allariz"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "056",
+	"id": 4927,
+	"name": "Padrenda"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "057",
+	"id": 4928,
+	"name": "Parada de Sil"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "058",
+	"id": 4929,
+	"name": "Pereiro de Aguiar, O"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "059",
+	"id": 4930,
+	"name": "Peroxa, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "060",
+	"id": 4931,
+	"name": "Petín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "061",
+	"id": 4932,
+	"name": "Piñor"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "063",
+	"id": 4933,
+	"name": "Pobra de Trives, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "064",
+	"id": 4934,
+	"name": "Pontedeva"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "062",
+	"id": 4935,
+	"name": "Porqueira"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "065",
+	"id": 4936,
+	"name": "Punxín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "066",
+	"id": 4937,
+	"name": "Quintela de Leirado"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "067",
+	"id": 4938,
+	"name": "Rairiz de Veiga"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "068",
+	"id": 4939,
+	"name": "Ramirás"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "069",
+	"id": 4940,
+	"name": "Ribadavia"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "071",
+	"id": 4941,
+	"name": "Riós"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "072",
+	"id": 4942,
+	"name": "Rúa, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "073",
+	"id": 4943,
+	"name": "Rubiá"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "074",
+	"id": 4944,
+	"name": "San Amaro"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "075",
+	"id": 4945,
+	"name": "San Cibrao das Viñas"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "076",
+	"id": 4946,
+	"name": "San Cristovo de Cea"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "070",
+	"id": 4947,
+	"name": "San Xoán de Río"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "077",
+	"id": 4948,
+	"name": "Sandiás"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "078",
+	"id": 4949,
+	"name": "Sarreaus"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "079",
+	"id": 4950,
+	"name": "Taboadela"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "080",
+	"id": 4951,
+	"name": "Teixeira, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "081",
+	"id": 4952,
+	"name": "Toén"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "082",
+	"id": 4953,
+	"name": "Trasmiras"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "083",
+	"id": 4954,
+	"name": "Veiga, A"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "084",
+	"id": 4955,
+	"name": "Verea"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "085",
+	"id": 4956,
+	"name": "Verín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "086",
+	"id": 4957,
+	"name": "Viana do Bolo"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "087",
+	"id": 4958,
+	"name": "Vilamarín"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "088",
+	"id": 4959,
+	"name": "Vilamartín de Valdeorras"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "089",
+	"id": 4960,
+	"name": "Vilar de Barrio"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "090",
+	"id": 4961,
+	"name": "Vilar de Santos"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "091",
+	"id": 4962,
+	"name": "Vilardevós"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "092",
+	"id": 4963,
+	"name": "Vilariño de Conso"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "032",
+	"id": 4964,
+	"name": "Xinzo de Limia"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "036",
+	"id": 4965,
+	"name": "Xunqueira de Ambía"
+}, {
+	"cod_prov": "32",
+	"cod_mun": "037",
+	"id": 4966,
+	"name": "Xunqueira de Espadanedo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "001",
+	"id": 4967,
+	"name": "Allande"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "002",
+	"id": 4968,
+	"name": "Aller"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "003",
+	"id": 4969,
+	"name": "Amieva"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "004",
+	"id": 4970,
+	"name": "Avilés"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "005",
+	"id": 4971,
+	"name": "Belmonte de Miranda"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "006",
+	"id": 4972,
+	"name": "Bimenes"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "007",
+	"id": 4973,
+	"name": "Boal"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "008",
+	"id": 4974,
+	"name": "Cabrales"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "009",
+	"id": 4975,
+	"name": "Cabranes"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "010",
+	"id": 4976,
+	"name": "Candamo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "012",
+	"id": 4977,
+	"name": "Cangas de Onís"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "011",
+	"id": 4978,
+	"name": "Cangas del Narcea"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "013",
+	"id": 4979,
+	"name": "Caravia"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "014",
+	"id": 4980,
+	"name": "Carreño"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "015",
+	"id": 4981,
+	"name": "Caso"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "016",
+	"id": 4982,
+	"name": "Castrillón"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "017",
+	"id": 4983,
+	"name": "Castropol"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "018",
+	"id": 4984,
+	"name": "Coaña"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "019",
+	"id": 4985,
+	"name": "Colunga"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "020",
+	"id": 4986,
+	"name": "Corvera de Asturias"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "021",
+	"id": 4987,
+	"name": "Cudillero"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "022",
+	"id": 4988,
+	"name": "Degaña"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "023",
+	"id": 4989,
+	"name": "Franco, El"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "024",
+	"id": 4990,
+	"name": "Gijón"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "025",
+	"id": 4991,
+	"name": "Gozón"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "026",
+	"id": 4992,
+	"name": "Grado"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "027",
+	"id": 4993,
+	"name": "Grandas de Salime"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "028",
+	"id": 4994,
+	"name": "Ibias"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "029",
+	"id": 4995,
+	"name": "Illano"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "030",
+	"id": 4996,
+	"name": "Illas"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "031",
+	"id": 4997,
+	"name": "Langreo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "032",
+	"id": 4998,
+	"name": "Laviana"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "033",
+	"id": 4999,
+	"name": "Lena"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "035",
+	"id": 5000,
+	"name": "Llanera"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "036",
+	"id": 5001,
+	"name": "Llanes"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "037",
+	"id": 5002,
+	"name": "Mieres"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "038",
+	"id": 5003,
+	"name": "Morcín"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "039",
+	"id": 5004,
+	"name": "Muros de Nalón"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "040",
+	"id": 5005,
+	"name": "Nava"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "041",
+	"id": 5006,
+	"name": "Navia"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "042",
+	"id": 5007,
+	"name": "Noreña"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "043",
+	"id": 5008,
+	"name": "Onís"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "044",
+	"id": 5009,
+	"name": "Oviedo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "045",
+	"id": 5010,
+	"name": "Parres"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "046",
+	"id": 5011,
+	"name": "Peñamellera Alta"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "047",
+	"id": 5012,
+	"name": "Peñamellera Baja"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "048",
+	"id": 5013,
+	"name": "Pesoz"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "049",
+	"id": 5014,
+	"name": "Piloña"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "050",
+	"id": 5015,
+	"name": "Ponga"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "051",
+	"id": 5016,
+	"name": "Pravia"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "052",
+	"id": 5017,
+	"name": "Proaza"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "053",
+	"id": 5018,
+	"name": "Quirós"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "054",
+	"id": 5019,
+	"name": "Regueras, Las"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "055",
+	"id": 5020,
+	"name": "Ribadedeva"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "056",
+	"id": 5021,
+	"name": "Ribadesella"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "057",
+	"id": 5022,
+	"name": "Ribera de Arriba"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "058",
+	"id": 5023,
+	"name": "Riosa"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "059",
+	"id": 5024,
+	"name": "Salas"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "061",
+	"id": 5025,
+	"name": "San Martín de Oscos"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "060",
+	"id": 5026,
+	"name": "San Martín del Rey Aurelio"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "063",
+	"id": 5027,
+	"name": "San Tirso de Abres"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "062",
+	"id": 5028,
+	"name": "Santa Eulalia de Oscos"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "064",
+	"id": 5029,
+	"name": "Santo Adriano"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "065",
+	"id": 5030,
+	"name": "Sariego"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "066",
+	"id": 5031,
+	"name": "Siero"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "067",
+	"id": 5032,
+	"name": "Sobrescobio"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "068",
+	"id": 5033,
+	"name": "Somiedo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "069",
+	"id": 5034,
+	"name": "Soto del Barco"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "070",
+	"id": 5035,
+	"name": "Tapia de Casariego"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "071",
+	"id": 5036,
+	"name": "Taramundi"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "072",
+	"id": 5037,
+	"name": "Teverga"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "073",
+	"id": 5038,
+	"name": "Tineo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "034",
+	"id": 5039,
+	"name": "Valdés"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "074",
+	"id": 5040,
+	"name": "Vegadeo"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "075",
+	"id": 5041,
+	"name": "Villanueva de Oscos"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "076",
+	"id": 5042,
+	"name": "Villaviciosa"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "077",
+	"id": 5043,
+	"name": "Villayón"
+}, {
+	"cod_prov": "33",
+	"cod_mun": "078",
+	"id": 5044,
+	"name": "Yernes y Tameza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "001",
+	"id": 5045,
+	"name": "Abarca de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "003",
+	"id": 5046,
+	"name": "Abia de las Torres"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "004",
+	"id": 5047,
+	"name": "Aguilar de Campoo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "005",
+	"id": 5048,
+	"name": "Alar del Rey"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "006",
+	"id": 5049,
+	"name": "Alba de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "009",
+	"id": 5050,
+	"name": "Amayuelas de Arriba"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "010",
+	"id": 5051,
+	"name": "Ampudia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "011",
+	"id": 5052,
+	"name": "Amusco"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "012",
+	"id": 5053,
+	"name": "Antigüedad"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "015",
+	"id": 5054,
+	"name": "Arconada"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "017",
+	"id": 5055,
+	"name": "Astudillo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "018",
+	"id": 5056,
+	"name": "Autilla del Pino"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "019",
+	"id": 5057,
+	"name": "Autillo de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "020",
+	"id": 5058,
+	"name": "Ayuela"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "022",
+	"id": 5059,
+	"name": "Baltanás"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "024",
+	"id": 5060,
+	"name": "Baquerín de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "025",
+	"id": 5061,
+	"name": "Bárcena de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "027",
+	"id": 5062,
+	"name": "Barruelo de Santullán"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "028",
+	"id": 5063,
+	"name": "Báscones de Ojeda"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "029",
+	"id": 5064,
+	"name": "Becerril de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "031",
+	"id": 5065,
+	"name": "Belmonte de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "032",
+	"id": 5066,
+	"name": "Berzosilla"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "033",
+	"id": 5067,
+	"name": "Boada de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "035",
+	"id": 5068,
+	"name": "Boadilla de Rioseco"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "034",
+	"id": 5069,
+	"name": "Boadilla del Camino"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "036",
+	"id": 5070,
+	"name": "Brañosera"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "037",
+	"id": 5071,
+	"name": "Buenavista de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "038",
+	"id": 5072,
+	"name": "Bustillo de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "039",
+	"id": 5073,
+	"name": "Bustillo del Páramo de Carrión"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "041",
+	"id": 5074,
+	"name": "Calahorra de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "042",
+	"id": 5075,
+	"name": "Calzada de los Molinos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "045",
+	"id": 5076,
+	"name": "Capillas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "046",
+	"id": 5077,
+	"name": "Cardeñosa de Volpejera"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "047",
+	"id": 5078,
+	"name": "Carrión de los Condes"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "048",
+	"id": 5079,
+	"name": "Castil de Vela"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "049",
+	"id": 5080,
+	"name": "Castrejón de la Peña"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "050",
+	"id": 5081,
+	"name": "Castrillo de Don Juan"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "051",
+	"id": 5082,
+	"name": "Castrillo de Onielo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "052",
+	"id": 5083,
+	"name": "Castrillo de Villavega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "053",
+	"id": 5084,
+	"name": "Castromocho"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "055",
+	"id": 5085,
+	"name": "Cervatos de la Cueza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "056",
+	"id": 5086,
+	"name": "Cervera de Pisuerga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "057",
+	"id": 5087,
+	"name": "Cevico de la Torre"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "058",
+	"id": 5088,
+	"name": "Cevico Navero"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "059",
+	"id": 5089,
+	"name": "Cisneros"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "060",
+	"id": 5090,
+	"name": "Cobos de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "061",
+	"id": 5091,
+	"name": "Collazos de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "062",
+	"id": 5092,
+	"name": "Congosto de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "063",
+	"id": 5093,
+	"name": "Cordovilla la Real"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "066",
+	"id": 5094,
+	"name": "Cubillas de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "067",
+	"id": 5095,
+	"name": "Dehesa de Montejo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "068",
+	"id": 5096,
+	"name": "Dehesa de Romanos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "069",
+	"id": 5097,
+	"name": "Dueñas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "070",
+	"id": 5098,
+	"name": "Espinosa de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "071",
+	"id": 5099,
+	"name": "Espinosa de Villagonzalo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "072",
+	"id": 5100,
+	"name": "Frechilla"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "073",
+	"id": 5101,
+	"name": "Fresno del Río"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "074",
+	"id": 5102,
+	"name": "Frómista"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "076",
+	"id": 5103,
+	"name": "Fuentes de Nava"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "077",
+	"id": 5104,
+	"name": "Fuentes de Valdepero"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "079",
+	"id": 5105,
+	"name": "Grijota"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "080",
+	"id": 5106,
+	"name": "Guardo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "081",
+	"id": 5107,
+	"name": "Guaza de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "082",
+	"id": 5108,
+	"name": "Hérmedes de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "083",
+	"id": 5109,
+	"name": "Herrera de Pisuerga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "084",
+	"id": 5110,
+	"name": "Herrera de Valdecañas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "086",
+	"id": 5111,
+	"name": "Hontoria de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "087",
+	"id": 5112,
+	"name": "Hornillos de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "088",
+	"id": 5113,
+	"name": "Husillos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "089",
+	"id": 5114,
+	"name": "Itero de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "091",
+	"id": 5115,
+	"name": "Lagartos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "092",
+	"id": 5116,
+	"name": "Lantadilla"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "094",
+	"id": 5117,
+	"name": "Ledigos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "903",
+	"id": 5118,
+	"name": "Loma de Ucieza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "096",
+	"id": 5119,
+	"name": "Lomas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "098",
+	"id": 5120,
+	"name": "Magaz de Pisuerga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "099",
+	"id": 5121,
+	"name": "Manquillos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "100",
+	"id": 5122,
+	"name": "Mantinos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "101",
+	"id": 5123,
+	"name": "Marcilla de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "102",
+	"id": 5124,
+	"name": "Mazariegos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "103",
+	"id": 5125,
+	"name": "Mazuecos de Valdeginate"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "104",
+	"id": 5126,
+	"name": "Melgar de Yuso"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "106",
+	"id": 5127,
+	"name": "Meneses de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "107",
+	"id": 5128,
+	"name": "Micieces de Ojeda"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "108",
+	"id": 5129,
+	"name": "Monzón de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "109",
+	"id": 5130,
+	"name": "Moratinos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "110",
+	"id": 5131,
+	"name": "Mudá"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "112",
+	"id": 5132,
+	"name": "Nogal de las Huertas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "113",
+	"id": 5133,
+	"name": "Olea de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "114",
+	"id": 5134,
+	"name": "Olmos de Ojeda"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "116",
+	"id": 5135,
+	"name": "Osornillo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "901",
+	"id": 5136,
+	"name": "Osorno la Mayor"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "120",
+	"id": 5137,
+	"name": "Palencia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "121",
+	"id": 5138,
+	"name": "Palenzuela"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "122",
+	"id": 5139,
+	"name": "Páramo de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "123",
+	"id": 5140,
+	"name": "Paredes de Nava"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "124",
+	"id": 5141,
+	"name": "Payo de Ojeda"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "125",
+	"id": 5142,
+	"name": "Pedraza de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "126",
+	"id": 5143,
+	"name": "Pedrosa de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "127",
+	"id": 5144,
+	"name": "Perales"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "904",
+	"id": 5145,
+	"name": "Pernía, La"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "129",
+	"id": 5146,
+	"name": "Pino del Río"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "130",
+	"id": 5147,
+	"name": "Piña de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "131",
+	"id": 5148,
+	"name": "Población de Arroyo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "132",
+	"id": 5149,
+	"name": "Población de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "133",
+	"id": 5150,
+	"name": "Población de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "134",
+	"id": 5151,
+	"name": "Polentinos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "135",
+	"id": 5152,
+	"name": "Pomar de Valdivia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "136",
+	"id": 5153,
+	"name": "Poza de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "137",
+	"id": 5154,
+	"name": "Pozo de Urama"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "139",
+	"id": 5155,
+	"name": "Prádanos de Ojeda"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "140",
+	"id": 5156,
+	"name": "Puebla de Valdavia, La"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "141",
+	"id": 5157,
+	"name": "Quintana del Puente"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "143",
+	"id": 5158,
+	"name": "Quintanilla de Onsoña"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "146",
+	"id": 5159,
+	"name": "Reinoso de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "147",
+	"id": 5160,
+	"name": "Renedo de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "149",
+	"id": 5161,
+	"name": "Requena de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "151",
+	"id": 5162,
+	"name": "Respenda de la Peña"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "152",
+	"id": 5163,
+	"name": "Revenga de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "154",
+	"id": 5164,
+	"name": "Revilla de Collazos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "155",
+	"id": 5165,
+	"name": "Ribas de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "156",
+	"id": 5166,
+	"name": "Riberos de la Cueza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "157",
+	"id": 5167,
+	"name": "Saldaña"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "158",
+	"id": 5168,
+	"name": "Salinas de Pisuerga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "159",
+	"id": 5169,
+	"name": "San Cebrián de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "160",
+	"id": 5170,
+	"name": "San Cebrián de Mudá"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "161",
+	"id": 5171,
+	"name": "San Cristóbal de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "163",
+	"id": 5172,
+	"name": "San Mamés de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "165",
+	"id": 5173,
+	"name": "San Román de la Cuba"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "167",
+	"id": 5174,
+	"name": "Santa Cecilia del Alcor"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "168",
+	"id": 5175,
+	"name": "Santa Cruz de Boedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "169",
+	"id": 5176,
+	"name": "Santervás de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "170",
+	"id": 5177,
+	"name": "Santibáñez de Ecla"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "171",
+	"id": 5178,
+	"name": "Santibáñez de la Peña"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "174",
+	"id": 5179,
+	"name": "Santoyo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "175",
+	"id": 5180,
+	"name": "Serna, La"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "177",
+	"id": 5181,
+	"name": "Soto de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "176",
+	"id": 5182,
+	"name": "Sotobañado y Priorato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "178",
+	"id": 5183,
+	"name": "Tabanera de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "179",
+	"id": 5184,
+	"name": "Tabanera de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "180",
+	"id": 5185,
+	"name": "Támara de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "181",
+	"id": 5186,
+	"name": "Tariego de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "182",
+	"id": 5187,
+	"name": "Torquemada"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "184",
+	"id": 5188,
+	"name": "Torremormojón"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "185",
+	"id": 5189,
+	"name": "Triollo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "186",
+	"id": 5190,
+	"name": "Valbuena de Pisuerga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "189",
+	"id": 5191,
+	"name": "Valdeolmillos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "190",
+	"id": 5192,
+	"name": "Valderrábano"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "192",
+	"id": 5193,
+	"name": "Valde-Ucieza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "196",
+	"id": 5194,
+	"name": "Valle de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "902",
+	"id": 5195,
+	"name": "Valle del Retortillo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "199",
+	"id": 5196,
+	"name": "Velilla del Río Carrión"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "023",
+	"id": 5197,
+	"name": "Venta de Baños"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "201",
+	"id": 5198,
+	"name": "Vertavillo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "093",
+	"id": 5199,
+	"name": "Vid de Ojeda, La"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "202",
+	"id": 5200,
+	"name": "Villabasta de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "204",
+	"id": 5201,
+	"name": "Villacidaler"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "205",
+	"id": 5202,
+	"name": "Villaconancio"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "206",
+	"id": 5203,
+	"name": "Villada"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "208",
+	"id": 5204,
+	"name": "Villaeles de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "210",
+	"id": 5205,
+	"name": "Villahán"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "211",
+	"id": 5206,
+	"name": "Villaherreros"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "213",
+	"id": 5207,
+	"name": "Villalaco"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "214",
+	"id": 5208,
+	"name": "Villalba de Guardo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "215",
+	"id": 5209,
+	"name": "Villalcázar de Sirga"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "216",
+	"id": 5210,
+	"name": "Villalcón"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "217",
+	"id": 5211,
+	"name": "Villalobón"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "218",
+	"id": 5212,
+	"name": "Villaluenga de la Vega"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "220",
+	"id": 5213,
+	"name": "Villamartín de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "221",
+	"id": 5214,
+	"name": "Villamediana"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "222",
+	"id": 5215,
+	"name": "Villameriel"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "223",
+	"id": 5216,
+	"name": "Villamoronta"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "224",
+	"id": 5217,
+	"name": "Villamuera de la Cueza"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "225",
+	"id": 5218,
+	"name": "Villamuriel de Cerrato"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "227",
+	"id": 5219,
+	"name": "Villanueva del Rebollar"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "228",
+	"id": 5220,
+	"name": "Villanuño de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "229",
+	"id": 5221,
+	"name": "Villaprovedo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "230",
+	"id": 5222,
+	"name": "Villarmentero de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "231",
+	"id": 5223,
+	"name": "Villarrabé"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "232",
+	"id": 5224,
+	"name": "Villarramiel"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "233",
+	"id": 5225,
+	"name": "Villasarracino"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "234",
+	"id": 5226,
+	"name": "Villasila de Valdavia"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "236",
+	"id": 5227,
+	"name": "Villaturde"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "237",
+	"id": 5228,
+	"name": "Villaumbrales"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "238",
+	"id": 5229,
+	"name": "Villaviudas"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "240",
+	"id": 5230,
+	"name": "Villerías de Campos"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "241",
+	"id": 5231,
+	"name": "Villodre"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "242",
+	"id": 5232,
+	"name": "Villodrigo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "243",
+	"id": 5233,
+	"name": "Villoldo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "245",
+	"id": 5234,
+	"name": "Villota del Páramo"
+}, {
+	"cod_prov": "34",
+	"cod_mun": "246",
+	"id": 5235,
+	"name": "Villovieco"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "001",
+	"id": 5236,
+	"name": "Agaete"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "002",
+	"id": 5237,
+	"name": "Agüimes"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "020",
+	"id": 5238,
+	"name": "Aldea de San Nicolás, La"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "003",
+	"id": 5239,
+	"name": "Antigua"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "004",
+	"id": 5240,
+	"name": "Arrecife"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "005",
+	"id": 5241,
+	"name": "Artenara"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "006",
+	"id": 5242,
+	"name": "Arucas"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "007",
+	"id": 5243,
+	"name": "Betancuria"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "008",
+	"id": 5244,
+	"name": "Firgas"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "009",
+	"id": 5245,
+	"name": "Gáldar"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "010",
+	"id": 5246,
+	"name": "Haría"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "011",
+	"id": 5247,
+	"name": "Ingenio"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "012",
+	"id": 5248,
+	"name": "Mogán"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "013",
+	"id": 5249,
+	"name": "Moya"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "014",
+	"id": 5250,
+	"name": "Oliva, La"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "015",
+	"id": 5251,
+	"name": "Pájara"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "016",
+	"id": 5252,
+	"name": "Palmas de Gran Canaria, Las"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "017",
+	"id": 5253,
+	"name": "Puerto del Rosario"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "018",
+	"id": 5254,
+	"name": "San Bartolomé"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "019",
+	"id": 5255,
+	"name": "San Bartolomé de Tirajana"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "021",
+	"id": 5256,
+	"name": "Santa Brígida"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "022",
+	"id": 5257,
+	"name": "Santa Lucía de Tirajana"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "023",
+	"id": 5258,
+	"name": "Santa María de Guía de Gran Canaria"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "024",
+	"id": 5259,
+	"name": "Teguise"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "025",
+	"id": 5260,
+	"name": "Tejeda"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "026",
+	"id": 5261,
+	"name": "Telde"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "027",
+	"id": 5262,
+	"name": "Teror"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "028",
+	"id": 5263,
+	"name": "Tías"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "029",
+	"id": 5264,
+	"name": "Tinajo"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "030",
+	"id": 5265,
+	"name": "Tuineje"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "032",
+	"id": 5266,
+	"name": "Valleseco"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "031",
+	"id": 5267,
+	"name": "Valsequillo de Gran Canaria"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "033",
+	"id": 5268,
+	"name": "Vega de San Mateo"
+}, {
+	"cod_prov": "35",
+	"cod_mun": "034",
+	"id": 5269,
+	"name": "Yaiza"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "020",
+	"id": 5270,
+	"name": "Agolada"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "001",
+	"id": 5271,
+	"name": "Arbo"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "003",
+	"id": 5272,
+	"name": "Baiona"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "002",
+	"id": 5273,
+	"name": "Barro"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "004",
+	"id": 5274,
+	"name": "Bueu"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "005",
+	"id": 5275,
+	"name": "Caldas de Reis"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "006",
+	"id": 5276,
+	"name": "Cambados"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "007",
+	"id": 5277,
+	"name": "Campo Lameiro"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "008",
+	"id": 5278,
+	"name": "Cangas"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "009",
+	"id": 5279,
+	"name": "Cañiza, A"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "010",
+	"id": 5280,
+	"name": "Catoira"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "011",
+	"id": 5281,
+	"name": "Cerdedo"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "012",
+	"id": 5282,
+	"name": "Cotobade"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "013",
+	"id": 5283,
+	"name": "Covelo"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "014",
+	"id": 5284,
+	"name": "Crecente"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "015",
+	"id": 5285,
+	"name": "Cuntis"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "016",
+	"id": 5286,
+	"name": "Dozón"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "017",
+	"id": 5287,
+	"name": "Estrada, A"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "018",
+	"id": 5288,
+	"name": "Forcarei"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "019",
+	"id": 5289,
+	"name": "Fornelos de Montes"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "021",
+	"id": 5290,
+	"name": "Gondomar"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "022",
+	"id": 5291,
+	"name": "Grove, O"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "023",
+	"id": 5292,
+	"name": "Guarda, A"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "901",
+	"id": 5293,
+	"name": "Illa de Arousa, A"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "024",
+	"id": 5294,
+	"name": "Lalín"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "025",
+	"id": 5295,
+	"name": "Lama, A"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "026",
+	"id": 5296,
+	"name": "Marín"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "027",
+	"id": 5297,
+	"name": "Meaño"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "028",
+	"id": 5298,
+	"name": "Meis"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "029",
+	"id": 5299,
+	"name": "Moaña"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "030",
+	"id": 5300,
+	"name": "Mondariz"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "031",
+	"id": 5301,
+	"name": "Mondariz-Balneario"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "032",
+	"id": 5302,
+	"name": "Moraña"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "033",
+	"id": 5303,
+	"name": "Mos"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "034",
+	"id": 5304,
+	"name": "Neves, As"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "035",
+	"id": 5305,
+	"name": "Nigrán"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "036",
+	"id": 5306,
+	"name": "Oia"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "037",
+	"id": 5307,
+	"name": "Pazos de Borbén"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "041",
+	"id": 5308,
+	"name": "Poio"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "043",
+	"id": 5309,
+	"name": "Ponte Caldelas"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "042",
+	"id": 5310,
+	"name": "Ponteareas"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "044",
+	"id": 5311,
+	"name": "Pontecesures"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "038",
+	"id": 5312,
+	"name": "Pontevedra"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "039",
+	"id": 5313,
+	"name": "Porriño, O"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "040",
+	"id": 5314,
+	"name": "Portas"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "045",
+	"id": 5315,
+	"name": "Redondela"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "046",
+	"id": 5316,
+	"name": "Ribadumia"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "047",
+	"id": 5317,
+	"name": "Rodeiro"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "048",
+	"id": 5318,
+	"name": "Rosal, O"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "049",
+	"id": 5319,
+	"name": "Salceda de Caselas"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "050",
+	"id": 5320,
+	"name": "Salvaterra de Miño"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "051",
+	"id": 5321,
+	"name": "Sanxenxo"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "052",
+	"id": 5322,
+	"name": "Silleda"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "053",
+	"id": 5323,
+	"name": "Soutomaior"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "054",
+	"id": 5324,
+	"name": "Tomiño"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "055",
+	"id": 5325,
+	"name": "Tui"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "056",
+	"id": 5326,
+	"name": "Valga"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "057",
+	"id": 5327,
+	"name": "Vigo"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "059",
+	"id": 5328,
+	"name": "Vila de Cruces"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "058",
+	"id": 5329,
+	"name": "Vilaboa"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "060",
+	"id": 5330,
+	"name": "Vilagarcía de Arousa"
+}, {
+	"cod_prov": "36",
+	"cod_mun": "061",
+	"id": 5331,
+	"name": "Vilanova de Arousa"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "001",
+	"id": 5332,
+	"name": "Abusejo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "002",
+	"id": 5333,
+	"name": "Agallas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "003",
+	"id": 5334,
+	"name": "Ahigal de los Aceiteros"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "004",
+	"id": 5335,
+	"name": "Ahigal de Villarino"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "005",
+	"id": 5336,
+	"name": "Alameda de Gardón, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "006",
+	"id": 5337,
+	"name": "Alamedilla, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "007",
+	"id": 5338,
+	"name": "Alaraz"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "008",
+	"id": 5339,
+	"name": "Alba de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "009",
+	"id": 5340,
+	"name": "Alba de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "010",
+	"id": 5341,
+	"name": "Alberca, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "011",
+	"id": 5342,
+	"name": "Alberguería de Argañán, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "012",
+	"id": 5343,
+	"name": "Alconada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "015",
+	"id": 5344,
+	"name": "Aldea del Obispo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "013",
+	"id": 5345,
+	"name": "Aldeacipreste"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "014",
+	"id": 5346,
+	"name": "Aldeadávila de la Ribera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "016",
+	"id": 5347,
+	"name": "Aldealengua"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "017",
+	"id": 5348,
+	"name": "Aldeanueva de Figueroa"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "018",
+	"id": 5349,
+	"name": "Aldeanueva de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "019",
+	"id": 5350,
+	"name": "Aldearrodrigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "020",
+	"id": 5351,
+	"name": "Aldearrubia"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "021",
+	"id": 5352,
+	"name": "Aldeaseca de Alba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "022",
+	"id": 5353,
+	"name": "Aldeaseca de la Frontera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "023",
+	"id": 5354,
+	"name": "Aldeatejada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "024",
+	"id": 5355,
+	"name": "Aldeavieja de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "025",
+	"id": 5356,
+	"name": "Aldehuela de la Bóveda"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "026",
+	"id": 5357,
+	"name": "Aldehuela de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "027",
+	"id": 5358,
+	"name": "Almenara de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "028",
+	"id": 5359,
+	"name": "Almendra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "029",
+	"id": 5360,
+	"name": "Anaya de Alba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "030",
+	"id": 5361,
+	"name": "Añover de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "031",
+	"id": 5362,
+	"name": "Arabayona de Mógica"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "032",
+	"id": 5363,
+	"name": "Arapiles"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "033",
+	"id": 5364,
+	"name": "Arcediano"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "034",
+	"id": 5365,
+	"name": "Arco, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "035",
+	"id": 5366,
+	"name": "Armenteros"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "037",
+	"id": 5367,
+	"name": "Atalaya, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "038",
+	"id": 5368,
+	"name": "Babilafuente"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "039",
+	"id": 5369,
+	"name": "Bañobárez"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "040",
+	"id": 5370,
+	"name": "Barbadillo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "041",
+	"id": 5371,
+	"name": "Barbalos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "042",
+	"id": 5372,
+	"name": "Barceo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "044",
+	"id": 5373,
+	"name": "Barruecopardo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "045",
+	"id": 5374,
+	"name": "Bastida, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "046",
+	"id": 5375,
+	"name": "Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "047",
+	"id": 5376,
+	"name": "Beleña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "049",
+	"id": 5377,
+	"name": "Bermellar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "050",
+	"id": 5378,
+	"name": "Berrocal de Huebra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "051",
+	"id": 5379,
+	"name": "Berrocal de Salvatierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "052",
+	"id": 5380,
+	"name": "Boada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "054",
+	"id": 5381,
+	"name": "Bodón, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "055",
+	"id": 5382,
+	"name": "Bogajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "056",
+	"id": 5383,
+	"name": "Bouza, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "057",
+	"id": 5384,
+	"name": "Bóveda del Río Almar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "058",
+	"id": 5385,
+	"name": "Brincones"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "059",
+	"id": 5386,
+	"name": "Buenamadre"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "060",
+	"id": 5387,
+	"name": "Buenavista"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "061",
+	"id": 5388,
+	"name": "Cabaco, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "063",
+	"id": 5389,
+	"name": "Cabeza de Béjar, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "065",
+	"id": 5390,
+	"name": "Cabeza del Caballo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "062",
+	"id": 5391,
+	"name": "Cabezabellosa de la Calzada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "067",
+	"id": 5392,
+	"name": "Cabrerizos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "068",
+	"id": 5393,
+	"name": "Cabrillas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "069",
+	"id": 5394,
+	"name": "Calvarrasa de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "070",
+	"id": 5395,
+	"name": "Calvarrasa de Arriba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "071",
+	"id": 5396,
+	"name": "Calzada de Béjar, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "072",
+	"id": 5397,
+	"name": "Calzada de Don Diego"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "073",
+	"id": 5398,
+	"name": "Calzada de Valdunciel"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "074",
+	"id": 5399,
+	"name": "Campillo de Azaba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "077",
+	"id": 5400,
+	"name": "Campo de Peñaranda, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "078",
+	"id": 5401,
+	"name": "Candelario"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "079",
+	"id": 5402,
+	"name": "Canillas de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "080",
+	"id": 5403,
+	"name": "Cantagallo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "081",
+	"id": 5404,
+	"name": "Cantalapiedra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "082",
+	"id": 5405,
+	"name": "Cantalpino"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "083",
+	"id": 5406,
+	"name": "Cantaracillo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "085",
+	"id": 5407,
+	"name": "Carbajosa de la Sagrada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "086",
+	"id": 5408,
+	"name": "Carpio de Azaba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "087",
+	"id": 5409,
+	"name": "Carrascal de Barregas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "088",
+	"id": 5410,
+	"name": "Carrascal del Obispo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "089",
+	"id": 5411,
+	"name": "Casafranca"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "090",
+	"id": 5412,
+	"name": "Casas del Conde, Las"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "091",
+	"id": 5413,
+	"name": "Casillas de Flores"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "092",
+	"id": 5414,
+	"name": "Castellanos de Moriscos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "185",
+	"id": 5415,
+	"name": "Castellanos de Villiquera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "096",
+	"id": 5416,
+	"name": "Castillejo de Martín Viejo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "097",
+	"id": 5417,
+	"name": "Castraz"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "098",
+	"id": 5418,
+	"name": "Cepeda"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "099",
+	"id": 5419,
+	"name": "Cereceda de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "100",
+	"id": 5420,
+	"name": "Cerezal de Peñahorcada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "101",
+	"id": 5421,
+	"name": "Cerralbo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "102",
+	"id": 5422,
+	"name": "Cerro, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "103",
+	"id": 5423,
+	"name": "Cespedosa de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "114",
+	"id": 5424,
+	"name": "Chagarcía Medianero"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "104",
+	"id": 5425,
+	"name": "Cilleros de la Bastida"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "106",
+	"id": 5426,
+	"name": "Cipérez"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "107",
+	"id": 5427,
+	"name": "Ciudad Rodrigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "108",
+	"id": 5428,
+	"name": "Coca de Alba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "109",
+	"id": 5429,
+	"name": "Colmenar de Montemayor"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "110",
+	"id": 5430,
+	"name": "Cordovilla"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "112",
+	"id": 5431,
+	"name": "Cristóbal"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "113",
+	"id": 5432,
+	"name": "Cubo de Don Sancho, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "115",
+	"id": 5433,
+	"name": "Dios le Guarde"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "116",
+	"id": 5434,
+	"name": "Doñinos de Ledesma"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "117",
+	"id": 5435,
+	"name": "Doñinos de Salamanca"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "118",
+	"id": 5436,
+	"name": "Ejeme"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "120",
+	"id": 5437,
+	"name": "Encina de San Silvestre"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "119",
+	"id": 5438,
+	"name": "Encina, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "121",
+	"id": 5439,
+	"name": "Encinas de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "122",
+	"id": 5440,
+	"name": "Encinas de Arriba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "123",
+	"id": 5441,
+	"name": "Encinasola de los Comendadores"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "124",
+	"id": 5442,
+	"name": "Endrinal"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "125",
+	"id": 5443,
+	"name": "Escurial de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "126",
+	"id": 5444,
+	"name": "Espadaña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "127",
+	"id": 5445,
+	"name": "Espeja"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "128",
+	"id": 5446,
+	"name": "Espino de la Orbada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "129",
+	"id": 5447,
+	"name": "Florida de Liébana"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "130",
+	"id": 5448,
+	"name": "Forfoleda"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "131",
+	"id": 5449,
+	"name": "Frades de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "132",
+	"id": 5450,
+	"name": "Fregeneda, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "133",
+	"id": 5451,
+	"name": "Fresnedoso"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "134",
+	"id": 5452,
+	"name": "Fresno Alhándiga"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "135",
+	"id": 5453,
+	"name": "Fuente de San Esteban, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "136",
+	"id": 5454,
+	"name": "Fuenteguinaldo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "137",
+	"id": 5455,
+	"name": "Fuenteliante"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "138",
+	"id": 5456,
+	"name": "Fuenterroble de Salvatierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "139",
+	"id": 5457,
+	"name": "Fuentes de Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "140",
+	"id": 5458,
+	"name": "Fuentes de Oñoro"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "141",
+	"id": 5459,
+	"name": "Gajates"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "142",
+	"id": 5460,
+	"name": "Galindo y Perahuy"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "143",
+	"id": 5461,
+	"name": "Galinduste"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "144",
+	"id": 5462,
+	"name": "Galisancho"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "145",
+	"id": 5463,
+	"name": "Gallegos de Argañán"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "146",
+	"id": 5464,
+	"name": "Gallegos de Solmirón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "147",
+	"id": 5465,
+	"name": "Garcibuey"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "148",
+	"id": 5466,
+	"name": "Garcihernández"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "149",
+	"id": 5467,
+	"name": "Garcirrey"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "150",
+	"id": 5468,
+	"name": "Gejuelo del Barro"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "151",
+	"id": 5469,
+	"name": "Golpejas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "152",
+	"id": 5470,
+	"name": "Gomecello"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "154",
+	"id": 5471,
+	"name": "Guadramiro"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "155",
+	"id": 5472,
+	"name": "Guijo de Ávila"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "156",
+	"id": 5473,
+	"name": "Guijuelo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "157",
+	"id": 5474,
+	"name": "Herguijuela de Ciudad Rodrigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "158",
+	"id": 5475,
+	"name": "Herguijuela de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "159",
+	"id": 5476,
+	"name": "Herguijuela del Campo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "160",
+	"id": 5477,
+	"name": "Hinojosa de Duero"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "161",
+	"id": 5478,
+	"name": "Horcajo de Montemayor"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "162",
+	"id": 5479,
+	"name": "Horcajo Medianero"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "163",
+	"id": 5480,
+	"name": "Hoya, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "164",
+	"id": 5481,
+	"name": "Huerta"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "165",
+	"id": 5482,
+	"name": "Iruelos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "166",
+	"id": 5483,
+	"name": "Ituero de Azaba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "167",
+	"id": 5484,
+	"name": "Juzbado"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "168",
+	"id": 5485,
+	"name": "Lagunilla"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "169",
+	"id": 5486,
+	"name": "Larrodrigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "170",
+	"id": 5487,
+	"name": "Ledesma"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "171",
+	"id": 5488,
+	"name": "Ledrada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "172",
+	"id": 5489,
+	"name": "Linares de Riofrío"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "173",
+	"id": 5490,
+	"name": "Lumbrales"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "175",
+	"id": 5491,
+	"name": "Machacón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "174",
+	"id": 5492,
+	"name": "Macotera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "176",
+	"id": 5493,
+	"name": "Madroñal"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "177",
+	"id": 5494,
+	"name": "Maíllo, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "178",
+	"id": 5495,
+	"name": "Malpartida"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "179",
+	"id": 5496,
+	"name": "Mancera de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "180",
+	"id": 5497,
+	"name": "Manzano, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "181",
+	"id": 5498,
+	"name": "Martiago"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "183",
+	"id": 5499,
+	"name": "Martín de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "182",
+	"id": 5500,
+	"name": "Martinamor"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "184",
+	"id": 5501,
+	"name": "Masueco"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "186",
+	"id": 5502,
+	"name": "Mata de Ledesma, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "187",
+	"id": 5503,
+	"name": "Matilla de los Caños del Río"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "188",
+	"id": 5504,
+	"name": "Maya, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "189",
+	"id": 5505,
+	"name": "Membribe de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "190",
+	"id": 5506,
+	"name": "Mieza"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "191",
+	"id": 5507,
+	"name": "Milano, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "192",
+	"id": 5508,
+	"name": "Miranda de Azán"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "193",
+	"id": 5509,
+	"name": "Miranda del Castañar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "194",
+	"id": 5510,
+	"name": "Mogarraz"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "195",
+	"id": 5511,
+	"name": "Molinillo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "196",
+	"id": 5512,
+	"name": "Monforte de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "197",
+	"id": 5513,
+	"name": "Monleón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "198",
+	"id": 5514,
+	"name": "Monleras"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "199",
+	"id": 5515,
+	"name": "Monsagro"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "200",
+	"id": 5516,
+	"name": "Montejo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "201",
+	"id": 5517,
+	"name": "Montemayor del Río"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "202",
+	"id": 5518,
+	"name": "Monterrubio de Armuña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "203",
+	"id": 5519,
+	"name": "Monterrubio de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "204",
+	"id": 5520,
+	"name": "Morasverdes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "205",
+	"id": 5521,
+	"name": "Morille"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "206",
+	"id": 5522,
+	"name": "Moríñigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "207",
+	"id": 5523,
+	"name": "Moriscos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "208",
+	"id": 5524,
+	"name": "Moronta"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "209",
+	"id": 5525,
+	"name": "Mozárbez"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "211",
+	"id": 5526,
+	"name": "Narros de Matalayegua"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "213",
+	"id": 5527,
+	"name": "Nava de Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "214",
+	"id": 5528,
+	"name": "Nava de Francia"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "215",
+	"id": 5529,
+	"name": "Nava de Sotrobal"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "212",
+	"id": 5530,
+	"name": "Navacarros"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "216",
+	"id": 5531,
+	"name": "Navales"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "217",
+	"id": 5532,
+	"name": "Navalmoral de Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "218",
+	"id": 5533,
+	"name": "Navamorales"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "219",
+	"id": 5534,
+	"name": "Navarredonda de la Rinconada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "221",
+	"id": 5535,
+	"name": "Navasfrías"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "222",
+	"id": 5536,
+	"name": "Negrilla de Palencia"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "223",
+	"id": 5537,
+	"name": "Olmedo de Camaces"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "224",
+	"id": 5538,
+	"name": "Orbada, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "225",
+	"id": 5539,
+	"name": "Pajares de la Laguna"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "226",
+	"id": 5540,
+	"name": "Palacios del Arzobispo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "228",
+	"id": 5541,
+	"name": "Palaciosrubios"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "229",
+	"id": 5542,
+	"name": "Palencia de Negrilla"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "230",
+	"id": 5543,
+	"name": "Parada de Arriba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "231",
+	"id": 5544,
+	"name": "Parada de Rubiales"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "232",
+	"id": 5545,
+	"name": "Paradinas de San Juan"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "233",
+	"id": 5546,
+	"name": "Pastores"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "234",
+	"id": 5547,
+	"name": "Payo, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "235",
+	"id": 5548,
+	"name": "Pedraza de Alba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "236",
+	"id": 5549,
+	"name": "Pedrosillo de Alba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "237",
+	"id": 5550,
+	"name": "Pedrosillo de los Aires"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "238",
+	"id": 5551,
+	"name": "Pedrosillo el Ralo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "239",
+	"id": 5552,
+	"name": "Pedroso de la Armuña, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "240",
+	"id": 5553,
+	"name": "Pelabravo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "241",
+	"id": 5554,
+	"name": "Pelarrodríguez"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "242",
+	"id": 5555,
+	"name": "Pelayos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "243",
+	"id": 5556,
+	"name": "Peña, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "244",
+	"id": 5557,
+	"name": "Peñacaballera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "245",
+	"id": 5558,
+	"name": "Peñaparda"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "246",
+	"id": 5559,
+	"name": "Peñaranda de Bracamonte"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "247",
+	"id": 5560,
+	"name": "Peñarandilla"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "248",
+	"id": 5561,
+	"name": "Peralejos de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "249",
+	"id": 5562,
+	"name": "Peralejos de Arriba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "250",
+	"id": 5563,
+	"name": "Pereña de la Ribera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "251",
+	"id": 5564,
+	"name": "Peromingo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "252",
+	"id": 5565,
+	"name": "Pinedas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "253",
+	"id": 5566,
+	"name": "Pino de Tormes, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "254",
+	"id": 5567,
+	"name": "Pitiegua"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "255",
+	"id": 5568,
+	"name": "Pizarral"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "256",
+	"id": 5569,
+	"name": "Poveda de las Cintas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "257",
+	"id": 5570,
+	"name": "Pozos de Hinojo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "258",
+	"id": 5571,
+	"name": "Puebla de Azaba"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "259",
+	"id": 5572,
+	"name": "Puebla de San Medel"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "260",
+	"id": 5573,
+	"name": "Puebla de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "261",
+	"id": 5574,
+	"name": "Puente del Congosto"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "262",
+	"id": 5575,
+	"name": "Puertas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "263",
+	"id": 5576,
+	"name": "Puerto de Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "264",
+	"id": 5577,
+	"name": "Puerto Seguro"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "265",
+	"id": 5578,
+	"name": "Rágama"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "266",
+	"id": 5579,
+	"name": "Redonda, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "267",
+	"id": 5580,
+	"name": "Retortillo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "268",
+	"id": 5581,
+	"name": "Rinconada de la Sierra, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "269",
+	"id": 5582,
+	"name": "Robleda"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "270",
+	"id": 5583,
+	"name": "Robliza de Cojos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "271",
+	"id": 5584,
+	"name": "Rollán"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "272",
+	"id": 5585,
+	"name": "Saelices el Chico"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "273",
+	"id": 5586,
+	"name": "Sagrada, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "303",
+	"id": 5587,
+	"name": "Sahugo, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "274",
+	"id": 5588,
+	"name": "Salamanca"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "275",
+	"id": 5589,
+	"name": "Saldeana"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "276",
+	"id": 5590,
+	"name": "Salmoral"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "277",
+	"id": 5591,
+	"name": "Salvatierra de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "278",
+	"id": 5592,
+	"name": "San Cristóbal de la Cuesta"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "284",
+	"id": 5593,
+	"name": "San Esteban de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "285",
+	"id": 5594,
+	"name": "San Felices de los Gallegos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "286",
+	"id": 5595,
+	"name": "San Martín del Castañar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "287",
+	"id": 5596,
+	"name": "San Miguel de Valero"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "036",
+	"id": 5597,
+	"name": "San Miguel del Robledo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "288",
+	"id": 5598,
+	"name": "San Morales"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "289",
+	"id": 5599,
+	"name": "San Muñoz"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "291",
+	"id": 5600,
+	"name": "San Pedro de Rozados"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "290",
+	"id": 5601,
+	"name": "San Pedro del Valle"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "292",
+	"id": 5602,
+	"name": "San Pelayo de Guareña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "280",
+	"id": 5603,
+	"name": "Sanchón de la Ribera"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "281",
+	"id": 5604,
+	"name": "Sanchón de la Sagrada"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "282",
+	"id": 5605,
+	"name": "Sanchotello"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "279",
+	"id": 5606,
+	"name": "Sancti-Spíritus"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "283",
+	"id": 5607,
+	"name": "Sando"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "293",
+	"id": 5608,
+	"name": "Santa María de Sando"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "294",
+	"id": 5609,
+	"name": "Santa Marta de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "296",
+	"id": 5610,
+	"name": "Santiago de la Puebla"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "297",
+	"id": 5611,
+	"name": "Santibáñez de Béjar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "298",
+	"id": 5612,
+	"name": "Santibáñez de la Sierra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "299",
+	"id": 5613,
+	"name": "Santiz"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "300",
+	"id": 5614,
+	"name": "Santos, Los"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "301",
+	"id": 5615,
+	"name": "Sardón de los Frailes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "302",
+	"id": 5616,
+	"name": "Saucelle"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "304",
+	"id": 5617,
+	"name": "Sepulcro-Hilario"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "305",
+	"id": 5618,
+	"name": "Sequeros"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "306",
+	"id": 5619,
+	"name": "Serradilla del Arroyo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "307",
+	"id": 5620,
+	"name": "Serradilla del Llano"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "309",
+	"id": 5621,
+	"name": "Sierpe, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "310",
+	"id": 5622,
+	"name": "Sieteiglesias de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "311",
+	"id": 5623,
+	"name": "Sobradillo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "312",
+	"id": 5624,
+	"name": "Sorihuela"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "313",
+	"id": 5625,
+	"name": "Sotoserrano"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "314",
+	"id": 5626,
+	"name": "Tabera de Abajo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "315",
+	"id": 5627,
+	"name": "Tala, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "316",
+	"id": 5628,
+	"name": "Tamames"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "317",
+	"id": 5629,
+	"name": "Tarazona de Guareña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "318",
+	"id": 5630,
+	"name": "Tardáguila"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "319",
+	"id": 5631,
+	"name": "Tejado, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "320",
+	"id": 5632,
+	"name": "Tejeda y Segoyuela"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "321",
+	"id": 5633,
+	"name": "Tenebrón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "322",
+	"id": 5634,
+	"name": "Terradillos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "323",
+	"id": 5635,
+	"name": "Topas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "324",
+	"id": 5636,
+	"name": "Tordillos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "325",
+	"id": 5637,
+	"name": "Tornadizo, El"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "327",
+	"id": 5638,
+	"name": "Torresmenudas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "328",
+	"id": 5639,
+	"name": "Trabanca"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "329",
+	"id": 5640,
+	"name": "Tremedal de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "330",
+	"id": 5641,
+	"name": "Valdecarros"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "331",
+	"id": 5642,
+	"name": "Valdefuentes de Sangusín"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "332",
+	"id": 5643,
+	"name": "Valdehijaderos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "333",
+	"id": 5644,
+	"name": "Valdelacasa"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "334",
+	"id": 5645,
+	"name": "Valdelageve"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "335",
+	"id": 5646,
+	"name": "Valdelosa"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "336",
+	"id": 5647,
+	"name": "Valdemierque"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "337",
+	"id": 5648,
+	"name": "Valderrodrigo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "338",
+	"id": 5649,
+	"name": "Valdunciel"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "339",
+	"id": 5650,
+	"name": "Valero"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "343",
+	"id": 5651,
+	"name": "Vallejera de Riofrío"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "340",
+	"id": 5652,
+	"name": "Valsalabroso"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "341",
+	"id": 5653,
+	"name": "Valverde de Valdelacasa"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "342",
+	"id": 5654,
+	"name": "Valverdón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "344",
+	"id": 5655,
+	"name": "Vecinos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "345",
+	"id": 5656,
+	"name": "Vega de Tirados"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "346",
+	"id": 5657,
+	"name": "Veguillas, Las"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "347",
+	"id": 5658,
+	"name": "Vellés, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "348",
+	"id": 5659,
+	"name": "Ventosa del Río Almar"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "349",
+	"id": 5660,
+	"name": "Vídola, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "351",
+	"id": 5661,
+	"name": "Villaflores"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "352",
+	"id": 5662,
+	"name": "Villagonzalo de Tormes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "353",
+	"id": 5663,
+	"name": "Villalba de los Llanos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "354",
+	"id": 5664,
+	"name": "Villamayor"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "355",
+	"id": 5665,
+	"name": "Villanueva del Conde"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "356",
+	"id": 5666,
+	"name": "Villar de Argañán"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "357",
+	"id": 5667,
+	"name": "Villar de Ciervo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "358",
+	"id": 5668,
+	"name": "Villar de Gallimazo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "359",
+	"id": 5669,
+	"name": "Villar de la Yegua"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "360",
+	"id": 5670,
+	"name": "Villar de Peralonso"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "361",
+	"id": 5671,
+	"name": "Villar de Samaniego"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "362",
+	"id": 5672,
+	"name": "Villares de la Reina"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "363",
+	"id": 5673,
+	"name": "Villares de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "364",
+	"id": 5674,
+	"name": "Villarino de los Aires"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "365",
+	"id": 5675,
+	"name": "Villarmayor"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "366",
+	"id": 5676,
+	"name": "Villarmuerto"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "367",
+	"id": 5677,
+	"name": "Villasbuenas"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "368",
+	"id": 5678,
+	"name": "Villasdardo"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "369",
+	"id": 5679,
+	"name": "Villaseco de los Gamitos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "370",
+	"id": 5680,
+	"name": "Villaseco de los Reyes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "371",
+	"id": 5681,
+	"name": "Villasrubias"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "372",
+	"id": 5682,
+	"name": "Villaverde de Guareña"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "373",
+	"id": 5683,
+	"name": "Villavieja de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "374",
+	"id": 5684,
+	"name": "Villoria"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "375",
+	"id": 5685,
+	"name": "Villoruela"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "350",
+	"id": 5686,
+	"name": "Vilvestre"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "376",
+	"id": 5687,
+	"name": "Vitigudino"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "377",
+	"id": 5688,
+	"name": "Yecla de Yeltes"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "378",
+	"id": 5689,
+	"name": "Zamarra"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "379",
+	"id": 5690,
+	"name": "Zamayón"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "380",
+	"id": 5691,
+	"name": "Zarapicos"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "381",
+	"id": 5692,
+	"name": "Zarza de Pumareda, La"
+}, {
+	"cod_prov": "37",
+	"cod_mun": "382",
+	"id": 5693,
+	"name": "Zorita de la Frontera"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "001",
+	"id": 5694,
+	"name": "Adeje"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "002",
+	"id": 5695,
+	"name": "Agulo"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "003",
+	"id": 5696,
+	"name": "Alajeró"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "004",
+	"id": 5697,
+	"name": "Arafo"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "005",
+	"id": 5698,
+	"name": "Arico"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "006",
+	"id": 5699,
+	"name": "Arona"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "007",
+	"id": 5700,
+	"name": "Barlovento"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "008",
+	"id": 5701,
+	"name": "Breña Alta"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "009",
+	"id": 5702,
+	"name": "Breña Baja"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "010",
+	"id": 5703,
+	"name": "Buenavista del Norte"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "011",
+	"id": 5704,
+	"name": "Candelaria"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "012",
+	"id": 5705,
+	"name": "Fasnia"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "013",
+	"id": 5706,
+	"name": "Frontera"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "014",
+	"id": 5707,
+	"name": "Fuencaliente de la Palma"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "015",
+	"id": 5708,
+	"name": "Garachico"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "016",
+	"id": 5709,
+	"name": "Garafía"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "017",
+	"id": 5710,
+	"name": "Granadilla de Abona"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "018",
+	"id": 5711,
+	"name": "Guancha, La"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "019",
+	"id": 5712,
+	"name": "Guía de Isora"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "020",
+	"id": 5713,
+	"name": "Güímar"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "021",
+	"id": 5714,
+	"name": "Hermigua"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "022",
+	"id": 5715,
+	"name": "Icod de los Vinos"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "024",
+	"id": 5716,
+	"name": "Llanos de Aridane, Los"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "025",
+	"id": 5717,
+	"name": "Matanza de Acentejo, La"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "026",
+	"id": 5718,
+	"name": "Orotava, La"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "027",
+	"id": 5719,
+	"name": "Paso, El"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "901",
+	"id": 5720,
+	"name": "Pinar de El Hierro, El"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "028",
+	"id": 5721,
+	"name": "Puerto de la Cruz"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "029",
+	"id": 5722,
+	"name": "Puntagorda"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "030",
+	"id": 5723,
+	"name": "Puntallana"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "031",
+	"id": 5724,
+	"name": "Realejos, Los"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "032",
+	"id": 5725,
+	"name": "Rosario, El"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "033",
+	"id": 5726,
+	"name": "San Andrés y Sauces"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "023",
+	"id": 5727,
+	"name": "San Cristóbal de La Laguna"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "034",
+	"id": 5728,
+	"name": "San Juan de la Rambla"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "035",
+	"id": 5729,
+	"name": "San Miguel de Abona"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "036",
+	"id": 5730,
+	"name": "San Sebastián de la Gomera"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "037",
+	"id": 5731,
+	"name": "Santa Cruz de la Palma"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "038",
+	"id": 5732,
+	"name": "Santa Cruz de Tenerife"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "039",
+	"id": 5733,
+	"name": "Santa Úrsula"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "040",
+	"id": 5734,
+	"name": "Santiago del Teide"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "041",
+	"id": 5735,
+	"name": "Sauzal, El"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "042",
+	"id": 5736,
+	"name": "Silos, Los"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "043",
+	"id": 5737,
+	"name": "Tacoronte"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "044",
+	"id": 5738,
+	"name": "Tanque, El"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "045",
+	"id": 5739,
+	"name": "Tazacorte"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "046",
+	"id": 5740,
+	"name": "Tegueste"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "047",
+	"id": 5741,
+	"name": "Tijarafe"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "049",
+	"id": 5742,
+	"name": "Valle Gran Rey"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "050",
+	"id": 5743,
+	"name": "Vallehermoso"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "048",
+	"id": 5744,
+	"name": "Valverde"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "051",
+	"id": 5745,
+	"name": "Victoria de Acentejo, La"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "052",
+	"id": 5746,
+	"name": "Vilaflor"
+}, {
+	"cod_prov": "38",
+	"cod_mun": "053",
+	"id": 5747,
+	"name": "Villa de Mazo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "001",
+	"id": 5748,
+	"name": "Alfoz de Lloredo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "002",
+	"id": 5749,
+	"name": "Ampuero"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "003",
+	"id": 5750,
+	"name": "Anievas"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "004",
+	"id": 5751,
+	"name": "Arenas de Iguña"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "005",
+	"id": 5752,
+	"name": "Argoños"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "006",
+	"id": 5753,
+	"name": "Arnuero"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "007",
+	"id": 5754,
+	"name": "Arredondo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "008",
+	"id": 5755,
+	"name": "Astillero, El"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "009",
+	"id": 5756,
+	"name": "Bárcena de Cicero"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "010",
+	"id": 5757,
+	"name": "Bárcena de Pie de Concha"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "011",
+	"id": 5758,
+	"name": "Bareyo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "012",
+	"id": 5759,
+	"name": "Cabezón de la Sal"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "013",
+	"id": 5760,
+	"name": "Cabezón de Liébana"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "014",
+	"id": 5761,
+	"name": "Cabuérniga"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "015",
+	"id": 5762,
+	"name": "Camaleño"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "016",
+	"id": 5763,
+	"name": "Camargo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "027",
+	"id": 5764,
+	"name": "Campoo de Enmedio"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "017",
+	"id": 5765,
+	"name": "Campoo de Yuso"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "018",
+	"id": 5766,
+	"name": "Cartes"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "019",
+	"id": 5767,
+	"name": "Castañeda"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "020",
+	"id": 5768,
+	"name": "Castro-Urdiales"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "021",
+	"id": 5769,
+	"name": "Cieza"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "022",
+	"id": 5770,
+	"name": "Cillorigo de Liébana"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "023",
+	"id": 5771,
+	"name": "Colindres"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "024",
+	"id": 5772,
+	"name": "Comillas"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "025",
+	"id": 5773,
+	"name": "Corrales de Buelna, Los"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "026",
+	"id": 5774,
+	"name": "Corvera de Toranzo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "028",
+	"id": 5775,
+	"name": "Entrambasaguas"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "029",
+	"id": 5776,
+	"name": "Escalante"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "030",
+	"id": 5777,
+	"name": "Guriezo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "031",
+	"id": 5778,
+	"name": "Hazas de Cesto"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "032",
+	"id": 5779,
+	"name": "Hermandad de Campoo de Suso"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "033",
+	"id": 5780,
+	"name": "Herrerías"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "034",
+	"id": 5781,
+	"name": "Lamasón"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "035",
+	"id": 5782,
+	"name": "Laredo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "036",
+	"id": 5783,
+	"name": "Liendo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "037",
+	"id": 5784,
+	"name": "Liérganes"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "038",
+	"id": 5785,
+	"name": "Limpias"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "039",
+	"id": 5786,
+	"name": "Luena"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "040",
+	"id": 5787,
+	"name": "Marina de Cudeyo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "041",
+	"id": 5788,
+	"name": "Mazcuerras"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "042",
+	"id": 5789,
+	"name": "Medio Cudeyo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "043",
+	"id": 5790,
+	"name": "Meruelo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "044",
+	"id": 5791,
+	"name": "Miengo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "045",
+	"id": 5792,
+	"name": "Miera"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "046",
+	"id": 5793,
+	"name": "Molledo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "047",
+	"id": 5794,
+	"name": "Noja"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "048",
+	"id": 5795,
+	"name": "Penagos"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "049",
+	"id": 5796,
+	"name": "Peñarrubia"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "050",
+	"id": 5797,
+	"name": "Pesaguero"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "051",
+	"id": 5798,
+	"name": "Pesquera"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "052",
+	"id": 5799,
+	"name": "Piélagos"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "053",
+	"id": 5800,
+	"name": "Polaciones"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "054",
+	"id": 5801,
+	"name": "Polanco"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "055",
+	"id": 5802,
+	"name": "Potes"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "056",
+	"id": 5803,
+	"name": "Puente Viesgo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "057",
+	"id": 5804,
+	"name": "Ramales de la Victoria"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "058",
+	"id": 5805,
+	"name": "Rasines"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "059",
+	"id": 5806,
+	"name": "Reinosa"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "060",
+	"id": 5807,
+	"name": "Reocín"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "061",
+	"id": 5808,
+	"name": "Ribamontán al Mar"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "062",
+	"id": 5809,
+	"name": "Ribamontán al Monte"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "063",
+	"id": 5810,
+	"name": "Rionansa"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "064",
+	"id": 5811,
+	"name": "Riotuerto"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "065",
+	"id": 5812,
+	"name": "Rozas de Valdearroyo, Las"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "066",
+	"id": 5813,
+	"name": "Ruente"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "067",
+	"id": 5814,
+	"name": "Ruesga"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "068",
+	"id": 5815,
+	"name": "Ruiloba"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "069",
+	"id": 5816,
+	"name": "San Felices de Buelna"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "070",
+	"id": 5817,
+	"name": "San Miguel de Aguayo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "071",
+	"id": 5818,
+	"name": "San Pedro del Romeral"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "072",
+	"id": 5819,
+	"name": "San Roque de Riomiera"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "080",
+	"id": 5820,
+	"name": "San Vicente de la Barquera"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "073",
+	"id": 5821,
+	"name": "Santa Cruz de Bezana"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "074",
+	"id": 5822,
+	"name": "Santa María de Cayón"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "075",
+	"id": 5823,
+	"name": "Santander"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "076",
+	"id": 5824,
+	"name": "Santillana del Mar"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "077",
+	"id": 5825,
+	"name": "Santiurde de Reinosa"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "078",
+	"id": 5826,
+	"name": "Santiurde de Toranzo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "079",
+	"id": 5827,
+	"name": "Santoña"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "081",
+	"id": 5828,
+	"name": "Saro"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "082",
+	"id": 5829,
+	"name": "Selaya"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "083",
+	"id": 5830,
+	"name": "Soba"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "084",
+	"id": 5831,
+	"name": "Solórzano"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "085",
+	"id": 5832,
+	"name": "Suances"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "086",
+	"id": 5833,
+	"name": "Tojos, Los"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "087",
+	"id": 5834,
+	"name": "Torrelavega"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "088",
+	"id": 5835,
+	"name": "Tresviso"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "089",
+	"id": 5836,
+	"name": "Tudanca"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "090",
+	"id": 5837,
+	"name": "Udías"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "095",
+	"id": 5838,
+	"name": "Val de San Vicente"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "091",
+	"id": 5839,
+	"name": "Valdáliga"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "092",
+	"id": 5840,
+	"name": "Valdeolea"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "093",
+	"id": 5841,
+	"name": "Valdeprado del Río"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "094",
+	"id": 5842,
+	"name": "Valderredible"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "101",
+	"id": 5843,
+	"name": "Valle de Villaverde"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "096",
+	"id": 5844,
+	"name": "Vega de Liébana"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "097",
+	"id": 5845,
+	"name": "Vega de Pas"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "098",
+	"id": 5846,
+	"name": "Villacarriedo"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "099",
+	"id": 5847,
+	"name": "Villaescusa"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "100",
+	"id": 5848,
+	"name": "Villafufre"
+}, {
+	"cod_prov": "39",
+	"cod_mun": "102",
+	"id": 5849,
+	"name": "Voto"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "001",
+	"id": 5850,
+	"name": "Abades"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "002",
+	"id": 5851,
+	"name": "Adrada de Pirón"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "003",
+	"id": 5852,
+	"name": "Adrados"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "004",
+	"id": 5853,
+	"name": "Aguilafuente"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "005",
+	"id": 5854,
+	"name": "Alconada de Maderuelo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "012",
+	"id": 5855,
+	"name": "Aldea Real"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "006",
+	"id": 5856,
+	"name": "Aldealcorvo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "007",
+	"id": 5857,
+	"name": "Aldealengua de Pedraza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "008",
+	"id": 5858,
+	"name": "Aldealengua de Santa María"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "009",
+	"id": 5859,
+	"name": "Aldeanueva de la Serrezuela"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "010",
+	"id": 5860,
+	"name": "Aldeanueva del Codonal"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "013",
+	"id": 5861,
+	"name": "Aldeasoña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "014",
+	"id": 5862,
+	"name": "Aldehorno"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "015",
+	"id": 5863,
+	"name": "Aldehuela del Codonal"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "016",
+	"id": 5864,
+	"name": "Aldeonte"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "017",
+	"id": 5865,
+	"name": "Anaya"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "018",
+	"id": 5866,
+	"name": "Añe"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "019",
+	"id": 5867,
+	"name": "Arahuetes"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "020",
+	"id": 5868,
+	"name": "Arcones"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "021",
+	"id": 5869,
+	"name": "Arevalillo de Cega"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "022",
+	"id": 5870,
+	"name": "Armuña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "024",
+	"id": 5871,
+	"name": "Ayllón"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "025",
+	"id": 5872,
+	"name": "Barbolla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "026",
+	"id": 5873,
+	"name": "Basardilla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "028",
+	"id": 5874,
+	"name": "Bercial"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "029",
+	"id": 5875,
+	"name": "Bercimuel"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "030",
+	"id": 5876,
+	"name": "Bernardos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "031",
+	"id": 5877,
+	"name": "Bernuy de Porreros"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "032",
+	"id": 5878,
+	"name": "Boceguillas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "033",
+	"id": 5879,
+	"name": "Brieva"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "034",
+	"id": 5880,
+	"name": "Caballar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "035",
+	"id": 5881,
+	"name": "Cabañas de Polendos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "036",
+	"id": 5882,
+	"name": "Cabezuela"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "037",
+	"id": 5883,
+	"name": "Calabazas de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "039",
+	"id": 5884,
+	"name": "Campo de San Pedro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "040",
+	"id": 5885,
+	"name": "Cantalejo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "041",
+	"id": 5886,
+	"name": "Cantimpalos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "043",
+	"id": 5887,
+	"name": "Carbonero el Mayor"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "044",
+	"id": 5888,
+	"name": "Carrascal del Río"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "045",
+	"id": 5889,
+	"name": "Casla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "046",
+	"id": 5890,
+	"name": "Castillejo de Mesleón"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "047",
+	"id": 5891,
+	"name": "Castro de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "048",
+	"id": 5892,
+	"name": "Castrojimeno"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "049",
+	"id": 5893,
+	"name": "Castroserna de Abajo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "051",
+	"id": 5894,
+	"name": "Castroserracín"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "052",
+	"id": 5895,
+	"name": "Cedillo de la Torre"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "053",
+	"id": 5896,
+	"name": "Cerezo de Abajo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "054",
+	"id": 5897,
+	"name": "Cerezo de Arriba"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "065",
+	"id": 5898,
+	"name": "Chañe"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "055",
+	"id": 5899,
+	"name": "Cilleruelo de San Mamés"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "056",
+	"id": 5900,
+	"name": "Cobos de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "057",
+	"id": 5901,
+	"name": "Coca"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "058",
+	"id": 5902,
+	"name": "Codorniz"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "059",
+	"id": 5903,
+	"name": "Collado Hermoso"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "060",
+	"id": 5904,
+	"name": "Condado de Castilnovo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "061",
+	"id": 5905,
+	"name": "Corral de Ayllón"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "902",
+	"id": 5906,
+	"name": "Cozuelos de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "062",
+	"id": 5907,
+	"name": "Cubillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "063",
+	"id": 5908,
+	"name": "Cuéllar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "905",
+	"id": 5909,
+	"name": "Cuevas de Provanco"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "068",
+	"id": 5910,
+	"name": "Domingo García"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "069",
+	"id": 5911,
+	"name": "Donhierro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "070",
+	"id": 5912,
+	"name": "Duruelo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "071",
+	"id": 5913,
+	"name": "Encinas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "072",
+	"id": 5914,
+	"name": "Encinillas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "073",
+	"id": 5915,
+	"name": "Escalona del Prado"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "074",
+	"id": 5916,
+	"name": "Escarabajosa de Cabezas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "075",
+	"id": 5917,
+	"name": "Escobar de Polendos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "076",
+	"id": 5918,
+	"name": "Espinar, El"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "077",
+	"id": 5919,
+	"name": "Espirdo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "078",
+	"id": 5920,
+	"name": "Fresneda de Cuéllar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "079",
+	"id": 5921,
+	"name": "Fresno de Cantespino"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "080",
+	"id": 5922,
+	"name": "Fresno de la Fuente"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "081",
+	"id": 5923,
+	"name": "Frumales"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "082",
+	"id": 5924,
+	"name": "Fuente de Santa Cruz"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "083",
+	"id": 5925,
+	"name": "Fuente el Olmo de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "084",
+	"id": 5926,
+	"name": "Fuente el Olmo de Íscar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "086",
+	"id": 5927,
+	"name": "Fuentepelayo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "087",
+	"id": 5928,
+	"name": "Fuentepiñel"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "088",
+	"id": 5929,
+	"name": "Fuenterrebollo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "089",
+	"id": 5930,
+	"name": "Fuentesaúco de Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "091",
+	"id": 5931,
+	"name": "Fuentesoto"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "092",
+	"id": 5932,
+	"name": "Fuentidueña"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "093",
+	"id": 5933,
+	"name": "Gallegos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "094",
+	"id": 5934,
+	"name": "Garcillán"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "095",
+	"id": 5935,
+	"name": "Gomezserracín"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "097",
+	"id": 5936,
+	"name": "Grajera"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "099",
+	"id": 5937,
+	"name": "Honrubia de la Cuesta"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "100",
+	"id": 5938,
+	"name": "Hontalbilla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "101",
+	"id": 5939,
+	"name": "Hontanares de Eresma"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "103",
+	"id": 5940,
+	"name": "Huertos, Los"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "104",
+	"id": 5941,
+	"name": "Ituero y Lama"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "105",
+	"id": 5942,
+	"name": "Juarros de Riomoros"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "106",
+	"id": 5943,
+	"name": "Juarros de Voltoya"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "107",
+	"id": 5944,
+	"name": "Labajos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "108",
+	"id": 5945,
+	"name": "Laguna de Contreras"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "109",
+	"id": 5946,
+	"name": "Languilla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "110",
+	"id": 5947,
+	"name": "Lastras de Cuéllar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "111",
+	"id": 5948,
+	"name": "Lastras del Pozo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "112",
+	"id": 5949,
+	"name": "Lastrilla, La"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "113",
+	"id": 5950,
+	"name": "Losa, La"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "115",
+	"id": 5951,
+	"name": "Maderuelo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "903",
+	"id": 5952,
+	"name": "Marazoleja"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "118",
+	"id": 5953,
+	"name": "Marazuela"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "119",
+	"id": 5954,
+	"name": "Martín Miguel"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "120",
+	"id": 5955,
+	"name": "Martín Muñoz de la Dehesa"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "121",
+	"id": 5956,
+	"name": "Martín Muñoz de las Posadas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "122",
+	"id": 5957,
+	"name": "Marugán"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "124",
+	"id": 5958,
+	"name": "Mata de Cuéllar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "123",
+	"id": 5959,
+	"name": "Matabuena"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "125",
+	"id": 5960,
+	"name": "Matilla, La"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "126",
+	"id": 5961,
+	"name": "Melque de Cercos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "127",
+	"id": 5962,
+	"name": "Membibre de la Hoz"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "128",
+	"id": 5963,
+	"name": "Migueláñez"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "129",
+	"id": 5964,
+	"name": "Montejo de Arévalo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "130",
+	"id": 5965,
+	"name": "Montejo de la Vega de la Serrezuela"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "131",
+	"id": 5966,
+	"name": "Monterrubio"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "132",
+	"id": 5967,
+	"name": "Moral de Hornuez"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "134",
+	"id": 5968,
+	"name": "Mozoncillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "135",
+	"id": 5969,
+	"name": "Muñopedro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "136",
+	"id": 5970,
+	"name": "Muñoveros"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "138",
+	"id": 5971,
+	"name": "Nava de la Asunción"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "139",
+	"id": 5972,
+	"name": "Navafría"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "140",
+	"id": 5973,
+	"name": "Navalilla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "141",
+	"id": 5974,
+	"name": "Navalmanzano"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "142",
+	"id": 5975,
+	"name": "Navares de Ayuso"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "143",
+	"id": 5976,
+	"name": "Navares de Enmedio"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "144",
+	"id": 5977,
+	"name": "Navares de las Cuevas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "145",
+	"id": 5978,
+	"name": "Navas de Oro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "904",
+	"id": 5979,
+	"name": "Navas de Riofrío"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "146",
+	"id": 5980,
+	"name": "Navas de San Antonio"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "148",
+	"id": 5981,
+	"name": "Nieva"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "149",
+	"id": 5982,
+	"name": "Olombrada"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "150",
+	"id": 5983,
+	"name": "Orejana"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "151",
+	"id": 5984,
+	"name": "Ortigosa de Pestaño"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "901",
+	"id": 5985,
+	"name": "Ortigosa del Monte"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "152",
+	"id": 5986,
+	"name": "Otero de Herreros"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "154",
+	"id": 5987,
+	"name": "Pajarejos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "155",
+	"id": 5988,
+	"name": "Palazuelos de Eresma"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "156",
+	"id": 5989,
+	"name": "Pedraza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "157",
+	"id": 5990,
+	"name": "Pelayos del Arroyo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "158",
+	"id": 5991,
+	"name": "Perosillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "159",
+	"id": 5992,
+	"name": "Pinarejos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "160",
+	"id": 5993,
+	"name": "Pinarnegrillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "161",
+	"id": 5994,
+	"name": "Pradales"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "162",
+	"id": 5995,
+	"name": "Prádena"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "163",
+	"id": 5996,
+	"name": "Puebla de Pedraza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "164",
+	"id": 5997,
+	"name": "Rapariegos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "181",
+	"id": 5998,
+	"name": "Real Sitio de San Ildefonso"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "165",
+	"id": 5999,
+	"name": "Rebollo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "166",
+	"id": 6000,
+	"name": "Remondo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "168",
+	"id": 6001,
+	"name": "Riaguas de San Bartolomé"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "170",
+	"id": 6002,
+	"name": "Riaza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "171",
+	"id": 6003,
+	"name": "Ribota"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "172",
+	"id": 6004,
+	"name": "Riofrío de Riaza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "173",
+	"id": 6005,
+	"name": "Roda de Eresma"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "174",
+	"id": 6006,
+	"name": "Sacramenia"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "176",
+	"id": 6007,
+	"name": "Samboal"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "177",
+	"id": 6008,
+	"name": "San Cristóbal de Cuéllar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "178",
+	"id": 6009,
+	"name": "San Cristóbal de la Vega"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "906",
+	"id": 6010,
+	"name": "San Cristóbal de Segovia"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "182",
+	"id": 6011,
+	"name": "San Martín y Mudrián"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "183",
+	"id": 6012,
+	"name": "San Miguel de Bernuy"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "184",
+	"id": 6013,
+	"name": "San Pedro de Gaíllos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "179",
+	"id": 6014,
+	"name": "Sanchonuño"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "180",
+	"id": 6015,
+	"name": "Sangarcía"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "185",
+	"id": 6016,
+	"name": "Santa María la Real de Nieva"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "186",
+	"id": 6017,
+	"name": "Santa Marta del Cerro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "188",
+	"id": 6018,
+	"name": "Santiuste de Pedraza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "189",
+	"id": 6019,
+	"name": "Santiuste de San Juan Bautista"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "190",
+	"id": 6020,
+	"name": "Santo Domingo de Pirón"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "191",
+	"id": 6021,
+	"name": "Santo Tomé del Puerto"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "192",
+	"id": 6022,
+	"name": "Sauquillo de Cabezas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "193",
+	"id": 6023,
+	"name": "Sebúlcor"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "194",
+	"id": 6024,
+	"name": "Segovia"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "195",
+	"id": 6025,
+	"name": "Sepúlveda"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "196",
+	"id": 6026,
+	"name": "Sequera de Fresno"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "198",
+	"id": 6027,
+	"name": "Sotillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "199",
+	"id": 6028,
+	"name": "Sotosalbos"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "200",
+	"id": 6029,
+	"name": "Tabanera la Luenga"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "201",
+	"id": 6030,
+	"name": "Tolocirio"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "206",
+	"id": 6031,
+	"name": "Torre Val de San Pedro"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "202",
+	"id": 6032,
+	"name": "Torreadrada"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "203",
+	"id": 6033,
+	"name": "Torrecaballeros"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "204",
+	"id": 6034,
+	"name": "Torrecilla del Pinar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "205",
+	"id": 6035,
+	"name": "Torreiglesias"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "207",
+	"id": 6036,
+	"name": "Trescasas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "208",
+	"id": 6037,
+	"name": "Turégano"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "210",
+	"id": 6038,
+	"name": "Urueñas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "211",
+	"id": 6039,
+	"name": "Valdeprados"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "212",
+	"id": 6040,
+	"name": "Valdevacas de Montejo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "213",
+	"id": 6041,
+	"name": "Valdevacas y Guijar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "218",
+	"id": 6042,
+	"name": "Valle de Tabladillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "219",
+	"id": 6043,
+	"name": "Vallelado"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "220",
+	"id": 6044,
+	"name": "Valleruela de Pedraza"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "221",
+	"id": 6045,
+	"name": "Valleruela de Sepúlveda"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "214",
+	"id": 6046,
+	"name": "Valseca"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "215",
+	"id": 6047,
+	"name": "Valtiendas"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "216",
+	"id": 6048,
+	"name": "Valverde del Majano"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "222",
+	"id": 6049,
+	"name": "Veganzones"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "223",
+	"id": 6050,
+	"name": "Vegas de Matute"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "224",
+	"id": 6051,
+	"name": "Ventosilla y Tejadilla"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "225",
+	"id": 6052,
+	"name": "Villacastín"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "228",
+	"id": 6053,
+	"name": "Villaverde de Íscar"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "229",
+	"id": 6054,
+	"name": "Villaverde de Montejo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "230",
+	"id": 6055,
+	"name": "Villeguillo"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "231",
+	"id": 6056,
+	"name": "Yanguas de Eresma"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "233",
+	"id": 6057,
+	"name": "Zarzuela del Monte"
+}, {
+	"cod_prov": "40",
+	"cod_mun": "234",
+	"id": 6058,
+	"name": "Zarzuela del Pinar"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "001",
+	"id": 6059,
+	"name": "Aguadulce"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "002",
+	"id": 6060,
+	"name": "Alanís"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "003",
+	"id": 6061,
+	"name": "Albaida del Aljarafe"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "004",
+	"id": 6062,
+	"name": "Alcalá de Guadaíra"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "005",
+	"id": 6063,
+	"name": "Alcalá del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "006",
+	"id": 6064,
+	"name": "Alcolea del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "007",
+	"id": 6065,
+	"name": "Algaba, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "008",
+	"id": 6066,
+	"name": "Algámitas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "009",
+	"id": 6067,
+	"name": "Almadén de la Plata"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "010",
+	"id": 6068,
+	"name": "Almensilla"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "011",
+	"id": 6069,
+	"name": "Arahal"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "012",
+	"id": 6070,
+	"name": "Aznalcázar"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "013",
+	"id": 6071,
+	"name": "Aznalcóllar"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "014",
+	"id": 6072,
+	"name": "Badolatosa"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "015",
+	"id": 6073,
+	"name": "Benacazón"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "016",
+	"id": 6074,
+	"name": "Bollullos de la Mitación"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "017",
+	"id": 6075,
+	"name": "Bormujos"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "018",
+	"id": 6076,
+	"name": "Brenes"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "019",
+	"id": 6077,
+	"name": "Burguillos"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "020",
+	"id": 6078,
+	"name": "Cabezas de San Juan, Las"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "021",
+	"id": 6079,
+	"name": "Camas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "022",
+	"id": 6080,
+	"name": "Campana, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "023",
+	"id": 6081,
+	"name": "Cantillana"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "901",
+	"id": 6082,
+	"name": "Cañada Rosal"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "024",
+	"id": 6083,
+	"name": "Carmona"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "025",
+	"id": 6084,
+	"name": "Carrión de los Céspedes"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "026",
+	"id": 6085,
+	"name": "Casariche"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "027",
+	"id": 6086,
+	"name": "Castilblanco de los Arroyos"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "028",
+	"id": 6087,
+	"name": "Castilleja de Guzmán"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "029",
+	"id": 6088,
+	"name": "Castilleja de la Cuesta"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "030",
+	"id": 6089,
+	"name": "Castilleja del Campo"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "031",
+	"id": 6090,
+	"name": "Castillo de las Guardas, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "032",
+	"id": 6091,
+	"name": "Cazalla de la Sierra"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "033",
+	"id": 6092,
+	"name": "Constantina"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "034",
+	"id": 6093,
+	"name": "Coria del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "035",
+	"id": 6094,
+	"name": "Coripe"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "036",
+	"id": 6095,
+	"name": "Coronil, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "037",
+	"id": 6096,
+	"name": "Corrales, Los"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "903",
+	"id": 6097,
+	"name": "Cuervo de Sevilla, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "038",
+	"id": 6098,
+	"name": "Dos Hermanas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "039",
+	"id": 6099,
+	"name": "Écija"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "040",
+	"id": 6100,
+	"name": "Espartinas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "041",
+	"id": 6101,
+	"name": "Estepa"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "042",
+	"id": 6102,
+	"name": "Fuentes de Andalucía"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "043",
+	"id": 6103,
+	"name": "Garrobo, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "044",
+	"id": 6104,
+	"name": "Gelves"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "045",
+	"id": 6105,
+	"name": "Gerena"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "046",
+	"id": 6106,
+	"name": "Gilena"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "047",
+	"id": 6107,
+	"name": "Gines"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "048",
+	"id": 6108,
+	"name": "Guadalcanal"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "049",
+	"id": 6109,
+	"name": "Guillena"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "050",
+	"id": 6110,
+	"name": "Herrera"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "051",
+	"id": 6111,
+	"name": "Huévar del Aljarafe"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "902",
+	"id": 6112,
+	"name": "Isla Mayor"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "052",
+	"id": 6113,
+	"name": "Lantejuela, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "053",
+	"id": 6114,
+	"name": "Lebrija"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "054",
+	"id": 6115,
+	"name": "Lora de Estepa"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "055",
+	"id": 6116,
+	"name": "Lora del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "056",
+	"id": 6117,
+	"name": "Luisiana, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "057",
+	"id": 6118,
+	"name": "Madroño, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "058",
+	"id": 6119,
+	"name": "Mairena del Alcor"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "059",
+	"id": 6120,
+	"name": "Mairena del Aljarafe"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "060",
+	"id": 6121,
+	"name": "Marchena"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "061",
+	"id": 6122,
+	"name": "Marinaleda"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "062",
+	"id": 6123,
+	"name": "Martín de la Jara"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "063",
+	"id": 6124,
+	"name": "Molares, Los"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "064",
+	"id": 6125,
+	"name": "Montellano"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "065",
+	"id": 6126,
+	"name": "Morón de la Frontera"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "066",
+	"id": 6127,
+	"name": "Navas de la Concepción, Las"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "067",
+	"id": 6128,
+	"name": "Olivares"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "068",
+	"id": 6129,
+	"name": "Osuna"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "069",
+	"id": 6130,
+	"name": "Palacios y Villafranca, Los"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "070",
+	"id": 6131,
+	"name": "Palomares del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "071",
+	"id": 6132,
+	"name": "Paradas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "072",
+	"id": 6133,
+	"name": "Pedrera"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "073",
+	"id": 6134,
+	"name": "Pedroso, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "074",
+	"id": 6135,
+	"name": "Peñaflor"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "075",
+	"id": 6136,
+	"name": "Pilas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "076",
+	"id": 6137,
+	"name": "Pruna"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "077",
+	"id": 6138,
+	"name": "Puebla de Cazalla, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "078",
+	"id": 6139,
+	"name": "Puebla de los Infantes, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "079",
+	"id": 6140,
+	"name": "Puebla del Río, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "080",
+	"id": 6141,
+	"name": "Real de la Jara, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "081",
+	"id": 6142,
+	"name": "Rinconada, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "082",
+	"id": 6143,
+	"name": "Roda de Andalucía, La"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "083",
+	"id": 6144,
+	"name": "Ronquillo, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "084",
+	"id": 6145,
+	"name": "Rubio, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "085",
+	"id": 6146,
+	"name": "Salteras"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "086",
+	"id": 6147,
+	"name": "San Juan de Aznalfarache"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "088",
+	"id": 6148,
+	"name": "San Nicolás del Puerto"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "087",
+	"id": 6149,
+	"name": "Sanlúcar la Mayor"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "089",
+	"id": 6150,
+	"name": "Santiponce"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "090",
+	"id": 6151,
+	"name": "Saucejo, El"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "091",
+	"id": 6152,
+	"name": "Sevilla"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "092",
+	"id": 6153,
+	"name": "Tocina"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "093",
+	"id": 6154,
+	"name": "Tomares"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "094",
+	"id": 6155,
+	"name": "Umbrete"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "095",
+	"id": 6156,
+	"name": "Utrera"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "096",
+	"id": 6157,
+	"name": "Valencina de la Concepción"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "097",
+	"id": 6158,
+	"name": "Villamanrique de la Condesa"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "100",
+	"id": 6159,
+	"name": "Villanueva de San Juan"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "098",
+	"id": 6160,
+	"name": "Villanueva del Ariscal"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "099",
+	"id": 6161,
+	"name": "Villanueva del Río y Minas"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "101",
+	"id": 6162,
+	"name": "Villaverde del Río"
+}, {
+	"cod_prov": "41",
+	"cod_mun": "102",
+	"id": 6163,
+	"name": "Viso del Alcor, El"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "001",
+	"id": 6164,
+	"name": "Abejar"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "003",
+	"id": 6165,
+	"name": "Adradas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "004",
+	"id": 6166,
+	"name": "Ágreda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "006",
+	"id": 6167,
+	"name": "Alconaba"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "007",
+	"id": 6168,
+	"name": "Alcubilla de Avellaneda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "008",
+	"id": 6169,
+	"name": "Alcubilla de las Peñas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "009",
+	"id": 6170,
+	"name": "Aldealafuente"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "010",
+	"id": 6171,
+	"name": "Aldealices"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "011",
+	"id": 6172,
+	"name": "Aldealpozo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "012",
+	"id": 6173,
+	"name": "Aldealseñor"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "013",
+	"id": 6174,
+	"name": "Aldehuela de Periáñez"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "014",
+	"id": 6175,
+	"name": "Aldehuelas, Las"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "015",
+	"id": 6176,
+	"name": "Alentisque"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "016",
+	"id": 6177,
+	"name": "Aliud"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "017",
+	"id": 6178,
+	"name": "Almajano"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "018",
+	"id": 6179,
+	"name": "Almaluez"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "019",
+	"id": 6180,
+	"name": "Almarza"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "020",
+	"id": 6181,
+	"name": "Almazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "021",
+	"id": 6182,
+	"name": "Almazul"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "022",
+	"id": 6183,
+	"name": "Almenar de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "023",
+	"id": 6184,
+	"name": "Alpanseque"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "024",
+	"id": 6185,
+	"name": "Arancón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "025",
+	"id": 6186,
+	"name": "Arcos de Jalón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "026",
+	"id": 6187,
+	"name": "Arenillas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "027",
+	"id": 6188,
+	"name": "Arévalo de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "028",
+	"id": 6189,
+	"name": "Ausejo de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "029",
+	"id": 6190,
+	"name": "Baraona"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "030",
+	"id": 6191,
+	"name": "Barca"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "031",
+	"id": 6192,
+	"name": "Barcones"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "032",
+	"id": 6193,
+	"name": "Bayubas de Abajo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "033",
+	"id": 6194,
+	"name": "Bayubas de Arriba"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "034",
+	"id": 6195,
+	"name": "Beratón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "035",
+	"id": 6196,
+	"name": "Berlanga de Duero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "036",
+	"id": 6197,
+	"name": "Blacos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "037",
+	"id": 6198,
+	"name": "Bliecos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "038",
+	"id": 6199,
+	"name": "Borjabad"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "039",
+	"id": 6200,
+	"name": "Borobia"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "041",
+	"id": 6201,
+	"name": "Buberos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "042",
+	"id": 6202,
+	"name": "Buitrago"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "043",
+	"id": 6203,
+	"name": "Burgo de Osma-Ciudad de Osma"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "044",
+	"id": 6204,
+	"name": "Cabrejas del Campo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "045",
+	"id": 6205,
+	"name": "Cabrejas del Pinar"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "046",
+	"id": 6206,
+	"name": "Calatañazor"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "048",
+	"id": 6207,
+	"name": "Caltojar"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "049",
+	"id": 6208,
+	"name": "Candilichera"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "050",
+	"id": 6209,
+	"name": "Cañamaque"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "051",
+	"id": 6210,
+	"name": "Carabantes"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "052",
+	"id": 6211,
+	"name": "Caracena"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "053",
+	"id": 6212,
+	"name": "Carrascosa de Abajo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "054",
+	"id": 6213,
+	"name": "Carrascosa de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "055",
+	"id": 6214,
+	"name": "Casarejos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "056",
+	"id": 6215,
+	"name": "Castilfrío de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "058",
+	"id": 6216,
+	"name": "Castillejo de Robledo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "057",
+	"id": 6217,
+	"name": "Castilruiz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "059",
+	"id": 6218,
+	"name": "Centenera de Andaluz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "060",
+	"id": 6219,
+	"name": "Cerbón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "061",
+	"id": 6220,
+	"name": "Cidones"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "062",
+	"id": 6221,
+	"name": "Cigudosa"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "063",
+	"id": 6222,
+	"name": "Cihuela"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "064",
+	"id": 6223,
+	"name": "Ciria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "065",
+	"id": 6224,
+	"name": "Cirujales del Río"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "068",
+	"id": 6225,
+	"name": "Coscurita"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "069",
+	"id": 6226,
+	"name": "Covaleda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "070",
+	"id": 6227,
+	"name": "Cubilla"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "071",
+	"id": 6228,
+	"name": "Cubo de la Solana"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "073",
+	"id": 6229,
+	"name": "Cueva de Ágreda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "075",
+	"id": 6230,
+	"name": "Dévanos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "076",
+	"id": 6231,
+	"name": "Deza"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "078",
+	"id": 6232,
+	"name": "Duruelo de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "079",
+	"id": 6233,
+	"name": "Escobosa de Almazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "080",
+	"id": 6234,
+	"name": "Espeja de San Marcelino"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "081",
+	"id": 6235,
+	"name": "Espejón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "082",
+	"id": 6236,
+	"name": "Estepa de San Juan"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "083",
+	"id": 6237,
+	"name": "Frechilla de Almazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "084",
+	"id": 6238,
+	"name": "Fresno de Caracena"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "085",
+	"id": 6239,
+	"name": "Fuentearmegil"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "086",
+	"id": 6240,
+	"name": "Fuentecambrón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "087",
+	"id": 6241,
+	"name": "Fuentecantos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "088",
+	"id": 6242,
+	"name": "Fuentelmonge"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "089",
+	"id": 6243,
+	"name": "Fuentelsaz de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "090",
+	"id": 6244,
+	"name": "Fuentepinilla"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "092",
+	"id": 6245,
+	"name": "Fuentes de Magaña"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "093",
+	"id": 6246,
+	"name": "Fuentestrún"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "094",
+	"id": 6247,
+	"name": "Garray"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "095",
+	"id": 6248,
+	"name": "Golmayo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "096",
+	"id": 6249,
+	"name": "Gómara"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "097",
+	"id": 6250,
+	"name": "Gormaz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "098",
+	"id": 6251,
+	"name": "Herrera de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "100",
+	"id": 6252,
+	"name": "Hinojosa del Campo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "103",
+	"id": 6253,
+	"name": "Langa de Duero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "105",
+	"id": 6254,
+	"name": "Liceras"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "106",
+	"id": 6255,
+	"name": "Losilla, La"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "107",
+	"id": 6256,
+	"name": "Magaña"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "108",
+	"id": 6257,
+	"name": "Maján"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "110",
+	"id": 6258,
+	"name": "Matalebreras"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "111",
+	"id": 6259,
+	"name": "Matamala de Almazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "113",
+	"id": 6260,
+	"name": "Medinaceli"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "115",
+	"id": 6261,
+	"name": "Miño de Medinaceli"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "116",
+	"id": 6262,
+	"name": "Miño de San Esteban"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "117",
+	"id": 6263,
+	"name": "Molinos de Duero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "118",
+	"id": 6264,
+	"name": "Momblona"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "119",
+	"id": 6265,
+	"name": "Monteagudo de las Vicarías"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "120",
+	"id": 6266,
+	"name": "Montejo de Tiermes"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "121",
+	"id": 6267,
+	"name": "Montenegro de Cameros"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "123",
+	"id": 6268,
+	"name": "Morón de Almazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "124",
+	"id": 6269,
+	"name": "Muriel de la Fuente"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "125",
+	"id": 6270,
+	"name": "Muriel Viejo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "127",
+	"id": 6271,
+	"name": "Nafría de Ucero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "128",
+	"id": 6272,
+	"name": "Narros"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "129",
+	"id": 6273,
+	"name": "Navaleno"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "130",
+	"id": 6274,
+	"name": "Nepas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "131",
+	"id": 6275,
+	"name": "Nolay"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "132",
+	"id": 6276,
+	"name": "Noviercas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "134",
+	"id": 6277,
+	"name": "Ólvega"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "135",
+	"id": 6278,
+	"name": "Oncala"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "139",
+	"id": 6279,
+	"name": "Pinilla del Campo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "140",
+	"id": 6280,
+	"name": "Portillo de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "141",
+	"id": 6281,
+	"name": "Póveda de Soria, La"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "142",
+	"id": 6282,
+	"name": "Pozalmuro"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "144",
+	"id": 6283,
+	"name": "Quintana Redonda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "145",
+	"id": 6284,
+	"name": "Quintanas de Gormaz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "148",
+	"id": 6285,
+	"name": "Quiñonería"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "149",
+	"id": 6286,
+	"name": "Rábanos, Los"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "151",
+	"id": 6287,
+	"name": "Rebollar"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "152",
+	"id": 6288,
+	"name": "Recuerda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "153",
+	"id": 6289,
+	"name": "Rello"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "154",
+	"id": 6290,
+	"name": "Renieblas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "155",
+	"id": 6291,
+	"name": "Retortillo de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "156",
+	"id": 6292,
+	"name": "Reznos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "157",
+	"id": 6293,
+	"name": "Riba de Escalote, La"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "158",
+	"id": 6294,
+	"name": "Rioseco de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "159",
+	"id": 6295,
+	"name": "Rollamienta"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "160",
+	"id": 6296,
+	"name": "Royo, El"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "161",
+	"id": 6297,
+	"name": "Salduero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "162",
+	"id": 6298,
+	"name": "San Esteban de Gormaz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "163",
+	"id": 6299,
+	"name": "San Felices"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "164",
+	"id": 6300,
+	"name": "San Leonardo de Yagüe"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "165",
+	"id": 6301,
+	"name": "San Pedro Manrique"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "166",
+	"id": 6302,
+	"name": "Santa Cruz de Yanguas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "167",
+	"id": 6303,
+	"name": "Santa María de Huerta"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "168",
+	"id": 6304,
+	"name": "Santa María de las Hoyas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "171",
+	"id": 6305,
+	"name": "Serón de Nágima"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "172",
+	"id": 6306,
+	"name": "Soliedra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "173",
+	"id": 6307,
+	"name": "Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "174",
+	"id": 6308,
+	"name": "Sotillo del Rincón"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "175",
+	"id": 6309,
+	"name": "Suellacabras"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "176",
+	"id": 6310,
+	"name": "Tajahuerce"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "177",
+	"id": 6311,
+	"name": "Tajueco"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "178",
+	"id": 6312,
+	"name": "Talveila"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "181",
+	"id": 6313,
+	"name": "Tardelcuende"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "182",
+	"id": 6314,
+	"name": "Taroda"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "183",
+	"id": 6315,
+	"name": "Tejado"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "184",
+	"id": 6316,
+	"name": "Torlengua"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "185",
+	"id": 6317,
+	"name": "Torreblacos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "187",
+	"id": 6318,
+	"name": "Torrubia de Soria"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "188",
+	"id": 6319,
+	"name": "Trévago"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "189",
+	"id": 6320,
+	"name": "Ucero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "190",
+	"id": 6321,
+	"name": "Vadillo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "191",
+	"id": 6322,
+	"name": "Valdeavellano de Tera"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "192",
+	"id": 6323,
+	"name": "Valdegeña"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "193",
+	"id": 6324,
+	"name": "Valdelagua del Cerro"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "194",
+	"id": 6325,
+	"name": "Valdemaluque"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "195",
+	"id": 6326,
+	"name": "Valdenebro"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "196",
+	"id": 6327,
+	"name": "Valdeprado"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "197",
+	"id": 6328,
+	"name": "Valderrodilla"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "198",
+	"id": 6329,
+	"name": "Valtajeros"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "200",
+	"id": 6330,
+	"name": "Velamazán"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "201",
+	"id": 6331,
+	"name": "Velilla de la Sierra"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "202",
+	"id": 6332,
+	"name": "Velilla de los Ajos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "204",
+	"id": 6333,
+	"name": "Viana de Duero"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "205",
+	"id": 6334,
+	"name": "Villaciervos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "206",
+	"id": 6335,
+	"name": "Villanueva de Gormaz"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "207",
+	"id": 6336,
+	"name": "Villar del Ala"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "208",
+	"id": 6337,
+	"name": "Villar del Campo"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "209",
+	"id": 6338,
+	"name": "Villar del Río"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "211",
+	"id": 6339,
+	"name": "Villares de Soria, Los"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "212",
+	"id": 6340,
+	"name": "Villasayas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "213",
+	"id": 6341,
+	"name": "Villaseca de Arciel"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "215",
+	"id": 6342,
+	"name": "Vinuesa"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "216",
+	"id": 6343,
+	"name": "Vizmanos"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "217",
+	"id": 6344,
+	"name": "Vozmediano"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "218",
+	"id": 6345,
+	"name": "Yanguas"
+}, {
+	"cod_prov": "42",
+	"cod_mun": "219",
+	"id": 6346,
+	"name": "Yelo"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "001",
+	"id": 6347,
+	"name": "Aiguamúrcia"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "002",
+	"id": 6348,
+	"name": "Albinyana"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "003",
+	"id": 6349,
+	"name": "Albiol, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "004",
+	"id": 6350,
+	"name": "Alcanar"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "005",
+	"id": 6351,
+	"name": "Alcover"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "904",
+	"id": 6352,
+	"name": "Aldea, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "006",
+	"id": 6353,
+	"name": "Aldover"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "007",
+	"id": 6354,
+	"name": "Aleixar, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "008",
+	"id": 6355,
+	"name": "Alfara de Carles"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "009",
+	"id": 6356,
+	"name": "Alforja"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "010",
+	"id": 6357,
+	"name": "Alió"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "011",
+	"id": 6358,
+	"name": "Almoster"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "012",
+	"id": 6359,
+	"name": "Altafulla"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "013",
+	"id": 6360,
+	"name": "Ametlla de Mar, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "906",
+	"id": 6361,
+	"name": "Ampolla, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "014",
+	"id": 6362,
+	"name": "Amposta"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "016",
+	"id": 6363,
+	"name": "Arboç, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "015",
+	"id": 6364,
+	"name": "Arbolí"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "017",
+	"id": 6365,
+	"name": "Argentera, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "018",
+	"id": 6366,
+	"name": "Arnes"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "019",
+	"id": 6367,
+	"name": "Ascó"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "020",
+	"id": 6368,
+	"name": "Banyeres del Penedès"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "021",
+	"id": 6369,
+	"name": "Barberà de la Conca"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "022",
+	"id": 6370,
+	"name": "Batea"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "023",
+	"id": 6371,
+	"name": "Bellmunt del Priorat"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "024",
+	"id": 6372,
+	"name": "Bellvei"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "025",
+	"id": 6373,
+	"name": "Benifallet"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "026",
+	"id": 6374,
+	"name": "Benissanet"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "027",
+	"id": 6375,
+	"name": "Bisbal de Falset, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "028",
+	"id": 6376,
+	"name": "Bisbal del Penedès, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "029",
+	"id": 6377,
+	"name": "Blancafort"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "030",
+	"id": 6378,
+	"name": "Bonastre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "031",
+	"id": 6379,
+	"name": "Borges del Camp, Les"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "032",
+	"id": 6380,
+	"name": "Bot"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "033",
+	"id": 6381,
+	"name": "Botarell"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "034",
+	"id": 6382,
+	"name": "Bràfim"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "035",
+	"id": 6383,
+	"name": "Cabacés"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "036",
+	"id": 6384,
+	"name": "Cabra del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "037",
+	"id": 6385,
+	"name": "Calafell"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "903",
+	"id": 6386,
+	"name": "Camarles"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "038",
+	"id": 6387,
+	"name": "Cambrils"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "907",
+	"id": 6388,
+	"name": "Canonja, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "039",
+	"id": 6389,
+	"name": "Capafonts"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "040",
+	"id": 6390,
+	"name": "Capçanes"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "041",
+	"id": 6391,
+	"name": "Caseres"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "042",
+	"id": 6392,
+	"name": "Castellvell del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "043",
+	"id": 6393,
+	"name": "Catllar, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "045",
+	"id": 6394,
+	"name": "Colldejou"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "046",
+	"id": 6395,
+	"name": "Conesa"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "047",
+	"id": 6396,
+	"name": "Constantí"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "048",
+	"id": 6397,
+	"name": "Corbera d'Ebre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "049",
+	"id": 6398,
+	"name": "Cornudella de Montsant"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "050",
+	"id": 6399,
+	"name": "Creixell"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "051",
+	"id": 6400,
+	"name": "Cunit"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "901",
+	"id": 6401,
+	"name": "Deltebre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "053",
+	"id": 6402,
+	"name": "Duesaigües"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "054",
+	"id": 6403,
+	"name": "Espluga de Francolí, L'"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "055",
+	"id": 6404,
+	"name": "Falset"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "056",
+	"id": 6405,
+	"name": "Fatarella, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "057",
+	"id": 6406,
+	"name": "Febró, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "058",
+	"id": 6407,
+	"name": "Figuera, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "059",
+	"id": 6408,
+	"name": "Figuerola del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "060",
+	"id": 6409,
+	"name": "Flix"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "061",
+	"id": 6410,
+	"name": "Forès"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "062",
+	"id": 6411,
+	"name": "Freginals"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "063",
+	"id": 6412,
+	"name": "Galera, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "064",
+	"id": 6413,
+	"name": "Gandesa"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "065",
+	"id": 6414,
+	"name": "Garcia"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "066",
+	"id": 6415,
+	"name": "Garidells, Els"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "067",
+	"id": 6416,
+	"name": "Ginestar"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "068",
+	"id": 6417,
+	"name": "Godall"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "069",
+	"id": 6418,
+	"name": "Gratallops"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "070",
+	"id": 6419,
+	"name": "Guiamets, Els"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "071",
+	"id": 6420,
+	"name": "Horta de Sant Joan"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "072",
+	"id": 6421,
+	"name": "Lloar, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "073",
+	"id": 6422,
+	"name": "Llorac"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "074",
+	"id": 6423,
+	"name": "Llorenç del Penedès"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "076",
+	"id": 6424,
+	"name": "Marçà"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "075",
+	"id": 6425,
+	"name": "Margalef"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "077",
+	"id": 6426,
+	"name": "Mas de Barberans"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "078",
+	"id": 6427,
+	"name": "Masdenverge"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "079",
+	"id": 6428,
+	"name": "Masllorenç"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "080",
+	"id": 6429,
+	"name": "Masó, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "081",
+	"id": 6430,
+	"name": "Maspujols"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "082",
+	"id": 6431,
+	"name": "Masroig, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "083",
+	"id": 6432,
+	"name": "Milà, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "084",
+	"id": 6433,
+	"name": "Miravet"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "085",
+	"id": 6434,
+	"name": "Molar, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "086",
+	"id": 6435,
+	"name": "Montblanc"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "088",
+	"id": 6436,
+	"name": "Montbrió del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "089",
+	"id": 6437,
+	"name": "Montferri"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "090",
+	"id": 6438,
+	"name": "Montmell, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "091",
+	"id": 6439,
+	"name": "Mont-ral"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "092",
+	"id": 6440,
+	"name": "Mont-roig del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "093",
+	"id": 6441,
+	"name": "Móra d'Ebre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "094",
+	"id": 6442,
+	"name": "Móra la Nova"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "095",
+	"id": 6443,
+	"name": "Morell, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "096",
+	"id": 6444,
+	"name": "Morera de Montsant, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "097",
+	"id": 6445,
+	"name": "Nou de Gaià, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "098",
+	"id": 6446,
+	"name": "Nulles"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "100",
+	"id": 6447,
+	"name": "Pallaresos, Els"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "099",
+	"id": 6448,
+	"name": "Palma d'Ebre, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "101",
+	"id": 6449,
+	"name": "Passanant i Belltall"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "102",
+	"id": 6450,
+	"name": "Paüls"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "103",
+	"id": 6451,
+	"name": "Perafort"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "104",
+	"id": 6452,
+	"name": "Perelló, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "105",
+	"id": 6453,
+	"name": "Piles, Les"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "106",
+	"id": 6454,
+	"name": "Pinell de Brai, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "107",
+	"id": 6455,
+	"name": "Pira"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "108",
+	"id": 6456,
+	"name": "Pla de Santa Maria, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "109",
+	"id": 6457,
+	"name": "Pobla de Mafumet, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "110",
+	"id": 6458,
+	"name": "Pobla de Massaluca, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "111",
+	"id": 6459,
+	"name": "Pobla de Montornès, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "112",
+	"id": 6460,
+	"name": "Poboleda"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "113",
+	"id": 6461,
+	"name": "Pont d'Armentera, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "141",
+	"id": 6462,
+	"name": "Pontils"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "114",
+	"id": 6463,
+	"name": "Porrera"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "115",
+	"id": 6464,
+	"name": "Pradell de la Teixeta"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "116",
+	"id": 6465,
+	"name": "Prades"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "117",
+	"id": 6466,
+	"name": "Prat de Comte"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "118",
+	"id": 6467,
+	"name": "Pratdip"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "119",
+	"id": 6468,
+	"name": "Puigpelat"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "120",
+	"id": 6469,
+	"name": "Querol"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "121",
+	"id": 6470,
+	"name": "Rasquera"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "122",
+	"id": 6471,
+	"name": "Renau"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "123",
+	"id": 6472,
+	"name": "Reus"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "124",
+	"id": 6473,
+	"name": "Riba, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "125",
+	"id": 6474,
+	"name": "Riba-roja d'Ebre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "126",
+	"id": 6475,
+	"name": "Riera de Gaià, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "127",
+	"id": 6476,
+	"name": "Riudecanyes"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "128",
+	"id": 6477,
+	"name": "Riudecols"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "129",
+	"id": 6478,
+	"name": "Riudoms"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "130",
+	"id": 6479,
+	"name": "Rocafort de Queralt"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "131",
+	"id": 6480,
+	"name": "Roda de Berà"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "132",
+	"id": 6481,
+	"name": "Rodonyà"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "133",
+	"id": 6482,
+	"name": "Roquetes"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "134",
+	"id": 6483,
+	"name": "Rourell, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "135",
+	"id": 6484,
+	"name": "Salomó"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "905",
+	"id": 6485,
+	"name": "Salou"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "136",
+	"id": 6486,
+	"name": "Sant Carles de la Ràpita"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "137",
+	"id": 6487,
+	"name": "Sant Jaume dels Domenys"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "902",
+	"id": 6488,
+	"name": "Sant Jaume d'Enveja"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "138",
+	"id": 6489,
+	"name": "Santa Bàrbara"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "139",
+	"id": 6490,
+	"name": "Santa Coloma de Queralt"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "140",
+	"id": 6491,
+	"name": "Santa Oliva"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "142",
+	"id": 6492,
+	"name": "Sarral"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "143",
+	"id": 6493,
+	"name": "Savallà del Comtat"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "144",
+	"id": 6494,
+	"name": "Secuita, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "145",
+	"id": 6495,
+	"name": "Selva del Camp, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "146",
+	"id": 6496,
+	"name": "Senan"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "044",
+	"id": 6497,
+	"name": "Sénia, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "147",
+	"id": 6498,
+	"name": "Solivella"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "148",
+	"id": 6499,
+	"name": "Tarragona"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "149",
+	"id": 6500,
+	"name": "Tivenys"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "150",
+	"id": 6501,
+	"name": "Tivissa"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "151",
+	"id": 6502,
+	"name": "Torre de Fontaubella, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "152",
+	"id": 6503,
+	"name": "Torre de l'Espanyol, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "153",
+	"id": 6504,
+	"name": "Torredembarra"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "154",
+	"id": 6505,
+	"name": "Torroja del Priorat"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "155",
+	"id": 6506,
+	"name": "Tortosa"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "156",
+	"id": 6507,
+	"name": "Ulldecona"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "157",
+	"id": 6508,
+	"name": "Ulldemolins"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "158",
+	"id": 6509,
+	"name": "Vallclara"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "159",
+	"id": 6510,
+	"name": "Vallfogona de Riucorb"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "160",
+	"id": 6511,
+	"name": "Vallmoll"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "161",
+	"id": 6512,
+	"name": "Valls"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "162",
+	"id": 6513,
+	"name": "Vandellòs i l'Hospitalet de l'Infant"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "163",
+	"id": 6514,
+	"name": "Vendrell, El"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "164",
+	"id": 6515,
+	"name": "Vespella de Gaià"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "165",
+	"id": 6516,
+	"name": "Vilabella"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "175",
+	"id": 6517,
+	"name": "Vilalba dels Arcs"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "166",
+	"id": 6518,
+	"name": "Vilallonga del Camp"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "168",
+	"id": 6519,
+	"name": "Vilanova de Prades"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "167",
+	"id": 6520,
+	"name": "Vilanova d'Escornalbou"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "169",
+	"id": 6521,
+	"name": "Vilaplana"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "170",
+	"id": 6522,
+	"name": "Vila-rodona"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "171",
+	"id": 6523,
+	"name": "Vila-seca"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "172",
+	"id": 6524,
+	"name": "Vilaverd"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "173",
+	"id": 6525,
+	"name": "Vilella Alta, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "174",
+	"id": 6526,
+	"name": "Vilella Baixa, La"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "176",
+	"id": 6527,
+	"name": "Vimbodí i Poblet"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "177",
+	"id": 6528,
+	"name": "Vinebre"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "178",
+	"id": 6529,
+	"name": "Vinyols i els Arcs"
+}, {
+	"cod_prov": "43",
+	"cod_mun": "052",
+	"id": 6530,
+	"name": "Xerta"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "001",
+	"id": 6531,
+	"name": "Ababuj"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "002",
+	"id": 6532,
+	"name": "Abejuela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "003",
+	"id": 6533,
+	"name": "Aguatón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "004",
+	"id": 6534,
+	"name": "Aguaviva"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "005",
+	"id": 6535,
+	"name": "Aguilar del Alfambra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "006",
+	"id": 6536,
+	"name": "Alacón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "007",
+	"id": 6537,
+	"name": "Alba"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "008",
+	"id": 6538,
+	"name": "Albalate del Arzobispo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "009",
+	"id": 6539,
+	"name": "Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "010",
+	"id": 6540,
+	"name": "Albentosa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "011",
+	"id": 6541,
+	"name": "Alcaine"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "012",
+	"id": 6542,
+	"name": "Alcalá de la Selva"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "013",
+	"id": 6543,
+	"name": "Alcañiz"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "014",
+	"id": 6544,
+	"name": "Alcorisa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "016",
+	"id": 6545,
+	"name": "Alfambra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "017",
+	"id": 6546,
+	"name": "Aliaga"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "021",
+	"id": 6547,
+	"name": "Allepuz"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "022",
+	"id": 6548,
+	"name": "Alloza"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "023",
+	"id": 6549,
+	"name": "Allueva"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "018",
+	"id": 6550,
+	"name": "Almohaja"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "019",
+	"id": 6551,
+	"name": "Alobras"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "020",
+	"id": 6552,
+	"name": "Alpeñés"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "024",
+	"id": 6553,
+	"name": "Anadón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "025",
+	"id": 6554,
+	"name": "Andorra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "026",
+	"id": 6555,
+	"name": "Arcos de las Salinas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "027",
+	"id": 6556,
+	"name": "Arens de Lledó"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "028",
+	"id": 6557,
+	"name": "Argente"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "029",
+	"id": 6558,
+	"name": "Ariño"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "031",
+	"id": 6559,
+	"name": "Azaila"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "032",
+	"id": 6560,
+	"name": "Bádenas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "033",
+	"id": 6561,
+	"name": "Báguena"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "034",
+	"id": 6562,
+	"name": "Bañón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "035",
+	"id": 6563,
+	"name": "Barrachina"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "036",
+	"id": 6564,
+	"name": "Bea"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "037",
+	"id": 6565,
+	"name": "Beceite"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "039",
+	"id": 6566,
+	"name": "Bello"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "038",
+	"id": 6567,
+	"name": "Belmonte de San José"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "040",
+	"id": 6568,
+	"name": "Berge"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "041",
+	"id": 6569,
+	"name": "Bezas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "042",
+	"id": 6570,
+	"name": "Blancas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "043",
+	"id": 6571,
+	"name": "Blesa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "044",
+	"id": 6572,
+	"name": "Bordón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "045",
+	"id": 6573,
+	"name": "Bronchales"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "046",
+	"id": 6574,
+	"name": "Bueña"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "047",
+	"id": 6575,
+	"name": "Burbáguena"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "048",
+	"id": 6576,
+	"name": "Cabra de Mora"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "049",
+	"id": 6577,
+	"name": "Calaceite"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "050",
+	"id": 6578,
+	"name": "Calamocha"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "051",
+	"id": 6579,
+	"name": "Calanda"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "052",
+	"id": 6580,
+	"name": "Calomarde"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "053",
+	"id": 6581,
+	"name": "Camañas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "054",
+	"id": 6582,
+	"name": "Camarena de la Sierra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "055",
+	"id": 6583,
+	"name": "Camarillas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "056",
+	"id": 6584,
+	"name": "Caminreal"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "059",
+	"id": 6585,
+	"name": "Cantavieja"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "060",
+	"id": 6586,
+	"name": "Cañada de Benatanduz"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "061",
+	"id": 6587,
+	"name": "Cañada de Verich, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "062",
+	"id": 6588,
+	"name": "Cañada Vellida"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "063",
+	"id": 6589,
+	"name": "Cañizar del Olivar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "064",
+	"id": 6590,
+	"name": "Cascante del Río"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "065",
+	"id": 6591,
+	"name": "Castejón de Tornos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "066",
+	"id": 6592,
+	"name": "Castel de Cabra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "070",
+	"id": 6593,
+	"name": "Castellar, El"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "071",
+	"id": 6594,
+	"name": "Castellote"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "067",
+	"id": 6595,
+	"name": "Castelnou"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "068",
+	"id": 6596,
+	"name": "Castelserás"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "074",
+	"id": 6597,
+	"name": "Cedrillas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "075",
+	"id": 6598,
+	"name": "Celadas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "076",
+	"id": 6599,
+	"name": "Cella"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "077",
+	"id": 6600,
+	"name": "Cerollera, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "080",
+	"id": 6601,
+	"name": "Codoñera, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "082",
+	"id": 6602,
+	"name": "Corbalán"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "084",
+	"id": 6603,
+	"name": "Cortes de Aragón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "085",
+	"id": 6604,
+	"name": "Cosa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "086",
+	"id": 6605,
+	"name": "Cretas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "087",
+	"id": 6606,
+	"name": "Crivillén"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "088",
+	"id": 6607,
+	"name": "Cuba, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "089",
+	"id": 6608,
+	"name": "Cubla"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "090",
+	"id": 6609,
+	"name": "Cucalón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "092",
+	"id": 6610,
+	"name": "Cuervo, El"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "093",
+	"id": 6611,
+	"name": "Cuevas de Almudén"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "094",
+	"id": 6612,
+	"name": "Cuevas Labradas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "096",
+	"id": 6613,
+	"name": "Ejulve"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "097",
+	"id": 6614,
+	"name": "Escorihuela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "099",
+	"id": 6615,
+	"name": "Escucha"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "100",
+	"id": 6616,
+	"name": "Estercuel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "101",
+	"id": 6617,
+	"name": "Ferreruela de Huerva"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "102",
+	"id": 6618,
+	"name": "Fonfría"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "103",
+	"id": 6619,
+	"name": "Formiche Alto"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "105",
+	"id": 6620,
+	"name": "Fórnoles"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "106",
+	"id": 6621,
+	"name": "Fortanete"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "107",
+	"id": 6622,
+	"name": "Foz-Calanda"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "108",
+	"id": 6623,
+	"name": "Fresneda, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "109",
+	"id": 6624,
+	"name": "Frías de Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "110",
+	"id": 6625,
+	"name": "Fuenferrada"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "111",
+	"id": 6626,
+	"name": "Fuentes Calientes"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "112",
+	"id": 6627,
+	"name": "Fuentes Claras"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "113",
+	"id": 6628,
+	"name": "Fuentes de Rubielos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "114",
+	"id": 6629,
+	"name": "Fuentespalda"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "115",
+	"id": 6630,
+	"name": "Galve"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "116",
+	"id": 6631,
+	"name": "Gargallo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "117",
+	"id": 6632,
+	"name": "Gea de Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "118",
+	"id": 6633,
+	"name": "Ginebrosa, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "119",
+	"id": 6634,
+	"name": "Griegos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "120",
+	"id": 6635,
+	"name": "Guadalaviar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "121",
+	"id": 6636,
+	"name": "Gúdar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "122",
+	"id": 6637,
+	"name": "Híjar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "123",
+	"id": 6638,
+	"name": "Hinojosa de Jarque"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "124",
+	"id": 6639,
+	"name": "Hoz de la Vieja, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "125",
+	"id": 6640,
+	"name": "Huesa del Común"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "126",
+	"id": 6641,
+	"name": "Iglesuela del Cid, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "127",
+	"id": 6642,
+	"name": "Jabaloyas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "128",
+	"id": 6643,
+	"name": "Jarque de la Val"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "129",
+	"id": 6644,
+	"name": "Jatiel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "130",
+	"id": 6645,
+	"name": "Jorcas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "131",
+	"id": 6646,
+	"name": "Josa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "132",
+	"id": 6647,
+	"name": "Lagueruela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "133",
+	"id": 6648,
+	"name": "Lanzuela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "135",
+	"id": 6649,
+	"name": "Libros"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "136",
+	"id": 6650,
+	"name": "Lidón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "137",
+	"id": 6651,
+	"name": "Linares de Mora"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "141",
+	"id": 6652,
+	"name": "Lledó"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "138",
+	"id": 6653,
+	"name": "Loscos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "142",
+	"id": 6654,
+	"name": "Maicas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "143",
+	"id": 6655,
+	"name": "Manzanera"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "144",
+	"id": 6656,
+	"name": "Martín del Río"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "145",
+	"id": 6657,
+	"name": "Mas de las Matas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "146",
+	"id": 6658,
+	"name": "Mata de los Olmos, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "147",
+	"id": 6659,
+	"name": "Mazaleón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "148",
+	"id": 6660,
+	"name": "Mezquita de Jarque"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "149",
+	"id": 6661,
+	"name": "Mirambel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "150",
+	"id": 6662,
+	"name": "Miravete de la Sierra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "151",
+	"id": 6663,
+	"name": "Molinos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "152",
+	"id": 6664,
+	"name": "Monforte de Moyuela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "153",
+	"id": 6665,
+	"name": "Monreal del Campo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "154",
+	"id": 6666,
+	"name": "Monroyo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "155",
+	"id": 6667,
+	"name": "Montalbán"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "156",
+	"id": 6668,
+	"name": "Monteagudo del Castillo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "157",
+	"id": 6669,
+	"name": "Monterde de Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "158",
+	"id": 6670,
+	"name": "Mora de Rubielos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "159",
+	"id": 6671,
+	"name": "Moscardón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "160",
+	"id": 6672,
+	"name": "Mosqueruela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "161",
+	"id": 6673,
+	"name": "Muniesa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "163",
+	"id": 6674,
+	"name": "Noguera de Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "164",
+	"id": 6675,
+	"name": "Nogueras"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "165",
+	"id": 6676,
+	"name": "Nogueruelas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "167",
+	"id": 6677,
+	"name": "Obón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "168",
+	"id": 6678,
+	"name": "Odón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "169",
+	"id": 6679,
+	"name": "Ojos Negros"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "171",
+	"id": 6680,
+	"name": "Olba"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "172",
+	"id": 6681,
+	"name": "Oliete"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "173",
+	"id": 6682,
+	"name": "Olmos, Los"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "174",
+	"id": 6683,
+	"name": "Orihuela del Tremedal"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "175",
+	"id": 6684,
+	"name": "Orrios"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "176",
+	"id": 6685,
+	"name": "Palomar de Arroyos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "177",
+	"id": 6686,
+	"name": "Pancrudo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "178",
+	"id": 6687,
+	"name": "Parras de Castellote, Las"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "179",
+	"id": 6688,
+	"name": "Peñarroya de Tastavins"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "180",
+	"id": 6689,
+	"name": "Peracense"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "181",
+	"id": 6690,
+	"name": "Peralejos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "182",
+	"id": 6691,
+	"name": "Perales del Alfambra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "183",
+	"id": 6692,
+	"name": "Pitarque"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "184",
+	"id": 6693,
+	"name": "Plou"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "185",
+	"id": 6694,
+	"name": "Pobo, El"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "187",
+	"id": 6695,
+	"name": "Portellada, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "189",
+	"id": 6696,
+	"name": "Pozondón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "190",
+	"id": 6697,
+	"name": "Pozuel del Campo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "191",
+	"id": 6698,
+	"name": "Puebla de Híjar, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "192",
+	"id": 6699,
+	"name": "Puebla de Valverde, La"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "193",
+	"id": 6700,
+	"name": "Puertomingalvo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "194",
+	"id": 6701,
+	"name": "Ráfales"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "195",
+	"id": 6702,
+	"name": "Rillo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "196",
+	"id": 6703,
+	"name": "Riodeva"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "197",
+	"id": 6704,
+	"name": "Ródenas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "198",
+	"id": 6705,
+	"name": "Royuela"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "199",
+	"id": 6706,
+	"name": "Rubiales"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "200",
+	"id": 6707,
+	"name": "Rubielos de la Cérida"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "201",
+	"id": 6708,
+	"name": "Rubielos de Mora"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "203",
+	"id": 6709,
+	"name": "Salcedillo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "204",
+	"id": 6710,
+	"name": "Saldón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "205",
+	"id": 6711,
+	"name": "Samper de Calanda"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "206",
+	"id": 6712,
+	"name": "San Agustín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "207",
+	"id": 6713,
+	"name": "San Martín del Río"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "208",
+	"id": 6714,
+	"name": "Santa Cruz de Nogueras"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "209",
+	"id": 6715,
+	"name": "Santa Eulalia"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "210",
+	"id": 6716,
+	"name": "Sarrión"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "211",
+	"id": 6717,
+	"name": "Segura de los Baños"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "212",
+	"id": 6718,
+	"name": "Seno"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "213",
+	"id": 6719,
+	"name": "Singra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "215",
+	"id": 6720,
+	"name": "Terriente"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "216",
+	"id": 6721,
+	"name": "Teruel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "217",
+	"id": 6722,
+	"name": "Toril y Masegoso"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "218",
+	"id": 6723,
+	"name": "Tormón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "219",
+	"id": 6724,
+	"name": "Tornos"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "220",
+	"id": 6725,
+	"name": "Torralba de los Sisones"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "223",
+	"id": 6726,
+	"name": "Torre de Arcas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "224",
+	"id": 6727,
+	"name": "Torre de las Arcas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "225",
+	"id": 6728,
+	"name": "Torre del Compte"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "227",
+	"id": 6729,
+	"name": "Torre los Negros"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "221",
+	"id": 6730,
+	"name": "Torrecilla de Alcañiz"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "222",
+	"id": 6731,
+	"name": "Torrecilla del Rebollar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "226",
+	"id": 6732,
+	"name": "Torrelacárcel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "228",
+	"id": 6733,
+	"name": "Torremocha de Jiloca"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "229",
+	"id": 6734,
+	"name": "Torres de Albarracín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "230",
+	"id": 6735,
+	"name": "Torrevelilla"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "231",
+	"id": 6736,
+	"name": "Torrijas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "232",
+	"id": 6737,
+	"name": "Torrijo del Campo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "234",
+	"id": 6738,
+	"name": "Tramacastiel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "235",
+	"id": 6739,
+	"name": "Tramacastilla"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "236",
+	"id": 6740,
+	"name": "Tronchón"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "237",
+	"id": 6741,
+	"name": "Urrea de Gaén"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "238",
+	"id": 6742,
+	"name": "Utrillas"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "239",
+	"id": 6743,
+	"name": "Valacloche"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "240",
+	"id": 6744,
+	"name": "Valbona"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "241",
+	"id": 6745,
+	"name": "Valdealgorfa"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "243",
+	"id": 6746,
+	"name": "Valdecuenca"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "244",
+	"id": 6747,
+	"name": "Valdelinares"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "245",
+	"id": 6748,
+	"name": "Valdeltormo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "246",
+	"id": 6749,
+	"name": "Valderrobres"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "247",
+	"id": 6750,
+	"name": "Valjunquera"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "249",
+	"id": 6751,
+	"name": "Vallecillo, El"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "250",
+	"id": 6752,
+	"name": "Veguillas de la Sierra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "251",
+	"id": 6753,
+	"name": "Villafranca del Campo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "252",
+	"id": 6754,
+	"name": "Villahermosa del Campo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "256",
+	"id": 6755,
+	"name": "Villanueva del Rebollar de la Sierra"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "257",
+	"id": 6756,
+	"name": "Villar del Cobo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "258",
+	"id": 6757,
+	"name": "Villar del Salz"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "260",
+	"id": 6758,
+	"name": "Villarluengo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "261",
+	"id": 6759,
+	"name": "Villarquemado"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "262",
+	"id": 6760,
+	"name": "Villarroya de los Pinares"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "263",
+	"id": 6761,
+	"name": "Villastar"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "264",
+	"id": 6762,
+	"name": "Villel"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "265",
+	"id": 6763,
+	"name": "Vinaceite"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "266",
+	"id": 6764,
+	"name": "Visiedo"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "267",
+	"id": 6765,
+	"name": "Vivel del Río Martín"
+}, {
+	"cod_prov": "44",
+	"cod_mun": "268",
+	"id": 6766,
+	"name": "Zoma, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "001",
+	"id": 6767,
+	"name": "Ajofrín"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "002",
+	"id": 6768,
+	"name": "Alameda de la Sagra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "003",
+	"id": 6769,
+	"name": "Albarreal de Tajo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "004",
+	"id": 6770,
+	"name": "Alcabón"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "005",
+	"id": 6771,
+	"name": "Alcañizo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "006",
+	"id": 6772,
+	"name": "Alcaudete de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "007",
+	"id": 6773,
+	"name": "Alcolea de Tajo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "008",
+	"id": 6774,
+	"name": "Aldea en Cabo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "009",
+	"id": 6775,
+	"name": "Aldeanueva de Barbarroya"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "010",
+	"id": 6776,
+	"name": "Aldeanueva de San Bartolomé"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "011",
+	"id": 6777,
+	"name": "Almendral de la Cañada"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "012",
+	"id": 6778,
+	"name": "Almonacid de Toledo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "013",
+	"id": 6779,
+	"name": "Almorox"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "014",
+	"id": 6780,
+	"name": "Añover de Tajo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "015",
+	"id": 6781,
+	"name": "Arcicóllar"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "016",
+	"id": 6782,
+	"name": "Argés"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "017",
+	"id": 6783,
+	"name": "Azután"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "018",
+	"id": 6784,
+	"name": "Barcience"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "019",
+	"id": 6785,
+	"name": "Bargas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "020",
+	"id": 6786,
+	"name": "Belvís de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "021",
+	"id": 6787,
+	"name": "Borox"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "022",
+	"id": 6788,
+	"name": "Buenaventura"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "023",
+	"id": 6789,
+	"name": "Burguillos de Toledo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "024",
+	"id": 6790,
+	"name": "Burujón"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "025",
+	"id": 6791,
+	"name": "Cabañas de la Sagra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "026",
+	"id": 6792,
+	"name": "Cabañas de Yepes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "027",
+	"id": 6793,
+	"name": "Cabezamesada"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "028",
+	"id": 6794,
+	"name": "Calera y Chozas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "029",
+	"id": 6795,
+	"name": "Caleruela"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "030",
+	"id": 6796,
+	"name": "Calzada de Oropesa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "031",
+	"id": 6797,
+	"name": "Camarena"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "032",
+	"id": 6798,
+	"name": "Camarenilla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "033",
+	"id": 6799,
+	"name": "Campillo de la Jara, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "034",
+	"id": 6800,
+	"name": "Camuñas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "035",
+	"id": 6801,
+	"name": "Cardiel de los Montes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "036",
+	"id": 6802,
+	"name": "Carmena"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "037",
+	"id": 6803,
+	"name": "Carpio de Tajo, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "038",
+	"id": 6804,
+	"name": "Carranque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "039",
+	"id": 6805,
+	"name": "Carriches"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "040",
+	"id": 6806,
+	"name": "Casar de Escalona, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "041",
+	"id": 6807,
+	"name": "Casarrubios del Monte"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "042",
+	"id": 6808,
+	"name": "Casasbuenas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "043",
+	"id": 6809,
+	"name": "Castillo de Bayuela"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "045",
+	"id": 6810,
+	"name": "Cazalegas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "046",
+	"id": 6811,
+	"name": "Cebolla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "047",
+	"id": 6812,
+	"name": "Cedillo del Condado"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "048",
+	"id": 6813,
+	"name": "Cerralbos, Los"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "049",
+	"id": 6814,
+	"name": "Cervera de los Montes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "056",
+	"id": 6815,
+	"name": "Chozas de Canales"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "057",
+	"id": 6816,
+	"name": "Chueca"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "050",
+	"id": 6817,
+	"name": "Ciruelos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "051",
+	"id": 6818,
+	"name": "Cobeja"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "052",
+	"id": 6819,
+	"name": "Cobisa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "053",
+	"id": 6820,
+	"name": "Consuegra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "054",
+	"id": 6821,
+	"name": "Corral de Almaguer"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "055",
+	"id": 6822,
+	"name": "Cuerva"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "058",
+	"id": 6823,
+	"name": "Domingo Pérez"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "059",
+	"id": 6824,
+	"name": "Dosbarrios"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "060",
+	"id": 6825,
+	"name": "Erustes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "061",
+	"id": 6826,
+	"name": "Escalona"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "062",
+	"id": 6827,
+	"name": "Escalonilla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "063",
+	"id": 6828,
+	"name": "Espinoso del Rey"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "064",
+	"id": 6829,
+	"name": "Esquivias"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "065",
+	"id": 6830,
+	"name": "Estrella, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "066",
+	"id": 6831,
+	"name": "Fuensalida"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "067",
+	"id": 6832,
+	"name": "Gálvez"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "068",
+	"id": 6833,
+	"name": "Garciotum"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "069",
+	"id": 6834,
+	"name": "Gerindote"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "070",
+	"id": 6835,
+	"name": "Guadamur"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "071",
+	"id": 6836,
+	"name": "Guardia, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "072",
+	"id": 6837,
+	"name": "Herencias, Las"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "073",
+	"id": 6838,
+	"name": "Herreruela de Oropesa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "074",
+	"id": 6839,
+	"name": "Hinojosa de San Vicente"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "075",
+	"id": 6840,
+	"name": "Hontanar"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "076",
+	"id": 6841,
+	"name": "Hormigos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "077",
+	"id": 6842,
+	"name": "Huecas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "078",
+	"id": 6843,
+	"name": "Huerta de Valdecarábanos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "079",
+	"id": 6844,
+	"name": "Iglesuela, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "080",
+	"id": 6845,
+	"name": "Illán de Vacas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "081",
+	"id": 6846,
+	"name": "Illescas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "082",
+	"id": 6847,
+	"name": "Lagartera"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "083",
+	"id": 6848,
+	"name": "Layos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "084",
+	"id": 6849,
+	"name": "Lillo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "085",
+	"id": 6850,
+	"name": "Lominchar"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "086",
+	"id": 6851,
+	"name": "Lucillos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "087",
+	"id": 6852,
+	"name": "Madridejos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "088",
+	"id": 6853,
+	"name": "Magán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "089",
+	"id": 6854,
+	"name": "Malpica de Tajo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "090",
+	"id": 6855,
+	"name": "Manzaneque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "091",
+	"id": 6856,
+	"name": "Maqueda"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "092",
+	"id": 6857,
+	"name": "Marjaliza"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "093",
+	"id": 6858,
+	"name": "Marrupe"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "094",
+	"id": 6859,
+	"name": "Mascaraque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "095",
+	"id": 6860,
+	"name": "Mata, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "096",
+	"id": 6861,
+	"name": "Mazarambroz"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "097",
+	"id": 6862,
+	"name": "Mejorada"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "098",
+	"id": 6863,
+	"name": "Menasalbas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "099",
+	"id": 6864,
+	"name": "Méntrida"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "100",
+	"id": 6865,
+	"name": "Mesegar de Tajo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "101",
+	"id": 6866,
+	"name": "Miguel Esteban"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "102",
+	"id": 6867,
+	"name": "Mocejón"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "103",
+	"id": 6868,
+	"name": "Mohedas de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "104",
+	"id": 6869,
+	"name": "Montearagón"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "105",
+	"id": 6870,
+	"name": "Montesclaros"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "106",
+	"id": 6871,
+	"name": "Mora"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "107",
+	"id": 6872,
+	"name": "Nambroca"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "108",
+	"id": 6873,
+	"name": "Nava de Ricomalillo, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "109",
+	"id": 6874,
+	"name": "Navahermosa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "110",
+	"id": 6875,
+	"name": "Navalcán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "111",
+	"id": 6876,
+	"name": "Navalmoralejo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "112",
+	"id": 6877,
+	"name": "Navalmorales, Los"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "113",
+	"id": 6878,
+	"name": "Navalucillos, Los"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "114",
+	"id": 6879,
+	"name": "Navamorcuende"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "115",
+	"id": 6880,
+	"name": "Noblejas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "116",
+	"id": 6881,
+	"name": "Noez"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "117",
+	"id": 6882,
+	"name": "Nombela"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "118",
+	"id": 6883,
+	"name": "Novés"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "119",
+	"id": 6884,
+	"name": "Numancia de la Sagra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "120",
+	"id": 6885,
+	"name": "Nuño Gómez"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "121",
+	"id": 6886,
+	"name": "Ocaña"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "122",
+	"id": 6887,
+	"name": "Olías del Rey"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "123",
+	"id": 6888,
+	"name": "Ontígola"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "124",
+	"id": 6889,
+	"name": "Orgaz"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "125",
+	"id": 6890,
+	"name": "Oropesa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "126",
+	"id": 6891,
+	"name": "Otero"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "127",
+	"id": 6892,
+	"name": "Palomeque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "128",
+	"id": 6893,
+	"name": "Pantoja"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "129",
+	"id": 6894,
+	"name": "Paredes de Escalona"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "130",
+	"id": 6895,
+	"name": "Parrillas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "131",
+	"id": 6896,
+	"name": "Pelahustán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "132",
+	"id": 6897,
+	"name": "Pepino"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "133",
+	"id": 6898,
+	"name": "Polán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "134",
+	"id": 6899,
+	"name": "Portillo de Toledo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "135",
+	"id": 6900,
+	"name": "Puebla de Almoradiel, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "136",
+	"id": 6901,
+	"name": "Puebla de Montalbán, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "137",
+	"id": 6902,
+	"name": "Pueblanueva, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "138",
+	"id": 6903,
+	"name": "Puente del Arzobispo, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "139",
+	"id": 6904,
+	"name": "Puerto de San Vicente"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "140",
+	"id": 6905,
+	"name": "Pulgar"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "141",
+	"id": 6906,
+	"name": "Quero"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "142",
+	"id": 6907,
+	"name": "Quintanar de la Orden"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "143",
+	"id": 6908,
+	"name": "Quismondo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "144",
+	"id": 6909,
+	"name": "Real de San Vicente, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "145",
+	"id": 6910,
+	"name": "Recas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "146",
+	"id": 6911,
+	"name": "Retamoso de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "147",
+	"id": 6912,
+	"name": "Rielves"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "148",
+	"id": 6913,
+	"name": "Robledo del Mazo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "149",
+	"id": 6914,
+	"name": "Romeral, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "150",
+	"id": 6915,
+	"name": "San Bartolomé de las Abiertas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "151",
+	"id": 6916,
+	"name": "San Martín de Montalbán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "152",
+	"id": 6917,
+	"name": "San Martín de Pusa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "153",
+	"id": 6918,
+	"name": "San Pablo de los Montes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "154",
+	"id": 6919,
+	"name": "San Román de los Montes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "155",
+	"id": 6920,
+	"name": "Santa Ana de Pusa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "156",
+	"id": 6921,
+	"name": "Santa Cruz de la Zarza"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "157",
+	"id": 6922,
+	"name": "Santa Cruz del Retamar"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "158",
+	"id": 6923,
+	"name": "Santa Olalla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "901",
+	"id": 6924,
+	"name": "Santo Domingo-Caudilla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "159",
+	"id": 6925,
+	"name": "Sartajada"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "160",
+	"id": 6926,
+	"name": "Segurilla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "161",
+	"id": 6927,
+	"name": "Seseña"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "162",
+	"id": 6928,
+	"name": "Sevilleja de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "163",
+	"id": 6929,
+	"name": "Sonseca"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "164",
+	"id": 6930,
+	"name": "Sotillo de las Palomas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "165",
+	"id": 6931,
+	"name": "Talavera de la Reina"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "166",
+	"id": 6932,
+	"name": "Tembleque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "167",
+	"id": 6933,
+	"name": "Toboso, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "168",
+	"id": 6934,
+	"name": "Toledo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "169",
+	"id": 6935,
+	"name": "Torralba de Oropesa"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "171",
+	"id": 6936,
+	"name": "Torre de Esteban Hambrán, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "170",
+	"id": 6937,
+	"name": "Torrecilla de la Jara"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "172",
+	"id": 6938,
+	"name": "Torrico"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "173",
+	"id": 6939,
+	"name": "Torrijos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "174",
+	"id": 6940,
+	"name": "Totanés"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "175",
+	"id": 6941,
+	"name": "Turleque"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "176",
+	"id": 6942,
+	"name": "Ugena"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "177",
+	"id": 6943,
+	"name": "Urda"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "179",
+	"id": 6944,
+	"name": "Valdeverdeja"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "180",
+	"id": 6945,
+	"name": "Valmojado"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "181",
+	"id": 6946,
+	"name": "Velada"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "182",
+	"id": 6947,
+	"name": "Ventas con Peña Aguilera, Las"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "183",
+	"id": 6948,
+	"name": "Ventas de Retamosa, Las"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "184",
+	"id": 6949,
+	"name": "Ventas de San Julián, Las"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "186",
+	"id": 6950,
+	"name": "Villa de Don Fadrique, La"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "185",
+	"id": 6951,
+	"name": "Villacañas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "187",
+	"id": 6952,
+	"name": "Villafranca de los Caballeros"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "188",
+	"id": 6953,
+	"name": "Villaluenga de la Sagra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "189",
+	"id": 6954,
+	"name": "Villamiel de Toledo"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "190",
+	"id": 6955,
+	"name": "Villaminaya"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "191",
+	"id": 6956,
+	"name": "Villamuelas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "192",
+	"id": 6957,
+	"name": "Villanueva de Alcardete"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "193",
+	"id": 6958,
+	"name": "Villanueva de Bogas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "194",
+	"id": 6959,
+	"name": "Villarejo de Montalbán"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "195",
+	"id": 6960,
+	"name": "Villarrubia de Santiago"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "196",
+	"id": 6961,
+	"name": "Villaseca de la Sagra"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "197",
+	"id": 6962,
+	"name": "Villasequilla"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "198",
+	"id": 6963,
+	"name": "Villatobas"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "199",
+	"id": 6964,
+	"name": "Viso de San Juan, El"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "200",
+	"id": 6965,
+	"name": "Yébenes, Los"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "201",
+	"id": 6966,
+	"name": "Yeles"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "202",
+	"id": 6967,
+	"name": "Yepes"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "203",
+	"id": 6968,
+	"name": "Yuncler"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "204",
+	"id": 6969,
+	"name": "Yunclillos"
+}, {
+	"cod_prov": "45",
+	"cod_mun": "205",
+	"id": 6970,
+	"name": "Yuncos"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "001",
+	"id": 6971,
+	"name": "Ademuz"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "002",
+	"id": 6972,
+	"name": "Ador"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "004",
+	"id": 6973,
+	"name": "Agullent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "042",
+	"id": 6974,
+	"name": "Aielo de Malferit"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "043",
+	"id": 6975,
+	"name": "Aielo de Rugat"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "005",
+	"id": 6976,
+	"name": "Alaquàs"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "006",
+	"id": 6977,
+	"name": "Albaida"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "007",
+	"id": 6978,
+	"name": "Albal"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "008",
+	"id": 6979,
+	"name": "Albalat de la Ribera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "009",
+	"id": 6980,
+	"name": "Albalat dels Sorells"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "010",
+	"id": 6981,
+	"name": "Albalat dels Tarongers"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "011",
+	"id": 6982,
+	"name": "Alberic"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "012",
+	"id": 6983,
+	"name": "Alborache"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "013",
+	"id": 6984,
+	"name": "Alboraya"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "014",
+	"id": 6985,
+	"name": "Albuixech"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "016",
+	"id": 6986,
+	"name": "Alcàntera de Xúquer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "015",
+	"id": 6987,
+	"name": "Alcàsser"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "018",
+	"id": 6988,
+	"name": "Alcublas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "020",
+	"id": 6989,
+	"name": "Alcúdia de Crespins, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "019",
+	"id": 6990,
+	"name": "Alcúdia, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "021",
+	"id": 6991,
+	"name": "Aldaia"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "022",
+	"id": 6992,
+	"name": "Alfafar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "024",
+	"id": 6993,
+	"name": "Alfara de la Baronia"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "025",
+	"id": 6994,
+	"name": "Alfara del Patriarca"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "026",
+	"id": 6995,
+	"name": "Alfarp"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "027",
+	"id": 6996,
+	"name": "Alfarrasí"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "023",
+	"id": 6997,
+	"name": "Alfauir"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "028",
+	"id": 6998,
+	"name": "Algar de Palancia"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "029",
+	"id": 6999,
+	"name": "Algemesí"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "030",
+	"id": 7000,
+	"name": "Algimia de Alfara"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "031",
+	"id": 7001,
+	"name": "Alginet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "032",
+	"id": 7002,
+	"name": "Almàssera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "033",
+	"id": 7003,
+	"name": "Almiserà"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "034",
+	"id": 7004,
+	"name": "Almoines"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "035",
+	"id": 7005,
+	"name": "Almussafes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "036",
+	"id": 7006,
+	"name": "Alpuente"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "037",
+	"id": 7007,
+	"name": "Alqueria de la Comtessa, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "017",
+	"id": 7008,
+	"name": "Alzira"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "038",
+	"id": 7009,
+	"name": "Andilla"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "039",
+	"id": 7010,
+	"name": "Anna"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "040",
+	"id": 7011,
+	"name": "Antella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "041",
+	"id": 7012,
+	"name": "Aras de los Olmos"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "003",
+	"id": 7013,
+	"name": "Atzeneta d'Albaida"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "044",
+	"id": 7014,
+	"name": "Ayora"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "046",
+	"id": 7015,
+	"name": "Barx"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "045",
+	"id": 7016,
+	"name": "Barxeta"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "047",
+	"id": 7017,
+	"name": "Bèlgida"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "048",
+	"id": 7018,
+	"name": "Bellreguard"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "049",
+	"id": 7019,
+	"name": "Bellús"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "050",
+	"id": 7020,
+	"name": "Benagéber"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "051",
+	"id": 7021,
+	"name": "Benaguasil"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "052",
+	"id": 7022,
+	"name": "Benavites"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "053",
+	"id": 7023,
+	"name": "Beneixida"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "054",
+	"id": 7024,
+	"name": "Benetússer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "055",
+	"id": 7025,
+	"name": "Beniarjó"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "056",
+	"id": 7026,
+	"name": "Beniatjar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "057",
+	"id": 7027,
+	"name": "Benicolet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "904",
+	"id": 7028,
+	"name": "Benicull de Xúquer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "060",
+	"id": 7029,
+	"name": "Benifaió"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "059",
+	"id": 7030,
+	"name": "Benifairó de la Valldigna"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "058",
+	"id": 7031,
+	"name": "Benifairó de les Valls"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "061",
+	"id": 7032,
+	"name": "Beniflá"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "062",
+	"id": 7033,
+	"name": "Benigànim"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "063",
+	"id": 7034,
+	"name": "Benimodo"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "064",
+	"id": 7035,
+	"name": "Benimuslem"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "065",
+	"id": 7036,
+	"name": "Beniparrell"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "066",
+	"id": 7037,
+	"name": "Benirredrà"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "067",
+	"id": 7038,
+	"name": "Benisanó"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "068",
+	"id": 7039,
+	"name": "Benissoda"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "069",
+	"id": 7040,
+	"name": "Benisuera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "070",
+	"id": 7041,
+	"name": "Bétera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "071",
+	"id": 7042,
+	"name": "Bicorp"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "072",
+	"id": 7043,
+	"name": "Bocairent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "073",
+	"id": 7044,
+	"name": "Bolbaite"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "074",
+	"id": 7045,
+	"name": "Bonrepòs i Mirambell"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "075",
+	"id": 7046,
+	"name": "Bufali"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "076",
+	"id": 7047,
+	"name": "Bugarra"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "077",
+	"id": 7048,
+	"name": "Buñol"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "078",
+	"id": 7049,
+	"name": "Burjassot"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "079",
+	"id": 7050,
+	"name": "Calles"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "080",
+	"id": 7051,
+	"name": "Camporrobles"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "081",
+	"id": 7052,
+	"name": "Canals"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "082",
+	"id": 7053,
+	"name": "Canet d'En Berenguer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "083",
+	"id": 7054,
+	"name": "Carcaixent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "084",
+	"id": 7055,
+	"name": "Càrcer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "085",
+	"id": 7056,
+	"name": "Carlet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "086",
+	"id": 7057,
+	"name": "Carrícola"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "087",
+	"id": 7058,
+	"name": "Casas Altas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "088",
+	"id": 7059,
+	"name": "Casas Bajas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "089",
+	"id": 7060,
+	"name": "Casinos"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "090",
+	"id": 7061,
+	"name": "Castelló de Rugat"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "091",
+	"id": 7062,
+	"name": "Castellonet de la Conquesta"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "092",
+	"id": 7063,
+	"name": "Castielfabib"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "093",
+	"id": 7064,
+	"name": "Catadau"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "094",
+	"id": 7065,
+	"name": "Catarroja"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "095",
+	"id": 7066,
+	"name": "Caudete de las Fuentes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "096",
+	"id": 7067,
+	"name": "Cerdà"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "107",
+	"id": 7068,
+	"name": "Chella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "106",
+	"id": 7069,
+	"name": "Chelva"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "108",
+	"id": 7070,
+	"name": "Chera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "109",
+	"id": 7071,
+	"name": "Cheste"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "111",
+	"id": 7072,
+	"name": "Chiva"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "112",
+	"id": 7073,
+	"name": "Chulilla"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "097",
+	"id": 7074,
+	"name": "Cofrentes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "098",
+	"id": 7075,
+	"name": "Corbera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "099",
+	"id": 7076,
+	"name": "Cortes de Pallás"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "100",
+	"id": 7077,
+	"name": "Cotes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "105",
+	"id": 7078,
+	"name": "Cullera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "113",
+	"id": 7079,
+	"name": "Daimús"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "114",
+	"id": 7080,
+	"name": "Domeño"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "115",
+	"id": 7081,
+	"name": "Dos Aguas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "116",
+	"id": 7082,
+	"name": "Eliana, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "117",
+	"id": 7083,
+	"name": "Emperador"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "118",
+	"id": 7084,
+	"name": "Enguera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "119",
+	"id": 7085,
+	"name": "Ènova, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "120",
+	"id": 7086,
+	"name": "Estivella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "121",
+	"id": 7087,
+	"name": "Estubeny"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "122",
+	"id": 7088,
+	"name": "Faura"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "123",
+	"id": 7089,
+	"name": "Favara"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "126",
+	"id": 7090,
+	"name": "Foios"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "128",
+	"id": 7091,
+	"name": "Font de la Figuera, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "127",
+	"id": 7092,
+	"name": "Font d'En Carròs, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "124",
+	"id": 7093,
+	"name": "Fontanars dels Alforins"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "125",
+	"id": 7094,
+	"name": "Fortaleny"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "129",
+	"id": 7095,
+	"name": "Fuenterrobles"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "131",
+	"id": 7096,
+	"name": "Gandia"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "902",
+	"id": 7097,
+	"name": "Gátova"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "130",
+	"id": 7098,
+	"name": "Gavarda"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "132",
+	"id": 7099,
+	"name": "Genovés"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "133",
+	"id": 7100,
+	"name": "Gestalgar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "134",
+	"id": 7101,
+	"name": "Gilet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "135",
+	"id": 7102,
+	"name": "Godella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "136",
+	"id": 7103,
+	"name": "Godelleta"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "137",
+	"id": 7104,
+	"name": "Granja de la Costera, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "138",
+	"id": 7105,
+	"name": "Guadasséquies"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "139",
+	"id": 7106,
+	"name": "Guadassuar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "140",
+	"id": 7107,
+	"name": "Guardamar de la Safor"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "141",
+	"id": 7108,
+	"name": "Higueruelas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "142",
+	"id": 7109,
+	"name": "Jalance"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "144",
+	"id": 7110,
+	"name": "Jarafuel"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "154",
+	"id": 7111,
+	"name": "Llanera de Ranes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "155",
+	"id": 7112,
+	"name": "Llaurí"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "147",
+	"id": 7113,
+	"name": "Llíria"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "152",
+	"id": 7114,
+	"name": "Llocnou de la Corona"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "153",
+	"id": 7115,
+	"name": "Llocnou de Sant Jeroni"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "151",
+	"id": 7116,
+	"name": "Llocnou d'En Fenollet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "156",
+	"id": 7117,
+	"name": "Llombai"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "157",
+	"id": 7118,
+	"name": "Llosa de Ranes, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "150",
+	"id": 7119,
+	"name": "Llutxent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "148",
+	"id": 7120,
+	"name": "Loriguilla"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "149",
+	"id": 7121,
+	"name": "Losa del Obispo"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "158",
+	"id": 7122,
+	"name": "Macastre"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "159",
+	"id": 7123,
+	"name": "Manises"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "160",
+	"id": 7124,
+	"name": "Manuel"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "161",
+	"id": 7125,
+	"name": "Marines"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "162",
+	"id": 7126,
+	"name": "Massalavés"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "163",
+	"id": 7127,
+	"name": "Massalfassar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "164",
+	"id": 7128,
+	"name": "Massamagrell"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "165",
+	"id": 7129,
+	"name": "Massanassa"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "166",
+	"id": 7130,
+	"name": "Meliana"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "167",
+	"id": 7131,
+	"name": "Millares"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "168",
+	"id": 7132,
+	"name": "Miramar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "169",
+	"id": 7133,
+	"name": "Mislata"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "170",
+	"id": 7134,
+	"name": "Mogente/Moixent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "171",
+	"id": 7135,
+	"name": "Moncada"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "173",
+	"id": 7136,
+	"name": "Montaverner"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "174",
+	"id": 7137,
+	"name": "Montesa"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "175",
+	"id": 7138,
+	"name": "Montitxelvo/Montichelvo"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "176",
+	"id": 7139,
+	"name": "Montroi/Montroy"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "172",
+	"id": 7140,
+	"name": "Montserrat"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "177",
+	"id": 7141,
+	"name": "Museros"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "178",
+	"id": 7142,
+	"name": "Náquera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "179",
+	"id": 7143,
+	"name": "Navarrés"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "180",
+	"id": 7144,
+	"name": "Novelé/Novetlè"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "181",
+	"id": 7145,
+	"name": "Oliva"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "183",
+	"id": 7146,
+	"name": "Olleria, l'"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "182",
+	"id": 7147,
+	"name": "Olocau"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "184",
+	"id": 7148,
+	"name": "Ontinyent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "185",
+	"id": 7149,
+	"name": "Otos"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "186",
+	"id": 7150,
+	"name": "Paiporta"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "187",
+	"id": 7151,
+	"name": "Palma de Gandía"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "188",
+	"id": 7152,
+	"name": "Palmera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "189",
+	"id": 7153,
+	"name": "Palomar, el"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "190",
+	"id": 7154,
+	"name": "Paterna"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "191",
+	"id": 7155,
+	"name": "Pedralba"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "192",
+	"id": 7156,
+	"name": "Petrés"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "193",
+	"id": 7157,
+	"name": "Picanya"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "194",
+	"id": 7158,
+	"name": "Picassent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "195",
+	"id": 7159,
+	"name": "Piles"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "196",
+	"id": 7160,
+	"name": "Pinet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "199",
+	"id": 7161,
+	"name": "Pobla de Farnals, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "202",
+	"id": 7162,
+	"name": "Pobla de Vallbona, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "200",
+	"id": 7163,
+	"name": "Pobla del Duc, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "203",
+	"id": 7164,
+	"name": "Pobla Llarga, la"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "197",
+	"id": 7165,
+	"name": "Polinyà de Xúquer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "198",
+	"id": 7166,
+	"name": "Potríes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "205",
+	"id": 7167,
+	"name": "Puçol"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "201",
+	"id": 7168,
+	"name": "Puebla de San Miguel"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "204",
+	"id": 7169,
+	"name": "Puig de Santa Maria, el"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "101",
+	"id": 7170,
+	"name": "Quart de les Valls"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "102",
+	"id": 7171,
+	"name": "Quart de Poblet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "103",
+	"id": 7172,
+	"name": "Quartell"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "104",
+	"id": 7173,
+	"name": "Quatretonda"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "206",
+	"id": 7174,
+	"name": "Quesa"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "207",
+	"id": 7175,
+	"name": "Rafelbunyol"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "208",
+	"id": 7176,
+	"name": "Rafelcofer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "209",
+	"id": 7177,
+	"name": "Rafelguaraf"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "210",
+	"id": 7178,
+	"name": "Ráfol de Salem"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "212",
+	"id": 7179,
+	"name": "Real"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "211",
+	"id": 7180,
+	"name": "Real de Gandía"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "213",
+	"id": 7181,
+	"name": "Requena"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "214",
+	"id": 7182,
+	"name": "Riba-roja de Túria"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "215",
+	"id": 7183,
+	"name": "Riola"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "216",
+	"id": 7184,
+	"name": "Rocafort"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "217",
+	"id": 7185,
+	"name": "Rotglà i Corberà"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "218",
+	"id": 7186,
+	"name": "Rótova"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "219",
+	"id": 7187,
+	"name": "Rugat"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "220",
+	"id": 7188,
+	"name": "Sagunto/Sagunt"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "221",
+	"id": 7189,
+	"name": "Salem"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "903",
+	"id": 7190,
+	"name": "San Antonio de Benagéber"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "222",
+	"id": 7191,
+	"name": "Sant Joanet"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "223",
+	"id": 7192,
+	"name": "Sedaví"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "224",
+	"id": 7193,
+	"name": "Segart"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "225",
+	"id": 7194,
+	"name": "Sellent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "226",
+	"id": 7195,
+	"name": "Sempere"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "227",
+	"id": 7196,
+	"name": "Senyera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "228",
+	"id": 7197,
+	"name": "Serra"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "229",
+	"id": 7198,
+	"name": "Siete Aguas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "230",
+	"id": 7199,
+	"name": "Silla"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "231",
+	"id": 7200,
+	"name": "Simat de la Valldigna"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "232",
+	"id": 7201,
+	"name": "Sinarcas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "233",
+	"id": 7202,
+	"name": "Sollana"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "234",
+	"id": 7203,
+	"name": "Sot de Chera"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "235",
+	"id": 7204,
+	"name": "Sueca"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "236",
+	"id": 7205,
+	"name": "Sumacàrcer"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "237",
+	"id": 7206,
+	"name": "Tavernes Blanques"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "238",
+	"id": 7207,
+	"name": "Tavernes de la Valldigna"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "239",
+	"id": 7208,
+	"name": "Teresa de Cofrentes"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "240",
+	"id": 7209,
+	"name": "Terrateig"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "241",
+	"id": 7210,
+	"name": "Titaguas"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "242",
+	"id": 7211,
+	"name": "Torrebaja"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "243",
+	"id": 7212,
+	"name": "Torrella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "244",
+	"id": 7213,
+	"name": "Torrent"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "245",
+	"id": 7214,
+	"name": "Torres Torres"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "246",
+	"id": 7215,
+	"name": "Tous"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "247",
+	"id": 7216,
+	"name": "Tuéjar"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "248",
+	"id": 7217,
+	"name": "Turís"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "249",
+	"id": 7218,
+	"name": "Utiel"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "250",
+	"id": 7219,
+	"name": "Valencia"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "251",
+	"id": 7220,
+	"name": "Vallada"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "252",
+	"id": 7221,
+	"name": "Vallanca"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "253",
+	"id": 7222,
+	"name": "Vallés"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "254",
+	"id": 7223,
+	"name": "Venta del Moro"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "255",
+	"id": 7224,
+	"name": "Vilallonga/Villalonga"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "256",
+	"id": 7225,
+	"name": "Vilamarxant"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "257",
+	"id": 7226,
+	"name": "Villanueva de Castellón"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "258",
+	"id": 7227,
+	"name": "Villar del Arzobispo"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "259",
+	"id": 7228,
+	"name": "Villargordo del Cabriel"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "260",
+	"id": 7229,
+	"name": "Vinalesa"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "145",
+	"id": 7230,
+	"name": "Xàtiva"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "143",
+	"id": 7231,
+	"name": "Xeraco"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "146",
+	"id": 7232,
+	"name": "Xeresa"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "110",
+	"id": 7233,
+	"name": "Xirivella"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "261",
+	"id": 7234,
+	"name": "Yátova"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "262",
+	"id": 7235,
+	"name": "Yesa, La"
+}, {
+	"cod_prov": "46",
+	"cod_mun": "263",
+	"id": 7236,
+	"name": "Zarra"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "001",
+	"id": 7237,
+	"name": "Adalia"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "002",
+	"id": 7238,
+	"name": "Aguasal"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "003",
+	"id": 7239,
+	"name": "Aguilar de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "004",
+	"id": 7240,
+	"name": "Alaejos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "005",
+	"id": 7241,
+	"name": "Alcazarén"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "006",
+	"id": 7242,
+	"name": "Aldea de San Miguel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "007",
+	"id": 7243,
+	"name": "Aldeamayor de San Martín"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "008",
+	"id": 7244,
+	"name": "Almenara de Adaja"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "009",
+	"id": 7245,
+	"name": "Amusquillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "010",
+	"id": 7246,
+	"name": "Arroyo de la Encomienda"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "011",
+	"id": 7247,
+	"name": "Ataquines"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "012",
+	"id": 7248,
+	"name": "Bahabón"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "013",
+	"id": 7249,
+	"name": "Barcial de la Loma"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "014",
+	"id": 7250,
+	"name": "Barruelo del Valle"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "015",
+	"id": 7251,
+	"name": "Becilla de Valderaduey"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "016",
+	"id": 7252,
+	"name": "Benafarces"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "017",
+	"id": 7253,
+	"name": "Bercero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "018",
+	"id": 7254,
+	"name": "Berceruelo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "019",
+	"id": 7255,
+	"name": "Berrueces"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "020",
+	"id": 7256,
+	"name": "Bobadilla del Campo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "021",
+	"id": 7257,
+	"name": "Bocigas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "022",
+	"id": 7258,
+	"name": "Bocos de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "023",
+	"id": 7259,
+	"name": "Boecillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "024",
+	"id": 7260,
+	"name": "Bolaños de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "025",
+	"id": 7261,
+	"name": "Brahojos de Medina"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "026",
+	"id": 7262,
+	"name": "Bustillo de Chaves"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "027",
+	"id": 7263,
+	"name": "Cabezón de Pisuerga"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "028",
+	"id": 7264,
+	"name": "Cabezón de Valderaduey"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "029",
+	"id": 7265,
+	"name": "Cabreros del Monte"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "030",
+	"id": 7266,
+	"name": "Campaspero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "031",
+	"id": 7267,
+	"name": "Campillo, El"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "032",
+	"id": 7268,
+	"name": "Camporredondo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "033",
+	"id": 7269,
+	"name": "Canalejas de Peñafiel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "034",
+	"id": 7270,
+	"name": "Canillas de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "035",
+	"id": 7271,
+	"name": "Carpio"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "036",
+	"id": 7272,
+	"name": "Casasola de Arión"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "037",
+	"id": 7273,
+	"name": "Castrejón de Trabancos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "038",
+	"id": 7274,
+	"name": "Castrillo de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "039",
+	"id": 7275,
+	"name": "Castrillo-Tejeriego"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "040",
+	"id": 7276,
+	"name": "Castrobol"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "041",
+	"id": 7277,
+	"name": "Castrodeza"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "042",
+	"id": 7278,
+	"name": "Castromembibre"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "043",
+	"id": 7279,
+	"name": "Castromonte"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "044",
+	"id": 7280,
+	"name": "Castronuevo de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "045",
+	"id": 7281,
+	"name": "Castronuño"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "046",
+	"id": 7282,
+	"name": "Castroponce"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "047",
+	"id": 7283,
+	"name": "Castroverde de Cerrato"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "048",
+	"id": 7284,
+	"name": "Ceinos de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "049",
+	"id": 7285,
+	"name": "Cervillego de la Cruz"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "050",
+	"id": 7286,
+	"name": "Cigales"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "051",
+	"id": 7287,
+	"name": "Ciguñuela"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "052",
+	"id": 7288,
+	"name": "Cistérniga"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "053",
+	"id": 7289,
+	"name": "Cogeces de Íscar"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "054",
+	"id": 7290,
+	"name": "Cogeces del Monte"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "055",
+	"id": 7291,
+	"name": "Corcos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "056",
+	"id": 7292,
+	"name": "Corrales de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "057",
+	"id": 7293,
+	"name": "Cubillas de Santa Marta"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "058",
+	"id": 7294,
+	"name": "Cuenca de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "059",
+	"id": 7295,
+	"name": "Curiel de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "060",
+	"id": 7296,
+	"name": "Encinas de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "061",
+	"id": 7297,
+	"name": "Esguevillas de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "062",
+	"id": 7298,
+	"name": "Fombellida"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "063",
+	"id": 7299,
+	"name": "Fompedraza"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "064",
+	"id": 7300,
+	"name": "Fontihoyuelo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "065",
+	"id": 7301,
+	"name": "Fresno el Viejo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "066",
+	"id": 7302,
+	"name": "Fuensaldaña"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "067",
+	"id": 7303,
+	"name": "Fuente el Sol"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "068",
+	"id": 7304,
+	"name": "Fuente-Olmedo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "069",
+	"id": 7305,
+	"name": "Gallegos de Hornija"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "070",
+	"id": 7306,
+	"name": "Gatón de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "071",
+	"id": 7307,
+	"name": "Geria"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "073",
+	"id": 7308,
+	"name": "Herrín de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "074",
+	"id": 7309,
+	"name": "Hornillos de Eresma"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "075",
+	"id": 7310,
+	"name": "Íscar"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "076",
+	"id": 7311,
+	"name": "Laguna de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "077",
+	"id": 7312,
+	"name": "Langayo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "079",
+	"id": 7313,
+	"name": "Llano de Olmedo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "078",
+	"id": 7314,
+	"name": "Lomoviejo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "080",
+	"id": 7315,
+	"name": "Manzanillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "081",
+	"id": 7316,
+	"name": "Marzales"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "082",
+	"id": 7317,
+	"name": "Matapozuelos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "083",
+	"id": 7318,
+	"name": "Matilla de los Caños"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "084",
+	"id": 7319,
+	"name": "Mayorga"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "086",
+	"id": 7320,
+	"name": "Medina de Rioseco"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "085",
+	"id": 7321,
+	"name": "Medina del Campo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "087",
+	"id": 7322,
+	"name": "Megeces"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "088",
+	"id": 7323,
+	"name": "Melgar de Abajo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "089",
+	"id": 7324,
+	"name": "Melgar de Arriba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "090",
+	"id": 7325,
+	"name": "Mojados"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "091",
+	"id": 7326,
+	"name": "Monasterio de Vega"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "092",
+	"id": 7327,
+	"name": "Montealegre de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "093",
+	"id": 7328,
+	"name": "Montemayor de Pililla"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "094",
+	"id": 7329,
+	"name": "Moral de la Reina"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "095",
+	"id": 7330,
+	"name": "Moraleja de las Panaderas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "096",
+	"id": 7331,
+	"name": "Morales de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "097",
+	"id": 7332,
+	"name": "Mota del Marqués"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "098",
+	"id": 7333,
+	"name": "Mucientes"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "099",
+	"id": 7334,
+	"name": "Mudarra, La"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "100",
+	"id": 7335,
+	"name": "Muriel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "101",
+	"id": 7336,
+	"name": "Nava del Rey"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "102",
+	"id": 7337,
+	"name": "Nueva Villa de las Torres"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "103",
+	"id": 7338,
+	"name": "Olivares de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "104",
+	"id": 7339,
+	"name": "Olmedo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "105",
+	"id": 7340,
+	"name": "Olmos de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "106",
+	"id": 7341,
+	"name": "Olmos de Peñafiel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "109",
+	"id": 7342,
+	"name": "Palazuelo de Vedija"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "110",
+	"id": 7343,
+	"name": "Parrilla, La"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "111",
+	"id": 7344,
+	"name": "Pedraja de Portillo, La"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "112",
+	"id": 7345,
+	"name": "Pedrajas de San Esteban"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "113",
+	"id": 7346,
+	"name": "Pedrosa del Rey"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "114",
+	"id": 7347,
+	"name": "Peñafiel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "115",
+	"id": 7348,
+	"name": "Peñaflor de Hornija"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "116",
+	"id": 7349,
+	"name": "Pesquera de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "117",
+	"id": 7350,
+	"name": "Piña de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "118",
+	"id": 7351,
+	"name": "Piñel de Abajo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "119",
+	"id": 7352,
+	"name": "Piñel de Arriba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "121",
+	"id": 7353,
+	"name": "Pollos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "122",
+	"id": 7354,
+	"name": "Portillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "123",
+	"id": 7355,
+	"name": "Pozal de Gallinas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "124",
+	"id": 7356,
+	"name": "Pozaldez"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "125",
+	"id": 7357,
+	"name": "Pozuelo de la Orden"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "126",
+	"id": 7358,
+	"name": "Puras"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "127",
+	"id": 7359,
+	"name": "Quintanilla de Arriba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "129",
+	"id": 7360,
+	"name": "Quintanilla de Onésimo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "130",
+	"id": 7361,
+	"name": "Quintanilla de Trigueros"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "128",
+	"id": 7362,
+	"name": "Quintanilla del Molar"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "131",
+	"id": 7363,
+	"name": "Rábano"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "132",
+	"id": 7364,
+	"name": "Ramiro"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "133",
+	"id": 7365,
+	"name": "Renedo de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "134",
+	"id": 7366,
+	"name": "Roales de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "135",
+	"id": 7367,
+	"name": "Robladillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "137",
+	"id": 7368,
+	"name": "Roturas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "138",
+	"id": 7369,
+	"name": "Rubí de Bracamonte"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "139",
+	"id": 7370,
+	"name": "Rueda"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "140",
+	"id": 7371,
+	"name": "Saelices de Mayorga"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "141",
+	"id": 7372,
+	"name": "Salvador de Zapardiel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "142",
+	"id": 7373,
+	"name": "San Cebrián de Mazote"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "143",
+	"id": 7374,
+	"name": "San Llorente"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "144",
+	"id": 7375,
+	"name": "San Martín de Valvení"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "145",
+	"id": 7376,
+	"name": "San Miguel del Arroyo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "146",
+	"id": 7377,
+	"name": "San Miguel del Pino"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "147",
+	"id": 7378,
+	"name": "San Pablo de la Moraleja"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "148",
+	"id": 7379,
+	"name": "San Pedro de Latarce"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "149",
+	"id": 7380,
+	"name": "San Pelayo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "150",
+	"id": 7381,
+	"name": "San Román de Hornija"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "151",
+	"id": 7382,
+	"name": "San Salvador"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "156",
+	"id": 7383,
+	"name": "San Vicente del Palacio"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "152",
+	"id": 7384,
+	"name": "Santa Eufemia del Arroyo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "153",
+	"id": 7385,
+	"name": "Santervás de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "154",
+	"id": 7386,
+	"name": "Santibáñez de Valcorba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "155",
+	"id": 7387,
+	"name": "Santovenia de Pisuerga"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "157",
+	"id": 7388,
+	"name": "Sardón de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "158",
+	"id": 7389,
+	"name": "Seca, La"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "159",
+	"id": 7390,
+	"name": "Serrada"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "160",
+	"id": 7391,
+	"name": "Siete Iglesias de Trabancos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "161",
+	"id": 7392,
+	"name": "Simancas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "162",
+	"id": 7393,
+	"name": "Tamariz de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "163",
+	"id": 7394,
+	"name": "Tiedra"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "164",
+	"id": 7395,
+	"name": "Tordehumos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "165",
+	"id": 7396,
+	"name": "Tordesillas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "169",
+	"id": 7397,
+	"name": "Torre de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "170",
+	"id": 7398,
+	"name": "Torre de Peñafiel"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "166",
+	"id": 7399,
+	"name": "Torrecilla de la Abadesa"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "167",
+	"id": 7400,
+	"name": "Torrecilla de la Orden"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "168",
+	"id": 7401,
+	"name": "Torrecilla de la Torre"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "171",
+	"id": 7402,
+	"name": "Torrelobatón"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "172",
+	"id": 7403,
+	"name": "Torrescárcela"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "173",
+	"id": 7404,
+	"name": "Traspinedo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "174",
+	"id": 7405,
+	"name": "Trigueros del Valle"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "175",
+	"id": 7406,
+	"name": "Tudela de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "176",
+	"id": 7407,
+	"name": "Unión de Campos, La"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "177",
+	"id": 7408,
+	"name": "Urones de Castroponce"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "178",
+	"id": 7409,
+	"name": "Urueña"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "179",
+	"id": 7410,
+	"name": "Valbuena de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "180",
+	"id": 7411,
+	"name": "Valdearcos de la Vega"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "181",
+	"id": 7412,
+	"name": "Valdenebro de los Valles"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "182",
+	"id": 7413,
+	"name": "Valdestillas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "183",
+	"id": 7414,
+	"name": "Valdunquillo"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "186",
+	"id": 7415,
+	"name": "Valladolid"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "184",
+	"id": 7416,
+	"name": "Valoria la Buena"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "185",
+	"id": 7417,
+	"name": "Valverde de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "187",
+	"id": 7418,
+	"name": "Vega de Ruiponce"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "188",
+	"id": 7419,
+	"name": "Vega de Valdetronco"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "189",
+	"id": 7420,
+	"name": "Velascálvaro"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "190",
+	"id": 7421,
+	"name": "Velilla"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "191",
+	"id": 7422,
+	"name": "Velliza"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "192",
+	"id": 7423,
+	"name": "Ventosa de la Cuesta"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "193",
+	"id": 7424,
+	"name": "Viana de Cega"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "195",
+	"id": 7425,
+	"name": "Villabáñez"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "196",
+	"id": 7426,
+	"name": "Villabaruz de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "197",
+	"id": 7427,
+	"name": "Villabrágima"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "198",
+	"id": 7428,
+	"name": "Villacarralón"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "199",
+	"id": 7429,
+	"name": "Villacid de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "200",
+	"id": 7430,
+	"name": "Villaco"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "203",
+	"id": 7431,
+	"name": "Villafrades de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "204",
+	"id": 7432,
+	"name": "Villafranca de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "205",
+	"id": 7433,
+	"name": "Villafrechós"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "206",
+	"id": 7434,
+	"name": "Villafuerte"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "207",
+	"id": 7435,
+	"name": "Villagarcía de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "208",
+	"id": 7436,
+	"name": "Villagómez la Nueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "209",
+	"id": 7437,
+	"name": "Villalán de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "210",
+	"id": 7438,
+	"name": "Villalar de los Comuneros"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "211",
+	"id": 7439,
+	"name": "Villalba de la Loma"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "212",
+	"id": 7440,
+	"name": "Villalba de los Alcores"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "213",
+	"id": 7441,
+	"name": "Villalbarba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "214",
+	"id": 7442,
+	"name": "Villalón de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "215",
+	"id": 7443,
+	"name": "Villamuriel de Campos"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "216",
+	"id": 7444,
+	"name": "Villán de Tordesillas"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "217",
+	"id": 7445,
+	"name": "Villanubla"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "218",
+	"id": 7446,
+	"name": "Villanueva de Duero"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "219",
+	"id": 7447,
+	"name": "Villanueva de la Condesa"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "220",
+	"id": 7448,
+	"name": "Villanueva de los Caballeros"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "221",
+	"id": 7449,
+	"name": "Villanueva de los Infantes"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "222",
+	"id": 7450,
+	"name": "Villanueva de San Mancio"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "223",
+	"id": 7451,
+	"name": "Villardefrades"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "224",
+	"id": 7452,
+	"name": "Villarmentero de Esgueva"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "225",
+	"id": 7453,
+	"name": "Villasexmir"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "226",
+	"id": 7454,
+	"name": "Villavaquerín"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "227",
+	"id": 7455,
+	"name": "Villavellid"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "228",
+	"id": 7456,
+	"name": "Villaverde de Medina"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "229",
+	"id": 7457,
+	"name": "Villavicencio de los Caballeros"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "194",
+	"id": 7458,
+	"name": "Viloria"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "230",
+	"id": 7459,
+	"name": "Wamba"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "231",
+	"id": 7460,
+	"name": "Zaratán"
+}, {
+	"cod_prov": "47",
+	"cod_mun": "232",
+	"id": 7461,
+	"name": "Zarza, La"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "001",
+	"id": 7462,
+	"name": "Abadiño"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "002",
+	"id": 7463,
+	"name": "Abanto y Ciérvana-Abanto Zierbena"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "911",
+	"id": 7464,
+	"name": "Ajangiz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "912",
+	"id": 7465,
+	"name": "Alonsotegi"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "003",
+	"id": 7466,
+	"name": "Amorebieta-Etxano"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "004",
+	"id": 7467,
+	"name": "Amoroto"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "005",
+	"id": 7468,
+	"name": "Arakaldo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "006",
+	"id": 7469,
+	"name": "Arantzazu"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "093",
+	"id": 7470,
+	"name": "Areatza"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "009",
+	"id": 7471,
+	"name": "Arrankudiaga"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "914",
+	"id": 7472,
+	"name": "Arratzu"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "010",
+	"id": 7473,
+	"name": "Arrieta"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "011",
+	"id": 7474,
+	"name": "Arrigorriaga"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "023",
+	"id": 7475,
+	"name": "Artea"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "008",
+	"id": 7476,
+	"name": "Artzentales"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "091",
+	"id": 7477,
+	"name": "Atxondo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "070",
+	"id": 7478,
+	"name": "Aulesti"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "012",
+	"id": 7479,
+	"name": "Bakio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "090",
+	"id": 7480,
+	"name": "Balmaseda"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "013",
+	"id": 7481,
+	"name": "Barakaldo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "014",
+	"id": 7482,
+	"name": "Barrika"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "015",
+	"id": 7483,
+	"name": "Basauri"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "092",
+	"id": 7484,
+	"name": "Bedia"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "016",
+	"id": 7485,
+	"name": "Berango"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "017",
+	"id": 7486,
+	"name": "Bermeo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "018",
+	"id": 7487,
+	"name": "Berriatua"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "019",
+	"id": 7488,
+	"name": "Berriz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "020",
+	"id": 7489,
+	"name": "Bilbao"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "021",
+	"id": 7490,
+	"name": "Busturia"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "901",
+	"id": 7491,
+	"name": "Derio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "026",
+	"id": 7492,
+	"name": "Dima"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "027",
+	"id": 7493,
+	"name": "Durango"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "028",
+	"id": 7494,
+	"name": "Ea"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "031",
+	"id": 7495,
+	"name": "Elantxobe"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "032",
+	"id": 7496,
+	"name": "Elorrio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "902",
+	"id": 7497,
+	"name": "Erandio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "033",
+	"id": 7498,
+	"name": "Ereño"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "034",
+	"id": 7499,
+	"name": "Ermua"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "079",
+	"id": 7500,
+	"name": "Errigoiti"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "029",
+	"id": 7501,
+	"name": "Etxebarri"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "030",
+	"id": 7502,
+	"name": "Etxebarria"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "906",
+	"id": 7503,
+	"name": "Forua"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "035",
+	"id": 7504,
+	"name": "Fruiz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "036",
+	"id": 7505,
+	"name": "Galdakao"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "037",
+	"id": 7506,
+	"name": "Galdames"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "038",
+	"id": 7507,
+	"name": "Gamiz-Fika"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "039",
+	"id": 7508,
+	"name": "Garai"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "040",
+	"id": 7509,
+	"name": "Gatika"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "041",
+	"id": 7510,
+	"name": "Gautegiz Arteaga"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "046",
+	"id": 7511,
+	"name": "Gernika-Lumo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "044",
+	"id": 7512,
+	"name": "Getxo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "047",
+	"id": 7513,
+	"name": "Gizaburuaga"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "042",
+	"id": 7514,
+	"name": "Gordexola"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "043",
+	"id": 7515,
+	"name": "Gorliz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "045",
+	"id": 7516,
+	"name": "Güeñes"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "048",
+	"id": 7517,
+	"name": "Ibarrangelu"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "094",
+	"id": 7518,
+	"name": "Igorre"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "049",
+	"id": 7519,
+	"name": "Ispaster"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "910",
+	"id": 7520,
+	"name": "Iurreta"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "050",
+	"id": 7521,
+	"name": "Izurtza"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "022",
+	"id": 7522,
+	"name": "Karrantza Harana/Valle de Carranza"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "907",
+	"id": 7523,
+	"name": "Kortezubi"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "051",
+	"id": 7524,
+	"name": "Lanestosa"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "052",
+	"id": 7525,
+	"name": "Larrabetzu"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "053",
+	"id": 7526,
+	"name": "Laukiz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "054",
+	"id": 7527,
+	"name": "Leioa"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "057",
+	"id": 7528,
+	"name": "Lekeitio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "055",
+	"id": 7529,
+	"name": "Lemoa"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "056",
+	"id": 7530,
+	"name": "Lemoiz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "081",
+	"id": 7531,
+	"name": "Lezama"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "903",
+	"id": 7532,
+	"name": "Loiu"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "058",
+	"id": 7533,
+	"name": "Mallabia"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "059",
+	"id": 7534,
+	"name": "Mañaria"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "060",
+	"id": 7535,
+	"name": "Markina-Xemein"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "061",
+	"id": 7536,
+	"name": "Maruri-Jatabe"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "062",
+	"id": 7537,
+	"name": "Mendata"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "063",
+	"id": 7538,
+	"name": "Mendexa"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "064",
+	"id": 7539,
+	"name": "Meñaka"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "066",
+	"id": 7540,
+	"name": "Morga"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "068",
+	"id": 7541,
+	"name": "Mundaka"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "069",
+	"id": 7542,
+	"name": "Mungia"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "007",
+	"id": 7543,
+	"name": "Munitibar-Arbatzegi Gerrikaitz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "908",
+	"id": 7544,
+	"name": "Murueta"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "071",
+	"id": 7545,
+	"name": "Muskiz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "067",
+	"id": 7546,
+	"name": "Muxika"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "909",
+	"id": 7547,
+	"name": "Nabarniz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "073",
+	"id": 7548,
+	"name": "Ondarroa"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "075",
+	"id": 7549,
+	"name": "Orozko"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "083",
+	"id": 7550,
+	"name": "Ortuella"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "072",
+	"id": 7551,
+	"name": "Otxandio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "077",
+	"id": 7552,
+	"name": "Plentzia"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "078",
+	"id": 7553,
+	"name": "Portugalete"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "082",
+	"id": 7554,
+	"name": "Santurtzi"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "084",
+	"id": 7555,
+	"name": "Sestao"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "904",
+	"id": 7556,
+	"name": "Sondika"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "085",
+	"id": 7557,
+	"name": "Sopelana"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "086",
+	"id": 7558,
+	"name": "Sopuerta"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "076",
+	"id": 7559,
+	"name": "Sukarrieta"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "087",
+	"id": 7560,
+	"name": "Trucios-Turtzioz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "088",
+	"id": 7561,
+	"name": "Ubide"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "065",
+	"id": 7562,
+	"name": "Ugao-Miraballes"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "089",
+	"id": 7563,
+	"name": "Urduliz"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "074",
+	"id": 7564,
+	"name": "Urduña/Orduña"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "080",
+	"id": 7565,
+	"name": "Valle de Trápaga-Trapagaran"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "095",
+	"id": 7566,
+	"name": "Zaldibar"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "096",
+	"id": 7567,
+	"name": "Zalla"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "905",
+	"id": 7568,
+	"name": "Zamudio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "097",
+	"id": 7569,
+	"name": "Zaratamo"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "024",
+	"id": 7570,
+	"name": "Zeanuri"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "025",
+	"id": 7571,
+	"name": "Zeberio"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "913",
+	"id": 7572,
+	"name": "Zierbena"
+}, {
+	"cod_prov": "48",
+	"cod_mun": "915",
+	"id": 7573,
+	"name": "Ziortza-Bolibar"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "002",
+	"id": 7574,
+	"name": "Abezames"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "003",
+	"id": 7575,
+	"name": "Alcañices"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "004",
+	"id": 7576,
+	"name": "Alcubilla de Nogales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "005",
+	"id": 7577,
+	"name": "Alfaraz de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "006",
+	"id": 7578,
+	"name": "Algodre"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "007",
+	"id": 7579,
+	"name": "Almaraz de Duero"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "008",
+	"id": 7580,
+	"name": "Almeida de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "009",
+	"id": 7581,
+	"name": "Andavías"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "010",
+	"id": 7582,
+	"name": "Arcenillas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "011",
+	"id": 7583,
+	"name": "Arcos de la Polvorosa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "012",
+	"id": 7584,
+	"name": "Argañín"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "013",
+	"id": 7585,
+	"name": "Argujillo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "014",
+	"id": 7586,
+	"name": "Arquillinos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "015",
+	"id": 7587,
+	"name": "Arrabalde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "016",
+	"id": 7588,
+	"name": "Aspariegos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "017",
+	"id": 7589,
+	"name": "Asturianos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "018",
+	"id": 7590,
+	"name": "Ayoó de Vidriales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "019",
+	"id": 7591,
+	"name": "Barcial del Barco"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "020",
+	"id": 7592,
+	"name": "Belver de los Montes"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "021",
+	"id": 7593,
+	"name": "Benavente"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "022",
+	"id": 7594,
+	"name": "Benegiles"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "023",
+	"id": 7595,
+	"name": "Bermillo de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "024",
+	"id": 7596,
+	"name": "Bóveda de Toro, La"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "025",
+	"id": 7597,
+	"name": "Bretó"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "026",
+	"id": 7598,
+	"name": "Bretocino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "027",
+	"id": 7599,
+	"name": "Brime de Sog"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "028",
+	"id": 7600,
+	"name": "Brime de Urz"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "029",
+	"id": 7601,
+	"name": "Burganes de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "030",
+	"id": 7602,
+	"name": "Bustillo del Oro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "031",
+	"id": 7603,
+	"name": "Cabañas de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "032",
+	"id": 7604,
+	"name": "Calzadilla de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "033",
+	"id": 7605,
+	"name": "Camarzana de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "034",
+	"id": 7606,
+	"name": "Cañizal"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "035",
+	"id": 7607,
+	"name": "Cañizo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "036",
+	"id": 7608,
+	"name": "Carbajales de Alba"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "037",
+	"id": 7609,
+	"name": "Carbellino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "038",
+	"id": 7610,
+	"name": "Casaseca de Campeán"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "039",
+	"id": 7611,
+	"name": "Casaseca de las Chanas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "040",
+	"id": 7612,
+	"name": "Castrillo de la Guareña"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "041",
+	"id": 7613,
+	"name": "Castrogonzalo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "042",
+	"id": 7614,
+	"name": "Castronuevo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "043",
+	"id": 7615,
+	"name": "Castroverde de Campos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "044",
+	"id": 7616,
+	"name": "Cazurra"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "046",
+	"id": 7617,
+	"name": "Cerecinos de Campos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "047",
+	"id": 7618,
+	"name": "Cerecinos del Carrizal"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "048",
+	"id": 7619,
+	"name": "Cernadilla"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "050",
+	"id": 7620,
+	"name": "Cobreros"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "052",
+	"id": 7621,
+	"name": "Coomonte"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "053",
+	"id": 7622,
+	"name": "Coreses"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "054",
+	"id": 7623,
+	"name": "Corrales del Vino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "055",
+	"id": 7624,
+	"name": "Cotanes del Monte"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "056",
+	"id": 7625,
+	"name": "Cubillos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "057",
+	"id": 7626,
+	"name": "Cubo de Benavente"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "058",
+	"id": 7627,
+	"name": "Cubo de Tierra del Vino, El"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "059",
+	"id": 7628,
+	"name": "Cuelgamures"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "061",
+	"id": 7629,
+	"name": "Entrala"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "062",
+	"id": 7630,
+	"name": "Espadañedo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "063",
+	"id": 7631,
+	"name": "Faramontanos de Tábara"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "064",
+	"id": 7632,
+	"name": "Fariza"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "065",
+	"id": 7633,
+	"name": "Fermoselle"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "066",
+	"id": 7634,
+	"name": "Ferreras de Abajo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "067",
+	"id": 7635,
+	"name": "Ferreras de Arriba"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "068",
+	"id": 7636,
+	"name": "Ferreruela"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "069",
+	"id": 7637,
+	"name": "Figueruela de Arriba"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "071",
+	"id": 7638,
+	"name": "Fonfría"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "075",
+	"id": 7639,
+	"name": "Fresno de la Polvorosa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "076",
+	"id": 7640,
+	"name": "Fresno de la Ribera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "077",
+	"id": 7641,
+	"name": "Fresno de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "078",
+	"id": 7642,
+	"name": "Friera de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "079",
+	"id": 7643,
+	"name": "Fuente Encalada"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "080",
+	"id": 7644,
+	"name": "Fuentelapeña"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "082",
+	"id": 7645,
+	"name": "Fuentes de Ropel"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "081",
+	"id": 7646,
+	"name": "Fuentesaúco"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "083",
+	"id": 7647,
+	"name": "Fuentesecas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "084",
+	"id": 7648,
+	"name": "Fuentespreadas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "085",
+	"id": 7649,
+	"name": "Galende"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "086",
+	"id": 7650,
+	"name": "Gallegos del Pan"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "087",
+	"id": 7651,
+	"name": "Gallegos del Río"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "088",
+	"id": 7652,
+	"name": "Gamones"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "090",
+	"id": 7653,
+	"name": "Gema"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "091",
+	"id": 7654,
+	"name": "Granja de Moreruela"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "092",
+	"id": 7655,
+	"name": "Granucillo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "093",
+	"id": 7656,
+	"name": "Guarrate"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "094",
+	"id": 7657,
+	"name": "Hermisende"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "095",
+	"id": 7658,
+	"name": "Hiniesta, La"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "096",
+	"id": 7659,
+	"name": "Jambrina"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "097",
+	"id": 7660,
+	"name": "Justel"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "098",
+	"id": 7661,
+	"name": "Losacino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "099",
+	"id": 7662,
+	"name": "Losacio"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "100",
+	"id": 7663,
+	"name": "Lubián"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "101",
+	"id": 7664,
+	"name": "Luelmo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "102",
+	"id": 7665,
+	"name": "Maderal, El"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "103",
+	"id": 7666,
+	"name": "Madridanos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "104",
+	"id": 7667,
+	"name": "Mahide"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "105",
+	"id": 7668,
+	"name": "Maire de Castroponce"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "107",
+	"id": 7669,
+	"name": "Malva"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "108",
+	"id": 7670,
+	"name": "Manganeses de la Lampreana"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "109",
+	"id": 7671,
+	"name": "Manganeses de la Polvorosa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "110",
+	"id": 7672,
+	"name": "Manzanal de Arriba"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "112",
+	"id": 7673,
+	"name": "Manzanal de los Infantes"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "111",
+	"id": 7674,
+	"name": "Manzanal del Barco"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "113",
+	"id": 7675,
+	"name": "Matilla de Arzón"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "114",
+	"id": 7676,
+	"name": "Matilla la Seca"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "115",
+	"id": 7677,
+	"name": "Mayalde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "116",
+	"id": 7678,
+	"name": "Melgar de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "117",
+	"id": 7679,
+	"name": "Micereces de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "118",
+	"id": 7680,
+	"name": "Milles de la Polvorosa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "119",
+	"id": 7681,
+	"name": "Molacillos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "120",
+	"id": 7682,
+	"name": "Molezuelas de la Carballeda"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "121",
+	"id": 7683,
+	"name": "Mombuey"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "122",
+	"id": 7684,
+	"name": "Monfarracinos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "123",
+	"id": 7685,
+	"name": "Montamarta"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "124",
+	"id": 7686,
+	"name": "Moral de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "126",
+	"id": 7687,
+	"name": "Moraleja de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "125",
+	"id": 7688,
+	"name": "Moraleja del Vino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "128",
+	"id": 7689,
+	"name": "Morales de Rey"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "129",
+	"id": 7690,
+	"name": "Morales de Toro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "130",
+	"id": 7691,
+	"name": "Morales de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "127",
+	"id": 7692,
+	"name": "Morales del Vino"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "131",
+	"id": 7693,
+	"name": "Moralina"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "132",
+	"id": 7694,
+	"name": "Moreruela de los Infanzones"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "133",
+	"id": 7695,
+	"name": "Moreruela de Tábara"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "134",
+	"id": 7696,
+	"name": "Muelas de los Caballeros"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "135",
+	"id": 7697,
+	"name": "Muelas del Pan"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "136",
+	"id": 7698,
+	"name": "Muga de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "137",
+	"id": 7699,
+	"name": "Navianos de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "138",
+	"id": 7700,
+	"name": "Olmillos de Castro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "139",
+	"id": 7701,
+	"name": "Otero de Bodas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "141",
+	"id": 7702,
+	"name": "Pajares de la Lampreana"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "143",
+	"id": 7703,
+	"name": "Palacios de Sanabria"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "142",
+	"id": 7704,
+	"name": "Palacios del Pan"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "145",
+	"id": 7705,
+	"name": "Pedralba de la Pradería"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "146",
+	"id": 7706,
+	"name": "Pego, El"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "147",
+	"id": 7707,
+	"name": "Peleagonzalo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "148",
+	"id": 7708,
+	"name": "Peleas de Abajo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "149",
+	"id": 7709,
+	"name": "Peñausende"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "150",
+	"id": 7710,
+	"name": "Peque"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "151",
+	"id": 7711,
+	"name": "Perdigón, El"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "152",
+	"id": 7712,
+	"name": "Pereruela"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "153",
+	"id": 7713,
+	"name": "Perilla de Castro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "154",
+	"id": 7714,
+	"name": "Pías"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "155",
+	"id": 7715,
+	"name": "Piedrahita de Castro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "156",
+	"id": 7716,
+	"name": "Pinilla de Toro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "157",
+	"id": 7717,
+	"name": "Pino del Oro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "158",
+	"id": 7718,
+	"name": "Piñero, El"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "160",
+	"id": 7719,
+	"name": "Pobladura de Valderaduey"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "159",
+	"id": 7720,
+	"name": "Pobladura del Valle"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "162",
+	"id": 7721,
+	"name": "Porto"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "163",
+	"id": 7722,
+	"name": "Pozoantiguo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "164",
+	"id": 7723,
+	"name": "Pozuelo de Tábara"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "165",
+	"id": 7724,
+	"name": "Prado"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "166",
+	"id": 7725,
+	"name": "Puebla de Sanabria"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "167",
+	"id": 7726,
+	"name": "Pueblica de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "170",
+	"id": 7727,
+	"name": "Quintanilla de Urz"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "168",
+	"id": 7728,
+	"name": "Quintanilla del Monte"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "169",
+	"id": 7729,
+	"name": "Quintanilla del Olmo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "171",
+	"id": 7730,
+	"name": "Quiruelas de Vidriales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "172",
+	"id": 7731,
+	"name": "Rabanales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "173",
+	"id": 7732,
+	"name": "Rábano de Aliste"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "174",
+	"id": 7733,
+	"name": "Requejo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "175",
+	"id": 7734,
+	"name": "Revellinos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "176",
+	"id": 7735,
+	"name": "Riofrío de Aliste"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "177",
+	"id": 7736,
+	"name": "Rionegro del Puente"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "178",
+	"id": 7737,
+	"name": "Roales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "179",
+	"id": 7738,
+	"name": "Robleda-Cervantes"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "180",
+	"id": 7739,
+	"name": "Roelos de Sayago"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "181",
+	"id": 7740,
+	"name": "Rosinos de la Requejada"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "183",
+	"id": 7741,
+	"name": "Salce"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "184",
+	"id": 7742,
+	"name": "Samir de los Caños"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "185",
+	"id": 7743,
+	"name": "San Agustín del Pozo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "186",
+	"id": 7744,
+	"name": "San Cebrián de Castro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "187",
+	"id": 7745,
+	"name": "San Cristóbal de Entreviñas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "188",
+	"id": 7746,
+	"name": "San Esteban del Molar"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "189",
+	"id": 7747,
+	"name": "San Justo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "190",
+	"id": 7748,
+	"name": "San Martín de Valderaduey"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "191",
+	"id": 7749,
+	"name": "San Miguel de la Ribera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "192",
+	"id": 7750,
+	"name": "San Miguel del Valle"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "193",
+	"id": 7751,
+	"name": "San Pedro de Ceque"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "194",
+	"id": 7752,
+	"name": "San Pedro de la Nave-Almendra"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "208",
+	"id": 7753,
+	"name": "San Vicente de la Cabeza"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "209",
+	"id": 7754,
+	"name": "San Vitero"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "197",
+	"id": 7755,
+	"name": "Santa Clara de Avedillo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "199",
+	"id": 7756,
+	"name": "Santa Colomba de las Monjas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "200",
+	"id": 7757,
+	"name": "Santa Cristina de la Polvorosa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "201",
+	"id": 7758,
+	"name": "Santa Croya de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "202",
+	"id": 7759,
+	"name": "Santa Eufemia del Barco"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "203",
+	"id": 7760,
+	"name": "Santa María de la Vega"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "204",
+	"id": 7761,
+	"name": "Santa María de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "205",
+	"id": 7762,
+	"name": "Santibáñez de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "206",
+	"id": 7763,
+	"name": "Santibáñez de Vidriales"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "207",
+	"id": 7764,
+	"name": "Santovenia"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "210",
+	"id": 7765,
+	"name": "Sanzoles"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "214",
+	"id": 7766,
+	"name": "Tábara"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "216",
+	"id": 7767,
+	"name": "Tapioles"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "219",
+	"id": 7768,
+	"name": "Toro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "220",
+	"id": 7769,
+	"name": "Torre del Valle, La"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "221",
+	"id": 7770,
+	"name": "Torregamones"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "222",
+	"id": 7771,
+	"name": "Torres del Carrizal"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "223",
+	"id": 7772,
+	"name": "Trabazos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "224",
+	"id": 7773,
+	"name": "Trefacio"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "225",
+	"id": 7774,
+	"name": "Uña de Quintana"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "226",
+	"id": 7775,
+	"name": "Vadillo de la Guareña"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "227",
+	"id": 7776,
+	"name": "Valcabado"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "228",
+	"id": 7777,
+	"name": "Valdefinjas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "229",
+	"id": 7778,
+	"name": "Valdescorriel"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "230",
+	"id": 7779,
+	"name": "Vallesa de la Guareña"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "231",
+	"id": 7780,
+	"name": "Vega de Tera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "232",
+	"id": 7781,
+	"name": "Vega de Villalobos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "233",
+	"id": 7782,
+	"name": "Vegalatrave"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "234",
+	"id": 7783,
+	"name": "Venialbo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "235",
+	"id": 7784,
+	"name": "Vezdemarbán"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "236",
+	"id": 7785,
+	"name": "Vidayanes"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "237",
+	"id": 7786,
+	"name": "Videmala"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "238",
+	"id": 7787,
+	"name": "Villabrázaro"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "239",
+	"id": 7788,
+	"name": "Villabuena del Puente"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "240",
+	"id": 7789,
+	"name": "Villadepera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "241",
+	"id": 7790,
+	"name": "Villaescusa"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "242",
+	"id": 7791,
+	"name": "Villafáfila"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "243",
+	"id": 7792,
+	"name": "Villaferrueña"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "244",
+	"id": 7793,
+	"name": "Villageriz"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "245",
+	"id": 7794,
+	"name": "Villalazán"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "246",
+	"id": 7795,
+	"name": "Villalba de la Lampreana"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "247",
+	"id": 7796,
+	"name": "Villalcampo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "248",
+	"id": 7797,
+	"name": "Villalobos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "249",
+	"id": 7798,
+	"name": "Villalonso"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "250",
+	"id": 7799,
+	"name": "Villalpando"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "251",
+	"id": 7800,
+	"name": "Villalube"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "252",
+	"id": 7801,
+	"name": "Villamayor de Campos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "255",
+	"id": 7802,
+	"name": "Villamor de los Escuderos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "256",
+	"id": 7803,
+	"name": "Villanázar"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "257",
+	"id": 7804,
+	"name": "Villanueva de Azoague"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "258",
+	"id": 7805,
+	"name": "Villanueva de Campeán"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "259",
+	"id": 7806,
+	"name": "Villanueva de las Peras"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "260",
+	"id": 7807,
+	"name": "Villanueva del Campo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "263",
+	"id": 7808,
+	"name": "Villar de Fallaves"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "264",
+	"id": 7809,
+	"name": "Villar del Buey"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "261",
+	"id": 7810,
+	"name": "Villaralbo"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "262",
+	"id": 7811,
+	"name": "Villardeciervos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "265",
+	"id": 7812,
+	"name": "Villardiegua de la Ribera"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "266",
+	"id": 7813,
+	"name": "Villárdiga"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "267",
+	"id": 7814,
+	"name": "Villardondiego"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "268",
+	"id": 7815,
+	"name": "Villarrín de Campos"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "269",
+	"id": 7816,
+	"name": "Villaseco del Pan"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "270",
+	"id": 7817,
+	"name": "Villavendimio"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "272",
+	"id": 7818,
+	"name": "Villaveza de Valverde"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "271",
+	"id": 7819,
+	"name": "Villaveza del Agua"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "273",
+	"id": 7820,
+	"name": "Viñas"
+}, {
+	"cod_prov": "49",
+	"cod_mun": "275",
+	"id": 7821,
+	"name": "Zamora"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "001",
+	"id": 7822,
+	"name": "Abanto"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "002",
+	"id": 7823,
+	"name": "Acered"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "003",
+	"id": 7824,
+	"name": "Agón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "004",
+	"id": 7825,
+	"name": "Aguarón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "005",
+	"id": 7826,
+	"name": "Aguilón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "006",
+	"id": 7827,
+	"name": "Ainzón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "007",
+	"id": 7828,
+	"name": "Aladrén"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "008",
+	"id": 7829,
+	"name": "Alagón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "009",
+	"id": 7830,
+	"name": "Alarba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "010",
+	"id": 7831,
+	"name": "Alberite de San Juan"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "011",
+	"id": 7832,
+	"name": "Albeta"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "012",
+	"id": 7833,
+	"name": "Alborge"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "013",
+	"id": 7834,
+	"name": "Alcalá de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "014",
+	"id": 7835,
+	"name": "Alcalá de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "015",
+	"id": 7836,
+	"name": "Alconchel de Ariza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "016",
+	"id": 7837,
+	"name": "Aldehuela de Liestos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "017",
+	"id": 7838,
+	"name": "Alfajarín"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "018",
+	"id": 7839,
+	"name": "Alfamén"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "019",
+	"id": 7840,
+	"name": "Alforque"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "020",
+	"id": 7841,
+	"name": "Alhama de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "021",
+	"id": 7842,
+	"name": "Almochuel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "022",
+	"id": 7843,
+	"name": "Almolda, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "023",
+	"id": 7844,
+	"name": "Almonacid de la Cuba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "024",
+	"id": 7845,
+	"name": "Almonacid de la Sierra"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "025",
+	"id": 7846,
+	"name": "Almunia de Doña Godina, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "026",
+	"id": 7847,
+	"name": "Alpartir"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "027",
+	"id": 7848,
+	"name": "Ambel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "028",
+	"id": 7849,
+	"name": "Anento"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "029",
+	"id": 7850,
+	"name": "Aniñón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "030",
+	"id": 7851,
+	"name": "Añón de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "031",
+	"id": 7852,
+	"name": "Aranda de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "032",
+	"id": 7853,
+	"name": "Arándiga"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "033",
+	"id": 7854,
+	"name": "Ardisa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "034",
+	"id": 7855,
+	"name": "Ariza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "035",
+	"id": 7856,
+	"name": "Artieda"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "036",
+	"id": 7857,
+	"name": "Asín"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "037",
+	"id": 7858,
+	"name": "Atea"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "038",
+	"id": 7859,
+	"name": "Ateca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "039",
+	"id": 7860,
+	"name": "Azuara"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "040",
+	"id": 7861,
+	"name": "Badules"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "041",
+	"id": 7862,
+	"name": "Bagüés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "042",
+	"id": 7863,
+	"name": "Balconchán"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "043",
+	"id": 7864,
+	"name": "Bárboles"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "044",
+	"id": 7865,
+	"name": "Bardallur"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "045",
+	"id": 7866,
+	"name": "Belchite"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "046",
+	"id": 7867,
+	"name": "Belmonte de Gracián"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "047",
+	"id": 7868,
+	"name": "Berdejo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "048",
+	"id": 7869,
+	"name": "Berrueco"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "901",
+	"id": 7870,
+	"name": "Biel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "050",
+	"id": 7871,
+	"name": "Bijuesca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "051",
+	"id": 7872,
+	"name": "Biota"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "052",
+	"id": 7873,
+	"name": "Bisimbre"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "053",
+	"id": 7874,
+	"name": "Boquiñeni"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "054",
+	"id": 7875,
+	"name": "Bordalba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "055",
+	"id": 7876,
+	"name": "Borja"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "056",
+	"id": 7877,
+	"name": "Botorrita"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "057",
+	"id": 7878,
+	"name": "Brea de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "058",
+	"id": 7879,
+	"name": "Bubierca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "059",
+	"id": 7880,
+	"name": "Bujaraloz"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "060",
+	"id": 7881,
+	"name": "Bulbuente"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "061",
+	"id": 7882,
+	"name": "Bureta"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "062",
+	"id": 7883,
+	"name": "Burgo de Ebro, El"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "063",
+	"id": 7884,
+	"name": "Buste, El"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "064",
+	"id": 7885,
+	"name": "Cabañas de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "065",
+	"id": 7886,
+	"name": "Cabolafuente"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "066",
+	"id": 7887,
+	"name": "Cadrete"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "067",
+	"id": 7888,
+	"name": "Calatayud"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "068",
+	"id": 7889,
+	"name": "Calatorao"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "069",
+	"id": 7890,
+	"name": "Calcena"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "070",
+	"id": 7891,
+	"name": "Calmarza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "071",
+	"id": 7892,
+	"name": "Campillo de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "072",
+	"id": 7893,
+	"name": "Carenas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "073",
+	"id": 7894,
+	"name": "Cariñena"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "074",
+	"id": 7895,
+	"name": "Caspe"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "075",
+	"id": 7896,
+	"name": "Castejón de Alarba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "076",
+	"id": 7897,
+	"name": "Castejón de las Armas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "077",
+	"id": 7898,
+	"name": "Castejón de Valdejasa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "078",
+	"id": 7899,
+	"name": "Castiliscar"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "079",
+	"id": 7900,
+	"name": "Cervera de la Cañada"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "080",
+	"id": 7901,
+	"name": "Cerveruela"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "081",
+	"id": 7902,
+	"name": "Cetina"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "092",
+	"id": 7903,
+	"name": "Chiprana"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "093",
+	"id": 7904,
+	"name": "Chodes"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "082",
+	"id": 7905,
+	"name": "Cimballa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "083",
+	"id": 7906,
+	"name": "Cinco Olivas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "084",
+	"id": 7907,
+	"name": "Clarés de Ribota"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "085",
+	"id": 7908,
+	"name": "Codo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "086",
+	"id": 7909,
+	"name": "Codos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "087",
+	"id": 7910,
+	"name": "Contamina"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "088",
+	"id": 7911,
+	"name": "Cosuenda"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "089",
+	"id": 7912,
+	"name": "Cuarte de Huerva"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "090",
+	"id": 7913,
+	"name": "Cubel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "091",
+	"id": 7914,
+	"name": "Cuerlas, Las"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "094",
+	"id": 7915,
+	"name": "Daroca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "095",
+	"id": 7916,
+	"name": "Ejea de los Caballeros"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "096",
+	"id": 7917,
+	"name": "Embid de Ariza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "098",
+	"id": 7918,
+	"name": "Encinacorba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "099",
+	"id": 7919,
+	"name": "Épila"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "100",
+	"id": 7920,
+	"name": "Erla"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "101",
+	"id": 7921,
+	"name": "Escatrón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "102",
+	"id": 7922,
+	"name": "Fabara"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "104",
+	"id": 7923,
+	"name": "Farlete"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "105",
+	"id": 7924,
+	"name": "Fayón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "106",
+	"id": 7925,
+	"name": "Fayos, Los"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "107",
+	"id": 7926,
+	"name": "Figueruelas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "108",
+	"id": 7927,
+	"name": "Fombuena"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "109",
+	"id": 7928,
+	"name": "Frago, El"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "110",
+	"id": 7929,
+	"name": "Frasno, El"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "111",
+	"id": 7930,
+	"name": "Fréscano"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "113",
+	"id": 7931,
+	"name": "Fuendejalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "114",
+	"id": 7932,
+	"name": "Fuendetodos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "115",
+	"id": 7933,
+	"name": "Fuentes de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "116",
+	"id": 7934,
+	"name": "Fuentes de Jiloca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "117",
+	"id": 7935,
+	"name": "Gallocanta"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "118",
+	"id": 7936,
+	"name": "Gallur"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "119",
+	"id": 7937,
+	"name": "Gelsa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "120",
+	"id": 7938,
+	"name": "Godojos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "121",
+	"id": 7939,
+	"name": "Gotor"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "122",
+	"id": 7940,
+	"name": "Grisel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "123",
+	"id": 7941,
+	"name": "Grisén"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "124",
+	"id": 7942,
+	"name": "Herrera de los Navarros"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "125",
+	"id": 7943,
+	"name": "Ibdes"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "126",
+	"id": 7944,
+	"name": "Illueca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "128",
+	"id": 7945,
+	"name": "Isuerre"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "129",
+	"id": 7946,
+	"name": "Jaraba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "130",
+	"id": 7947,
+	"name": "Jarque"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "131",
+	"id": 7948,
+	"name": "Jaulín"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "132",
+	"id": 7949,
+	"name": "Joyosa, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "133",
+	"id": 7950,
+	"name": "Lagata"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "134",
+	"id": 7951,
+	"name": "Langa del Castillo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "135",
+	"id": 7952,
+	"name": "Layana"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "136",
+	"id": 7953,
+	"name": "Lécera"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "138",
+	"id": 7954,
+	"name": "Lechón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "137",
+	"id": 7955,
+	"name": "Leciñena"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "139",
+	"id": 7956,
+	"name": "Letux"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "140",
+	"id": 7957,
+	"name": "Litago"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "141",
+	"id": 7958,
+	"name": "Lituénigo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "142",
+	"id": 7959,
+	"name": "Lobera de Onsella"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "143",
+	"id": 7960,
+	"name": "Longares"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "144",
+	"id": 7961,
+	"name": "Longás"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "146",
+	"id": 7962,
+	"name": "Lucena de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "147",
+	"id": 7963,
+	"name": "Luceni"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "148",
+	"id": 7964,
+	"name": "Luesia"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "149",
+	"id": 7965,
+	"name": "Luesma"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "150",
+	"id": 7966,
+	"name": "Lumpiaque"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "151",
+	"id": 7967,
+	"name": "Luna"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "152",
+	"id": 7968,
+	"name": "Maella"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "153",
+	"id": 7969,
+	"name": "Magallón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "154",
+	"id": 7970,
+	"name": "Mainar"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "155",
+	"id": 7971,
+	"name": "Malanquilla"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "156",
+	"id": 7972,
+	"name": "Maleján"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "160",
+	"id": 7973,
+	"name": "Mallén"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "157",
+	"id": 7974,
+	"name": "Malón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "159",
+	"id": 7975,
+	"name": "Maluenda"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "161",
+	"id": 7976,
+	"name": "Manchones"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "162",
+	"id": 7977,
+	"name": "Mara"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "163",
+	"id": 7978,
+	"name": "María de Huerva"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "902",
+	"id": 7979,
+	"name": "Marracos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "164",
+	"id": 7980,
+	"name": "Mediana de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "165",
+	"id": 7981,
+	"name": "Mequinenza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "166",
+	"id": 7982,
+	"name": "Mesones de Isuela"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "167",
+	"id": 7983,
+	"name": "Mezalocha"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "168",
+	"id": 7984,
+	"name": "Mianos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "169",
+	"id": 7985,
+	"name": "Miedes de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "170",
+	"id": 7986,
+	"name": "Monegrillo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "171",
+	"id": 7987,
+	"name": "Moneva"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "172",
+	"id": 7988,
+	"name": "Monreal de Ariza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "173",
+	"id": 7989,
+	"name": "Monterde"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "174",
+	"id": 7990,
+	"name": "Montón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "175",
+	"id": 7991,
+	"name": "Morata de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "176",
+	"id": 7992,
+	"name": "Morata de Jiloca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "177",
+	"id": 7993,
+	"name": "Morés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "178",
+	"id": 7994,
+	"name": "Moros"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "179",
+	"id": 7995,
+	"name": "Moyuela"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "180",
+	"id": 7996,
+	"name": "Mozota"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "181",
+	"id": 7997,
+	"name": "Muel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "182",
+	"id": 7998,
+	"name": "Muela, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "183",
+	"id": 7999,
+	"name": "Munébrega"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "184",
+	"id": 8000,
+	"name": "Murero"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "185",
+	"id": 8001,
+	"name": "Murillo de Gállego"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "186",
+	"id": 8002,
+	"name": "Navardún"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "187",
+	"id": 8003,
+	"name": "Nigüella"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "188",
+	"id": 8004,
+	"name": "Nombrevilla"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "189",
+	"id": 8005,
+	"name": "Nonaspe"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "190",
+	"id": 8006,
+	"name": "Novallas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "191",
+	"id": 8007,
+	"name": "Novillas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "192",
+	"id": 8008,
+	"name": "Nuévalos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "193",
+	"id": 8009,
+	"name": "Nuez de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "194",
+	"id": 8010,
+	"name": "Olvés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "195",
+	"id": 8011,
+	"name": "Orcajo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "196",
+	"id": 8012,
+	"name": "Orera"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "197",
+	"id": 8013,
+	"name": "Orés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "198",
+	"id": 8014,
+	"name": "Oseja"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "199",
+	"id": 8015,
+	"name": "Osera de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "200",
+	"id": 8016,
+	"name": "Paniza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "201",
+	"id": 8017,
+	"name": "Paracuellos de Jiloca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "202",
+	"id": 8018,
+	"name": "Paracuellos de la Ribera"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "203",
+	"id": 8019,
+	"name": "Pastriz"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "204",
+	"id": 8020,
+	"name": "Pedrola"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "205",
+	"id": 8021,
+	"name": "Pedrosas, Las"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "206",
+	"id": 8022,
+	"name": "Perdiguera"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "207",
+	"id": 8023,
+	"name": "Piedratajada"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "208",
+	"id": 8024,
+	"name": "Pina de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "209",
+	"id": 8025,
+	"name": "Pinseque"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "210",
+	"id": 8026,
+	"name": "Pintanos, Los"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "211",
+	"id": 8027,
+	"name": "Plasencia de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "212",
+	"id": 8028,
+	"name": "Pleitas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "213",
+	"id": 8029,
+	"name": "Plenas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "214",
+	"id": 8030,
+	"name": "Pomer"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "215",
+	"id": 8031,
+	"name": "Pozuel de Ariza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "216",
+	"id": 8032,
+	"name": "Pozuelo de Aragón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "217",
+	"id": 8033,
+	"name": "Pradilla de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "218",
+	"id": 8034,
+	"name": "Puebla de Albortón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "219",
+	"id": 8035,
+	"name": "Puebla de Alfindén, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "220",
+	"id": 8036,
+	"name": "Puendeluna"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "221",
+	"id": 8037,
+	"name": "Purujosa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "222",
+	"id": 8038,
+	"name": "Quinto"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "223",
+	"id": 8039,
+	"name": "Remolinos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "224",
+	"id": 8040,
+	"name": "Retascón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "225",
+	"id": 8041,
+	"name": "Ricla"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "227",
+	"id": 8042,
+	"name": "Romanos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "228",
+	"id": 8043,
+	"name": "Rueda de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "229",
+	"id": 8044,
+	"name": "Ruesca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "241",
+	"id": 8045,
+	"name": "Sabiñán"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "230",
+	"id": 8046,
+	"name": "Sádaba"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "231",
+	"id": 8047,
+	"name": "Salillas de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "232",
+	"id": 8048,
+	"name": "Salvatierra de Esca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "233",
+	"id": 8049,
+	"name": "Samper del Salz"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "234",
+	"id": 8050,
+	"name": "San Martín de la Virgen de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "235",
+	"id": 8051,
+	"name": "San Mateo de Gállego"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "236",
+	"id": 8052,
+	"name": "Santa Cruz de Grío"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "237",
+	"id": 8053,
+	"name": "Santa Cruz de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "238",
+	"id": 8054,
+	"name": "Santa Eulalia de Gállego"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "239",
+	"id": 8055,
+	"name": "Santed"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "240",
+	"id": 8056,
+	"name": "Sástago"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "242",
+	"id": 8057,
+	"name": "Sediles"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "243",
+	"id": 8058,
+	"name": "Sestrica"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "244",
+	"id": 8059,
+	"name": "Sierra de Luna"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "245",
+	"id": 8060,
+	"name": "Sigüés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "246",
+	"id": 8061,
+	"name": "Sisamón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "247",
+	"id": 8062,
+	"name": "Sobradiel"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "248",
+	"id": 8063,
+	"name": "Sos del Rey Católico"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "249",
+	"id": 8064,
+	"name": "Tabuenca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "250",
+	"id": 8065,
+	"name": "Talamantes"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "251",
+	"id": 8066,
+	"name": "Tarazona"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "252",
+	"id": 8067,
+	"name": "Tauste"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "253",
+	"id": 8068,
+	"name": "Terrer"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "254",
+	"id": 8069,
+	"name": "Tierga"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "255",
+	"id": 8070,
+	"name": "Tobed"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "256",
+	"id": 8071,
+	"name": "Torralba de los Frailes"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "257",
+	"id": 8072,
+	"name": "Torralba de Ribota"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "258",
+	"id": 8073,
+	"name": "Torralbilla"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "259",
+	"id": 8074,
+	"name": "Torrehermosa"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "260",
+	"id": 8075,
+	"name": "Torrelapaja"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "261",
+	"id": 8076,
+	"name": "Torrellas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "262",
+	"id": 8077,
+	"name": "Torres de Berrellén"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "263",
+	"id": 8078,
+	"name": "Torrijo de la Cañada"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "264",
+	"id": 8079,
+	"name": "Tosos"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "265",
+	"id": 8080,
+	"name": "Trasmoz"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "266",
+	"id": 8081,
+	"name": "Trasobares"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "267",
+	"id": 8082,
+	"name": "Uncastillo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "268",
+	"id": 8083,
+	"name": "Undués de Lerda"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "269",
+	"id": 8084,
+	"name": "Urrea de Jalón"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "270",
+	"id": 8085,
+	"name": "Urriés"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "271",
+	"id": 8086,
+	"name": "Used"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "272",
+	"id": 8087,
+	"name": "Utebo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "274",
+	"id": 8088,
+	"name": "Val de San Martín"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "273",
+	"id": 8089,
+	"name": "Valdehorna"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "275",
+	"id": 8090,
+	"name": "Valmadrid"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "276",
+	"id": 8091,
+	"name": "Valpalmas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "277",
+	"id": 8092,
+	"name": "Valtorres"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "278",
+	"id": 8093,
+	"name": "Velilla de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "279",
+	"id": 8094,
+	"name": "Velilla de Jiloca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "280",
+	"id": 8095,
+	"name": "Vera de Moncayo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "281",
+	"id": 8096,
+	"name": "Vierlas"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "283",
+	"id": 8097,
+	"name": "Villadoz"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "284",
+	"id": 8098,
+	"name": "Villafeliche"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "285",
+	"id": 8099,
+	"name": "Villafranca de Ebro"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "286",
+	"id": 8100,
+	"name": "Villalba de Perejil"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "287",
+	"id": 8101,
+	"name": "Villalengua"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "903",
+	"id": 8102,
+	"name": "Villamayor de Gállego"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "288",
+	"id": 8103,
+	"name": "Villanueva de Gállego"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "290",
+	"id": 8104,
+	"name": "Villanueva de Huerva"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "289",
+	"id": 8105,
+	"name": "Villanueva de Jiloca"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "291",
+	"id": 8106,
+	"name": "Villar de los Navarros"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "292",
+	"id": 8107,
+	"name": "Villarreal de Huerva"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "293",
+	"id": 8108,
+	"name": "Villarroya de la Sierra"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "294",
+	"id": 8109,
+	"name": "Villarroya del Campo"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "282",
+	"id": 8110,
+	"name": "Vilueña, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "295",
+	"id": 8111,
+	"name": "Vistabella"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "296",
+	"id": 8112,
+	"name": "Zaida, La"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "297",
+	"id": 8113,
+	"name": "Zaragoza"
+}, {
+	"cod_prov": "50",
+	"cod_mun": "298",
+	"id": 8114,
+	"name": "Zuera"
+}, {
+	"cod_prov": "51",
+	"cod_mun": "001",
+	"id": 8115,
+	"name": "Ceuta"
+}, {
+	"cod_prov": "52",
+	"cod_mun": "001",
+	"id": 8116,
+	"name": "Melilla"
+}];
+
+  var provinces = [{
+	  "code": "01",
+	  "name": "ARABA/ÁLAVA"
+  }, {
+	  "code": "02",
+	  "name": "ALBACETE"
+  }, {
+	  "code": "03",
+	  "name": "ALICANTE / ALACANT"
+  }, {
+	  "code": "04",
+	  "name": "ALMERIA"
+  }, {
+	  "code": "05",
+	  "name": "AVILA"
+  }, {
+	  "code": "06",
+	  "name": "BADAJOZ"
+  }, {
+	  "code": "07",
+	  "name": "BALEARS, ILLES"
+  }, {
+	  "code": "08",
+	  "name": "BARCELONA"
+  }, {
+	  "code": "09",
+	  "name": "BURGOS"
+  }, {
+	  "code": "10",
+	  "name": "CACERES"
+  }, {
+	  "code": "11",
+	  "name": "CADIZ"
+  }, {
+	  "code": "12",
+	  "name": "CASTELLON/CASTELLO"
+  }, {
+	  "code": "13",
+	  "name": "CIUDAD REAL"
+  }, {
+	  "code": "14",
+	  "name": "CORDOBA"
+  }, {
+	  "code": "15",
+	  "name": "CORUÑA, A"
+  }, {
+	  "code": "16",
+	  "name": "CUENCA"
+  }, {
+	  "code": "17",
+	  "name": "GIRONA"
+  }, {
+	  "code": "18",
+	  "name": "GRANADA"
+  }, {
+	  "code": "19",
+	  "name": "GUADALAJARA"
+  }, {
+	  "code": "20",
+	  "name": "GIPUZKOA"
+  }, {
+	  "code": "21",
+	  "name": "HUELVA"
+  }, {
+	  "code": "22",
+	  "name": "HUESCA"
+  }, {
+	  "code": "23",
+	  "name": "JAEN"
+  }, {
+	  "code": "24",
+	  "name": "LEON"
+  }, {
+	  "code": "25",
+	  "name": "LLEIDA"
+  }, {
+	  "code": "26",
+	  "name": "RIOJA, LA"
+  }, {
+	  "code": "27",
+	  "name": "LUGO"
+  }, {
+	  "code": "28",
+	  "name": "MADRID"
+  }, {
+	  "code": "29",
+	  "name": "MALAGA"
+  }, {
+	  "code": "30",
+	  "name": "MURCIA"
+  }, {
+	  "code": "31",
+	  "name": "NAVARRA"
+  }, {
+	  "code": "32",
+	  "name": "OURENSE"
+  }, {
+	  "code": "33",
+	  "name": "ASTURIAS"
+  }, {
+	  "code": "34",
+	  "name": "PALENCIA"
+  }, {
+	  "code": "35",
+	  "name": "PALMAS, LAS"
+  }, {
+	  "code": "36",
+	  "name": "PONTEVEDRA"
+  }, {
+	  "code": "37",
+	  "name": "SALAMANCA"
+  }, {
+	  "code": "38",
+	  "name": "SANTA CRUZ DE TENERIFE"
+  }, {
+	  "code": "39",
+	  "name": "CANTABRIA"
+  }, {
+	  "code": "40",
+	  "name": "SEGOVIA"
+  }, {
+	  "code": "41",
+	  "name": "SEVILLA"
+  }, {
+	  "code": "42",
+	  "name": "SORIA"
+  }, {
+	  "code": "43",
+	  "name": "TARRAGONA"
+  }, {
+	  "code": "44",
+	  "name": "TERUEL"
+  }, {
+	  "code": "45",
+	  "name": "TOLEDO"
+  }, {
+	  "code": "46",
+	  "name": "VALENCIA\\VALÈNCIA"
+  }, {
+	  "code": "47",
+	  "name": "VALLADOLID"
+  }, {
+	  "code": "48",
+	  "name": "BIZKAIA"
+  }, {
+	  "code": "49",
+	  "name": "ZAMORA"
+  }, {
+	  "code": "50",
+	  "name": "ZARAGOZA"
+  }, {
+	  "code": "51",
+	  "name": "CEUTA"
+  }, {
+	  "code": "52",
+	  "name": "MELILLA"
+  }];
+
+var provinceCssSelector = '.ps-prov';
+var municipeCssSelector = '.ps-mun';
+var provinceDefaultText = 'Provincia';
+var municipeDefaultText = 'Municipio';
+
+
+$().ready(function() {
+	// Set default text
+	$(provinceCssSelector).append($('<option>').text(provinceDefaultText).attr('value', -1));
+	$(municipeCssSelector).append($('<option>').text(municipeDefaultText).attr('value', -1));
+
+	// Populate province select
+	$.each(provinces, function(number, province) {
+		$(provinceCssSelector).append($('<option>').text(province.name).attr('value', province.code));
+	});
+
+	// When selected province changes, populate municipe select
+	$(provinceCssSelector).change(function() {
+		var selectedProvince = this.value;
+		$(municipeCssSelector).empty();
+		$(municipeCssSelector).append($('<option>').text(municipeDefaultText).attr('value', -1));
+		$.each(municipes, function(number, municipe) {
+			if (municipe.cod_prov == selectedProvince) {
+				$(municipeCssSelector).append($('<option>').text(municipe.name).attr('value', number.toString()));
+			}
+		});
+	});
+});
+
+}());
