@@ -1,0 +1,33 @@
+{
+  "name": "pselect",
+  "version": "0.0.0",
+  "homepage": "https://github.com/IagoLast/pselect",
+  "authors": [
+    "IagoLast <iago.lastra@gmail.com>"
+  ],
+  "description": "Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma automatica.",
+  "main": "dist/pselect.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Spain",
+    "España",
+    "provincias",
+    "municipios",
+    "select",
+    "dropdown"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "data"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

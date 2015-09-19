@@ -1,0 +1,35 @@
+{
+  "name": "Pselect.js",
+  "version": "1.0.0",
+  "description": "Crea un select con todas las provincias españolas de forma sencilla.",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-uglify": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IagoLast/pselect"
+  },
+  "keywords": [
+    "select",
+    "provincias",
+    "municipios",
+    "municipios",
+    "españoles",
+    "provincias",
+    "españolas"
+  ],
+  "author": "IagoLast",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IagoLast/pselect/issues"
+  },
+  "homepage": "https://github.com/IagoLast/pselect"
+}
