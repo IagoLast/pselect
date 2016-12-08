@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="UTF-8">
-	<title>Ejemplo Select provincias Españolas.</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejemplo Select provincias Españolas.</title>
+		<!--Include data and library files-->
+		<script type="text/javascript" src="src/pselect.js"></script>
+		<script type="text/javascript" src="data/prov-data.js"></script>
+	</head>
 
-<body>
-	<h2>Seleccione provincia.</h2>
-	<select class="ps-prov"></select>
-	<select class="ps-mun"></select>
-	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="dist/pselect.min.js"></script>
-</body>
+	<body>
+		<h2>Seleccione provincia!.</h2>
+		<select id="ps-prov"></select>
+		<select id="ps-mun"></select>
+	</body>
+	<script>
+	var prov = document.getElementById('ps-prov');
+	var mun = document.getElementById('ps-mun');
+	// Create PS
+	PS().create(prov, mun);
+
+	</script>
 
 </html>

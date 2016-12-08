@@ -1,33 +1,30 @@
 {
-  "name": "Pselect.js",
-  "version": "1.0.0",
-  "description": "Crea un select con todas las provincias españolas de forma sencilla.",
-  "main": "dist/pselect.js",
-  "dependencies": {
-  },
-  "devDependencies": {
-
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/IagoLast/pselect"
-  },
-  "keywords": [
-    "select",
-    "provincias",
-    "municipios",
-    "municipios",
-    "españoles",
-    "provincias",
-    "españolas"
-  ],
-  "author": "IagoLast",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/IagoLast/pselect/issues"
-  },
-  "homepage": "https://github.com/IagoLast/pselect"
+	"name": "Pselect.js",
+	"version": "2.0.0",
+	"description": "Crea un select con todas las provincias españolas de forma sencilla.",
+	"main": "dist/pselect.js",
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/IagoLast/pselect"
+	},
+	"keywords": [
+		"select",
+		"provincias",
+		"municipios",
+		"municipios",
+		"españoles",
+		"provincias",
+		"españolas"
+	],
+	"author": "IagoLast",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/IagoLast/pselect/issues"
+	},
+	"homepage": "https://github.com/IagoLast/pselect"
 }

@@ -10,20 +10,20 @@ def xls_to_json(filename):
     id = 0
 
     if not is_valid(sheet):
-        print(
-            "Error en {0}, el archivo tiene un formato inesperado.".format(filename))
+        print"Error en {0}, el archivo tiene un formato inesperado.".format(filename)
+        return
 
     for row in range(3, nrows):
         id += 1
-        cod_mun = sheet.cell_value(row, 2)
+        cod_mun = sheet.cell_value(row, 1)
         name_mun = sheet.cell_value(row, 4)
 
         municipios.append({
             'id': id,
             'nm': name_mun,
-            'pv': cod_mun
+            'pv': int(cod_mun)
         })
-    with open('municipios.json', 'wb') as fp:
+    with open('../data/municipios.json', 'wb') as fp:
         json_string = json.dumps(municipios, ensure_ascii=False).encode('utf8')
         fp.write(json_string)
 

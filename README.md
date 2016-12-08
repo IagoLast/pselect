@@ -1,18 +1,43 @@
 # PSelect.js
 
-Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma automática.
+Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma 
 
 ## Uso
 
-1.  Añadir Jquery y PSelect.js a la web.
+Añadir la libreria a la web.
 
 ```html
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="lib/pselect.min.js"></script>
+<script type="text/javascript" src="src/pselect.js"></script>
 ```
-2.  Añadir los selects a la web donde se mostraran las provincias y los municipios. 
+[opcional] Añadir el archivo con todos los datos de provincias y municipios esto crea dos variables globales `pselectDataProvinces, pselectDataMunicipes` que son usadas por la librería.
 
 ```html
-<select class="ps-prov"></select>
-<select class="ps-mun"></select>
+<script type="text/javascript" src="data/prov-data.js"></script>
 ```
+
+Llamar a `PS([options]).create(proSelect, munSelect)` pasando como parametros los `selects` que queremos utilizar para seleccionar las provincias.
+
+```javascript
+	var prov = document.getElementById('ps-prov');
+	var mun = document.getElementById('ps-mun');
+	PS().create(prov, mun);
+```
+
+## Parametros opcionales
+
+A la función `PS()` se le puede pasar un diccionario con parametros opcionales para permiten personalizar el comportamiento.
+
+* **provinceDefaultText:** El texto que se muestra por defecto en el select de provincias.
+* **municipesDefaultText:** El texto que se muestra por defecto en el select de municipios.
+* **provinces:** Una variable que contiene el array de objectos correspondientes a las provincias. 
+* **municipes:** Una variable que contiene el array de objectos correspondientes a las municipios. 
+
+Los dos últimos parametros son interesantes en caso de que se quieran cargar los datos de forma asíncrona, utilizando por ejemplo ajax para descargar los archivos json en lugar de incluirlos en el html desde un principio.
+
+# Origien de los datos
+
+Los datos se obtienen directamente de [la web del instituto nacional de estadística](http://www.ine.es/jaxi/menu.do?type=pcaxis&path=%2Ft20%2Fe245%2Fcodmun%2F&file=inebase&L=0) donde se pueden descargar dos hojas de cálculo que contienen los códigos de las provincias y los municipios de España.
+
+Estos datos son transformados a `json` utilizando un dos scripts en python que se encuentran en la carpeta parser junto a las hojas de calculo utilizadas.
+
+Si te interesan solamente los archivos `json` puedes encontrarlos en la carpeta `data`.
