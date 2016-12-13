@@ -26,7 +26,7 @@ function create(provincesElement, municipesElement) {
 		_addOption(provincesElement, province.nm, province.id);
 	});
 
-	provincesElement.addEventListener("change", function () {
+	provincesElement.addEventListener('change', function () {
 		// Remove current municipe elements
 		municipesElement.innerHTML = '';
 		var province = provincesElement[provincesElement.selectedIndex].value;
