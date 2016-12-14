@@ -55,10 +55,3 @@ Los datos se obtienen directamente de [la web del instituto nacional de estadís
 Estos datos son transformados a `json` utilizando un dos scripts en python que se encuentran en la carpeta parser junto a las hojas de calculo utilizadas.
 
 Si te interesan solamente los archivos `json` puedes encontrarlos en la carpeta `data`.
-
-
-## TODO:
-
-- Compatibilidad con bower & npm
-	- Crear un script autocontenido con todos los datos
-- Automatizar la creación de `prov-data.js`.
