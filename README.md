@@ -2,25 +2,39 @@
 
 Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma 
 
+## Instalacion
+
+Usando npm
+
+	npm install --save pselect.js
+
+Manual:
+
+Copiar el [archivo js](https://github.com/IagoLast/pselect/blob/master/dist/pselect.js) que se encuentra en la carpeta `dist`.
+
 ## Uso
 
-Añadir la libreria a la web.
-
 ```html
-<script type="text/javascript" src="src/pselect.js"></script>
-```
-[opcional] Añadir el archivo con todos los datos de provincias y municipios esto crea dos variables globales `pselectDataProvinces, pselectDataMunicipes` que son usadas por la librería.
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejemplo Select provincias Españolas.</title>
+		<script type="text/javascript" src="dist/pselect.js"></script>
+	</head>
 
-```html
-<script type="text/javascript" src="data/prov-data.js"></script>
-```
-
-Llamar a `PS([options]).create(proSelect, munSelect)` pasando como parametros los `selects` que queremos utilizar para seleccionar las provincias.
-
-```javascript
+	<body>
+		<h2>Seleccione provincia</h2>
+		<select id="ps-prov"></select>
+		<select id="ps-mun"></select>
+	</body>
+	<script>
 	var prov = document.getElementById('ps-prov');
 	var mun = document.getElementById('ps-mun');
-	PS().create(prov, mun);
+	// Crear el selector pasandole los elementos del dom.
+	Pselect().create(prov, mun);
+	</script>
+
+</html
 ```
 
 ## Parametros opcionales

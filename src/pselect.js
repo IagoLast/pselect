@@ -3,7 +3,7 @@ var psProto = {
 	init: init,
 }
 
-function PS(options) {
+function Pselect(options) {
 	return Object.create(psProto).init(options);
 }
 

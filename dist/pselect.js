@@ -1,3 +1,12 @@
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.Pselect = factory();
+  }
+}(this, function() {
 var pselectDataProvinces = [{
 	"id": 4,
 	"nm": "Almería"
@@ -161,7 +170,7 @@ var psProto = {
 	init: init,
 }
 
-function PS(options) {
+function Pselect(options) {
 	return Object.create(psProto).init(options);
 }
 
@@ -207,3 +216,6 @@ function _addOption(parent, text, value, disabled) {
 	}
 	parent.appendChild(opt);
 }
+
+return Pselect;
+}));
