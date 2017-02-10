@@ -4,6 +4,6 @@ Los archivos `.xlsx` contenidos en esta carpeta se obtiene directamente de [la w
 
 En esta carpeta se incluyen dos archivos python que transforman estos documentos en los `.json` que se encuentran en la carpeta `data`.
 
-Para ejecutar estos archivos es necesario tener las siguientes xlrd instalado. Puede instalarse con `pip` ejecutando:
+Para ejecutar estos archivos es necesario tener xlrd instalado. Puede instalarse con `pip` ejecutando:
 
 	pip install xlrd

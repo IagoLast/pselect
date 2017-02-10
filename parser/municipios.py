@@ -14,15 +14,15 @@ def xls_to_json(filename):
         return
 
     for row in range(3, nrows):
-        id += 1
-        cod_mun = sheet.cell_value(row, 1)
+        cod_prov = sheet.cell_value(row, 1)
+        cod_mun = sheet.cell_value(row, 2)
         name_mun = sheet.cell_value(row, 4)
 
         municipios.append({
-            'id': id,
+            'id': str(cod_prov) + str(cod_mun),
             'nm': name_mun,
-            'pv': int(cod_mun)
         })
+        
     with open('../data/municipios.json', 'wb') as fp:
         json_string = json.dumps(municipios, ensure_ascii=False).encode('utf8')
         fp.write(json_string)
