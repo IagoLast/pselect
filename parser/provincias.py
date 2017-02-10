@@ -17,9 +17,8 @@ def xls_to_json(filename):
         name_prov = sheet.cell_value(row, 3)
         if not code_prov or not name_prov:
             continue
-        print code_prov
         municipios.append({
-            'id': int(code_prov),
+            'id': code_prov,
             'nm': name_prov
         })
     with open('../data/provincias.json', 'wb') as fp:

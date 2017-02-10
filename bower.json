@@ -6,7 +6,7 @@
     "IagoLast <iago.lastra@gmail.com>"
   ],
   "description": "Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma automatica.",
-  "main": "dist/pselect.min.js",
+  "main": "dist/pselect.js",
   "moduleType": [
     "globals"
   ],

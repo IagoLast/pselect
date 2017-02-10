@@ -32,7 +32,7 @@ function create(provincesElement, municipesElement) {
 		var province = provincesElement[provincesElement.selectedIndex].value;
 		// Append new possible municipes filtered by province
 		self.municipes.filter(function (mun) {
-			return mun.pv == province;
+			return mun.id.startsWith(province);
 		}).forEach(function (mun) {
 			_addOption(municipesElement, mun.nm, mun.id);
 		});
