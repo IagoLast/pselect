@@ -1,6 +1,6 @@
 {
   "name": "pselect.js",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Crea un select con todas las provincias españolas de forma sencilla.",
   "main": "dist/pselect.js",
   "dependencies": {
