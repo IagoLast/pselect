@@ -3,8 +3,6 @@ var pselectDataProvinces = require('../data/provincias');
 
 function Pselect(options) {
   options = options || {};
-  this._provData = options.provinces || pselectDataProvinces;
-  this._munData = options.municipes || pselectDataMunicipes;
   this.provinceDefaultText = options.provText || 'Provincia';
   this.municipeDefaultText = options.munText || 'Municipio';
 }

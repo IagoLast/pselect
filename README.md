@@ -50,11 +50,6 @@ A la función `Pselect()` se le puede pasar un diccionario con parametros opcion
 
 * **provinceDefaultText:** El texto que se muestra por defecto en el select de provincias.
 * **municipesDefaultText:** El texto que se muestra por defecto en el select de municipios.
-* **provinces:** Una variable que contiene el array de objectos correspondientes a las provincias. 
-* **municipes:** Una variable que contiene el array de objectos correspondientes a las municipios. 
-
-Los dos últimos parametros son interesantes en caso de que se quieran cargar los datos de forma asíncrona, utilizando por ejemplo ajax para descargar los archivos json en lugar de incluirlos en el html desde un principio.
-
 ## Listado de datos
 El objet Pselect incluye dos propiedades a traves de las cuales se puede acceder a los datos de las provincias y los municipios.
 
