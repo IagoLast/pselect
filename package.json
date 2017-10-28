@@ -10,13 +10,15 @@
   },
   "devDependencies": {
     "eslint": "^4.10.0",
-    "gulp-concat": "^2.6.1",
-    "nightwatch": "^0.9.16"
+    "nightwatch": "^0.9.16",
+    "webpack": "^3.8.1"
   },
   "scripts": {
-    "build": "gulp",
+    "all": "yarn lint; yarn build ; yarn test",
+    "build": "webpack",
+    "build:watch": "webpack -w",
     "test": "nightwatch",
-    "lint": "eslint src/pselect.js"
+    "lint": "eslint src/index.js"
   },
   "repository": {
     "type": "git",

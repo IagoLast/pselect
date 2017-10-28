@@ -1,4 +1,6 @@
-/* global pselectDataProvinces, pselectDataMunicipes */
+var pselectDataMunicipes = require('../data/municipios');
+var pselectDataProvinces = require('../data/provincias');
+
 function Pselect(options) {
   options = options || {};
   this._provData = options.provinces || pselectDataProvinces;
@@ -6,6 +8,10 @@ function Pselect(options) {
   this.provinceDefaultText = options.provText || 'Provincia';
   this.municipeDefaultText = options.munText || 'Municipio';
 }
+
+// Expose data
+Pselect.municipesData = pselectDataMunicipes;
+Pselect.provincesData = pselectDataProvinces;
 
 Pselect.prototype.create = function (provincesElement, municipesElement) {
   this._provElement = provincesElement;
@@ -48,3 +54,5 @@ function _addOption(parentElement, text, value, disabled) {
   }
   parentElement.appendChild(optionElement);
 }
+
+module.exports = Pselect;

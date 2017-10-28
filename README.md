@@ -4,13 +4,17 @@ Libreria javascript para rellenar selects con las provincias y municipios Españ
 
 ## Instalacion
 
-Usando npm
+### CommonJs
 
 	npm install --save pselect.js
 
-Manual:
+```javascript
+var Pslect = require('pselect.js');
+```
 
-Copiar el [archivo js](https://github.com/IagoLast/pselect/blob/master/dist/pselect.js) que se encuentra en la carpeta `dist`.
+### Script
+
+Copiar el [archivo js](https://github.com/IagoLast/pselect/blob/master/dist/pselect.js) que se encuentra en la carpeta `dist`, este archivo exone una variable global `Pselect`.
 
 ## Uso
 
@@ -49,6 +53,18 @@ A la función `Pselect()` se le puede pasar un diccionario con parametros opcion
 * **municipes:** Una variable que contiene el array de objectos correspondientes a las municipios. 
 
 Los dos últimos parametros son interesantes en caso de que se quieran cargar los datos de forma asíncrona, utilizando por ejemplo ajax para descargar los archivos json en lugar de incluirlos en el html desde un principio.
+
+## Listado de datos
+El objet Pselect incluye dos propiedades a traves de las cuales se puede acceder a los datos de las provincias y los municipios.
+
+
+```javascript
+const Pselect = require('pselect.js');
+
+Pselect.provincesData[0]  // {id: "04", nm: "Almería"}
+
+Pselect.municipesData[0] // {id: "01002", nm: "Amurrio"}
+```
 
 # Origien de los datos
 
