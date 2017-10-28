@@ -9,10 +9,14 @@
     "umd": "^3.0.1"
   },
   "devDependencies": {
-    "gulp-concat": "^2.6.1"
+    "eslint": "^4.10.0",
+    "gulp-concat": "^2.6.1",
+    "nightwatch": "^0.9.16"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp",
+    "test": "nightwatch",
+    "lint": "eslint src/pselect.js"
   },
   "repository": {
     "type": "git",

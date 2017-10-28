@@ -31,15 +31,17 @@ Copiar el [archivo js](https://github.com/IagoLast/pselect/blob/master/dist/psel
 	var prov = document.getElementById('ps-prov');
 	var mun = document.getElementById('ps-mun');
 	// Crear el selector pasandole los elementos del dom.
-	Pselect().create(prov, mun);
+	new Pselect().create(prov, mun);
 	</script>
 
 </html
 ```
 
+Recuerda utilizar el operador `new` para crear un nuevo contexto.
+
 ## Parametros opcionales
 
-A la función `PS()` se le puede pasar un diccionario con parametros opcionales para permiten personalizar el comportamiento.
+A la función `Pselect()` se le puede pasar un diccionario con parametros opcionales para permiten personalizar el comportamiento.
 
 * **provinceDefaultText:** El texto que se muestra por defecto en el select de provincias.
 * **municipesDefaultText:** El texto que se muestra por defecto en el select de municipios.

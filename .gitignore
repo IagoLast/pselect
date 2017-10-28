@@ -2,4 +2,6 @@
 node_modules
 bower_components
 src/concat.js
-
+reports
+*.log
+.vscode

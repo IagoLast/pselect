@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>Ejemplo Select provincias Españolas.</title>
-		<script type="text/javascript" src="dist/pselect.js"></script>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo Select provincias Españolas.</title>
+	<script type="text/javascript" src="dist/pselect.js"></script>
+</head>
 
-	<body>
-		<h2>Seleccione provincia</h2>
-		<select id="ps-prov"></select>
-		<select id="ps-mun"></select>
-	</body>
-	<script>
+<body>
+	<h2>Seleccione provincia</h2>
+	<select id="ps-prov"></select>
+	<select id="ps-mun"></select>
+</body>
+<script>
+
 	var prov = document.getElementById('ps-prov');
 	var mun = document.getElementById('ps-mun');
-	// Create PS
-	Pselect().create(prov, mun);
+	new Pselect().create(prov, mun);
 
-	</script>
+</script>
 
 </html>

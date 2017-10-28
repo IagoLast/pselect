@@ -1,51 +1,50 @@
-var psProto = {
-	create: create,
-	init: init,
-}
-
+/* global pselectDataProvinces, pselectDataMunicipes */
 function Pselect(options) {
-	return Object.create(psProto).init(options);
+  options = options || {};
+  this._provData = options.provinces || pselectDataProvinces;
+  this._munData = options.municipes || pselectDataMunicipes;
+  this.provinceDefaultText = options.provText || 'Provincia';
+  this.municipeDefaultText = options.munText || 'Municipio';
 }
 
-function init(options) {
-	options = options ? options : {};
-	this.provinces = options.provinces || pselectDataProvinces;
-	this.municipes = options.municipes || pselectDataMunicipes;
-	this.provinceDefaultText = options.provText || 'Provincia';
-	this.municipeDefaultText = options.munText || 'Municipio';
+Pselect.prototype.create = function (provincesElement, municipesElement) {
+  this._provElement = provincesElement;
+  this._munElement = municipesElement;
 
-	return this;
-}
+  // Add default options to each select
+  _addOption(provincesElement, this.provinceDefaultText, -1, true);
+  _addOption(municipesElement, this.municipeDefaultText, -1, true);
 
-function create(provincesElement, municipesElement) {
-	var self = this;
-	_addOption(provincesElement, this.provinceDefaultText, -1, true);
-	_addOption(municipesElement, this.municipeDefaultText, -1, true);
+  // Add all possible provinces
+  this._provData.forEach(function (province) {
+    _addOption(provincesElement, province.nm, province.id);
+  });
 
-	this.provinces.forEach(function (province) {
-		_addOption(provincesElement, province.nm, province.id);
-	});
+  // Callback when the selected province is changed
+  provincesElement.addEventListener('change', this.__onProvinceSelected.bind(this));
+};
 
-	provincesElement.addEventListener('change', function () {
-		// Remove current municipe elements
-		municipesElement.innerHTML = '';
-		var province = provincesElement[provincesElement.selectedIndex].value;
-		// Append new possible municipes filtered by province
-		self.municipes.filter(function (mun) {
-			return mun.id.startsWith(province);
-		}).forEach(function (mun) {
-			_addOption(municipesElement, mun.nm, mun.id);
-		});
-	});
-}
+Pselect.prototype.__onProvinceSelected = function (event) {
+  var province = event.target.value;
+  // Remove current municipe elements
+  this._munElement.innerHTML = '';
+  // Append new municipes list filtered by selected province
+  this._munData
+    .filter(function (mun) {
+      return mun.id.startsWith(province);
+    })
+    .forEach(function (mun) {
+      _addOption(this._munElement, mun.nm, mun.id);
+    }.bind(this));
+};
 
-function _addOption(parent, text, value, disabled) {
-	var opt = document.createElement('option');
-	opt.value = value;
-	opt.innerHTML = text;
-	if (disabled) {
-		opt.setAttribute('selected', '');
-		opt.setAttribute('disabled', '');
-	}
-	parent.appendChild(opt);
+function _addOption(parentElement, text, value, disabled) {
+  var optionElement = document.createElement('option');
+  optionElement.value = value;
+  optionElement.innerHTML = text;
+  if (disabled) {
+    optionElement.setAttribute('selected', '');
+    optionElement.setAttribute('disabled', '');
+  }
+  parentElement.appendChild(optionElement);
 }
