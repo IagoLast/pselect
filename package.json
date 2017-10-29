@@ -9,16 +9,19 @@
     "umd": "^3.0.1"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "eslint": "^4.10.0",
     "nightwatch": "^0.9.16",
+    "serve": "^6.3.1",
     "webpack": "^3.8.1"
   },
   "scripts": {
     "all": "yarn lint; yarn build ; yarn test",
     "build": "webpack",
     "build:watch": "webpack -w",
-    "test": "nightwatch",
-    "lint": "eslint src/index.js"
+    "test": "nightwatch --env default,firefox,edge,ie9",
+    "lint": "eslint src/index.js",
+    "serve": "serve"
   },
   "repository": {
     "type": "git",

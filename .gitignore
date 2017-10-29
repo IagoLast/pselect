@@ -5,3 +5,4 @@ src/concat.js
 reports
 *.log
 .vscode
+.env

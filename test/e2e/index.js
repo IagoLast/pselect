@@ -1,4 +1,5 @@
-// test/e2e/simple/simpleTest.js
+const sauce = require('./sauce');
+
 module.exports = {
   beforeEach: function (browser) {
     browser
@@ -13,7 +14,5 @@ module.exports = {
     browser.click('option[value="36038"]');
     browser.expect.element('select#ps-mun').to.have.value.that.equals('36038');
   },
-  after: function (browser) {
-    browser.end();
-  },
+  after: sauce,
 };
