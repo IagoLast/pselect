@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (!process.env.TRAVIS) {
+  require('dotenv').config();
+}
 
 module.exports = {
   src_folders: [
