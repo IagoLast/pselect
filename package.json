@@ -22,7 +22,7 @@
     "build:watch": "webpack -w",
     "test": "nightwatch --env default,firefox,edge,ie9",
     "lint": "eslint src/index.js",
-    "serve": "serve"
+    "serve": "serve -p 8000"
   },
   "repository": {
     "type": "git",
