@@ -20,7 +20,7 @@
     "all": "yarn lint; yarn build ; yarn test",
     "build": "webpack",
     "build:watch": "webpack -w",
-    "test": "nightwatch",
+    "test": "nightwatch --env default,firefox,ie9,edge",
     "lint": "eslint src/index.js",
     "serve": "serve -p 8000"
   },
