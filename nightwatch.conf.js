@@ -1,3 +1,4 @@
+const TRAVIS_JOB_NUMBER = process.env.TRAVIS_JOB_NUMBER;
 if (!process.env.TRAVIS) {
   require('dotenv').config();
 }
@@ -16,7 +17,9 @@ module.exports = {
       username: process.env.SAUCE_USERNAME,
       access_key: process.env.SAUCE_ACCESS_KEY,
       desiredCapabilities: {
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'build': `build-${TRAVIS_JOB_NUMBER}`,
+        'tunnel-identifier': TRAVIS_JOB_NUMBER,
       }
     },
     firefox: {
