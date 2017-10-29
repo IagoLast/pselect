@@ -9,7 +9,7 @@ module.exports = {
   output_folder: 'reports',
   test_settings: {
     default: {
-      launch_url: 'http://localhost:5000',
+      launch_url: 'http://ondemand.saucelabs.com:80',
       selenium_port: 80,
       selenium_host: 'ondemand.saucelabs.com',
       silent: true,
