@@ -12,7 +12,7 @@ module.exports = {
       selenium_host: 'ondemand.saucelabs.com',
       silent: true,
       username: process.env.SAUCE_USERNAME,
-      access_key: process.env.SAUCE_API_KEY,
+      access_key: process.env.SAUCE_ACCESS_KEY,
       desiredCapabilities: {
         browserName: 'chrome'
       }
