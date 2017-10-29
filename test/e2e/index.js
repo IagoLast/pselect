@@ -3,7 +3,7 @@ const sauce = require('./sauce');
 module.exports = {
   beforeEach: function (browser) {
     browser
-      .url('http://localhost:5000')
+      .url('http://localhost:8000')
       .waitForElementVisible('body', 1000);
   },
   Smoke: function (browser) {

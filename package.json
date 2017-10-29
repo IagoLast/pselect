@@ -12,6 +12,7 @@
     "dotenv": "^4.0.0",
     "eslint": "^4.10.0",
     "nightwatch": "^0.9.16",
+    "request": "^2.83.0",
     "serve": "^6.3.1",
     "webpack": "^3.8.1"
   },
@@ -19,9 +20,9 @@
     "all": "yarn lint; yarn build ; yarn test",
     "build": "webpack",
     "build:watch": "webpack -w",
-    "test": "nightwatch --env default,firefox,edge,ie9",
+    "test": "nightwatch --env default,firefox,ie9,edge",
     "lint": "eslint src/index.js",
-    "serve": "serve"
+    "serve": "serve -p 8000"
   },
   "repository": {
     "type": "git",
