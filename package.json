@@ -12,6 +12,7 @@
     "dotenv": "^4.0.0",
     "eslint": "^4.10.0",
     "nightwatch": "^0.9.16",
+    "request": "^2.83.0",
     "serve": "^6.3.1",
     "webpack": "^3.8.1"
   },
