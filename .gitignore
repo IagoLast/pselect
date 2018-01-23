@@ -6,3 +6,4 @@ reports
 *.log
 .vscode
 .env
+parser/ENV
