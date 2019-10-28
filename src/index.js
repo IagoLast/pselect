@@ -9,7 +9,6 @@ function Pselect(options) {
   options = options || {};
   this.provinceDefaultText = options.provText || 'Provincia';
   this.municipeDefaultText = options.munText || 'Municipio';
-  return this;
 }
 
 
