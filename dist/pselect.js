@@ -7,7 +7,7 @@
 		exports["Pselect"] = factory();
 	else
 		root["Pselect"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -80,15 +80,17 @@ return /******/ (function(modules) { // webpackBootstrap
 var municipesData = __webpack_require__(1);
 var provincesData = __webpack_require__(2);
 
+// Expose data
+Pselect.municipesData = municipesData;
+Pselect.provincesData = provincesData;
+
 function Pselect(options) {
   options = options || {};
   this.provinceDefaultText = options.provText || 'Provincia';
   this.municipeDefaultText = options.munText || 'Municipio';
+  return this;
 }
 
-// Expose data
-Pselect.municipesData = municipesData;
-Pselect.provincesData = provincesData;
 
 Pselect.prototype.create = function (provincesElement, municipesElement) {
   this._provElement = provincesElement;

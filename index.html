@@ -5,19 +5,62 @@
 	<meta charset="UTF-8">
 	<title>Ejemplo Select provincias Españolas.</title>
 	<script type="text/javascript" src="dist/pselect.js"></script>
+	<style>
+		body {
+			margin: 0;
+			font-family: sans-serif;
+			font-weight: 300;
+		}
+
+		header {
+			font-size: 1.5em;
+			border-bottom: 1px solid #c9c9c9;
+		}
+
+		img {
+			position: absolute;
+			top: 0;
+			right: 0;
+			border: 0;
+		}
+
+		header,
+		main,
+		footer {
+			padding: 15px;
+		}
+	</style>
 </head>
 
 <body>
-	<h2>Seleccione provincia</h2>
-	<select id="ps-prov"></select>
-	<select id="ps-mun"></select>
+	<header>Códigos de provincias y municipios españoles</header>
+	<main>
+		<p>Elige provincia y municipio y se mostrará el código utilizado por el INE para identificar el municipio.</p>
+		<select id="ps-prov"></select>
+		<select id="ps-mun"></select>
+		<h3 id="code">Selecciona un municipio para ver el código.</h3>
+	</main>
+	<footer>
+		<p>También esta disponible el listado completo en formato json en los siguientes enlaces:</p>
+		<a href="https://raw.githubusercontent.com/IagoLast/pselect/master/data/municipios.json">Listado de
+			municipios</a>
+		<a href="https://raw.githubusercontent.com/IagoLast/pselect/master/data/provincias.json">Listado de
+			provincias</a>
+	</footer>
+	<a href="https://github.com/IagoLast/Pselect">
+		<img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+	</a>
 </body>
 <script>
-
 	var prov = document.getElementById('ps-prov');
 	var mun = document.getElementById('ps-mun');
+	// Create PS
 	new Pselect().create(prov, mun);
 
+
+	document.getElementById('ps-mun').addEventListener('change', function onChange() {
+		document.getElementById('code').innerText = 'Código: ' + document.getElementById('ps-mun').value;
+	});
 </script>
 
 </html>

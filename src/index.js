@@ -1,15 +1,17 @@
 var municipesData = require('../data/municipios');
 var provincesData = require('../data/provincias');
 
+// Expose data
+Pselect.municipesData = municipesData;
+Pselect.provincesData = provincesData;
+
 function Pselect(options) {
   options = options || {};
   this.provinceDefaultText = options.provText || 'Provincia';
   this.municipeDefaultText = options.munText || 'Municipio';
+  return this;
 }
 
-// Expose data
-Pselect.municipesData = municipesData;
-Pselect.provincesData = provincesData;
 
 Pselect.prototype.create = function (provincesElement, municipesElement) {
   this._provElement = provincesElement;

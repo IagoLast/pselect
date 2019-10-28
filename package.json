@@ -17,7 +17,6 @@
     "webpack": "^3.8.1"
   },
   "scripts": {
-    "all": "yarn lint; yarn build ; yarn test",
     "build": "webpack",
     "build:watch": "webpack -w",
     "test": "nightwatch --env default,firefox,ie9,edge",
