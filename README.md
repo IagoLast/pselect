@@ -1,21 +1,32 @@
 # PSelect.js
 
+[![](https://data.jsdelivr.com/v1/package/npm/pselect.js/badge)](https://www.jsdelivr.com/package/npm/pselect.js)
+
 Libreria javascript para rellenar selects con las provincias y municipios Españoles de forma 
 
 ## Instalacion
 
-###CommonJs
+### CDN/Script
 
-	npm install --save pselect.js
+La forma más sencilla es copiar directamente este script en tu web.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/pselect.js@4.0.1/dist/pselect.min.js" ></script>
+```
+
+### npm
+
+También puedes utilizar npm.
+
+```
+npm install --save pselect.js
+```
+
 
 ```javascript
 var Pslect = require('pselect.js');
 ```
 
-### Script
-
-Copiar el [archivo js](https://github.com/IagoLast/pselect/blob/master/dist/pselect.js) que se encuentra en la carpeta `dist`.
-Este archivo expone una variable global `Pselect`.
 
 ## Uso
 
@@ -24,21 +35,23 @@ Este archivo expone una variable global `Pselect`.
 	<head>
 		<meta charset="UTF-8">
 		<title>Ejemplo Select provincias Españolas.</title>
-		<script type="text/javascript" src="dist/pselect.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/pselect.js@4.0.1/dist/pselect.min.js" ></script>
 	</head>
 
 	<body>
 		<h2>Seleccione provincia</h2>
+		<!-- Select de provincias -->
 		<select id="ps-prov"></select>
+		<!-- Select de municipios -->
 		<select id="ps-mun"></select>
 	</body>
-	<script>
-	var prov = document.getElementById('ps-prov');
-	var mun = document.getElementById('ps-mun');
-	// Crear el selector pasandole los elementos del dom.
-	new Pselect().create(prov, mun);
-	</script>
 
+	<script>
+		// Crear el selector pasandole los elementos del dom.
+		var prov = document.getElementById('ps-prov');
+		var mun = document.getElementById('ps-mun');
+		new Pselect().create(prov, mun);
+	</script>
 </html
 ```
 
