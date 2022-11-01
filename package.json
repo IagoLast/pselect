@@ -4,7 +4,7 @@
   "description": "Crea un select con todas las provincias españolas de forma sencilla.",
   "main": "dist/pselect.js",
   "dependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-umd": "^0.2.0",
     "umd": "^3.0.1"
   },
